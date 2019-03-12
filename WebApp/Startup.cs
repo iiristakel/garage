@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Contracts.DAL.App;
+using Contracts.DAL.App.Repositories;
 using Contracts.DAL.Base;
 using Contracts.DAL.Base.Helpers;
 using DAL;
 using DAL.App.EF;
 using DAL.App.EF.Helpers;
+using DAL.App.EF.Repositories;
 using DAL.Base.EF.Helpers;
 using Domain.Identity;
 using Microsoft.AspNetCore.Builder;
@@ -21,6 +23,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using WebApp.Helpers;
 
 namespace WebApp
 {
@@ -43,15 +46,18 @@ namespace WebApp
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            // set up db with pomelo mysql
             services.AddDbContext<AppDbContext>(options =>
+                // UseMySQL is oracle non-functional driver
                 options.UseMySql(
-                    Configuration.GetConnectionString("MySqlConnection")));
-            
+                    Configuration.GetConnectionString("MysqlConnection")));
+
+
             services.AddScoped<IDataContext, AppDbContext>();
             services.AddSingleton<IRepositoryFactory, AppRepositoryFactory>();
             services.AddScoped<IRepositoryProvider, BaseRepositoryProvider>();
             services.AddScoped<IAppUnitOfWork, AppUnitOfWork>();
-
+            
             
             services
                 .AddIdentity<AppUser, AppRole>()
@@ -59,8 +65,10 @@ namespace WebApp
                 //.AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
-
             
+
+            // Relax password requirements for easy testing
+            // TODO: Remove in production
             services.Configure<IdentityOptions>(options =>
             {
                 options.Password.RequireDigit = false;
@@ -72,17 +80,8 @@ namespace WebApp
 
             });
 
-//            services.AddCors(options =>
-//            {
-//                options.AddPolicy("CorsAllowAll", builder =>
-//                {
-//                    builder.AllowAnyHeader();
-//                    builder.AllowAnyMethod();
-//                    builder.AllowAnyOrigin();
-//                });
-//            });
+            services.AddTransient<IEmailSender, EmailSender>();
             
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -101,17 +100,20 @@ namespace WebApp
                 app.UseHsts();
             }
 
-            //app.UseHttpsRedirection();
-            //app.UseDefaultFiles();
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
             app.UseAuthentication();
 
-            //app.UseCors("CorsAllowAll");
-            
             app.UseMvc(routes =>
             {
+
+                routes.MapRoute(
+                    name: "area",
+                    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+                
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");

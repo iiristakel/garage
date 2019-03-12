@@ -5,7 +5,6 @@ using WebApp.Models;
 
 namespace WebApp.Controllers
 {
-    [Authorize]
     public class HomeController : Controller
     {
         public IActionResult Index()
