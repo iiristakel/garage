@@ -2,28 +2,34 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Contracts.DAL.App;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DAL;
+using DAL.App.EF;
 using Domain;
+using Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApp.Controllers
 {
+    [Authorize]
     public class ClientsController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly IAppUnitOfWork _uow;
 
-        public ClientsController(AppDbContext context)
+        public ClientsController(IAppUnitOfWork uow)
         {
-            _context = context;
+            _uow = uow;
         }
 
         // GET: Clients
         public async Task<IActionResult> Index()
         {
-            var appDbContext = _context.Clients.Include(c => c.ClientGroup);
-            return View(await appDbContext.ToListAsync());
+            var clients = await _uow.Clients.AllAsync();
+
+            return View(clients);
         }
 
         // GET: Clients/Details/5
@@ -34,9 +40,11 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var client = await _context.Clients
-                .Include(c => c.ClientGroup)
-                .FirstOrDefaultAsync(m => m.Id == id);
+//            var client = await _context.Clients
+//                .Include(c => c.ClientGroup)
+//                .FirstOrDefaultAsync(m => m.Id == id);
+            var client = await _uow.Clients.FindAsync(id);
+
             if (client == null)
             {
                 return NotFound();
@@ -46,9 +54,12 @@ namespace WebApp.Controllers
         }
 
         // GET: Clients/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            ViewData["ClientGroupId"] = new SelectList(_context.ClientGroups, "Id", "Name");
+            ViewData["ClientGroupId"] = new SelectList(
+                await _uow.BaseRepository<ClientGroup>().AllAsync(),
+                "Id", "Name");
+
             return View();
         }
 
@@ -57,15 +68,20 @@ namespace WebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ClientGroupId,CompanyName,Address,Phone,ContactPerson,Id")] Client client)
+        public async Task<IActionResult> Create([Bind("ClientGroupId,CompanyName,Address,Phone,ContactPerson,Id")]
+            Client client)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(client);
-                await _context.SaveChangesAsync();
+                await _uow.Clients.AddAsync(client);
+                await _uow.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ClientGroupId"] = new SelectList(_context.ClientGroups, "Id", "Name", client.ClientGroupId);
+
+            ViewData["ClientGroupId"] = new SelectList(
+                await _uow.BaseRepository<ClientGroup>().AllAsync(),
+                "Id", "Name", client.ClientGroupId);
             return View(client);
         }
 
@@ -77,12 +93,16 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var client = await _context.Clients.FindAsync(id);
+            var client = await _uow.Clients.FindAsync(id);
             if (client == null)
             {
                 return NotFound();
             }
-            ViewData["ClientGroupId"] = new SelectList(_context.ClientGroups, "Id", "Name", client.ClientGroupId);
+
+            ViewData["ClientGroupId"] = new SelectList(
+                await _uow.BaseRepository<ClientGroup>().AllAsync(),
+                "Id", "Name", client.ClientGroupId);
+
             return View(client);
         }
 
@@ -91,7 +111,8 @@ namespace WebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ClientGroupId,CompanyName,Address,Phone,ContactPerson,Id")] Client client)
+        public async Task<IActionResult> Edit(int id, [Bind("ClientGroupId,CompanyName,Address,Phone,ContactPerson,Id")]
+            Client client)
         {
             if (id != client.Id)
             {
@@ -100,25 +121,16 @@ namespace WebApp.Controllers
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(client);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ClientExists(client.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                _uow.Clients.Update(client);
+                await _uow.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ClientGroupId"] = new SelectList(_context.ClientGroups, "Id", "Name", client.ClientGroupId);
+
+            ViewData["ClientGroupId"] = new SelectList(
+                await _uow.BaseRepository<ClientGroup>().AllAsync(), 
+                "Id", "Name", client.ClientGroupId);
+            
             return View(client);
         }
 
@@ -130,9 +142,11 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var client = await _context.Clients
-                .Include(c => c.ClientGroup)
-                .FirstOrDefaultAsync(m => m.Id == id);
+//            var client = await _context.Clients
+//                .Include(c => c.ClientGroup)
+//                .FirstOrDefaultAsync(m => m.Id == id);
+            var client = await _uow.Clients.FindAsync(id);
+            
             if (client == null)
             {
                 return NotFound();
@@ -146,15 +160,9 @@ namespace WebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var client = await _context.Clients.FindAsync(id);
-            _context.Clients.Remove(client);
-            await _context.SaveChangesAsync();
+            _uow.Clients.Remove(id);
+            await _uow.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool ClientExists(int id)
-        {
-            return _context.Clients.Any(e => e.Id == id);
         }
     }
 }

@@ -6,10 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DAL;
+using DAL.App.EF;
 using Domain;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApp.Controllers
 {
+    [Authorize]
     public class PaymentsController : Controller
     {
         private readonly AppDbContext _context;
@@ -22,7 +25,7 @@ namespace WebApp.Controllers
         // GET: Payments
         public async Task<IActionResult> Index()
         {
-            var appDbContext = _context.Payments.Include(p => p.Bill).Include(p => p.PaymentMethod);
+            var appDbContext = _context.Payments.Include(p => p.Bill).Include(p => p.Client).Include(p => p.PaymentMethod);
             return View(await appDbContext.ToListAsync());
         }
 
@@ -36,6 +39,7 @@ namespace WebApp.Controllers
 
             var payment = await _context.Payments
                 .Include(p => p.Bill)
+                .Include(p => p.Client)
                 .Include(p => p.PaymentMethod)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (payment == null)
@@ -49,7 +53,8 @@ namespace WebApp.Controllers
         // GET: Payments/Create
         public IActionResult Create()
         {
-            ViewData["BillId"] = new SelectList(_context.Bills, "Id", "Id");
+            ViewData["BillId"] = new SelectList(_context.Bills, "Id", "InvoiceNr");
+            ViewData["ClientId"] = new SelectList(_context.Clients, "Id", "Address");
             ViewData["PaymentMethodId"] = new SelectList(_context.PaymentMethods, "Id", "PaymentMethodValue");
             return View();
         }
@@ -59,7 +64,7 @@ namespace WebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BillId,PaymentMethodId,PaymentTime,Id")] Payment payment)
+        public async Task<IActionResult> Create([Bind("BillId,PaymentMethodId,ClientId,Sum,PaymentTime,Id")] Payment payment)
         {
             if (ModelState.IsValid)
             {
@@ -67,7 +72,8 @@ namespace WebApp.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BillId"] = new SelectList(_context.Bills, "Id", "Id", payment.BillId);
+            ViewData["BillId"] = new SelectList(_context.Bills, "Id", "InvoiceNr", payment.BillId);
+            ViewData["ClientId"] = new SelectList(_context.Clients, "Id", "Address", payment.ClientId);
             ViewData["PaymentMethodId"] = new SelectList(_context.PaymentMethods, "Id", "PaymentMethodValue", payment.PaymentMethodId);
             return View(payment);
         }
@@ -85,7 +91,8 @@ namespace WebApp.Controllers
             {
                 return NotFound();
             }
-            ViewData["BillId"] = new SelectList(_context.Bills, "Id", "Id", payment.BillId);
+            ViewData["BillId"] = new SelectList(_context.Bills, "Id", "InvoiceNr", payment.BillId);
+            ViewData["ClientId"] = new SelectList(_context.Clients, "Id", "Address", payment.ClientId);
             ViewData["PaymentMethodId"] = new SelectList(_context.PaymentMethods, "Id", "PaymentMethodValue", payment.PaymentMethodId);
             return View(payment);
         }
@@ -95,7 +102,7 @@ namespace WebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("BillId,PaymentMethodId,PaymentTime,Id")] Payment payment)
+        public async Task<IActionResult> Edit(int id, [Bind("BillId,PaymentMethodId,ClientId,Sum,PaymentTime,Id")] Payment payment)
         {
             if (id != payment.Id)
             {
@@ -122,7 +129,8 @@ namespace WebApp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BillId"] = new SelectList(_context.Bills, "Id", "Id", payment.BillId);
+            ViewData["BillId"] = new SelectList(_context.Bills, "Id", "InvoiceNr", payment.BillId);
+            ViewData["ClientId"] = new SelectList(_context.Clients, "Id", "Address", payment.ClientId);
             ViewData["PaymentMethodId"] = new SelectList(_context.PaymentMethods, "Id", "PaymentMethodValue", payment.PaymentMethodId);
             return View(payment);
         }
@@ -137,6 +145,7 @@ namespace WebApp.Controllers
 
             var payment = await _context.Payments
                 .Include(p => p.Bill)
+                .Include(p => p.Client)
                 .Include(p => p.PaymentMethod)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (payment == null)

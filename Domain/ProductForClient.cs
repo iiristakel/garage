@@ -15,6 +15,6 @@ namespace Domain
         
         public ICollection<BillLine> BillLines { get; set; }
 
-        public int Count { get; set; }
+        public decimal Count { get; set; }
     }
 }

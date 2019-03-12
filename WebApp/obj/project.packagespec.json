@@ -15,8 +15,8 @@
     "frameworks": {
       "netcoreapp2.2": {
         "projectReferences": {
-          "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\DAL\\DAL.csproj": {
-            "projectPath": "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\DAL\\DAL.csproj"
+          "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\DAL.App.EF\\DAL.App.EF.csproj": {
+            "projectPath": "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\DAL.App.EF\\DAL.App.EF.csproj"
           },
           "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\Identity\\Identity.csproj": {
             "projectPath": "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\Identity\\Identity.csproj"

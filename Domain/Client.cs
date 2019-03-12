@@ -14,6 +14,8 @@ namespace Domain
 
         public ICollection<ProductForClient> ProductsForClient { get; set; }
 
+        public ICollection<Payment> Payments { get; set; }
+        
         [MaxLength(64)]
         [MinLength(1)]
         public string CompanyName { get; set; }

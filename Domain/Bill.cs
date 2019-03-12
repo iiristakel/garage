@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Domain
 {
@@ -11,10 +12,21 @@ namespace Domain
         public ICollection<BillLine> BillLines { get; set; }
 
         public ICollection<Payment> Payments { get; set; }
-
+        
+        public decimal Sum { get; set; }
+        public decimal? DiscountPercent { get; set; }
+        public decimal? SumWithDiscount { get; set; }
+        public decimal? TaxPercent { get; set; }
+        public decimal FinalSum { get; set; }
+        
+        [DataType(DataType.Date)]
         public DateTime DateTime { get; set; }
-        public int Sum { get; set; }
-        public int? DiscountPercent { get; set; }
-        public int? TaxPercent { get; set; }
+
+        [MinLength(1)]
+        [MaxLength(64)]
+        [Required]
+        public string InvoiceNr { get; set; }
+
+        public string Comment { get; set; }
     }
 }

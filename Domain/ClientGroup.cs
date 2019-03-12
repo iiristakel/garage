@@ -7,7 +7,6 @@ namespace Domain
     {
         public ICollection<Client> Clients { get; set; }
 
-
         [MaxLength(100)]
         [MinLength(1)]
         [Required]
@@ -15,7 +14,7 @@ namespace Domain
         
         public string Description { get; set; }
         
-        public int DiscountPercent { get; set; }
+        public decimal DiscountPercent { get; set; }
 
         
     }

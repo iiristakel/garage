@@ -4,21 +4,106 @@
     <e p="C:\Users\kalle\.Rider2018.3\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\kalle\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_HomeProject.1526170497.00" t="ExcludeRecursive" />
     <e p="C:\Users\kalle\RiderProjects\Project\HomeProject" t="IncludeFlat">
-      <e p="DAL" t="IncludeRecursive">
-        <e p="AppDbContext.cs" t="Include" />
+      <e p="Contracts.DAL.App" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
-        <e p="DAL.csproj" t="IncludeRecursive" />
+        <e p="Contracts.DAL.App.csproj" t="IncludeRecursive" />
+        <e p="IAppUnitOfWork.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="Contracts.DAL.App.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Repositories" t="Include">
+          <e p="IBillLineRepository.cs" t="Include" />
+          <e p="IBillRepository.cs" t="Include" />
+          <e p="IClientGroupRepository.cs" t="Include" />
+          <e p="IClientRepository.cs" t="Include" />
+          <e p="IPaymentMethodRepository.cs" t="Include" />
+          <e p="IPaymentRepository.cs" t="Include" />
+          <e p="IProductForClientRepository.cs" t="Include" />
+          <e p="IProductRepository.cs" t="Include" />
+          <e p="IWorkerInPositionRepository.cs" t="Include" />
+          <e p="IWorkerOnObjectRepository.cs" t="Include" />
+          <e p="IWorkerPositionRepository.cs" t="Include" />
+          <e p="IWorkerRepository.cs" t="Include" />
+          <e p="IWorkObjectRepository.cs" t="Include" />
+        </e>
+      </e>
+      <e p="Contracts.DAL.Base" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Contracts.DAL.Base.csproj" t="IncludeRecursive" />
+        <e p="Helpers" t="Include">
+          <e p="IRepositoryFactory.cs" t="Include" />
+          <e p="IRepositoryProvider.cs" t="Include" />
+        </e>
+        <e p="IBaseEntity.cs" t="Include" />
+        <e p="IDataContext.cs" t="Include" />
+        <e p="IUnitOfWork.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="Contracts.DAL.Base.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Repositories" t="Include">
+          <e p="IBaseRepository.cs" t="Include" />
+        </e>
+      </e>
+      <e p="DAL.App.EF" t="IncludeRecursive">
+        <e p="AppDbContext.cs" t="Include" />
+        <e p="AppUnitOfWork.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="DAL.App.EF.csproj" t="IncludeRecursive" />
+        <e p="Helpers" t="Include">
+          <e p="AppRepositoryFactory.cs" t="Include" />
+        </e>
         <e p="Migrations" t="Include">
-          <e p="20190223080131_InitialDbCreation.cs" t="Include" />
-          <e p="20190223080131_InitialDbCreation.Designer.cs" t="Include" />
+          <e p="20190312130259_InitialDbCreation.cs" t="Include" />
+          <e p="20190312130259_InitialDbCreation.Designer.cs" t="Include" />
           <e p="AppDbContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netstandard2.0" t="Include">
-              <e p="DAL.AssemblyInfo.cs" t="Include" />
+              <e p="DAL.App.EF.AssemblyInfo.cs" t="Include" />
             </e>
           </e>
+        </e>
+        <e p="Repositories" t="Include">
+          <e p="BillLineRepository.cs" t="Include" />
+          <e p="BillRepository.cs" t="Include" />
+          <e p="ClientGroupRepository.cs" t="Include" />
+          <e p="ClientRepository.cs" t="Include" />
+          <e p="PaymentMethodRepository.cs" t="Include" />
+          <e p="PaymentRepository.cs" t="Include" />
+          <e p="ProductForClientRepository.cs" t="Include" />
+          <e p="ProductRepository.cs" t="Include" />
+          <e p="WorkerInPositionRepository.cs" t="Include" />
+          <e p="WorkerOnObjectRepository.cs" t="Include" />
+          <e p="WorkerPositionRepository.cs" t="Include" />
+          <e p="WorkerRepository.cs" t="Include" />
+          <e p="WorkObjectRepository.cs" t="Include" />
+        </e>
+      </e>
+      <e p="DAL.Base.EF" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="DAL.Base.EF.csproj" t="IncludeRecursive" />
+        <e p="Helpers" t="Include">
+          <e p="BaseRepositoryFactory.cs" t="Include" />
+          <e p="BaseRepositoryProvider.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="DAL.Base.EF.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Repositories" t="Include">
+          <e p="BaseRepository.cs" t="Include" />
         </e>
       </e>
       <e p="Domain" t="IncludeRecursive">
@@ -64,13 +149,110 @@
         </e>
       </e>
       <e p="packages" t="ExcludeRecursive" />
+      <e p="regenerateApiControllers.sh" t="Include" />
+      <e p="regenerateControllers.sh" t="Include" />
+      <e p="Solution Items" t="Include" />
       <e p="WebApp" t="IncludeRecursive">
+        <e p="ApiControllers" t="Include">
+          <e p="BillLinesController.cs" t="Include" />
+          <e p="BillsController.cs" t="Include" />
+          <e p="ClientGroupsController.cs" t="Include" />
+          <e p="ClientsController.cs" t="Include" />
+          <e p="PaymentMethodsController.cs" t="Include" />
+          <e p="PaymentsController.cs" t="Include" />
+          <e p="ProductsController.cs" t="Include" />
+          <e p="ProductsForClientsController.cs" t="Include" />
+          <e p="WorkersController.cs" t="Include" />
+          <e p="WorkersInPositionsController.cs" t="Include" />
+          <e p="WorkersOnObjectsController.cs" t="Include" />
+          <e p="WorkersPositionsController.cs" t="Include" />
+          <e p="WorkObjectsController.cs" t="Include" />
+        </e>
         <e p="appsettings.Development.json" t="Include" />
         <e p="appsettings.json" t="Include" />
         <e p="Areas" t="Include">
-          <e p="Identity" t="Include">
-            <e p="Pages" t="Include">
+          <e p="Admin" t="Include">
+            <e p="Controllers" t="Include">
+              <e p="HomeController.cs" t="Include" />
+            </e>
+            <e p="Views" t="Include">
               <e p="_ViewStart.cshtml" t="Include" />
+              <e p="Home" t="Include">
+                <e p="Index.cshtml" t="Include" />
+              </e>
+              <e p="Shared" t="Include">
+                <e p="_Layout.cshtml" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Identity" t="Include">
+            <e p="IdentityHostingStartup.cs" t="Include" />
+            <e p="Pages" t="Include">
+              <e p="_ValidationScriptsPartial.cshtml" t="Include" />
+              <e p="_ViewImports.cshtml" t="Include" />
+              <e p="_ViewStart.cshtml" t="Include" />
+              <e p="Account" t="Include">
+                <e p="_ViewImports.cshtml" t="Include" />
+                <e p="AccessDenied.cshtml" t="Include" />
+                <e p="AccessDenied.cshtml.cs" t="Include" />
+                <e p="ConfirmEmail.cshtml" t="Include" />
+                <e p="ConfirmEmail.cshtml.cs" t="Include" />
+                <e p="ExternalLogin.cshtml" t="Include" />
+                <e p="ExternalLogin.cshtml.cs" t="Include" />
+                <e p="ForgotPassword.cshtml" t="Include" />
+                <e p="ForgotPassword.cshtml.cs" t="Include" />
+                <e p="ForgotPasswordConfirmation.cshtml" t="Include" />
+                <e p="ForgotPasswordConfirmation.cshtml.cs" t="Include" />
+                <e p="Lockout.cshtml" t="Include" />
+                <e p="Lockout.cshtml.cs" t="Include" />
+                <e p="Login.cshtml" t="Include" />
+                <e p="Login.cshtml.cs" t="Include" />
+                <e p="LoginWith2fa.cshtml" t="Include" />
+                <e p="LoginWith2fa.cshtml.cs" t="Include" />
+                <e p="LoginWithRecoveryCode.cshtml" t="Include" />
+                <e p="LoginWithRecoveryCode.cshtml.cs" t="Include" />
+                <e p="Logout.cshtml" t="Include" />
+                <e p="Logout.cshtml.cs" t="Include" />
+                <e p="Manage" t="Include">
+                  <e p="_Layout.cshtml" t="Include" />
+                  <e p="_ManageNav.cshtml" t="Include" />
+                  <e p="_StatusMessage.cshtml" t="Include" />
+                  <e p="_ViewImports.cshtml" t="Include" />
+                  <e p="ChangePassword.cshtml" t="Include" />
+                  <e p="ChangePassword.cshtml.cs" t="Include" />
+                  <e p="DeletePersonalData.cshtml" t="Include" />
+                  <e p="DeletePersonalData.cshtml.cs" t="Include" />
+                  <e p="Disable2fa.cshtml" t="Include" />
+                  <e p="Disable2fa.cshtml.cs" t="Include" />
+                  <e p="DownloadPersonalData.cshtml" t="Include" />
+                  <e p="DownloadPersonalData.cshtml.cs" t="Include" />
+                  <e p="EnableAuthenticator.cshtml" t="Include" />
+                  <e p="EnableAuthenticator.cshtml.cs" t="Include" />
+                  <e p="ExternalLogins.cshtml" t="Include" />
+                  <e p="ExternalLogins.cshtml.cs" t="Include" />
+                  <e p="GenerateRecoveryCodes.cshtml" t="Include" />
+                  <e p="GenerateRecoveryCodes.cshtml.cs" t="Include" />
+                  <e p="Index.cshtml" t="Include" />
+                  <e p="Index.cshtml.cs" t="Include" />
+                  <e p="ManageNavPages.cs" t="Include" />
+                  <e p="PersonalData.cshtml" t="Include" />
+                  <e p="PersonalData.cshtml.cs" t="Include" />
+                  <e p="ResetAuthenticator.cshtml" t="Include" />
+                  <e p="ResetAuthenticator.cshtml.cs" t="Include" />
+                  <e p="SetPassword.cshtml" t="Include" />
+                  <e p="SetPassword.cshtml.cs" t="Include" />
+                  <e p="TwoFactorAuthentication.cshtml" t="Include" />
+                  <e p="TwoFactorAuthentication.cshtml.cs" t="Include" />
+                </e>
+                <e p="Register.cshtml" t="Include" />
+                <e p="Register.cshtml.cs" t="Include" />
+                <e p="ResetPassword.cshtml" t="Include" />
+                <e p="ResetPassword.cshtml.cs" t="Include" />
+                <e p="ResetPasswordConfirmation.cshtml" t="Include" />
+                <e p="ResetPasswordConfirmation.cshtml.cs" t="Include" />
+              </e>
+              <e p="Error.cshtml" t="Include" />
+              <e p="Error.cshtml.cs" t="Include" />
             </e>
           </e>
         </e>
@@ -91,9 +273,6 @@
           <e p="WorkersPositionsController.cs" t="Include" />
           <e p="WorkObjectsController.cs" t="Include" />
         </e>
-        <e p="Models" t="Include">
-          <e p="ErrorViewModel.cs" t="Include" />
-        </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp2.2" t="Include">
@@ -106,6 +285,9 @@
           <e p="launchSettings.json" t="Include" />
         </e>
         <e p="Startup.cs" t="Include" />
+        <e p="ViewModels" t="Include">
+          <e p="ErrorViewModel.cs" t="Include" />
+        </e>
         <e p="Views" t="Include">
           <e p="_ViewImports.cshtml" t="Include" />
           <e p="_ViewStart.cshtml" t="Include" />
@@ -276,6 +458,100 @@
           </e>
         </e>
       </e>
+    </e>
+    <e p="C:\Users\kalle\RiderProjects\Project\WebClient\dist" t="ExcludeRecursive" />
+    <e p="C:\Users\kalle\RiderProjects\Project\WebClient\node_modules" t="ExcludeRecursive">
+      <e p="@types" t="IncludeRecursive">
+        <e p="anymatch" t="IncludeRecursive" />
+        <e p="bluebird" t="IncludeRecursive" />
+        <e p="bootstrap" t="IncludeRecursive" />
+        <e p="jquery" t="IncludeRecursive" />
+        <e p="lodash" t="IncludeRecursive" />
+        <e p="node" t="IncludeRecursive" />
+        <e p="sizzle" t="IncludeRecursive" />
+        <e p="tapable" t="IncludeRecursive" />
+        <e p="uglify-js" t="IncludeRecursive" />
+        <e p="webpack" t="IncludeRecursive" />
+      </e>
+      <e p="aurelia-animator-css" t="IncludeRecursive" />
+      <e p="aurelia-bootstrapper" t="IncludeRecursive" />
+      <e p="aurelia-cli" t="IncludeRecursive" />
+      <e p="aurelia-fetch-client" t="IncludeRecursive" />
+      <e p="aurelia-http-client" t="IncludeRecursive" />
+      <e p="aurelia-polyfills" t="IncludeRecursive" />
+      <e p="aurelia-testing" t="IncludeRecursive" />
+      <e p="aurelia-tools" t="IncludeRecursive" />
+      <e p="aurelia-webpack-plugin" t="IncludeRecursive" />
+      <e p="bluebird" t="IncludeRecursive" />
+      <e p="bootstrap" t="IncludeRecursive" />
+      <e p="copy-webpack-plugin" t="IncludeRecursive" />
+      <e p="css-loader" t="IncludeRecursive" />
+      <e p="del" t="IncludeRecursive" />
+      <e p="duplicate-package-checker-webpack-plugin" t="IncludeRecursive" />
+      <e p="expose-loader" t="IncludeRecursive" />
+      <e p="file-loader" t="IncludeRecursive" />
+      <e p="gulp" t="IncludeRecursive" />
+      <e p="gulp-rename" t="IncludeRecursive" />
+      <e p="html-loader" t="IncludeRecursive" />
+      <e p="html-webpack-plugin" t="IncludeRecursive" />
+      <e p="istanbul-instrumenter-loader" t="IncludeRecursive" />
+      <e p="jquery" t="IncludeRecursive" />
+      <e p="json-loader" t="IncludeRecursive" />
+      <e p="mini-css-extract-plugin" t="IncludeRecursive" />
+      <e p="minimatch" t="IncludeRecursive" />
+      <e p="opn" t="IncludeRecursive" />
+      <e p="popper.js" t="IncludeRecursive" />
+      <e p="source-map" t="IncludeRecursive" />
+      <e p="style-loader" t="IncludeRecursive" />
+      <e p="through2" t="IncludeRecursive" />
+      <e p="ts-loader" t="IncludeRecursive" />
+      <e p="ts-node" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.d.ts" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.dom.d.ts" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.dom.iterable.d.ts" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.es2015.collection.d.ts" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.es2015.core.d.ts" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.es2015.d.ts" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.es2015.generator.d.ts" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.es2015.iterable.d.ts" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.es2015.promise.d.ts" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.es2015.proxy.d.ts" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.es2015.reflect.d.ts" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.es2015.symbol.d.ts" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.es2015.symbol.wellknown.d.ts" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.es2016.array.include.d.ts" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.es2016.d.ts" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.es2016.full.d.ts" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.es2017.d.ts" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.es2017.full.d.ts" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.es2017.intl.d.ts" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.es2017.object.d.ts" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.es2017.sharedmemory.d.ts" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.es2017.string.d.ts" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.es2017.typedarrays.d.ts" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.es2018.d.ts" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.es2018.full.d.ts" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.es2018.intl.d.ts" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.es2018.promise.d.ts" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.es2018.regexp.d.ts" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.es5.d.ts" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.es6.d.ts" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.esnext.array.d.ts" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.esnext.asynciterable.d.ts" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.esnext.bigint.d.ts" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.esnext.d.ts" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.esnext.full.d.ts" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.esnext.intl.d.ts" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.esnext.symbol.d.ts" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.scripthost.d.ts" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.webworker.d.ts" t="IncludeRecursive" />
+      <e p="typescript\lib\lib.webworker.importscripts.d.ts" t="IncludeRecursive" />
+      <e p="url-loader" t="IncludeRecursive" />
+      <e p="vinyl-fs" t="IncludeRecursive" />
+      <e p="webpack" t="IncludeRecursive" />
+      <e p="webpack-bundle-analyzer" t="IncludeRecursive" />
+      <e p="webpack-cli" t="IncludeRecursive" />
+      <e p="webpack-dev-server" t="IncludeRecursive" />
     </e>
   </component>
 </project>

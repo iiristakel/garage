@@ -16,16 +16,28 @@
                 @Html.DisplayNameFor(model => model.Client)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DateTime)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Sum)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DiscountPercent)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.SumWithDiscount)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.TaxPercent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FinalSum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InvoiceNr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comment)
             </th>
             <th></th>
         </tr>
@@ -37,16 +49,28 @@
                 @Html.DisplayFor(modelItem => item.Client.Address)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DateTime)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Sum)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DiscountPercent)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.SumWithDiscount)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.TaxPercent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FinalSum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InvoiceNr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comment)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

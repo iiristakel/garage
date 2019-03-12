@@ -2,11 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Contracts.DAL.App;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DAL;
+using DAL.App.EF;
 using Domain;
+using Domain.Identity;
 using Identity;
 using Microsoft.AspNetCore.Authorization;
 
@@ -15,22 +18,21 @@ namespace WebApp.Controllers
     [Authorize]
     public class WorkersController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly IAppUnitOfWork _uow;
 
-        public WorkersController(AppDbContext context)
+        public WorkersController(IAppUnitOfWork uow)
         {
-            _context = context;
+            _uow = uow;
         }
 
         // GET: Workers
         public async Task<IActionResult> Index()
         {
-            var workers = await _context.Workers
-                .Include(p => p.AppUser)
-                .Where(p => p.AppUserId == User.GetUserId()).ToListAsync();
+//            var workers = await _uow.Workers
+//                .Include(p => p.AppUser)
+//                .Where(p => p.AppUserId == User.GetUserId()).ToListAsync();
+            var workers = await _uow.Workers.AllAsync(User.GetUserId());
 
-
-            //var appDbContext = _context.Workers.Include(w => w.AppUser);
             return View(workers);
         }
 
@@ -42,9 +44,8 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var worker = await _context.Workers
-                .Include(w => w.AppUser)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var worker = await _uow.Workers.FindAsync(id);
+
             if (worker == null)
             {
                 return NotFound();
@@ -56,7 +57,6 @@ namespace WebApp.Controllers
         // GET: Workers/Create
         public IActionResult Create()
         {
-            //ViewData["AppUserId"] = new SelectList(_context.Users, "Id", "Id");
             return View();
         }
 
@@ -65,17 +65,19 @@ namespace WebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("FirstName,LastName,HiringDate,LeftJob,PhoneNr,Email,Id")] Worker worker)
+        public async Task<IActionResult> Create([Bind("FirstName,LastName,HiringDate,LeftJob,PhoneNr,Email,Id")]
+            Worker worker)
         {
             worker.AppUserId = User.GetUserId();
-            
+
             if (ModelState.IsValid)
             {
-                _context.Add(worker);
-                await _context.SaveChangesAsync();
+                await _uow.Workers.AddAsync(worker);
+                await _uow.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
-           // ViewData["AppUserId"] = new SelectList(_context.Users, "Id", "Id", worker.AppUserId);
+
             return View(worker);
         }
 
@@ -87,12 +89,16 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var worker = await _context.Workers.FindAsync(id);
+            var worker = await _uow.Workers.FindAsync(id);
             if (worker == null)
             {
                 return NotFound();
             }
-            ViewData["AppUserId"] = new SelectList(_context.Users, "Id", "Id", worker.AppUserId);
+
+            ViewData["AppUserId"] = new SelectList(
+                await _uow.BaseRepository<AppUser>().AllAsync(),
+                "Id", "Id", worker.AppUserId);
+
             return View(worker);
         }
 
@@ -101,7 +107,8 @@ namespace WebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("AppUserId,FirstName,LastName,HiringDate,LeftJob,PhoneNr,Email,Id")] Worker worker)
+        public async Task<IActionResult> Edit(int id, [Bind("FirstName,LastName,HiringDate,LeftJob,PhoneNr,Email,Id")]
+            Worker worker)
         {
             if (id != worker.Id)
             {
@@ -110,25 +117,15 @@ namespace WebApp.Controllers
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(worker);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!WorkerExists(worker.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                _uow.Workers.Update(worker);
+                await _uow.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AppUserId"] = new SelectList(_context.Users, "Id", "Id", worker.AppUserId);
+            ViewData["AppUserId"] = new SelectList(
+                await _uow.BaseRepository<AppUser>().AllAsync(),
+                "Id", "Id",worker.AppUserId);
+            
             return View(worker);
         }
 
@@ -140,9 +137,8 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var worker = await _context.Workers
-                .Include(w => w.AppUser)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var worker = await _uow.Workers.FindAsync(id);
+                
             if (worker == null)
             {
                 return NotFound();
@@ -156,15 +152,11 @@ namespace WebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var worker = await _context.Workers.FindAsync(id);
-            _context.Workers.Remove(worker);
-            await _context.SaveChangesAsync();
+            _uow.Workers.Remove(id);
+            await _uow.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool WorkerExists(int id)
-        {
-            return _context.Workers.Any(e => e.Id == id);
-        }
+        
     }
 }

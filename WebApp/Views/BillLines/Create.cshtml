@@ -36,6 +36,21 @@
                 <span asp-validation-for="DiscountPercent" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="SumWithDiscount" class="control-label"></label>
+                <input asp-for="SumWithDiscount" class="form-control" />
+                <span asp-validation-for="SumWithDiscount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TaxPercent" class="control-label"></label>
+                <input asp-for="TaxPercent" class="form-control" />
+                <span asp-validation-for="TaxPercent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FinalSum" class="control-label"></label>
+                <input asp-for="FinalSum" class="form-control" />
+                <span asp-validation-for="FinalSum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>

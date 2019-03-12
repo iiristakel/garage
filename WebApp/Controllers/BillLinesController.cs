@@ -6,10 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DAL;
+using DAL.App.EF;
 using Domain;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApp.Controllers
 {
+    [Authorize]
     public class BillLinesController : Controller
     {
         private readonly AppDbContext _context;
@@ -49,7 +52,7 @@ namespace WebApp.Controllers
         // GET: BillLines/Create
         public IActionResult Create()
         {
-            ViewData["BillId"] = new SelectList(_context.Bills, "Id", "Id");
+            ViewData["BillId"] = new SelectList(_context.Bills, "Id", "InvoiceNr");
             ViewData["ProductForObjectId"] = new SelectList(_context.ProductsForClients, "Id", "Id");
             return View();
         }
@@ -59,7 +62,7 @@ namespace WebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BillId,ProductForObjectId,Sum,Amount,DiscountPercent,Id")] BillLine billLine)
+        public async Task<IActionResult> Create([Bind("BillId,ProductForObjectId,Sum,Amount,DiscountPercent,SumWithDiscount,TaxPercent,FinalSum,Id")] BillLine billLine)
         {
             if (ModelState.IsValid)
             {
@@ -67,7 +70,7 @@ namespace WebApp.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BillId"] = new SelectList(_context.Bills, "Id", "Id", billLine.BillId);
+            ViewData["BillId"] = new SelectList(_context.Bills, "Id", "InvoiceNr", billLine.BillId);
             ViewData["ProductForObjectId"] = new SelectList(_context.ProductsForClients, "Id", "Id", billLine.ProductForObjectId);
             return View(billLine);
         }
@@ -85,7 +88,7 @@ namespace WebApp.Controllers
             {
                 return NotFound();
             }
-            ViewData["BillId"] = new SelectList(_context.Bills, "Id", "Id", billLine.BillId);
+            ViewData["BillId"] = new SelectList(_context.Bills, "Id", "InvoiceNr", billLine.BillId);
             ViewData["ProductForObjectId"] = new SelectList(_context.ProductsForClients, "Id", "Id", billLine.ProductForObjectId);
             return View(billLine);
         }
@@ -95,7 +98,7 @@ namespace WebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("BillId,ProductForObjectId,Sum,Amount,DiscountPercent,Id")] BillLine billLine)
+        public async Task<IActionResult> Edit(int id, [Bind("BillId,ProductForObjectId,Sum,Amount,DiscountPercent,SumWithDiscount,TaxPercent,FinalSum,Id")] BillLine billLine)
         {
             if (id != billLine.Id)
             {
@@ -122,7 +125,7 @@ namespace WebApp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BillId"] = new SelectList(_context.Bills, "Id", "Id", billLine.BillId);
+            ViewData["BillId"] = new SelectList(_context.Bills, "Id", "InvoiceNr", billLine.BillId);
             ViewData["ProductForObjectId"] = new SelectList(_context.ProductsForClients, "Id", "Id", billLine.ProductForObjectId);
             return View(billLine);
         }
