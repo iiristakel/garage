@@ -4,7 +4,7 @@ using Contracts.DAL.Base;
 
 namespace Contracts.DAL.App
 {
-    public interface IAppUnitOfWork : IUnitOfWork
+    public interface IAppUnitOfWork : IBaseUnitOfWork
     {
         IBillRepository Bills { get; }
         IBillLineRepository BillLines{ get; }
@@ -13,11 +13,11 @@ namespace Contracts.DAL.App
         IPaymentRepository Payments{ get; }
         IProductRepository Products{ get; }
         IPaymentMethodRepository PaymentMethods{ get; }
-        IProductForClientRepository ProductForClients { get; }
+        IProductForClientRepository ProductsForClients { get; }
         IWorkerRepository Workers { get; }
         IWorkObjectRepository WorkObjects { get; }
-        IWorkerPositionRepository WorkerPositions{ get; }
-        IWorkerOnObjectRepository WorkerOnObjects { get; }
-        IWorkerInPositionRepository WorkerInPositions { get; }
+        IWorkerPositionRepository WorkersPositions{ get; }
+        IWorkerOnObjectRepository WorkersOnObjects { get; }
+        IWorkerInPositionRepository WorkersInPositions { get; }
     }
 }

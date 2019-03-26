@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Contracts.DAL.App;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,25 +15,26 @@ namespace WebApp.ApiControllers
     [ApiController]
     public class PaymentMethodsController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly IAppUnitOfWork _uow;
 
-        public PaymentMethodsController(AppDbContext context)
+        public PaymentMethodsController(IAppUnitOfWork uow)
         {
-            _context = context;
+            _uow = uow;
         }
 
         // GET: api/PaymentMethods
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PaymentMethod>>> GetPaymentMethods()
         {
-            return await _context.PaymentMethods.ToListAsync();
+            var res = await _uow.PaymentMethods.AllAsync();
+            return Ok(res);
         }
 
         // GET: api/PaymentMethods/5
         [HttpGet("{id}")]
         public async Task<ActionResult<PaymentMethod>> GetPaymentMethod(int id)
         {
-            var paymentMethod = await _context.PaymentMethods.FindAsync(id);
+            var paymentMethod = await _uow.PaymentMethods.FindAsync(id);
 
             if (paymentMethod == null)
             {
@@ -51,23 +53,8 @@ namespace WebApp.ApiControllers
                 return BadRequest();
             }
 
-            _context.Entry(paymentMethod).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PaymentMethodExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            _uow.PaymentMethods.Update(paymentMethod);
+            await _uow.SaveChangesAsync();
 
             return NoContent();
         }
@@ -76,8 +63,8 @@ namespace WebApp.ApiControllers
         [HttpPost]
         public async Task<ActionResult<PaymentMethod>> PostPaymentMethod(PaymentMethod paymentMethod)
         {
-            _context.PaymentMethods.Add(paymentMethod);
-            await _context.SaveChangesAsync();
+            await _uow.PaymentMethods.AddAsync(paymentMethod);
+            await _uow.SaveChangesAsync();
 
             return CreatedAtAction("GetPaymentMethod", new { id = paymentMethod.Id }, paymentMethod);
         }
@@ -86,21 +73,16 @@ namespace WebApp.ApiControllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<PaymentMethod>> DeletePaymentMethod(int id)
         {
-            var paymentMethod = await _context.PaymentMethods.FindAsync(id);
+            var paymentMethod = await _uow.PaymentMethods.FindAsync(id);
             if (paymentMethod == null)
             {
                 return NotFound();
             }
 
-            _context.PaymentMethods.Remove(paymentMethod);
-            await _context.SaveChangesAsync();
+            _uow.PaymentMethods.Remove(paymentMethod);
+            await _uow.SaveChangesAsync();
 
             return paymentMethod;
-        }
-
-        private bool PaymentMethodExists(int id)
-        {
-            return _context.PaymentMethods.Any(e => e.Id == id);
         }
     }
 }

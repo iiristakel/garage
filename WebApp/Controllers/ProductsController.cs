@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Contracts.DAL.App;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -15,17 +16,17 @@ namespace WebApp.Controllers
     [Authorize]
     public class ProductsController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly IAppUnitOfWork _uow;
 
-        public ProductsController(AppDbContext context)
+        public ProductsController(IAppUnitOfWork uow)
         {
-            _context = context;
+            _uow = uow;
         }
 
         // GET: Products
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Products.ToListAsync());
+            return View(await _uow.Products.AllAsync());
         }
 
         // GET: Products/Details/5
@@ -36,8 +37,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Products
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var product = await _uow.Products.FindAsync(id);
             if (product == null)
             {
                 return NotFound();
@@ -57,14 +57,17 @@ namespace WebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProductName,ProductCode,Price,Id")] Product product)
+        public async Task<IActionResult> Create([Bind("ProductName,ProductCode,Price,Id")]
+            Product product)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(product);
-                await _context.SaveChangesAsync();
+                await _uow.Products.AddAsync(product);
+                await _uow.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
+
             return View(product);
         }
 
@@ -76,11 +79,12 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Products.FindAsync(id);
+            var product = await _uow.Products.FindAsync(id);
             if (product == null)
             {
                 return NotFound();
             }
+
             return View(product);
         }
 
@@ -89,7 +93,8 @@ namespace WebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProductName,ProductCode,Price,Id")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("ProductName,ProductCode,Price,Id")]
+            Product product)
         {
             if (id != product.Id)
             {
@@ -98,24 +103,12 @@ namespace WebApp.Controllers
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(product);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ProductExists(product.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                _uow.Products.Update(product);
+                await _uow.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
+
             return View(product);
         }
 
@@ -127,8 +120,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Products
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var product = await _uow.Products.FindAsync(id);
             if (product == null)
             {
                 return NotFound();
@@ -142,15 +134,9 @@ namespace WebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var product = await _context.Products.FindAsync(id);
-            _context.Products.Remove(product);
-            await _context.SaveChangesAsync();
+            _uow.Products.Remove(id);
+            await _uow.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool ProductExists(int id)
-        {
-            return _context.Products.Any(e => e.Id == id);
         }
     }
 }

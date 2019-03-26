@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Contracts.DAL.App;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -15,18 +16,18 @@ namespace WebApp.Controllers
     [Authorize]
     public class WorkersInPositionsController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly IAppUnitOfWork _uow;
 
-        public WorkersInPositionsController(AppDbContext context)
+        public WorkersInPositionsController(IAppUnitOfWork uow)
         {
-            _context = context;
+            _uow = uow;
         }
 
         // GET: WorkersInPositions
         public async Task<IActionResult> Index()
         {
-            var appDbContext = _context.WorkersInPositions.Include(w => w.Worker).Include(w => w.WorkerPosition);
-            return View(await appDbContext.ToListAsync());
+            var workersInPositions = await _uow.WorkersInPositions.AllAsync();
+            return View(workersInPositions);
         }
 
         // GET: WorkersInPositions/Details/5
@@ -37,10 +38,11 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var workerInPosition = await _context.WorkersInPositions
-                .Include(w => w.Worker)
-                .Include(w => w.WorkerPosition)
-                .FirstOrDefaultAsync(m => m.Id == id);
+//            var workerInPosition = await _uow.WorkersInPositions
+//                .Include(w => w.Worker)
+//                .Include(w => w.WorkerPosition)
+//                .FirstOrDefaultAsync(m => m.Id == id);
+            var workerInPosition = await _uow.WorkersInPositions.FindAsync(id);
             if (workerInPosition == null)
             {
                 return NotFound();
@@ -50,10 +52,11 @@ namespace WebApp.Controllers
         }
 
         // GET: WorkersInPositions/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            ViewData["WorkerId"] = new SelectList(_context.Workers, "Id", "FirstName");
-            ViewData["WorkerPositionId"] = new SelectList(_context.WorkersPositions, "Id", "WorkerPositionValue");
+            ViewData["WorkerId"] = new SelectList(await _uow.BaseRepository<Worker>().AllAsync(), 
+                "Id", "FirstName");
+            ViewData["WorkerPositionId"] = new SelectList(await _uow.BaseRepository<WorkerPosition>().AllAsync(), "Id", "WorkerPositionValue");
             return View();
         }
 
@@ -66,12 +69,15 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(workerInPosition);
-                await _context.SaveChangesAsync();
+                await _uow.WorkersInPositions.AddAsync(workerInPosition);
+                await _uow.SaveChangesAsync();
+                
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["WorkerId"] = new SelectList(_context.Workers, "Id", "FirstName", workerInPosition.WorkerId);
-            ViewData["WorkerPositionId"] = new SelectList(_context.WorkersPositions, "Id", "WorkerPositionValue", workerInPosition.WorkerPositionId);
+            ViewData["WorkerId"] = new SelectList(await _uow.BaseRepository<Worker>().AllAsync(),
+                "Id", "FirstName", workerInPosition.WorkerId);
+            ViewData["WorkerPositionId"] = new SelectList(await _uow.BaseRepository<WorkerPosition>().AllAsync(),
+                "Id", "WorkerPositionValue", workerInPosition.WorkerPositionId);
             return View(workerInPosition);
         }
 
@@ -83,13 +89,15 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var workerInPosition = await _context.WorkersInPositions.FindAsync(id);
+            var workerInPosition = await _uow.WorkersInPositions.FindAsync(id);
             if (workerInPosition == null)
             {
                 return NotFound();
             }
-            ViewData["WorkerId"] = new SelectList(_context.Workers, "Id", "FirstName", workerInPosition.WorkerId);
-            ViewData["WorkerPositionId"] = new SelectList(_context.WorkersPositions, "Id", "WorkerPositionValue", workerInPosition.WorkerPositionId);
+            ViewData["WorkerId"] = new SelectList(await _uow.BaseRepository<Worker>().AllAsync(),
+                "Id", "FirstName", workerInPosition.WorkerId);
+            ViewData["WorkerPositionId"] = new SelectList(await _uow.BaseRepository<WorkerPosition>().AllAsync(),
+                "Id", "WorkerPositionValue", workerInPosition.WorkerPositionId);
             return View(workerInPosition);
         }
 
@@ -107,26 +115,17 @@ namespace WebApp.Controllers
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(workerInPosition);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!WorkerInPositionExists(workerInPosition.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                
+                    _uow.WorkersInPositions.Update(workerInPosition);
+                    await _uow.SaveChangesAsync();
+                
+               
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["WorkerId"] = new SelectList(_context.Workers, "Id", "FirstName", workerInPosition.WorkerId);
-            ViewData["WorkerPositionId"] = new SelectList(_context.WorkersPositions, "Id", "WorkerPositionValue", workerInPosition.WorkerPositionId);
+            ViewData["WorkerId"] = new SelectList(await _uow.BaseRepository<Worker>().AllAsync(),
+                "Id", "FirstName", workerInPosition.WorkerId);
+            ViewData["WorkerPositionId"] = new SelectList(await _uow.BaseRepository<WorkerPosition>().AllAsync(),
+                "Id", "WorkerPositionValue", workerInPosition.WorkerPositionId);
             return View(workerInPosition);
         }
 
@@ -138,10 +137,12 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var workerInPosition = await _context.WorkersInPositions
-                .Include(w => w.Worker)
-                .Include(w => w.WorkerPosition)
-                .FirstOrDefaultAsync(m => m.Id == id);
+//            var workerInPosition = await _uow.WorkersInPositions
+//                .Include(w => w.Worker)
+//                .Include(w => w.WorkerPosition)
+//                .FirstOrDefaultAsync(m => m.Id == id);
+            var workerInPosition = await _uow.WorkersInPositions.FindAsync(id);
+            
             if (workerInPosition == null)
             {
                 return NotFound();
@@ -155,15 +156,10 @@ namespace WebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var workerInPosition = await _context.WorkersInPositions.FindAsync(id);
-            _context.WorkersInPositions.Remove(workerInPosition);
-            await _context.SaveChangesAsync();
+            _uow.WorkersInPositions.Remove(id);
+            await _uow.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool WorkerInPositionExists(int id)
-        {
-            return _context.WorkersInPositions.Any(e => e.Id == id);
-        }
     }
 }

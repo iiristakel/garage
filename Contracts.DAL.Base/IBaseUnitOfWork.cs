@@ -4,7 +4,7 @@ using Contracts.DAL.Base.Repositories;
 
 namespace Contracts.DAL.Base
 {
-    public interface IUnitOfWork
+    public interface IBaseUnitOfWork
     {
         int SaveChanges();
         Task<int> SaveChangesAsync();

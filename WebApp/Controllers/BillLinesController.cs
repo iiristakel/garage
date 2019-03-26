@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Contracts.DAL.App;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -15,18 +16,18 @@ namespace WebApp.Controllers
     [Authorize]
     public class BillLinesController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly IAppUnitOfWork _uow;
 
-        public BillLinesController(AppDbContext context)
+        public BillLinesController(IAppUnitOfWork uow)
         {
-            _context = context;
+            _uow = uow;
         }
 
         // GET: BillLines
         public async Task<IActionResult> Index()
         {
-            var appDbContext = _context.BillLines.Include(b => b.Bill).Include(b => b.ProductForObject);
-            return View(await appDbContext.ToListAsync());
+            var billLines = await _uow.BillLines.AllAsync();
+            return View(billLines);
         }
 
         // GET: BillLines/Details/5
@@ -37,10 +38,8 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var billLine = await _context.BillLines
-                .Include(b => b.Bill)
-                .Include(b => b.ProductForObject)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var billLine = await _uow.BillLines.FindAsync(id);
+            
             if (billLine == null)
             {
                 return NotFound();
@@ -50,10 +49,12 @@ namespace WebApp.Controllers
         }
 
         // GET: BillLines/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            ViewData["BillId"] = new SelectList(_context.Bills, "Id", "InvoiceNr");
-            ViewData["ProductForObjectId"] = new SelectList(_context.ProductsForClients, "Id", "Id");
+            ViewData["BillId"] = new SelectList(await _uow.BaseRepository<Bill>().AllAsync(),
+                "Id", "InvoiceNr");
+            ViewData["ProductForClientId"] = new SelectList(await _uow.BaseRepository<ProductForClient>().AllAsync(),
+                "Id", "Id");
             return View();
         }
 
@@ -66,12 +67,16 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(billLine);
-                await _context.SaveChangesAsync();
+                await _uow.BillLines.AddAsync(billLine);
+                await _uow.SaveChangesAsync();
+                
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BillId"] = new SelectList(_context.Bills, "Id", "InvoiceNr", billLine.BillId);
-            ViewData["ProductForObjectId"] = new SelectList(_context.ProductsForClients, "Id", "Id", billLine.ProductForObjectId);
+            ViewData["BillId"] = new SelectList(await _uow.BaseRepository<Bill>().AllAsync(),
+                "Id", "InvoiceNr", billLine.BillId);
+            ViewData["ProductForObjectId"] = new SelectList(await _uow.BaseRepository<ProductForClient>().AllAsync(),
+                "Id", "Id", billLine.ProductForClientId);
+            
             return View(billLine);
         }
 
@@ -83,13 +88,16 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var billLine = await _context.BillLines.FindAsync(id);
+            var billLine = await _uow.BillLines.FindAsync(id);
             if (billLine == null)
             {
                 return NotFound();
             }
-            ViewData["BillId"] = new SelectList(_context.Bills, "Id", "InvoiceNr", billLine.BillId);
-            ViewData["ProductForObjectId"] = new SelectList(_context.ProductsForClients, "Id", "Id", billLine.ProductForObjectId);
+            ViewData["BillId"] = new SelectList(await _uow.BaseRepository<Bill>().AllAsync(),
+                "Id", "InvoiceNr", billLine.BillId);
+            ViewData["ProductForObjectId"] = new SelectList(await _uow.BaseRepository<ProductForClient>().AllAsync(),
+                "Id", "Id", billLine.ProductForClientId);
+            
             return View(billLine);
         }
 
@@ -107,26 +115,17 @@ namespace WebApp.Controllers
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(billLine);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!BillLineExists(billLine.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                
+                    _uow.BillLines.Update(billLine);
+                    await _uow.SaveChangesAsync();
+               
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BillId"] = new SelectList(_context.Bills, "Id", "InvoiceNr", billLine.BillId);
-            ViewData["ProductForObjectId"] = new SelectList(_context.ProductsForClients, "Id", "Id", billLine.ProductForObjectId);
+            ViewData["BillId"] = new SelectList(await _uow.BaseRepository<Bill>().AllAsync(),
+                "Id", "InvoiceNr", billLine.BillId);
+            ViewData["ProductForObjectId"] = new SelectList(await _uow.BaseRepository<ProductForClient>().AllAsync(),
+                "Id", "Id", billLine.ProductForClientId);
+            
             return View(billLine);
         }
 
@@ -138,10 +137,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var billLine = await _context.BillLines
-                .Include(b => b.Bill)
-                .Include(b => b.ProductForObject)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var billLine = await _uow.BillLines.FindAsync(id);
             if (billLine == null)
             {
                 return NotFound();
@@ -155,15 +151,10 @@ namespace WebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var billLine = await _context.BillLines.FindAsync(id);
-            _context.BillLines.Remove(billLine);
-            await _context.SaveChangesAsync();
+            _uow.BillLines.Remove(id);
+            await _uow.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool BillLineExists(int id)
-        {
-            return _context.BillLines.Any(e => e.Id == id);
-        }
     }
 }

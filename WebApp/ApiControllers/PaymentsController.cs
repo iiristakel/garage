@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Contracts.DAL.App;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,25 +15,26 @@ namespace WebApp.ApiControllers
     [ApiController]
     public class PaymentsController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly IAppUnitOfWork _uow;
 
-        public PaymentsController(AppDbContext context)
+        public PaymentsController(IAppUnitOfWork uow)
         {
-            _context = context;
+            _uow = uow;
         }
 
         // GET: api/Payments
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Payment>>> GetPayments()
         {
-            return await _context.Payments.ToListAsync();
+            var res = await _uow.Payments.AllAsync();
+            return Ok(res);
         }
 
         // GET: api/Payments/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Payment>> GetPayment(int id)
         {
-            var payment = await _context.Payments.FindAsync(id);
+            var payment = await _uow.Payments.FindAsync(id);
 
             if (payment == null)
             {
@@ -51,23 +53,9 @@ namespace WebApp.ApiControllers
                 return BadRequest();
             }
 
-            _context.Entry(payment).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PaymentExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            _uow.Payments.Update(payment);
+            await _uow.SaveChangesAsync();
+            
 
             return NoContent();
         }
@@ -76,8 +64,8 @@ namespace WebApp.ApiControllers
         [HttpPost]
         public async Task<ActionResult<Payment>> PostPayment(Payment payment)
         {
-            _context.Payments.Add(payment);
-            await _context.SaveChangesAsync();
+            await _uow.Payments.AddAsync(payment);
+            await _uow.SaveChangesAsync();
 
             return CreatedAtAction("GetPayment", new { id = payment.Id }, payment);
         }
@@ -86,21 +74,16 @@ namespace WebApp.ApiControllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Payment>> DeletePayment(int id)
         {
-            var payment = await _context.Payments.FindAsync(id);
+            var payment = await _uow.Payments.FindAsync(id);
             if (payment == null)
             {
                 return NotFound();
             }
 
-            _context.Payments.Remove(payment);
-            await _context.SaveChangesAsync();
+            _uow.Payments.Remove(payment);
+            await _uow.SaveChangesAsync();
 
             return payment;
-        }
-
-        private bool PaymentExists(int id)
-        {
-            return _context.Payments.Any(e => e.Id == id);
         }
     }
 }

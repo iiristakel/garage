@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Contracts.DAL.App;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -15,17 +16,17 @@ namespace WebApp.Controllers
     [Authorize]
     public class ClientGroupsController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly IAppUnitOfWork _uow;
 
-        public ClientGroupsController(AppDbContext context)
+        public ClientGroupsController(IAppUnitOfWork uow)
         {
-            _context = context;
+            _uow = uow;
         }
 
         // GET: ClientGroups
         public async Task<IActionResult> Index()
         {
-            return View(await _context.ClientGroups.ToListAsync());
+            return View(await _uow.ClientGroups.AllAsync());
         }
 
         // GET: ClientGroups/Details/5
@@ -36,8 +37,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var clientGroup = await _context.ClientGroups
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var clientGroup = await _uow.ClientGroups.FindAsync(id);
             if (clientGroup == null)
             {
                 return NotFound();
@@ -61,8 +61,8 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(clientGroup);
-                await _context.SaveChangesAsync();
+                await _uow.ClientGroups.AddAsync(clientGroup);
+                await _uow.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(clientGroup);
@@ -76,7 +76,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var clientGroup = await _context.ClientGroups.FindAsync(id);
+            var clientGroup = await _uow.ClientGroups.FindAsync(id);
             if (clientGroup == null)
             {
                 return NotFound();
@@ -98,22 +98,10 @@ namespace WebApp.Controllers
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(clientGroup);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ClientGroupExists(clientGroup.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                
+                    _uow.ClientGroups.Update(clientGroup);
+                    await _uow.SaveChangesAsync();
+               
                 return RedirectToAction(nameof(Index));
             }
             return View(clientGroup);
@@ -127,8 +115,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var clientGroup = await _context.ClientGroups
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var clientGroup = await _uow.ClientGroups.FindAsync(id);
             if (clientGroup == null)
             {
                 return NotFound();
@@ -142,15 +129,10 @@ namespace WebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var clientGroup = await _context.ClientGroups.FindAsync(id);
-            _context.ClientGroups.Remove(clientGroup);
-            await _context.SaveChangesAsync();
+            _uow.ClientGroups.Remove(id);
+            await _uow.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ClientGroupExists(int id)
-        {
-            return _context.ClientGroups.Any(e => e.Id == id);
-        }
     }
 }

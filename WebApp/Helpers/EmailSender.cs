@@ -7,6 +7,7 @@ namespace WebApp.Helpers
     {
         public Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
+            //TODO: How to send emails? Emails aren't sent at the moment
             return Task.CompletedTask;
         }
     }

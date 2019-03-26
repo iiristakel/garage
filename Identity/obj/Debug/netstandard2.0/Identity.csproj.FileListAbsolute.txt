@@ -7,3 +7,10 @@ C:\Users\kalle\RiderProjects\Project\HomeProject\Identity\obj\Debug\netstandard2
 C:\Users\kalle\RiderProjects\Project\HomeProject\Identity\obj\Debug\netstandard2.0\Identity.AssemblyInfo.cs
 C:\Users\kalle\RiderProjects\Project\HomeProject\Identity\obj\Debug\netstandard2.0\Identity.dll
 C:\Users\kalle\RiderProjects\Project\HomeProject\Identity\obj\Debug\netstandard2.0\Identity.pdb
+C:\Users\kalle\RiderProjects\Project\HomeProject\Identity\bin\Debug\netstandard2.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\kalle\RiderProjects\Project\HomeProject\Identity\bin\Debug\netstandard2.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\kalle\RiderProjects\Project\HomeProject\Identity\bin\Debug\netstandard2.0\Microsoft.IdentityModel.Tokens.pdb
+C:\Users\kalle\RiderProjects\Project\HomeProject\Identity\bin\Debug\netstandard2.0\Microsoft.IdentityModel.Tokens.xml
+C:\Users\kalle\RiderProjects\Project\HomeProject\Identity\bin\Debug\netstandard2.0\System.IdentityModel.Tokens.Jwt.pdb
+C:\Users\kalle\RiderProjects\Project\HomeProject\Identity\bin\Debug\netstandard2.0\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\kalle\RiderProjects\Project\HomeProject\Identity\obj\Debug\netstandard2.0\Identity.csproj.CopyComplete

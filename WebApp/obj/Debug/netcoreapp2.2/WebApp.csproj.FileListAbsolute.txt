@@ -143,3 +143,4 @@ C:\Users\kalle\RiderProjects\Project\HomeProject\WebApp\obj\Debug\netcoreapp2.2\
 C:\Users\kalle\RiderProjects\Project\HomeProject\WebApp\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\Home\Index.g.cshtml.cs
 C:\Users\kalle\RiderProjects\Project\HomeProject\WebApp\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\Shared\_Layout.g.cshtml.cs
 C:\Users\kalle\RiderProjects\Project\HomeProject\WebApp\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\_ViewStart.g.cshtml.cs
+C:\Users\kalle\RiderProjects\Project\HomeProject\WebApp\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\_ViewStart.g.cshtml.cs

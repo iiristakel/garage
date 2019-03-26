@@ -23,6 +23,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 using WebApp.Helpers;
 
 namespace WebApp
@@ -67,7 +68,7 @@ namespace WebApp
                 .AddDefaultTokenProviders();
             
 
-            // Relax password requirements for easy testing
+            
             // TODO: Remove in production
             services.Configure<IdentityOptions>(options =>
             {
@@ -79,10 +80,29 @@ namespace WebApp
                 options.Password.RequireNonAlphanumeric = false;
 
             });
-
-            services.AddTransient<IEmailSender, EmailSender>();
             
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .AddRazorPagesOptions(options =>
+                {
+                    options.AllowAreas = true;
+                    options.Conventions.AuthorizeAreaFolder("Identity", "/Account/Manage");
+                    options.Conventions.AuthorizeAreaPage("Identity", "/Account/Logout");
+                })
+                .AddJsonOptions(options =>
+                {
+                    options.SerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.Objects;
+                    options.SerializerSettings.Formatting = Formatting.Indented;
+                });
+            
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = $"/Identity/Account/Login";
+                options.LogoutPath = $"/Identity/Account/Logout";
+                options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
+            });
+
+            services.AddSingleton<IEmailSender, EmailSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

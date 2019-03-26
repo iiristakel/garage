@@ -40,9 +40,6 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-//            var bill = await _uow.Bills
-//                .Include(b => b.Client)
-//                .FirstOrDefaultAsync(m => m.Id == id);
             var bill = await _uow.Bills.FindAsync(id);
             
             if (bill == null)
@@ -138,10 +135,6 @@ namespace WebApp.Controllers
             {
                 return NotFound();
             }
-
-//            var bill = await _uow.Bills
-//                .Include(b => b.Client)
-//                .FirstOrDefaultAsync(m => m.Id == id);
 
             var bill = await _uow.Bills.FindAsync(id);
             

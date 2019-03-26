@@ -5,7 +5,7 @@ namespace Domain
 {
     public class Product : BaseEntity
     {
-        public ICollection<ProductForClient> ProductsForObject { get; set; }
+        public ICollection<ProductForClient> ProductsForClients { get; set; }
 
         [MaxLength(150)]
         [MinLength(1)]

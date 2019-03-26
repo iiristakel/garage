@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Contracts.DAL.App.Repositories;
 using Contracts.DAL.Base;
@@ -13,7 +14,28 @@ namespace DAL.App.EF.Repositories
         public BillLineRepository(IDataContext dataContext) : base(dataContext)
         {
         }
-        
-        
+
+        public override async Task<IEnumerable<BillLine>> AllAsync()
+        {
+            return await RepositoryDbSet
+                .Include(p => p.Bill)
+                .Include(p => p.ProductForClient)
+                .ToListAsync();
+        }
+
+        public override async Task<BillLine> FindAsync(params object[] id)
+        {
+            var billLine = await base.FindAsync(id);
+
+            if (billLine != null)
+            {
+                await RepositoryDbSet
+                    .Include(p => p.Bill)
+                    .Include(p => p.ProductForClient)
+                    .ToListAsync();
+            }
+
+            return billLine;
+        }
     }
 }

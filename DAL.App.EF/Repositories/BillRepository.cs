@@ -15,13 +15,13 @@ namespace DAL.App.EF.Repositories
         {
         }
 
-//??
-//        public async Task<IEnumerable<Bill>> AllAsync(int userId)
-//        {
-//            return await RepositoryDbSet
-//                .Include(p => p.Client)
-//                .ToListAsync();
-//        }
+
+        public override async Task<IEnumerable<Bill>> AllAsync()
+        {
+            return await RepositoryDbSet
+                .Include(p => p.Client)
+                .ToListAsync();
+        }
         
         public override async Task<Bill> FindAsync(params object[] id)
         {

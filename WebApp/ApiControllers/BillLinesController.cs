@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Contracts.DAL.App;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,25 +15,26 @@ namespace WebApp.ApiControllers
     [ApiController]
     public class BillLinesController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly IAppUnitOfWork _uow;
 
-        public BillLinesController(AppDbContext context)
+        public BillLinesController(IAppUnitOfWork uow)
         {
-            _context = context;
+            _uow = uow;
         }
 
         // GET: api/BillLines
         [HttpGet]
         public async Task<ActionResult<IEnumerable<BillLine>>> GetBillLines()
         {
-            return await _context.BillLines.ToListAsync();
+            var res = await _uow.BillLines.AllAsync();
+            return Ok(res);
         }
 
         // GET: api/BillLines/5
         [HttpGet("{id}")]
         public async Task<ActionResult<BillLine>> GetBillLine(int id)
         {
-            var billLine = await _context.BillLines.FindAsync(id);
+            var billLine = await _uow.BillLines.FindAsync(id);
 
             if (billLine == null)
             {
@@ -51,23 +53,9 @@ namespace WebApp.ApiControllers
                 return BadRequest();
             }
 
-            _context.Entry(billLine).State = EntityState.Modified;
+            _uow.BillLines.Update(billLine);
+            await _uow.SaveChangesAsync();
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!BillLineExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
 
             return NoContent();
         }
@@ -76,31 +64,26 @@ namespace WebApp.ApiControllers
         [HttpPost]
         public async Task<ActionResult<BillLine>> PostBillLine(BillLine billLine)
         {
-            _context.BillLines.Add(billLine);
-            await _context.SaveChangesAsync();
+            await _uow.BillLines.AddAsync(billLine);
+            await _uow.SaveChangesAsync();
 
-            return CreatedAtAction("GetBillLine", new { id = billLine.Id }, billLine);
+            return CreatedAtAction("GetBillLine", new {id = billLine.Id}, billLine);
         }
 
         // DELETE: api/BillLines/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<BillLine>> DeleteBillLine(int id)
         {
-            var billLine = await _context.BillLines.FindAsync(id);
+            var billLine = await _uow.BillLines.FindAsync(id);
             if (billLine == null)
             {
                 return NotFound();
             }
 
-            _context.BillLines.Remove(billLine);
-            await _context.SaveChangesAsync();
+            _uow.BillLines.Remove(billLine);
+            await _uow.SaveChangesAsync();
 
             return billLine;
-        }
-
-        private bool BillLineExists(int id)
-        {
-            return _context.BillLines.Any(e => e.Id == id);
         }
     }
 }

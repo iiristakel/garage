@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Contracts.DAL.App;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -15,18 +16,19 @@ namespace WebApp.Controllers
     [Authorize]
     public class WorkersOnObjectsController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly IAppUnitOfWork _uow;
 
-        public WorkersOnObjectsController(AppDbContext context)
+        public WorkersOnObjectsController(IAppUnitOfWork uow)
         {
-            _context = context;
+            _uow = uow;
         }
 
         // GET: WorkersOnObjects
         public async Task<IActionResult> Index()
         {
-            var appDbContext = _context.WorkersOnObjects.Include(w => w.WorkObject).Include(w => w.Worker);
-            return View(await appDbContext.ToListAsync());
+            var workerOnObject = await _uow.WorkersOnObjects.AllAsync();
+
+            return View(workerOnObject);
         }
 
         // GET: WorkersOnObjects/Details/5
@@ -37,10 +39,12 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var workerOnObject = await _context.WorkersOnObjects
-                .Include(w => w.WorkObject)
-                .Include(w => w.Worker)
-                .FirstOrDefaultAsync(m => m.Id == id);
+//            var workerOnObject = await _uow.WorkersOnObjects
+//                .Include(w => w.WorkObject)
+//                .Include(w => w.Worker)
+//                .FirstOrDefaultAsync(m => m.Id == id);
+            var workerOnObject = await _uow.WorkersOnObjects.FindAsync(id);
+
             if (workerOnObject == null)
             {
                 return NotFound();
@@ -50,10 +54,12 @@ namespace WebApp.Controllers
         }
 
         // GET: WorkersOnObjects/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            ViewData["WorkObjectId"] = new SelectList(_context.WorkObjects, "Id", "Id");
-            ViewData["WorkerId"] = new SelectList(_context.Workers, "Id", "FirstName");
+            ViewData["WorkObjectId"] = new SelectList(await _uow.BaseRepository<WorkObject>().AllAsync(),
+                "Id", "Id");
+            ViewData["WorkerId"] = new SelectList(await _uow.BaseRepository<Worker>().AllAsync(),
+                "Id", "FirstName");
             return View();
         }
 
@@ -62,16 +68,22 @@ namespace WebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("WorkerId,WorkObjectId,From,Until,Id")] WorkerOnObject workerOnObject)
+        public async Task<IActionResult> Create([Bind("WorkerId,WorkObjectId,From,Until,Id")]
+            WorkerOnObject workerOnObject)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(workerOnObject);
-                await _context.SaveChangesAsync();
+                await _uow.WorkersOnObjects.AddAsync(workerOnObject);
+                await _uow.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["WorkObjectId"] = new SelectList(_context.WorkObjects, "Id", "Id", workerOnObject.WorkObjectId);
-            ViewData["WorkerId"] = new SelectList(_context.Workers, "Id", "FirstName", workerOnObject.WorkerId);
+
+            ViewData["WorkObjectId"] = new SelectList(await _uow.BaseRepository<WorkObject>().AllAsync(),
+                "Id", "Id", workerOnObject.WorkObjectId);
+            ViewData["WorkerId"] = new SelectList(await _uow.BaseRepository<Worker>().AllAsync(), "Id", "FirstName",
+                workerOnObject.WorkerId);
+
             return View(workerOnObject);
         }
 
@@ -83,13 +95,16 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var workerOnObject = await _context.WorkersOnObjects.FindAsync(id);
+            var workerOnObject = await _uow.WorkersOnObjects.FindAsync(id);
             if (workerOnObject == null)
             {
                 return NotFound();
             }
-            ViewData["WorkObjectId"] = new SelectList(_context.WorkObjects, "Id", "Id", workerOnObject.WorkObjectId);
-            ViewData["WorkerId"] = new SelectList(_context.Workers, "Id", "FirstName", workerOnObject.WorkerId);
+
+            ViewData["WorkObjectId"] = new SelectList(await _uow.BaseRepository<WorkObject>().AllAsync(),
+                "Id", "Id", workerOnObject.WorkObjectId);
+            ViewData["WorkerId"] = new SelectList(await _uow.BaseRepository<Worker>().AllAsync(),
+                "Id", "FirstName", workerOnObject.WorkerId);
             return View(workerOnObject);
         }
 
@@ -98,7 +113,8 @@ namespace WebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("WorkerId,WorkObjectId,From,Until,Id")] WorkerOnObject workerOnObject)
+        public async Task<IActionResult> Edit(int id, [Bind("WorkerId,WorkObjectId,From,Until,Id")]
+            WorkerOnObject workerOnObject)
         {
             if (id != workerOnObject.Id)
             {
@@ -107,26 +123,16 @@ namespace WebApp.Controllers
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(workerOnObject);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!WorkerOnObjectExists(workerOnObject.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                _uow.WorkersOnObjects.Update(workerOnObject);
+                await _uow.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["WorkObjectId"] = new SelectList(_context.WorkObjects, "Id", "Id", workerOnObject.WorkObjectId);
-            ViewData["WorkerId"] = new SelectList(_context.Workers, "Id", "FirstName", workerOnObject.WorkerId);
+
+            ViewData["WorkObjectId"] = new SelectList(await _uow.BaseRepository<WorkObject>().AllAsync(),
+                "Id", "Id", workerOnObject.WorkObjectId);
+            ViewData["WorkerId"] = new SelectList(await _uow.BaseRepository<Worker>().AllAsync(),
+                "Id", "FirstName", workerOnObject.WorkerId);
             return View(workerOnObject);
         }
 
@@ -138,10 +144,12 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var workerOnObject = await _context.WorkersOnObjects
-                .Include(w => w.WorkObject)
-                .Include(w => w.Worker)
-                .FirstOrDefaultAsync(m => m.Id == id);
+//            var workerOnObject = await _uow.WorkersOnObjects
+//                .Include(w => w.WorkObject)
+//                .Include(w => w.Worker)
+//                .FirstOrDefaultAsync(m => m.Id == id);
+            var workerOnObject = await _uow.WorkersOnObjects.FindAsync(id);
+            
             if (workerOnObject == null)
             {
                 return NotFound();
@@ -155,15 +163,9 @@ namespace WebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var workerOnObject = await _context.WorkersOnObjects.FindAsync(id);
-            _context.WorkersOnObjects.Remove(workerOnObject);
-            await _context.SaveChangesAsync();
+            _uow.WorkersOnObjects.Remove(id);
+            await _uow.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool WorkerOnObjectExists(int id)
-        {
-            return _context.WorkersOnObjects.Any(e => e.Id == id);
         }
     }
 }

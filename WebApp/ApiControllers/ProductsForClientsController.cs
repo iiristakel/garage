@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Contracts.DAL.App;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,25 +15,26 @@ namespace WebApp.ApiControllers
     [ApiController]
     public class ProductsForClientsController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly IAppUnitOfWork _uow;
 
-        public ProductsForClientsController(AppDbContext context)
+        public ProductsForClientsController(IAppUnitOfWork uow)
         {
-            _context = context;
+            _uow = uow;
         }
 
         // GET: api/ProductsForClients
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ProductForClient>>> GetProductsForClients()
         {
-            return await _context.ProductsForClients.ToListAsync();
+            var res = await _uow.ProductsForClients.AllAsync();
+            return Ok(res);
         }
 
         // GET: api/ProductsForClients/5
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductForClient>> GetProductForClient(int id)
         {
-            var productForClient = await _context.ProductsForClients.FindAsync(id);
+            var productForClient = await _uow.ProductsForClients.FindAsync(id);
 
             if (productForClient == null)
             {
@@ -51,23 +53,9 @@ namespace WebApp.ApiControllers
                 return BadRequest();
             }
 
-            _context.Entry(productForClient).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ProductForClientExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            _uow.ProductsForClients.Update(productForClient);
+             await _uow.SaveChangesAsync();
+           
 
             return NoContent();
         }
@@ -76,8 +64,8 @@ namespace WebApp.ApiControllers
         [HttpPost]
         public async Task<ActionResult<ProductForClient>> PostProductForClient(ProductForClient productForClient)
         {
-            _context.ProductsForClients.Add(productForClient);
-            await _context.SaveChangesAsync();
+            await _uow.ProductsForClients.AddAsync(productForClient);
+            await _uow.SaveChangesAsync();
 
             return CreatedAtAction("GetProductForClient", new { id = productForClient.Id }, productForClient);
         }
@@ -86,21 +74,17 @@ namespace WebApp.ApiControllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<ProductForClient>> DeleteProductForClient(int id)
         {
-            var productForClient = await _context.ProductsForClients.FindAsync(id);
+            var productForClient = await _uow.ProductsForClients.FindAsync(id);
             if (productForClient == null)
             {
                 return NotFound();
             }
 
-            _context.ProductsForClients.Remove(productForClient);
-            await _context.SaveChangesAsync();
+            _uow.ProductsForClients.Remove(productForClient);
+            await _uow.SaveChangesAsync();
 
             return productForClient;
         }
 
-        private bool ProductForClientExists(int id)
-        {
-            return _context.ProductsForClients.Any(e => e.Id == id);
-        }
     }
 }

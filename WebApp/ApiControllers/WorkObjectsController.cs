@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Contracts.DAL.App;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,25 +15,26 @@ namespace WebApp.ApiControllers
     [ApiController]
     public class WorkObjectsController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly IAppUnitOfWork _uow;
 
-        public WorkObjectsController(AppDbContext context)
+        public WorkObjectsController(IAppUnitOfWork uow)
         {
-            _context = context;
+            _uow = uow;
         }
 
         // GET: api/WorkObjects
         [HttpGet]
         public async Task<ActionResult<IEnumerable<WorkObject>>> GetWorkObjects()
         {
-            return await _context.WorkObjects.ToListAsync();
+            var res = await _uow.WorkObjects.AllAsync();
+            return Ok(res);
         }
 
         // GET: api/WorkObjects/5
         [HttpGet("{id}")]
         public async Task<ActionResult<WorkObject>> GetWorkObject(int id)
         {
-            var workObject = await _context.WorkObjects.FindAsync(id);
+            var workObject = await _uow.WorkObjects.FindAsync(id);
 
             if (workObject == null)
             {
@@ -51,23 +53,8 @@ namespace WebApp.ApiControllers
                 return BadRequest();
             }
 
-            _context.Entry(workObject).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!WorkObjectExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            _uow.WorkObjects.Update(workObject);
+            await _uow.SaveChangesAsync();
 
             return NoContent();
         }
@@ -76,31 +63,26 @@ namespace WebApp.ApiControllers
         [HttpPost]
         public async Task<ActionResult<WorkObject>> PostWorkObject(WorkObject workObject)
         {
-            _context.WorkObjects.Add(workObject);
-            await _context.SaveChangesAsync();
+            await _uow.WorkObjects.AddAsync(workObject);
+            await _uow.SaveChangesAsync();
 
-            return CreatedAtAction("GetWorkObject", new { id = workObject.Id }, workObject);
+            return CreatedAtAction("GetWorkObject", new {id = workObject.Id}, workObject);
         }
 
         // DELETE: api/WorkObjects/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<WorkObject>> DeleteWorkObject(int id)
         {
-            var workObject = await _context.WorkObjects.FindAsync(id);
+            var workObject = await _uow.WorkObjects.FindAsync(id);
             if (workObject == null)
             {
                 return NotFound();
             }
 
-            _context.WorkObjects.Remove(workObject);
-            await _context.SaveChangesAsync();
+            _uow.WorkObjects.Remove(workObject);
+            await _uow.SaveChangesAsync();
 
             return workObject;
-        }
-
-        private bool WorkObjectExists(int id)
-        {
-            return _context.WorkObjects.Any(e => e.Id == id);
         }
     }
 }

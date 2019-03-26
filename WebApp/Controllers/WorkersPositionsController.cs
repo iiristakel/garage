@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Contracts.DAL.App;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -15,17 +16,18 @@ namespace WebApp.Controllers
     [Authorize]
     public class WorkersPositionsController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly IAppUnitOfWork _uow;
 
-        public WorkersPositionsController(AppDbContext context)
+        public WorkersPositionsController(IAppUnitOfWork uow)
         {
-            _context = context;
+            _uow = uow;
         }
 
         // GET: WorkersPositions
         public async Task<IActionResult> Index()
         {
-            return View(await _context.WorkersPositions.ToListAsync());
+            var workerPosition = await _uow.WorkersPositions.AllAsync();
+            return View(workerPosition);
         }
 
         // GET: WorkersPositions/Details/5
@@ -36,8 +38,10 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var workerPosition = await _context.WorkersPositions
-                .FirstOrDefaultAsync(m => m.Id == id);
+//            var workerPosition = await _context.WorkersPositions
+//                .FirstOrDefaultAsync(m => m.Id == id);
+            var workerPosition = await _uow.WorkersPositions.FindAsync(id);
+
             if (workerPosition == null)
             {
                 return NotFound();
@@ -61,10 +65,12 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(workerPosition);
-                await _context.SaveChangesAsync();
+                await _uow.WorkersPositions.AddAsync(workerPosition);
+                await _uow.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
+
             return View(workerPosition);
         }
 
@@ -76,11 +82,12 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var workerPosition = await _context.WorkersPositions.FindAsync(id);
+            var workerPosition = await _uow.WorkersPositions.FindAsync(id);
             if (workerPosition == null)
             {
                 return NotFound();
             }
+
             return View(workerPosition);
         }
 
@@ -98,24 +105,12 @@ namespace WebApp.Controllers
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(workerPosition);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!WorkerPositionExists(workerPosition.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                _uow.WorkersPositions.Update(workerPosition);
+                await _uow.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
+
             return View(workerPosition);
         }
 
@@ -127,8 +122,10 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var workerPosition = await _context.WorkersPositions
-                .FirstOrDefaultAsync(m => m.Id == id);
+//            var workerPosition = await _context.WorkersPositions
+//                .FirstOrDefaultAsync(m => m.Id == id);
+            var workerPosition = await _uow.WorkersPositions.FindAsync(id);
+            
             if (workerPosition == null)
             {
                 return NotFound();
@@ -142,15 +139,10 @@ namespace WebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var workerPosition = await _context.WorkersPositions.FindAsync(id);
-            _context.WorkersPositions.Remove(workerPosition);
-            await _context.SaveChangesAsync();
+            _uow.WorkersPositions.Remove(id);
+            await _uow.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool WorkerPositionExists(int id)
-        {
-            return _context.WorkersPositions.Any(e => e.Id == id);
-        }
     }
 }

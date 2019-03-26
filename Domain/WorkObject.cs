@@ -10,7 +10,7 @@ namespace Domain
 
         public ICollection<WorkerOnObject> WorkersOnObject { get; set; }
 
-        public ICollection<ProductForClient> ProductsForObject { get; set; }
+        public ICollection<ProductForClient> ProductsForClient { get; set; }
 
         public DateTime From { get; set; }
         public DateTime? Until { get; set; }

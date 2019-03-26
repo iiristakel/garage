@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Contracts.DAL.App;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,25 +15,26 @@ namespace WebApp.ApiControllers
     [ApiController]
     public class WorkersInPositionsController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly IAppUnitOfWork _uow;
 
-        public WorkersInPositionsController(AppDbContext context)
+        public WorkersInPositionsController(IAppUnitOfWork uow)
         {
-            _context = context;
+            _uow = uow;
         }
 
         // GET: api/WorkersInPositions
         [HttpGet]
         public async Task<ActionResult<IEnumerable<WorkerInPosition>>> GetWorkersInPositions()
         {
-            return await _context.WorkersInPositions.ToListAsync();
+            var res = await _uow.WorkersInPositions.AllAsync();
+            return Ok(res);
         }
 
         // GET: api/WorkersInPositions/5
         [HttpGet("{id}")]
         public async Task<ActionResult<WorkerInPosition>> GetWorkerInPosition(int id)
         {
-            var workerInPosition = await _context.WorkersInPositions.FindAsync(id);
+            var workerInPosition = await _uow.WorkersInPositions.FindAsync(id);
 
             if (workerInPosition == null)
             {
@@ -51,23 +53,8 @@ namespace WebApp.ApiControllers
                 return BadRequest();
             }
 
-            _context.Entry(workerInPosition).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!WorkerInPositionExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            _uow.WorkersInPositions.Update(workerInPosition);
+            await _uow.SaveChangesAsync();
 
             return NoContent();
         }
@@ -76,8 +63,8 @@ namespace WebApp.ApiControllers
         [HttpPost]
         public async Task<ActionResult<WorkerInPosition>> PostWorkerInPosition(WorkerInPosition workerInPosition)
         {
-            _context.WorkersInPositions.Add(workerInPosition);
-            await _context.SaveChangesAsync();
+            await _uow.WorkersInPositions.AddAsync(workerInPosition);
+            await _uow.SaveChangesAsync();
 
             return CreatedAtAction("GetWorkerInPosition", new { id = workerInPosition.Id }, workerInPosition);
         }
@@ -86,21 +73,16 @@ namespace WebApp.ApiControllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<WorkerInPosition>> DeleteWorkerInPosition(int id)
         {
-            var workerInPosition = await _context.WorkersInPositions.FindAsync(id);
+            var workerInPosition = await _uow.WorkersInPositions.FindAsync(id);
             if (workerInPosition == null)
             {
                 return NotFound();
             }
 
-            _context.WorkersInPositions.Remove(workerInPosition);
-            await _context.SaveChangesAsync();
+            _uow.WorkersInPositions.Remove(workerInPosition);
+            await _uow.SaveChangesAsync();
 
             return workerInPosition;
-        }
-
-        private bool WorkerInPositionExists(int id)
-        {
-            return _context.WorkersInPositions.Any(e => e.Id == id);
         }
     }
 }

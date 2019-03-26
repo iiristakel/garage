@@ -16,7 +16,7 @@
                 @Html.DisplayNameFor(model => model.Bill)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ProductForObject)
+                @Html.DisplayNameFor(model => model.ProductForClientId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Sum)
@@ -46,7 +46,7 @@
                 @Html.DisplayFor(modelItem => item.Bill.InvoiceNr)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ProductForObject.Id)
+                @Html.DisplayFor(modelItem => item.ProductForClient.Id)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Sum)

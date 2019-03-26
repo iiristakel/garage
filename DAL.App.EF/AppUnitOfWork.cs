@@ -31,17 +31,17 @@ namespace DAL.App.EF
         
         public IPaymentMethodRepository PaymentMethods =>_repositoryProvider.GetRepository<IPaymentMethodRepository>();
         
-        public IProductForClientRepository ProductForClients =>_repositoryProvider.GetRepository<IProductForClientRepository>();
+        public IProductForClientRepository ProductsForClients =>_repositoryProvider.GetRepository<IProductForClientRepository>();
         
         public IWorkerRepository Workers =>_repositoryProvider.GetRepository<IWorkerRepository>();
         
         public IWorkObjectRepository WorkObjects =>_repositoryProvider.GetRepository<IWorkObjectRepository>();
         
-        public IWorkerPositionRepository WorkerPositions =>_repositoryProvider.GetRepository<IWorkerPositionRepository>();
+        public IWorkerPositionRepository WorkersPositions =>_repositoryProvider.GetRepository<IWorkerPositionRepository>();
         
-        public IWorkerOnObjectRepository WorkerOnObjects =>_repositoryProvider.GetRepository<IWorkerOnObjectRepository>();
+        public IWorkerOnObjectRepository WorkersOnObjects =>_repositoryProvider.GetRepository<IWorkerOnObjectRepository>();
         
-        public IWorkerInPositionRepository WorkerInPositions =>_repositoryProvider.GetRepository<IWorkerInPositionRepository>();
+        public IWorkerInPositionRepository WorkersInPositions =>_repositoryProvider.GetRepository<IWorkerInPositionRepository>();
         
 
         public IBaseRepositoryAsync<TEntity> BaseRepository<TEntity>() where TEntity : class, IBaseEntity, new() =>

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Contracts.DAL.App.Repositories;
 using Contracts.DAL.Base;
@@ -12,13 +14,13 @@ namespace DAL.App.EF.Repositories
         public ClientRepository(IDataContext dataContext) : base(dataContext)
         {
         }
-//??        
-//        public async Task<IEnumerable<Bill>> AllAsync(int userId)
-//        {
-//            return await RepositoryDbSet
-//                .Include(p => p.Client)
-//                .ToListAsync();
-//        }
+        
+        public override async Task<IEnumerable<Client>> AllAsync()
+        {
+            return await RepositoryDbSet
+                .Include(p => p.ClientGroup)
+                .ToListAsync();
+        }
         public override async Task<Client> FindAsync(params object[] id)
         {
             var client = await base.FindAsync(id);
