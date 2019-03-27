@@ -10,6 +10,7 @@ using DAL;
 using DAL.App.EF;
 using Domain;
 using Microsoft.AspNetCore.Authorization;
+using WebApp.ViewModels;
 
 namespace WebApp.Controllers
 {
@@ -55,10 +56,14 @@ namespace WebApp.Controllers
         // GET: WorkObjects/Create
         public async Task<IActionResult> Create()
         {
-            ViewData["ClientId"] = new SelectList(
+            var vm = new WorkObjectCreateEditViewModel();
+            
+            vm.ClientSelectList = new SelectList(
                 await _uow.BaseRepository<Client>().AllAsync(),
-                "Id", "Address");
-            return View();
+                nameof(Client.Id), 
+                nameof(Client.Address));
+            
+            return View(vm);
         }
 
         // POST: WorkObjects/Create
@@ -66,19 +71,22 @@ namespace WebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ClientId,From,Until,Id")] WorkObject workObject)
+        public async Task<IActionResult> Create(WorkObjectCreateEditViewModel vm)
         {
             if (ModelState.IsValid)
             {
-                await _uow.WorkObjects.AddAsync(workObject);
+                await _uow.WorkObjects.AddAsync(vm.WorkObject);
                 await _uow.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
 
-            ViewData["ClientId"] = new SelectList(await _uow.BaseRepository<Client>().AllAsync(),
-                "Id", "Address", workObject.ClientId);
-            return View(workObject);
+            vm.ClientSelectList = new SelectList(
+                await _uow.BaseRepository<Client>().AllAsync(),
+                nameof(Client.Id), 
+                nameof(Client.Address));
+            
+            return View(vm);
         }
 
         // GET: WorkObjects/Edit/5
@@ -95,9 +103,15 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            ViewData["ClientId"] = new SelectList(await _uow.BaseRepository<Client>().AllAsync(),
-                "Id", "Address", workObject.ClientId);
-            return View(workObject);
+            var vm = new WorkObjectCreateEditViewModel();
+            vm.WorkObject = workObject;
+            
+            vm.ClientSelectList = new SelectList(
+                await _uow.BaseRepository<Client>().AllAsync(),
+                nameof(Client.Id), 
+                nameof(Client.Address));
+            
+            return View(vm);
         }
 
         // POST: WorkObjects/Edit/5
@@ -105,25 +119,27 @@ namespace WebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ClientId,From,Until,Id")] WorkObject workObject)
+        public async Task<IActionResult> Edit(int id, WorkObjectCreateEditViewModel vm)
         {
-            if (id != workObject.Id)
+            if (id != vm.WorkObject.Id)
             {
                 return NotFound();
             }
 
             if (ModelState.IsValid)
             {
-                _uow.WorkObjects.Update(workObject);
+                _uow.WorkObjects.Update(vm.WorkObject);
                 await _uow.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
 
-            ViewData["ClientId"] = new SelectList(await _uow.BaseRepository<Client>().AllAsync(),
-                "Id", "Address", workObject.ClientId);
+            vm.ClientSelectList = new SelectList(
+                await _uow.BaseRepository<Client>().AllAsync(),
+                nameof(Client.Id), 
+                nameof(Client.Address));
             
-            return View(workObject);
+            return View(vm);
         }
 
         // GET: WorkObjects/Delete/5

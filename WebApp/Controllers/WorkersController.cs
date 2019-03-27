@@ -95,10 +95,6 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            ViewData["AppUserId"] = new SelectList(
-                await _uow.BaseRepository<AppUser>().AllAsync(),
-                "Id", "Id", worker.AppUserId);
-
             return View(worker);
         }
 
@@ -122,9 +118,6 @@ namespace WebApp.Controllers
 
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AppUserId"] = new SelectList(
-                await _uow.BaseRepository<AppUser>().AllAsync(),
-                "Id", "Id",worker.AppUserId);
             
             return View(worker);
         }

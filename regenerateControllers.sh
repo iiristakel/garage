@@ -1,9 +1,9 @@
 #!/bin/sh
 
-dotnet ef database drop --project DAL --startup-project WebApp
-dotnet ef migrations remove --project DAL --startup-project WebApp
-dotnet ef migrations add InitialDbCreation --project DAL --startup-project WebApp
-dotnet ef database update --project DAL --startup-project WebApp
+dotnet ef database drop --project DAL.App.EF --startup-project WebApp
+dotnet ef migrations remove --project DAL.App.EF --startup-project WebApp
+dotnet ef migrations add InitialDbCreation --project DAL.App.EF --startup-project WebApp
+dotnet ef database update --project DAL.App.EF --startup-project WebApp
 
 cd WebApp
 dotnet aspnet-codegenerator controller -name BillsController -actions -m Bill -dc AppDbContext -outDir Controllers --useDefaultLayout --useAsyncActions --referenceScriptLibraries -f

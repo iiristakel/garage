@@ -10,6 +10,7 @@ using DAL;
 using DAL.App.EF;
 using Domain;
 using Microsoft.AspNetCore.Authorization;
+using WebApp.ViewModels;
 
 namespace WebApp.Controllers
 {
@@ -52,14 +53,24 @@ namespace WebApp.Controllers
         // GET: Payments/Create
         public async Task<IActionResult> Create()
         {
-            ViewData["BillId"] = new SelectList(await _uow.BaseRepository<Bill>().AllAsync(),
-                "Id", "InvoiceNr");
-            ViewData["ClientId"] = new SelectList(await _uow.BaseRepository<Client>().AllAsync(),
-                "Id", "Address");
-            ViewData["PaymentMethodId"] = new SelectList(await _uow.BaseRepository<PaymentMethod>().AllAsync(),
-                "Id", "PaymentMethodValue");
+            var vm = new PaymentCreateEditViewModel();
             
-            return View();
+            vm.BillSelectList = new SelectList(
+                await _uow.BaseRepository<Bill>().AllAsync(),
+                nameof(Bill.Id), 
+                nameof(Bill.InvoiceNr));
+            
+            vm.ClientSelectList = new SelectList(
+                await _uow.BaseRepository<Client>().AllAsync(),
+                nameof(Client.Id), 
+                nameof(Client.Address));
+            
+            vm.PaymentMethodSelectList = new SelectList(
+                await _uow.BaseRepository<PaymentMethod>().AllAsync(),
+                nameof(PaymentMethod.Id), 
+                nameof(PaymentMethod.PaymentMethodValue));
+            
+            return View(vm);
         }
 
         // POST: Payments/Create
@@ -67,22 +78,31 @@ namespace WebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BillId,PaymentMethodId,ClientId,Sum,PaymentTime,Id")] Payment payment)
+        public async Task<IActionResult> Create(PaymentCreateEditViewModel vm)
         {
             if (ModelState.IsValid)
             {
-                await _uow.Payments.AddAsync(payment);
+                await _uow.Payments.AddAsync(vm.Payment);
                 await _uow.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BillId"] = new SelectList(await _uow.BaseRepository<Bill>().AllAsync(),
-                "Id", "InvoiceNr", payment.BillId);
-            ViewData["ClientId"] = new SelectList(await _uow.BaseRepository<Client>().AllAsync(),
-                "Id", "Address", payment.ClientId);
-            ViewData["PaymentMethodId"] = new SelectList(await _uow.BaseRepository<PaymentMethod>().AllAsync(),
-                "Id", "PaymentMethodValue", payment.PaymentMethodId);
             
-            return View(payment);
+            vm.BillSelectList = new SelectList(
+                await _uow.BaseRepository<Bill>().AllAsync(),
+                nameof(Bill.Id), 
+                nameof(Bill.InvoiceNr));
+            
+            vm.ClientSelectList = new SelectList(
+                await _uow.BaseRepository<Client>().AllAsync(),
+                nameof(Client.Id), 
+                nameof(Client.Address));
+            
+            vm.PaymentMethodSelectList = new SelectList(
+                await _uow.BaseRepository<PaymentMethod>().AllAsync(),
+                nameof(PaymentMethod.Id), 
+                nameof(PaymentMethod.PaymentMethodValue));
+            
+            return View(vm);
         }
 
         // GET: Payments/Edit/5
@@ -98,14 +118,26 @@ namespace WebApp.Controllers
             {
                 return NotFound();
             }
-            ViewData["BillId"] = new SelectList(await _uow.BaseRepository<Bill>().AllAsync(),
-                "Id", "InvoiceNr", payment.BillId);
-            ViewData["ClientId"] = new SelectList(await _uow.BaseRepository<Client>().AllAsync(),
-                "Id", "Address", payment.ClientId);
-            ViewData["PaymentMethodId"] = new SelectList(await _uow.BaseRepository<PaymentMethod>().AllAsync(),
-                "Id", "PaymentMethodValue", payment.PaymentMethodId);
             
-            return View(payment);
+            var vm = new PaymentCreateEditViewModel();
+            vm.Payment = payment;
+            
+            vm.BillSelectList = new SelectList(
+                await _uow.BaseRepository<Bill>().AllAsync(),
+                nameof(Bill.Id), 
+                nameof(Bill.InvoiceNr));
+            
+            vm.ClientSelectList = new SelectList(
+                await _uow.BaseRepository<Client>().AllAsync(),
+                nameof(Client.Id), 
+                nameof(Client.Address));
+            
+            vm.PaymentMethodSelectList = new SelectList(
+                await _uow.BaseRepository<PaymentMethod>().AllAsync(),
+                nameof(PaymentMethod.Id), 
+                nameof(PaymentMethod.PaymentMethodValue));
+            
+            return View(vm);
         }
 
         // POST: Payments/Edit/5
@@ -113,9 +145,9 @@ namespace WebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("BillId,PaymentMethodId,ClientId,Sum,PaymentTime,Id")] Payment payment)
+        public async Task<IActionResult> Edit(int id, PaymentCreateEditViewModel vm)
         {
-            if (id != payment.Id)
+            if (id != vm.Payment.Id)
             {
                 return NotFound();
             }
@@ -123,19 +155,27 @@ namespace WebApp.Controllers
             if (ModelState.IsValid)
             {
                 
-                    _uow.Payments.Update(payment);
+                    _uow.Payments.Update(vm.Payment);
                     await _uow.SaveChangesAsync();
                 
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BillId"] = new SelectList(await _uow.BaseRepository<Bill>().AllAsync(),
-                "Id", "InvoiceNr", payment.BillId);
-            ViewData["ClientId"] = new SelectList(await _uow.BaseRepository<Client>().AllAsync()
-                , "Id", "Address", payment.ClientId);
-            ViewData["PaymentMethodId"] = new SelectList(await _uow.BaseRepository<PaymentMethod>().AllAsync(),
-                "Id", "PaymentMethodValue", payment.PaymentMethodId);
+            vm.BillSelectList = new SelectList(
+                await _uow.BaseRepository<Bill>().AllAsync(),
+                nameof(Bill.Id), 
+                nameof(Bill.InvoiceNr));
             
-            return View(payment);
+            vm.ClientSelectList = new SelectList(
+                await _uow.BaseRepository<Client>().AllAsync(),
+                nameof(Client.Id), 
+                nameof(Client.Address));
+            
+            vm.PaymentMethodSelectList = new SelectList(
+                await _uow.BaseRepository<PaymentMethod>().AllAsync(),
+                nameof(PaymentMethod.Id), 
+                nameof(PaymentMethod.PaymentMethodValue));
+            
+            return View(vm);
         }
 
         // GET: Payments/Delete/5

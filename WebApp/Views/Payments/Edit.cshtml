@@ -1,4 +1,4 @@
-@model Domain.Payment
+@model WebApp.ViewModels.PaymentCreateEditViewModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -11,33 +11,10 @@
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="BillId" class="control-label"></label>
-                <select asp-for="BillId" class="form-control" asp-items="ViewBag.BillId"></select>
-                <span asp-validation-for="BillId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PaymentMethodId" class="control-label"></label>
-                <select asp-for="PaymentMethodId" class="form-control" asp-items="ViewBag.PaymentMethodId"></select>
-                <span asp-validation-for="PaymentMethodId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ClientId" class="control-label"></label>
-                <select asp-for="ClientId" class="form-control" asp-items="ViewBag.ClientId"></select>
-                <span asp-validation-for="ClientId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Sum" class="control-label"></label>
-                <input asp-for="Sum" class="form-control" />
-                <span asp-validation-for="Sum" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PaymentTime" class="control-label"></label>
-                <input asp-for="PaymentTime" class="form-control" />
-                <span asp-validation-for="PaymentTime" class="text-danger"></span>
-            </div>
-            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="Payment.Id" />
+
+            <partial name="PartialCreateEdit" model="Model"/>
+
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

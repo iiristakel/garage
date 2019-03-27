@@ -10,6 +10,7 @@ using DAL;
 using DAL.App.EF;
 using Domain;
 using Microsoft.AspNetCore.Authorization;
+using WebApp.ViewModels;
 
 namespace WebApp.Controllers
 {
@@ -57,14 +58,24 @@ namespace WebApp.Controllers
         // GET: ProductsForClients/Create
         public async Task<IActionResult> Create()
         {
-            ViewData["ClientId"] = new SelectList(await _uow.BaseRepository<Client>().AllAsync(),
-                "Id", "Address");
-            ViewData["ProductId"] = new SelectList(await _uow.BaseRepository<Product>().AllAsync(),
-                "Id", "ProductName");
-            ViewData["WorkObjectId"] = new SelectList(await _uow.BaseRepository<WorkObject>().AllAsync(),
-                "Id", "Id");
+            var vm = new ProductsForClientsCreateEditViewModel();
+            
+            vm.ClientSelectList = new SelectList(
+                await _uow.BaseRepository<Client>().AllAsync(),
+                nameof(Client.Id), 
+                nameof(Client.Address));
+            
+            vm.ProductSelectList = new SelectList(
+                await _uow.BaseRepository<Product>().AllAsync(),
+                nameof(Product.Id), 
+                nameof(Product.ProductName));
+            
+            vm.WorkObjectSelectList = new SelectList(
+                await _uow.BaseRepository<WorkObject>().AllAsync(),
+                nameof(WorkObject.Id), 
+                nameof(WorkObject.Id));
 
-            return View();
+            return View(vm);
         }
 
         // POST: ProductsForClients/Create
@@ -72,25 +83,32 @@ namespace WebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProductId,WorkObjectId,ClientId,Count,Id")]
-            ProductForClient productForClient)
+        public async Task<IActionResult> Create(ProductsForClientsCreateEditViewModel vm)
         {
             if (ModelState.IsValid)
             {
-                await _uow.ProductsForClients.AddAsync(productForClient);
+                await _uow.ProductsForClients.AddAsync(vm.ProductForClient);
                 await _uow.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
+            
+            vm.ClientSelectList = new SelectList(
+                await _uow.BaseRepository<Client>().AllAsync(),
+                nameof(Client.Id), 
+                nameof(Client.Address));
+            
+            vm.ProductSelectList = new SelectList(
+                await _uow.BaseRepository<Product>().AllAsync(),
+                nameof(Product.Id), 
+                nameof(Product.ProductName));
+            
+            vm.WorkObjectSelectList = new SelectList(
+                await _uow.BaseRepository<WorkObject>().AllAsync(),
+                nameof(WorkObject.Id), 
+                nameof(WorkObject.Id));
 
-            ViewData["ClientId"] = new SelectList(await _uow.BaseRepository<Client>().AllAsync(),
-                "Id", "Address", productForClient.ClientId);
-            ViewData["ProductId"] = new SelectList(await _uow.BaseRepository<Product>().AllAsync(),
-                "Id", "ProductName", productForClient.ProductId);
-            ViewData["WorkObjectId"] = new SelectList(await _uow.BaseRepository<WorkObject>().AllAsync(),
-                "Id", "Id", productForClient.WorkObjectId);
-
-            return View(productForClient);
+            return View(vm);
         }
 
         // GET: ProductsForClients/Edit/5
@@ -107,14 +125,25 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            ViewData["ClientId"] = new SelectList(await _uow.BaseRepository<Client>().AllAsync(),
-                "Id", "Address", productForClient.ClientId);
-            ViewData["ProductId"] = new SelectList(await _uow.BaseRepository<Product>().AllAsync(),
-                "Id", "ProductName", productForClient.ProductId);
-            ViewData["WorkObjectId"] = new SelectList(await _uow.BaseRepository<WorkObject>().AllAsync(),
-                "Id", "Id", productForClient.WorkObjectId);
+            var vm = new ProductsForClientsCreateEditViewModel();
+            vm.ProductForClient = productForClient;
+            
+            vm.ClientSelectList = new SelectList(
+                await _uow.BaseRepository<Client>().AllAsync(),
+                nameof(Client.Id), 
+                nameof(Client.Address));
+            
+            vm.ProductSelectList = new SelectList(
+                await _uow.BaseRepository<Product>().AllAsync(),
+                nameof(Product.Id), 
+                nameof(Product.ProductName));
+            
+            vm.WorkObjectSelectList = new SelectList(
+                await _uow.BaseRepository<WorkObject>().AllAsync(),
+                nameof(WorkObject.Id), 
+                nameof(WorkObject.Id));
 
-            return View(productForClient);
+            return View(vm);
         }
 
         // POST: ProductsForClients/Edit/5
@@ -122,30 +151,37 @@ namespace WebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProductId,WorkObjectId,ClientId,Count,Id")]
-            ProductForClient productForClient)
+        public async Task<IActionResult> Edit(int id,ProductsForClientsCreateEditViewModel vm)
         {
-            if (id != productForClient.Id)
+            if (id != vm.ProductForClient.Id)
             {
                 return NotFound();
             }
 
             if (ModelState.IsValid)
             {
-                _uow.ProductsForClients.Update(productForClient);
+                _uow.ProductsForClients.Update(vm.ProductForClient);
                 await _uow.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
 
-            ViewData["ClientId"] = new SelectList(await _uow.BaseRepository<Client>().AllAsync(),
-                "Id", "Address", productForClient.ClientId);
-            ViewData["ProductId"] = new SelectList(await _uow.BaseRepository<Product>().AllAsync(),
-                "Id", "ProductName", productForClient.ProductId);
-            ViewData["WorkObjectId"] = new SelectList(await _uow.BaseRepository<WorkObject>().AllAsync(),
-                "Id", "Id", productForClient.WorkObjectId);
+            vm.ClientSelectList = new SelectList(
+                await _uow.BaseRepository<Client>().AllAsync(),
+                nameof(Client.Id), 
+                nameof(Client.Address));
             
-            return View(productForClient);
+            vm.ProductSelectList = new SelectList(
+                await _uow.BaseRepository<Product>().AllAsync(),
+                nameof(Product.Id), 
+                nameof(Product.ProductName));
+            
+            vm.WorkObjectSelectList = new SelectList(
+                await _uow.BaseRepository<WorkObject>().AllAsync(),
+                nameof(WorkObject.Id), 
+                nameof(WorkObject.Id));
+
+            return View(vm);
         }
 
         // GET: ProductsForClients/Delete/5

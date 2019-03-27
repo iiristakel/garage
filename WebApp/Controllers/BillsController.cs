@@ -11,6 +11,7 @@ using DAL.App.EF;
 using Domain;
 using Identity;
 using Microsoft.AspNetCore.Authorization;
+using WebApp.ViewModels;
 
 namespace WebApp.Controllers
 {
@@ -53,11 +54,14 @@ namespace WebApp.Controllers
         // GET: Bills/Create
         public async Task<IActionResult> Create()
         {
-            ViewData["ClientId"] = new SelectList(
-                await _uow.BaseRepository<Client>().AllAsync(), 
-                "Id", "Address");
+            var vm = new BillCreateEditViewModel();
             
-            return View();
+            vm.ClientSelectList = new SelectList(
+                await _uow.BaseRepository<Client>().AllAsync(), 
+                nameof(Client.Id), 
+                nameof(Client.Address));
+            
+            return View(vm);
         }
 
         // POST: Bills/Create
@@ -65,21 +69,21 @@ namespace WebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ClientId,Sum,DiscountPercent,SumWithDiscount,TaxPercent," +
-                                                      "FinalSum,DateTime,InvoiceNr,Comment,Id")] Bill bill)
+        public async Task<IActionResult> Create(BillCreateEditViewModel vm)
         {
             if (ModelState.IsValid)
             {
-                await _uow.Bills.AddAsync(bill);
+                await _uow.Bills.AddAsync(vm.Bill);
                 await _uow.SaveChangesAsync();
                 
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ClientId"] = new SelectList(
-                await _uow.BaseRepository<Client>().AllAsync(),
-                "Id", "Address", bill.ClientId);
+            vm.ClientSelectList = new SelectList(
+                await _uow.BaseRepository<Client>().AllAsync(), 
+                nameof(Client.Id), 
+                nameof(Client.Address));
             
-            return View(bill);
+            return View(vm);
         }
 
         // GET: Bills/Edit/5
@@ -95,11 +99,14 @@ namespace WebApp.Controllers
             {
                 return NotFound();
             }
-            ViewData["ClientId"] = new SelectList(
-                await _uow.BaseRepository<Client>().AllAsync(),
-                "Id", "Address", bill.ClientId);
             
-            return View(bill);
+            var vm = new BillCreateEditViewModel();
+            vm.Bill = bill;
+            vm.ClientSelectList = new SelectList(
+                await _uow.BaseRepository<Client>().AllAsync(), 
+                nameof(Client.Id), 
+                nameof(Client.Address));
+            return View(vm);
         }
 
         // POST: Bills/Edit/5
@@ -107,25 +114,26 @@ namespace WebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ClientId,Sum,DiscountPercent,SumWithDiscount,TaxPercent,FinalSum,DateTime,InvoiceNr,Comment,Id")] Bill bill)
+        public async Task<IActionResult> Edit(int id, BillCreateEditViewModel vm)
         {
-            if (id != bill.Id)
+            if (id != vm.Bill.Id)
             {
                 return NotFound();
             }
 
             if (ModelState.IsValid)
             {
-                _uow.Bills.Update(bill);
+                _uow.Bills.Update(vm.Bill);
                 await _uow.SaveChangesAsync();
                 
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ClientId"] = new SelectList(
+            vm.ClientSelectList = new SelectList(
                 await _uow.BaseRepository<Client>().AllAsync(), 
-                "Id", "Address", bill.ClientId);
+                nameof(Client.Id), 
+                nameof(Client.Address));
             
-            return View(bill);
+            return View(vm);
         }
 
         // GET: Bills/Delete/5

@@ -11,6 +11,7 @@ using DAL.App.EF;
 using Domain;
 using Identity;
 using Microsoft.AspNetCore.Authorization;
+using WebApp.ViewModels;
 
 namespace WebApp.Controllers
 {
@@ -56,11 +57,14 @@ namespace WebApp.Controllers
         // GET: Clients/Create
         public async Task<IActionResult> Create()
         {
-            ViewData["ClientGroupId"] = new SelectList(
+            var vm = new ClientCreateEditViewModel();
+            
+            vm.ClientGroupSelectList = new SelectList(
                 await _uow.BaseRepository<ClientGroup>().AllAsync(),
-                "Id", "Name");
+                nameof(ClientGroup.Id), 
+                nameof(ClientGroup.Name));
 
-            return View();
+            return View(vm);
         }
 
         // POST: Clients/Create
@@ -68,21 +72,22 @@ namespace WebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ClientGroupId,CompanyName,Address,Phone,ContactPerson,Id")]
-            Client client)
+        public async Task<IActionResult> Create(ClientCreateEditViewModel vm)
         {
             if (ModelState.IsValid)
             {
-                await _uow.Clients.AddAsync(client);
+                await _uow.Clients.AddAsync(vm.Client);
                 await _uow.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
 
-            ViewData["ClientGroupId"] = new SelectList(
+            vm.ClientGroupSelectList = new SelectList(
                 await _uow.BaseRepository<ClientGroup>().AllAsync(),
-                "Id", "Name", client.ClientGroupId);
-            return View(client);
+                nameof(ClientGroup.Id), 
+                nameof(ClientGroup.Name));
+
+            return View(vm);
         }
 
         // GET: Clients/Edit/5
@@ -99,11 +104,14 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            ViewData["ClientGroupId"] = new SelectList(
+            var vm = new ClientCreateEditViewModel();
+            vm.Client = client;
+            vm.ClientGroupSelectList = new SelectList(
                 await _uow.BaseRepository<ClientGroup>().AllAsync(),
-                "Id", "Name", client.ClientGroupId);
+                nameof(ClientGroup.Id), 
+                nameof(ClientGroup.Name));
 
-            return View(client);
+            return View(vm);
         }
 
         // POST: Clients/Edit/5
@@ -111,27 +119,27 @@ namespace WebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ClientGroupId,CompanyName,Address,Phone,ContactPerson,Id")]
-            Client client)
+        public async Task<IActionResult> Edit(int id, ClientCreateEditViewModel vm)
         {
-            if (id != client.Id)
+            if (id != vm.Client.Id)
             {
                 return NotFound();
             }
 
             if (ModelState.IsValid)
             {
-                _uow.Clients.Update(client);
+                _uow.Clients.Update(vm.Client);
                 await _uow.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
 
-            ViewData["ClientGroupId"] = new SelectList(
-                await _uow.BaseRepository<ClientGroup>().AllAsync(), 
-                "Id", "Name", client.ClientGroupId);
-            
-            return View(client);
+            vm.ClientGroupSelectList = new SelectList(
+                await _uow.BaseRepository<ClientGroup>().AllAsync(),
+                nameof(ClientGroup.Id), 
+                nameof(ClientGroup.Name));
+
+            return View(vm);
         }
 
         // GET: Clients/Delete/5

@@ -295,8 +295,15 @@
         </e>
         <e p="Startup.cs" t="Include" />
         <e p="ViewModels" t="Include">
+          <e p="BillCreateEditViewModel.cs" t="Include" />
           <e p="BillLineCreateEditViewModel.cs" t="Include" />
+          <e p="ClientCreateEditViewModel.cs" t="Include" />
           <e p="ErrorViewModel.cs" t="Include" />
+          <e p="PaymentCreateEditViewModel.cs" t="Include" />
+          <e p="ProductsForClientsCreateEditViewModel.cs" t="Include" />
+          <e p="WorkerInPositionCreateEditViewModel.cs" t="Include" />
+          <e p="WorkerOnObjectCreateEditViewModel.cs" t="Include" />
+          <e p="WorkObjectCreateEditViewModel.cs" t="Include" />
         </e>
         <e p="Views" t="Include">
           <e p="_ViewImports.cshtml" t="Include" />
@@ -308,6 +315,7 @@
             <e p="Edit.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
             <e p="PartialCreateEdit.cshtml" t="Include" />
+            <e p="PartialDetailsDelete.cshtml" t="Include" />
           </e>
           <e p="Bills" t="Include">
             <e p="Create.cshtml" t="Include" />
@@ -315,6 +323,8 @@
             <e p="Details.cshtml" t="Include" />
             <e p="Edit.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
+            <e p="PartialCreateEdit.cshtml" t="Include" />
+            <e p="PartialDetailsDelete.cshtml" t="Include" />
           </e>
           <e p="ClientGroups" t="Include">
             <e p="Create.cshtml" t="Include" />
@@ -322,6 +332,7 @@
             <e p="Details.cshtml" t="Include" />
             <e p="Edit.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
+            <e p="PartialDetailsDelete.cshtml" t="Include" />
           </e>
           <e p="Clients" t="Include">
             <e p="Create.cshtml" t="Include" />
@@ -329,6 +340,8 @@
             <e p="Details.cshtml" t="Include" />
             <e p="Edit.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
+            <e p="PartialCreateEdit.cshtml" t="Include" />
+            <e p="PartialDetailsDelete.cshtml" t="Include" />
           </e>
           <e p="Home" t="Include">
             <e p="Index.cshtml" t="Include" />
@@ -340,6 +353,7 @@
             <e p="Details.cshtml" t="Include" />
             <e p="Edit.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
+            <e p="PartialDetailsDelete.cshtml" t="Include" />
           </e>
           <e p="Payments" t="Include">
             <e p="Create.cshtml" t="Include" />
@@ -347,6 +361,8 @@
             <e p="Details.cshtml" t="Include" />
             <e p="Edit.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
+            <e p="PartialCreateEdit.cshtml" t="Include" />
+            <e p="PartialDetailsDelete.cshtml" t="Include" />
           </e>
           <e p="Products" t="Include">
             <e p="Create.cshtml" t="Include" />
@@ -354,6 +370,7 @@
             <e p="Details.cshtml" t="Include" />
             <e p="Edit.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
+            <e p="PartialDetailsDelete.cshtml" t="Include" />
           </e>
           <e p="ProductsForClients" t="Include">
             <e p="Create.cshtml" t="Include" />
@@ -361,6 +378,8 @@
             <e p="Details.cshtml" t="Include" />
             <e p="Edit.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
+            <e p="PartialCreateEdit.cshtml" t="Include" />
+            <e p="PartialDetailsDelete.cshtml" t="Include" />
           </e>
           <e p="Shared" t="Include">
             <e p="_CookieConsentPartial.cshtml" t="Include" />
@@ -375,6 +394,7 @@
             <e p="Details.cshtml" t="Include" />
             <e p="Edit.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
+            <e p="PartialDetailsDelete.cshtml" t="Include" />
           </e>
           <e p="WorkersInPositions" t="Include">
             <e p="Create.cshtml" t="Include" />
@@ -382,6 +402,8 @@
             <e p="Details.cshtml" t="Include" />
             <e p="Edit.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
+            <e p="PartialCreateEdit.cshtml" t="Include" />
+            <e p="PartialDetailsDelete.cshtml" t="Include" />
           </e>
           <e p="WorkersOnObjects" t="Include">
             <e p="Create.cshtml" t="Include" />
@@ -389,6 +411,8 @@
             <e p="Details.cshtml" t="Include" />
             <e p="Edit.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
+            <e p="PartialCreateEdit.cshtml" t="Include" />
+            <e p="PartialDetailsDelete.cshtml" t="Include" />
           </e>
           <e p="WorkersPositions" t="Include">
             <e p="Create.cshtml" t="Include" />
@@ -396,6 +420,7 @@
             <e p="Details.cshtml" t="Include" />
             <e p="Edit.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
+            <e p="PartialDetailsDelete.cshtml" t="Include" />
           </e>
           <e p="WorkObjects" t="Include">
             <e p="Create.cshtml" t="Include" />
@@ -403,6 +428,8 @@
             <e p="Details.cshtml" t="Include" />
             <e p="Edit.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
+            <e p="PartialCreateEdit.cshtml" t="Include" />
+            <e p="PartialDetailsDelete.cshtml" t="Include" />
           </e>
         </e>
         <e p="WebApp.csproj" t="IncludeRecursive" />

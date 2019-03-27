@@ -10,6 +10,7 @@ using DAL;
 using DAL.App.EF;
 using Domain;
 using Microsoft.AspNetCore.Authorization;
+using WebApp.ViewModels;
 
 namespace WebApp.Controllers
 {
@@ -56,11 +57,19 @@ namespace WebApp.Controllers
         // GET: WorkersOnObjects/Create
         public async Task<IActionResult> Create()
         {
-            ViewData["WorkObjectId"] = new SelectList(await _uow.BaseRepository<WorkObject>().AllAsync(),
-                "Id", "Id");
-            ViewData["WorkerId"] = new SelectList(await _uow.BaseRepository<Worker>().AllAsync(),
-                "Id", "FirstName");
-            return View();
+            var vm = new WorkerOnObjectCreateEditViewModel();
+            
+            vm.WorkObjectSelectList = new SelectList(
+                await _uow.BaseRepository<WorkObject>().AllAsync(),
+                nameof(WorkObject.Id), 
+                nameof(WorkObject.Id));
+            
+            vm.WorkerSelectList = new SelectList(
+                await _uow.BaseRepository<Worker>().AllAsync(),
+                nameof(Worker.Id), 
+                nameof(Worker.FirstLastName));
+            
+            return View(vm);
         }
 
         // POST: WorkersOnObjects/Create
@@ -68,23 +77,27 @@ namespace WebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("WorkerId,WorkObjectId,From,Until,Id")]
-            WorkerOnObject workerOnObject)
+        public async Task<IActionResult> Create(WorkerOnObjectCreateEditViewModel vm)
         {
             if (ModelState.IsValid)
             {
-                await _uow.WorkersOnObjects.AddAsync(workerOnObject);
+                await _uow.WorkersOnObjects.AddAsync(vm.WorkerOnObject);
                 await _uow.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
-
-            ViewData["WorkObjectId"] = new SelectList(await _uow.BaseRepository<WorkObject>().AllAsync(),
-                "Id", "Id", workerOnObject.WorkObjectId);
-            ViewData["WorkerId"] = new SelectList(await _uow.BaseRepository<Worker>().AllAsync(), "Id", "FirstName",
-                workerOnObject.WorkerId);
-
-            return View(workerOnObject);
+            
+            vm.WorkObjectSelectList = new SelectList(
+                await _uow.BaseRepository<WorkObject>().AllAsync(),
+                nameof(WorkObject.Id), 
+                nameof(WorkObject.Id));
+            
+            vm.WorkerSelectList = new SelectList(
+                await _uow.BaseRepository<Worker>().AllAsync(),
+                nameof(Worker.Id), 
+                nameof(Worker.FirstLastName));
+            
+            return View(vm);
         }
 
         // GET: WorkersOnObjects/Edit/5
@@ -101,11 +114,20 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            ViewData["WorkObjectId"] = new SelectList(await _uow.BaseRepository<WorkObject>().AllAsync(),
-                "Id", "Id", workerOnObject.WorkObjectId);
-            ViewData["WorkerId"] = new SelectList(await _uow.BaseRepository<Worker>().AllAsync(),
-                "Id", "FirstName", workerOnObject.WorkerId);
-            return View(workerOnObject);
+            var vm = new WorkerOnObjectCreateEditViewModel();
+            vm.WorkerOnObject = workerOnObject;
+            
+            vm.WorkObjectSelectList = new SelectList(
+                await _uow.BaseRepository<WorkObject>().AllAsync(),
+                nameof(WorkObject.Id), 
+                nameof(WorkObject.Id));
+            
+            vm.WorkerSelectList = new SelectList(
+                await _uow.BaseRepository<Worker>().AllAsync(),
+                nameof(Worker.Id), 
+                nameof(Worker.FirstLastName));
+            
+            return View(vm);
         }
 
         // POST: WorkersOnObjects/Edit/5
@@ -113,27 +135,32 @@ namespace WebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("WorkerId,WorkObjectId,From,Until,Id")]
-            WorkerOnObject workerOnObject)
+        public async Task<IActionResult> Edit(int id, WorkerOnObjectCreateEditViewModel vm)
         {
-            if (id != workerOnObject.Id)
+            if (id != vm.WorkerOnObject.Id)
             {
                 return NotFound();
             }
 
             if (ModelState.IsValid)
             {
-                _uow.WorkersOnObjects.Update(workerOnObject);
+                _uow.WorkersOnObjects.Update(vm.WorkerOnObject);
                 await _uow.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
-
-            ViewData["WorkObjectId"] = new SelectList(await _uow.BaseRepository<WorkObject>().AllAsync(),
-                "Id", "Id", workerOnObject.WorkObjectId);
-            ViewData["WorkerId"] = new SelectList(await _uow.BaseRepository<Worker>().AllAsync(),
-                "Id", "FirstName", workerOnObject.WorkerId);
-            return View(workerOnObject);
+            
+            vm.WorkObjectSelectList = new SelectList(
+                await _uow.BaseRepository<WorkObject>().AllAsync(),
+                nameof(WorkObject.Id), 
+                nameof(WorkObject.Id));
+            
+            vm.WorkerSelectList = new SelectList(
+                await _uow.BaseRepository<Worker>().AllAsync(),
+                nameof(Worker.Id), 
+                nameof(Worker.FirstLastName));
+            
+            return View(vm);
         }
 
         // GET: WorkersOnObjects/Delete/5
