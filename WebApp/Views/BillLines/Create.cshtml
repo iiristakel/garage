@@ -1,4 +1,4 @@
-@model Domain.BillLine
+@model WebApp.ViewModels.BillLineCreateEditViewModel
 
 @{
     ViewData["Title"] = "Create";
@@ -7,52 +7,13 @@
 <h1>Create</h1>
 
 <h4>BillLine</h4>
-<hr />
+<hr/>
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="BillId" class="control-label"></label>
-                <select asp-for="BillId" class ="form-control" asp-items="ViewBag.BillId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="ProductForClientId" class="control-label"></label>
-                <select asp-for="ProductForClientId" class ="form-control" asp-items="ViewBag.ProductForObjectId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="Sum" class="control-label"></label>
-                <input asp-for="Sum" class="form-control" />
-                <span asp-validation-for="Sum" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Amount" class="control-label"></label>
-                <input asp-for="Amount" class="form-control" />
-                <span asp-validation-for="Amount" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DiscountPercent" class="control-label"></label>
-                <input asp-for="DiscountPercent" class="form-control" />
-                <span asp-validation-for="DiscountPercent" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SumWithDiscount" class="control-label"></label>
-                <input asp-for="SumWithDiscount" class="form-control" />
-                <span asp-validation-for="SumWithDiscount" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TaxPercent" class="control-label"></label>
-                <input asp-for="TaxPercent" class="form-control" />
-                <span asp-validation-for="TaxPercent" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FinalSum" class="control-label"></label>
-                <input asp-for="FinalSum" class="form-control" />
-                <span asp-validation-for="FinalSum" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
+
+            <partial name="PartialCreateEdit" model="Model"/>
+
         </form>
     </div>
 </div>
@@ -62,5 +23,5 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }

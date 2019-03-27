@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
+    <e p="C:\Users\kalle\.Rider2018.3\config\scratches" t="IncludeRecursive" />
     <e p="C:\Users\kalle\.Rider2018.3\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\kalle\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_HomeProject.1526170497.00" t="ExcludeRecursive" />
     <e p="C:\Users\kalle\RiderProjects\Project\HomeProject" t="IncludeFlat">
@@ -39,8 +40,8 @@
           <e p="IRepositoryProvider.cs" t="Include" />
         </e>
         <e p="IBaseEntity.cs" t="Include" />
+        <e p="IBaseUnitOfWork.cs" t="Include" />
         <e p="IDataContext.cs" t="Include" />
-        <e p="IUnitOfWork.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netstandard2.0" t="Include">
@@ -61,8 +62,8 @@
           <e p="AppRepositoryFactory.cs" t="Include" />
         </e>
         <e p="Migrations" t="Include">
-          <e p="20190312130259_InitialDbCreation.cs" t="Include" />
-          <e p="20190312130259_InitialDbCreation.Designer.cs" t="Include" />
+          <e p="20190327102522_InitialDbCreation.cs" t="Include" />
+          <e p="20190327102522_InitialDbCreation.Designer.cs" t="Include" />
           <e p="AppDbContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
@@ -140,6 +141,7 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="Identity.csproj" t="IncludeRecursive" />
         <e p="IdentityExtensions.cs" t="Include" />
+        <e p="JwtHelper.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netstandard2.0" t="Include">
@@ -158,6 +160,9 @@
           <e p="BillsController.cs" t="Include" />
           <e p="ClientGroupsController.cs" t="Include" />
           <e p="ClientsController.cs" t="Include" />
+          <e p="Identity" t="Include">
+            <e p="AccountController.cs" t="Include" />
+          </e>
           <e p="PaymentMethodsController.cs" t="Include" />
           <e p="PaymentsController.cs" t="Include" />
           <e p="ProductsController.cs" t="Include" />
@@ -218,6 +223,7 @@
                   <e p="_ManageNav.cshtml" t="Include" />
                   <e p="_StatusMessage.cshtml" t="Include" />
                   <e p="_ViewImports.cshtml" t="Include" />
+                  <e p="_ViewStart.cshtml" t="Include" />
                   <e p="ChangePassword.cshtml" t="Include" />
                   <e p="ChangePassword.cshtml.cs" t="Include" />
                   <e p="DeletePersonalData.cshtml" t="Include" />
@@ -273,6 +279,9 @@
           <e p="WorkersPositionsController.cs" t="Include" />
           <e p="WorkObjectsController.cs" t="Include" />
         </e>
+        <e p="Helpers" t="Include">
+          <e p="EmailSender.cs" t="Include" />
+        </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp2.2" t="Include">
@@ -286,6 +295,7 @@
         </e>
         <e p="Startup.cs" t="Include" />
         <e p="ViewModels" t="Include">
+          <e p="BillLineCreateEditViewModel.cs" t="Include" />
           <e p="ErrorViewModel.cs" t="Include" />
         </e>
         <e p="Views" t="Include">
@@ -297,6 +307,7 @@
             <e p="Details.cshtml" t="Include" />
             <e p="Edit.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
+            <e p="PartialCreateEdit.cshtml" t="Include" />
           </e>
           <e p="Bills" t="Include">
             <e p="Create.cshtml" t="Include" />

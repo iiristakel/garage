@@ -441,7 +441,7 @@ namespace DAL.App.EF.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     BillId = table.Column<int>(nullable: false),
-                    ProductForObjectId = table.Column<int>(nullable: false),
+                    ProductForClientId = table.Column<int>(nullable: false),
                     Sum = table.Column<decimal>(nullable: false),
                     Amount = table.Column<decimal>(nullable: false),
                     DiscountPercent = table.Column<decimal>(nullable: true),
@@ -459,8 +459,8 @@ namespace DAL.App.EF.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_BillLines_ProductsForClients_ProductForObjectId",
-                        column: x => x.ProductForObjectId,
+                        name: "FK_BillLines_ProductsForClients_ProductForClientId",
+                        column: x => x.ProductForClientId,
                         principalTable: "ProductsForClients",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -509,9 +509,9 @@ namespace DAL.App.EF.Migrations
                 column: "BillId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BillLines_ProductForObjectId",
+                name: "IX_BillLines_ProductForClientId",
                 table: "BillLines",
-                column: "ProductForObjectId");
+                column: "ProductForClientId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Bills_ClientId",

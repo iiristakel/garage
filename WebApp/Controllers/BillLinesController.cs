@@ -10,6 +10,8 @@ using DAL;
 using DAL.App.EF;
 using Domain;
 using Microsoft.AspNetCore.Authorization;
+using WebApp.Models;
+using WebApp.ViewModels;
 
 namespace WebApp.Controllers
 {
@@ -39,7 +41,7 @@ namespace WebApp.Controllers
             }
 
             var billLine = await _uow.BillLines.FindAsync(id);
-            
+
             if (billLine == null)
             {
                 return NotFound();
@@ -51,11 +53,21 @@ namespace WebApp.Controllers
         // GET: BillLines/Create
         public async Task<IActionResult> Create()
         {
-            ViewData["BillId"] = new SelectList(await _uow.BaseRepository<Bill>().AllAsync(),
-                "Id", "InvoiceNr");
-            ViewData["ProductForClientId"] = new SelectList(await _uow.BaseRepository<ProductForClient>().AllAsync(),
-                "Id", "Id");
-            return View();
+            var vm = new BillLineCreateEditViewModel();
+            
+            vm.BillSelectList = new SelectList(
+                await _uow.BaseRepository<Bill>().AllAsync(),
+                nameof(Bill.Id),
+                nameof(Bill.InvoiceNr),
+                vm.BillLine.BillId);
+
+            vm.ProductForClientSelectList = new SelectList(
+                await _uow.BaseRepository<ProductForClient>().AllAsync(),
+                nameof(ProductForClient.Id),
+                nameof(ProductForClient.Id),
+                vm.BillLine.ProductForClientId);
+
+            return View(vm);
         }
 
         // POST: BillLines/Create
@@ -63,21 +75,29 @@ namespace WebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BillId,ProductForObjectId,Sum,Amount,DiscountPercent,SumWithDiscount,TaxPercent,FinalSum,Id")] BillLine billLine)
+        public async Task<IActionResult> Create(BillLineCreateEditViewModel vm)
         {
             if (ModelState.IsValid)
             {
-                await _uow.BillLines.AddAsync(billLine);
+                await _uow.BillLines.AddAsync(vm.BillLine);
                 await _uow.SaveChangesAsync();
-                
+
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BillId"] = new SelectList(await _uow.BaseRepository<Bill>().AllAsync(),
-                "Id", "InvoiceNr", billLine.BillId);
-            ViewData["ProductForObjectId"] = new SelectList(await _uow.BaseRepository<ProductForClient>().AllAsync(),
-                "Id", "Id", billLine.ProductForClientId);
-            
-            return View(billLine);
+
+            vm.BillSelectList = new SelectList(
+                await _uow.BaseRepository<Bill>().AllAsync(),
+                nameof(Bill.Id),
+                nameof(Bill.InvoiceNr),
+                vm.BillLine.BillId);
+
+            vm.ProductForClientSelectList = new SelectList(
+                await _uow.BaseRepository<ProductForClient>().AllAsync(),
+                nameof(ProductForClient.Id),
+                nameof(ProductForClient.Id),
+                vm.BillLine.ProductForClientId);
+
+            return View(vm);
         }
 
         // GET: BillLines/Edit/5
@@ -93,12 +113,22 @@ namespace WebApp.Controllers
             {
                 return NotFound();
             }
-            ViewData["BillId"] = new SelectList(await _uow.BaseRepository<Bill>().AllAsync(),
-                "Id", "InvoiceNr", billLine.BillId);
-            ViewData["ProductForObjectId"] = new SelectList(await _uow.BaseRepository<ProductForClient>().AllAsync(),
-                "Id", "Id", billLine.ProductForClientId);
-            
-            return View(billLine);
+
+            var vm = new BillLineCreateEditViewModel();
+            vm.BillLine = billLine;
+            vm.BillSelectList = new SelectList(
+                await _uow.BaseRepository<Bill>().AllAsync(),
+                nameof(Bill.Id),
+                nameof(Bill.InvoiceNr),
+                vm.BillLine.BillId);
+
+            vm.ProductForClientSelectList = new SelectList(
+                await _uow.BaseRepository<ProductForClient>().AllAsync(),
+                nameof(ProductForClient.Id),
+                nameof(ProductForClient.Id),
+                vm.BillLine.ProductForClientId);
+
+            return View(vm);
         }
 
         // POST: BillLines/Edit/5
@@ -106,27 +136,34 @@ namespace WebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("BillId,ProductForObjectId,Sum,Amount,DiscountPercent,SumWithDiscount,TaxPercent,FinalSum,Id")] BillLine billLine)
+        public async Task<IActionResult> Edit(int id, BillLineCreateEditViewModel vm)
         {
-            if (id != billLine.Id)
+            if (id != vm.BillLine.Id)
             {
                 return NotFound();
             }
 
             if (ModelState.IsValid)
             {
-                
-                    _uow.BillLines.Update(billLine);
-                    await _uow.SaveChangesAsync();
-               
+                _uow.BillLines.Update(vm.BillLine);
+                await _uow.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BillId"] = new SelectList(await _uow.BaseRepository<Bill>().AllAsync(),
-                "Id", "InvoiceNr", billLine.BillId);
-            ViewData["ProductForObjectId"] = new SelectList(await _uow.BaseRepository<ProductForClient>().AllAsync(),
-                "Id", "Id", billLine.ProductForClientId);
-            
-            return View(billLine);
+
+            vm.BillSelectList = new SelectList(
+                await _uow.BaseRepository<Bill>().AllAsync(),
+                nameof(Bill.Id),
+                nameof(Bill.InvoiceNr),
+                vm.BillLine.BillId);
+
+            vm.ProductForClientSelectList = new SelectList(
+                await _uow.BaseRepository<ProductForClient>().AllAsync(),
+                nameof(ProductForClient.Id),
+                nameof(ProductForClient.Product),
+                vm.BillLine.ProductForClientId);
+
+            return View(vm);
         }
 
         // GET: BillLines/Delete/5
@@ -155,6 +192,5 @@ namespace WebApp.Controllers
             await _uow.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
     }
 }

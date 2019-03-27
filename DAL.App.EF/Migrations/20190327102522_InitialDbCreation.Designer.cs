@@ -9,14 +9,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.App.EF.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20190312130259_InitialDbCreation")]
+    [Migration("20190327102522_InitialDbCreation")]
     partial class InitialDbCreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.2-servicing-10034")
+                .HasAnnotation("ProductVersion", "2.2.3-servicing-35854")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("Domain.Bill", b =>
@@ -64,7 +64,7 @@ namespace DAL.App.EF.Migrations
 
                     b.Property<decimal>("FinalSum");
 
-                    b.Property<int>("ProductForObjectId");
+                    b.Property<int>("ProductForClientId");
 
                     b.Property<decimal>("Sum");
 
@@ -76,7 +76,7 @@ namespace DAL.App.EF.Migrations
 
                     b.HasIndex("BillId");
 
-                    b.HasIndex("ProductForObjectId");
+                    b.HasIndex("ProductForClientId");
 
                     b.ToTable("BillLines");
                 });
@@ -495,9 +495,9 @@ namespace DAL.App.EF.Migrations
                         .HasForeignKey("BillId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Domain.ProductForClient", "ProductForObject")
+                    b.HasOne("Domain.ProductForClient", "ProductForClient")
                         .WithMany("BillLines")
-                        .HasForeignKey("ProductForObjectId")
+                        .HasForeignKey("ProductForClientId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
@@ -535,12 +535,12 @@ namespace DAL.App.EF.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Domain.Product", "Product")
-                        .WithMany("ProductsForObject")
+                        .WithMany("ProductsForClients")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Domain.WorkObject", "WorkObject")
-                        .WithMany("ProductsForObject")
+                        .WithMany("ProductsForClient")
                         .HasForeignKey("WorkObjectId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
