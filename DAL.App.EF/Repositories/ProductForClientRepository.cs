@@ -29,11 +29,10 @@ namespace DAL.App.EF.Repositories
 
             if (productForClient != null)
             {
-                await RepositoryDbSet
-                    .Include(p => p.Client)
-                    .Include(p => p.Product)
-                    .Include(p => p.WorkObject)
-                    .ToListAsync();
+                await RepositoryDbContext.Entry(productForClient).Reference(c => c.Client).LoadAsync();
+                await RepositoryDbContext.Entry(productForClient).Reference(c => c.Product).LoadAsync();
+                await RepositoryDbContext.Entry(productForClient).Reference(c => c.WorkObject).LoadAsync();
+
             }
             
             return productForClient;

@@ -28,10 +28,9 @@ namespace DAL.App.EF.Repositories
 
             if (workerInPosition != null)
             {
-                await RepositoryDbSet
-                    .Include(p => p.Worker)
-                    .Include(p => p.WorkerPosition)
-                    .ToListAsync();
+                await RepositoryDbContext.Entry(workerInPosition).Reference(c => c.Worker).LoadAsync();
+                await RepositoryDbContext.Entry(workerInPosition).Reference(c => c.WorkerPosition).LoadAsync();
+
             }
             
             return workerInPosition;

@@ -28,11 +28,10 @@ namespace DAL.App.EF.Repositories
 
             if (payment != null)
             {
-                await RepositoryDbSet
-                    .Include(p => p.Bill)
-                    .Include(p => p.Client)
-                    .Include(p => p.PaymentMethod)
-                    .ToListAsync();            }
+                await RepositoryDbContext.Entry(payment).Reference(c => c.Bill).LoadAsync();
+                await RepositoryDbContext.Entry(payment).Reference(c => c.Client).LoadAsync();
+                await RepositoryDbContext.Entry(payment).Reference(c => c.PaymentMethod).LoadAsync();
+          }
             
             return payment;
         }

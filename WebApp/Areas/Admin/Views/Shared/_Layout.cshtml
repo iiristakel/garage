@@ -15,12 +15,71 @@
               crossorigin="anonymous"
               integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE="/>
     </environment>
-    <link rel="stylesheet" href="~/css/site.css"/>
+    <link rel="stylesheet" href="~/AdminLTE/dist/css/adminlte.min.css"/>
+    @* <link rel="stylesheet" href="~/css/site.css"/> *@
 </head>
 <body>
+<div class="wrapper">
+    <header>
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand bg-dark navbar-light border-bottom">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <a class="navbar-brand" asp-area="Admin" asp-controller="Home" asp-action="Index">WebApp</a>
+                
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a class="nav-link" asp-area="Admin" asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a class="nav-link" asp-area="" asp-controller="Workers" asp-action="Index">Workers</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a class="nav-link" asp-area="" asp-controller="Clients" asp-action="Index">Clients</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a class="nav-link" asp-area="" asp-controller="Bills" asp-action="Index">Bills</a>
+                </li>
+                <li class="nav-item" d-none d-sm-inline-block>
+                    <a class="nav-link" asp-area="" asp-controller="BillLines" asp-action="Index">BillLines</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a class="nav-link" asp-area="" asp-controller="WorkObjects" asp-action="Index">WorkObjects</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a class="nav-link" asp-area="" asp-controller="Products" asp-action="Index">Products</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a class="nav-link" asp-area="" asp-controller="Payments" asp-action="Index">Payments</a>
+                </li>
+                
+            </ul>
 
+            @* <!-- Right navbar links --> *@
+            @* <ul class="navbar-nav ml-auto"> *@
+            @*     <partial name="_LoginPartial"/> *@
+            @* </ul> *@
+        </nav>
+        <!-- /.navbar -->
 
-@RenderBody()
+    </header>
+
+    <div class="content-wrapper">
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="container">
+            &copy; 2019 - WebApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="float-right d-none d-sm-inline-block">
+                <b>Iiris Takel</b>
+            </div>
+        </div>
+    </footer>
+</div>
 
 
 <environment include="Development">

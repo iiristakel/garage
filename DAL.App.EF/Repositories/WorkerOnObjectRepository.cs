@@ -28,10 +28,9 @@ namespace DAL.App.EF.Repositories
 
             if (workerOnObject != null)
             {
-                 await RepositoryDbSet
-                    .Include(p => p.WorkObject)
-                    .Include(p => p.Worker)
-                    .ToListAsync();
+                await RepositoryDbContext.Entry(workerOnObject).Reference(c => c.WorkObject).LoadAsync();
+                await RepositoryDbContext.Entry(workerOnObject).Reference(c => c.Worker).LoadAsync();
+
             }
             
             return workerOnObject;

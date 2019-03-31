@@ -6,7 +6,6 @@ using Contracts.DAL.App;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using DAL;
 using DAL.App.EF;
 using Domain;
 using Domain.Identity;
@@ -15,7 +14,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace WebApp.Controllers
 {
-    [Authorize]
+    [Authorize(Roles="Admin")]
     public class WorkersController : Controller
     {
         private readonly IAppUnitOfWork _uow;
