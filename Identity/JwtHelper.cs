@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -16,14 +15,15 @@ namespace Identity
             var signingCredentials = new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256);
             var expires = DateTime.Now.AddDays(expiresInDays);
             
-            var token = new JwtSecurityToken
-            (
+            var token = new JwtSecurityToken(
                 issuer: issuer,
-                audience: issuer,
-                claims: claims,
+                audience:issuer,
+                claims:claims,
                 expires: expires,
                 signingCredentials: signingCredentials
-            );
+            );   
+            
+            
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }

@@ -163,10 +163,10 @@ C:\Users\kalle\RiderProjects\Project\HomeProject\WebApp\obj\Debug\netcoreapp2.2\
 C:\Users\kalle\RiderProjects\Project\HomeProject\WebApp\obj\Debug\netcoreapp2.2\Razor\Views\PaymentMethods\PartialCreateEdit.g.cshtml.cs
 C:\Users\kalle\RiderProjects\Project\HomeProject\WebApp\obj\Debug\netcoreapp2.2\Razor\Views\Products\PartialCreateEdit.g.cshtml.cs
 C:\Users\kalle\RiderProjects\Project\HomeProject\WebApp\obj\Debug\netcoreapp2.2\Razor\Views\WorkersPositions\PartialCreateEdit.g.cshtml.cs
-C:\Users\kalle\RiderProjects\Project\HomeProject\WebApp\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\Workers\Create.g.cshtml.cs
-C:\Users\kalle\RiderProjects\Project\HomeProject\WebApp\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\Workers\Delete.g.cshtml.cs
-C:\Users\kalle\RiderProjects\Project\HomeProject\WebApp\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\Workers\Details.g.cshtml.cs
-C:\Users\kalle\RiderProjects\Project\HomeProject\WebApp\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\Workers\Edit.g.cshtml.cs
-C:\Users\kalle\RiderProjects\Project\HomeProject\WebApp\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\Workers\Index.g.cshtml.cs
-C:\Users\kalle\RiderProjects\Project\HomeProject\WebApp\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\Workers\PartialCreateEdit.g.cshtml.cs
-C:\Users\kalle\RiderProjects\Project\HomeProject\WebApp\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\Workers\PartialDetailsDelete.g.cshtml.cs
+C:\Users\kalle\RiderProjects\Project\HomeProject\WebApp\obj\Debug\netcoreapp2.2\Razor\Views\Workers\Create.g.cshtml.cs
+C:\Users\kalle\RiderProjects\Project\HomeProject\WebApp\obj\Debug\netcoreapp2.2\Razor\Views\Workers\Delete.g.cshtml.cs
+C:\Users\kalle\RiderProjects\Project\HomeProject\WebApp\obj\Debug\netcoreapp2.2\Razor\Views\Workers\Details.g.cshtml.cs
+C:\Users\kalle\RiderProjects\Project\HomeProject\WebApp\obj\Debug\netcoreapp2.2\Razor\Views\Workers\Edit.g.cshtml.cs
+C:\Users\kalle\RiderProjects\Project\HomeProject\WebApp\obj\Debug\netcoreapp2.2\Razor\Views\Workers\Index.g.cshtml.cs
+C:\Users\kalle\RiderProjects\Project\HomeProject\WebApp\obj\Debug\netcoreapp2.2\Razor\Views\Workers\PartialCreateEdit.g.cshtml.cs
+C:\Users\kalle\RiderProjects\Project\HomeProject\WebApp\obj\Debug\netcoreapp2.2\Razor\Views\Workers\PartialDetailsDelete.g.cshtml.cs

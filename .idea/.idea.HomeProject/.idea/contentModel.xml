@@ -1825,7 +1825,6 @@
         </e>
       </e>
     </e>
-    <e p="C:\Users\kalle\RiderProjects\Project\WebClient\dist" t="ExcludeRecursive" />
     <e p="C:\Users\kalle\RiderProjects\Project\WebClient\node_modules" t="ExcludeRecursive">
       <e p="@types" t="IncludeRecursive">
         <e p="anymatch" t="IncludeRecursive" />
@@ -1843,7 +1842,6 @@
       <e p="aurelia-bootstrapper" t="IncludeRecursive" />
       <e p="aurelia-cli" t="IncludeRecursive" />
       <e p="aurelia-fetch-client" t="IncludeRecursive" />
-      <e p="aurelia-http-client" t="IncludeRecursive" />
       <e p="aurelia-polyfills" t="IncludeRecursive" />
       <e p="aurelia-testing" t="IncludeRecursive" />
       <e p="aurelia-tools" t="IncludeRecursive" />
