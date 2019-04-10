@@ -61,12 +61,6 @@ namespace WebApp.Controllers
                 nameof(Bill.InvoiceNr),
                 vm.BillLine.BillId);
 
-            vm.ProductForClientSelectList = new SelectList(
-                await _uow.BaseRepository<ProductForClient>().AllAsync(),
-                nameof(ProductForClient.Id),
-                nameof(ProductForClient.Id),
-                vm.BillLine.ProductForClientId);
-
             return View(vm);
         }
 
@@ -91,11 +85,6 @@ namespace WebApp.Controllers
                 nameof(Bill.InvoiceNr),
                 vm.BillLine.BillId);
 
-            vm.ProductForClientSelectList = new SelectList(
-                await _uow.BaseRepository<ProductForClient>().AllAsync(),
-                nameof(ProductForClient.Id),
-                nameof(ProductForClient.Id),
-                vm.BillLine.ProductForClientId);
 
             return View(vm);
         }
@@ -121,12 +110,6 @@ namespace WebApp.Controllers
                 nameof(Bill.Id),
                 nameof(Bill.InvoiceNr),
                 vm.BillLine.BillId);
-
-            vm.ProductForClientSelectList = new SelectList(
-                await _uow.BaseRepository<ProductForClient>().AllAsync(),
-                nameof(ProductForClient.Id),
-                nameof(ProductForClient.Id),
-                vm.BillLine.ProductForClientId);
 
             return View(vm);
         }
@@ -157,11 +140,6 @@ namespace WebApp.Controllers
                 nameof(Bill.InvoiceNr),
                 vm.BillLine.BillId);
 
-            vm.ProductForClientSelectList = new SelectList(
-                await _uow.BaseRepository<ProductForClient>().AllAsync(),
-                nameof(ProductForClient.Id),
-                nameof(ProductForClient.Product),
-                vm.BillLine.ProductForClientId);
 
             return View(vm);
         }

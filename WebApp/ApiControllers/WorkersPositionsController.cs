@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Contracts.DAL.App;
+using DAL.App.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -15,7 +16,7 @@ namespace WebApp.ApiControllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+//    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 
     public class WorkersPositionsController : ControllerBase
     {
@@ -28,10 +29,9 @@ namespace WebApp.ApiControllers
 
         // GET: api/WorkersPositions
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<WorkerPosition>>> GetWorkersPositions()
+        public async Task<ActionResult<IEnumerable<WorkerPositionDTO>>> GetWorkersPositions()
         {
-            var res = await _uow.WorkersPositions.AllAsync();
-            return Ok(res);
+            return Ok(await _uow.WorkersPositions.GetAllWithWorkersCountAsync());
         }
 
         // GET: api/WorkersPositions/5

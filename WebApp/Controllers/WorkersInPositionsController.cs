@@ -14,7 +14,7 @@ using WebApp.ViewModels;
 
 namespace WebApp.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize]
     public class WorkersInPositionsController : Controller
     {
         private readonly IAppUnitOfWork _uow;

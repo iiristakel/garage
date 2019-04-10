@@ -12,10 +12,9 @@ namespace Domain
         public ICollection<BillLine> BillLines { get; set; }
 
         public ICollection<Payment> Payments { get; set; }
-        
+
+        public decimal ArrivalFee { get; set; }
         public decimal Sum { get; set; }
-        public decimal? DiscountPercent { get; set; }
-        public decimal? SumWithDiscount { get; set; }
         public decimal? TaxPercent { get; set; }
         public decimal FinalSum { get; set; }
         

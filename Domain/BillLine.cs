@@ -8,15 +8,15 @@ namespace Domain
         public int BillId { get; set; }
         public Bill Bill { get; set; }
         
-        public int ProductForClientId { get; set; }
-        public ProductForClient ProductForClient { get; set; }
+        [Required]
+        [MinLength(1)]
+        [MaxLength(128)]
+        public string Product { get; set; }
 
         public decimal Sum { get; set; }
         public decimal Amount { get; set; } 
         public decimal? DiscountPercent { get; set; }
         public decimal? SumWithDiscount { get; set; }
-        public decimal? TaxPercent { get; set; }
-        public decimal FinalSum { get; set; }
         
     }
 }

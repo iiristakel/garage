@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Contracts.DAL.App;
@@ -14,7 +15,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace WebApp.Controllers
 {
-    [Authorize(Roles="Admin")]
+    [Authorize]
     public class WorkersController : Controller
     {
         private readonly IAppUnitOfWork _uow;
@@ -69,6 +70,7 @@ namespace WebApp.Controllers
         {
             worker.AppUserId = User.GetUserId();
 
+            
             if (ModelState.IsValid)
             {
                 await _uow.Workers.AddAsync(worker);

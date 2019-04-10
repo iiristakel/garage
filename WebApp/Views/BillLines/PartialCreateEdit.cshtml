@@ -8,9 +8,9 @@
     <span asp-validation-for="BillLine.BillId" class="text-danger"></span>
 </div>
 <div class="form-group">
-    <label asp-for="BillLine.ProductForClientId" class="control-label"></label>
-    <select asp-for="BillLine.ProductForClientId" class="form-control" asp-items="Model.ProductForClientSelectList"></select>
-    <span asp-validation-for="BillLine.ProductForClientId" class="text-danger"></span>
+    <label asp-for="BillLine.Product" class="control-label"></label>
+    <input asp-for="BillLine.Product" class="form-control" />
+    <span asp-validation-for="BillLine.Product" class="text-danger"></span>
 </div>
 <div class="form-group">
     <label asp-for="BillLine.Sum" class="control-label"></label>
@@ -31,16 +31,6 @@
     <label asp-for="BillLine.SumWithDiscount" class="control-label"></label>
     <input asp-for="BillLine.SumWithDiscount" class="form-control"/>
     <span asp-validation-for="BillLine.SumWithDiscount" class="text-danger"></span>
-</div>
-<div class="form-group">
-    <label asp-for="BillLine.TaxPercent" class="control-label"></label>
-    <input asp-for="BillLine.TaxPercent" class="form-control"/>
-    <span asp-validation-for="BillLine.TaxPercent" class="text-danger"></span>
-</div>
-<div class="form-group">
-    <label asp-for="BillLine.FinalSum" class="control-label"></label>
-    <input asp-for="BillLine.FinalSum" class="form-control"/>
-    <span asp-validation-for="BillLine.FinalSum" class="text-danger"></span>
 </div>
 <div class="form-group">
     <input type="submit" value="Save" class="btn btn-primary"/>

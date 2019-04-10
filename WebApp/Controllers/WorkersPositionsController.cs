@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace WebApp.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize]
     public class WorkersPositionsController : Controller
     {
         private readonly IAppUnitOfWork _uow;

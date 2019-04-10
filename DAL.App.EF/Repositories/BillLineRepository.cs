@@ -19,7 +19,6 @@ namespace DAL.App.EF.Repositories
         {
             return await RepositoryDbSet
                 .Include(p => p.Bill)
-                .Include(p => p.ProductForClient)
                 .ToListAsync();
         }
 
@@ -30,7 +29,6 @@ namespace DAL.App.EF.Repositories
             if (billLine != null)
             {
                 await RepositoryDbContext.Entry(billLine).Reference(c => c.Bill).LoadAsync();
-                await RepositoryDbContext.Entry(billLine).Reference(c => c.ProductForClient).LoadAsync();
             }
 
             return billLine;

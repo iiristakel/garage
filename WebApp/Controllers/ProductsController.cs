@@ -26,7 +26,9 @@ namespace WebApp.Controllers
         // GET: Products
         public async Task<IActionResult> Index()
         {
-            return View(await _uow.Products.AllAsync());
+            var products = await _uow.Products.AllAsync();
+            
+            return View(products);
         }
 
         // GET: Products/Details/5

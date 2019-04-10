@@ -85,6 +85,18 @@ namespace WebApp
 
             });
             
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsAllowAll",
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin();
+                        builder.AllowAnyHeader();
+                        builder.AllowAnyMethod();
+                    }); 
+            });
+
+            
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddRazorPagesOptions(options =>
@@ -95,7 +107,7 @@ namespace WebApp
                 })
                 .AddJsonOptions(options =>
                 {
-                    options.SerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.Objects;
+//                    options.SerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.Objects;
                     options.SerializerSettings.Formatting = Formatting.Indented;
                 });
             
@@ -113,9 +125,9 @@ namespace WebApp
             services
                 .AddAuthentication(options =>
                 {
-                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+//                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+//                    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+//                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
                 })
                 .AddCookie(options => { options.SlidingExpiration = true; })
                 .AddJwtBearer(cfg =>
@@ -130,6 +142,8 @@ namespace WebApp
                         ClockSkew = TimeSpan.Zero // remove delay of token when expire
                     };
                 });
+
+            
 
         }
 
@@ -153,6 +167,8 @@ namespace WebApp
             app.UseCookiePolicy();
 
             app.UseAuthentication();
+            
+            app.UseCors("CorsAllowAll");
 
             app.UseMvc(routes =>
             {

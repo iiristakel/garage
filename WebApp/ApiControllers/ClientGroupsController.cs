@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Contracts.DAL.App;
+using DAL.App.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -24,9 +25,9 @@ namespace WebApp.ApiControllers
 
         // GET: api/ClientGroups
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ClientGroup>>> GetClientGroups()
+        public async Task<ActionResult<IEnumerable<ClientGroupDTO>>> GetClientGroups()
         {
-            var res = await _uow.ClientGroups.AllAsync();
+            var res = await _uow.ClientGroups.GetAllWithClientCountAsync();
             return Ok(res);
         }
 

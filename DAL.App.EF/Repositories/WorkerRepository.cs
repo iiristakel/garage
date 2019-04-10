@@ -20,6 +20,8 @@ namespace DAL.App.EF.Repositories
             return await RepositoryDbSet
                 .Include(p => p.AppUser)
                 .Where(p => p.AppUserId == userId)
+                .Include(c =>c.WorkerOnTasks)
+                .Include(d=> d.WorkerInPositions)
                 .ToListAsync();
         }
         

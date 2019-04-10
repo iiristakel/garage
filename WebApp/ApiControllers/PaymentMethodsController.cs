@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Contracts.DAL.App;
+using DAL.App.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -24,9 +25,9 @@ namespace WebApp.ApiControllers
 
         // GET: api/PaymentMethods
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<PaymentMethod>>> GetPaymentMethods()
+        public async Task<ActionResult<IEnumerable<PaymentMethodDTO>>> GetPaymentMethods()
         {
-            var res = await _uow.PaymentMethods.AllAsync();
+            var res = await _uow.PaymentMethods.GetAllWithPaymentsCountAsync();
             return Ok(res);
         }
 

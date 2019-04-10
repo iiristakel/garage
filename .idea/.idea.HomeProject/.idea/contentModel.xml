@@ -5,6 +5,58 @@
     <e p="C:\Users\kalle\.Rider2018.3\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\kalle\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_HomeProject.1526170497.00" t="ExcludeRecursive" />
     <e p="C:\Users\kalle\RiderProjects\Project\HomeProject" t="IncludeFlat">
+      <e p="BLL.App.DTO" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="BLL.App.DTO.csproj" t="IncludeRecursive" />
+        <e p="Class1.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="BLL.App.DTO.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="Contracts.Base" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Contracts.Base.csproj" t="IncludeRecursive" />
+        <e p="ITrackableInstance.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="Contracts.Base.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="Contracts.BLL.App" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Contracts.BLL.App.csproj" t="IncludeRecursive" />
+        <e p="IAppBLL.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="Contracts.BLL.App.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Services" t="Include" />
+      </e>
+      <e p="Contracts.BLL.Base" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Contracts.BLL.Base.csproj" t="IncludeRecursive" />
+        <e p="IBaseBLL.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="Contracts.BLL.Base.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Services" t="Include">
+          <e p="IBaseService.cs" t="Include" />
+        </e>
+      </e>
       <e p="Contracts.DAL.App" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="Contracts.DAL.App.csproj" t="IncludeRecursive" />
@@ -53,6 +105,20 @@
           <e p="IBaseRepository.cs" t="Include" />
         </e>
       </e>
+      <e p="DAL.App.DTO" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="ClientGroupDTO.cs" t="Include" />
+        <e p="DAL.App.DTO.csproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="DAL.App.DTO.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="PaymentMethodDTO.cs" t="Include" />
+        <e p="WorkerPositionDto.cs" t="Include" />
+      </e>
       <e p="DAL.App.EF" t="IncludeRecursive">
         <e p="AppDbContext.cs" t="Include" />
         <e p="AppUnitOfWork.cs" t="Include" />
@@ -62,8 +128,8 @@
           <e p="AppRepositoryFactory.cs" t="Include" />
         </e>
         <e p="Migrations" t="Include">
-          <e p="20190327102522_InitialDbCreation.cs" t="Include" />
-          <e p="20190327102522_InitialDbCreation.Designer.cs" t="Include" />
+          <e p="20190410083731_InitialDbCreation.cs" t="Include" />
+          <e p="20190410083731_InitialDbCreation.Designer.cs" t="Include" />
           <e p="AppDbContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
