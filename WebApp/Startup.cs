@@ -123,12 +123,7 @@ namespace WebApp
             // =============== JWT support ===============
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear(); // => remove default claims
             services
-                .AddAuthentication(options =>
-                {
-//                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-//                    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-//                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                })
+                .AddAuthentication()
                 .AddCookie(options => { options.SlidingExpiration = true; })
                 .AddJwtBearer(cfg =>
                 {
