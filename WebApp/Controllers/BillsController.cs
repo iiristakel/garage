@@ -59,7 +59,7 @@ namespace WebApp.Controllers
             vm.ClientSelectList = new SelectList(
                 await _uow.BaseRepository<Client>().AllAsync(), 
                 nameof(Client.Id), 
-                nameof(Client.Address));
+                nameof(Client.CompanyName));
             
             return View(vm);
         }
@@ -81,7 +81,7 @@ namespace WebApp.Controllers
             vm.ClientSelectList = new SelectList(
                 await _uow.BaseRepository<Client>().AllAsync(), 
                 nameof(Client.Id), 
-                nameof(Client.Address));
+                nameof(Client.CompanyName));
             
             return View(vm);
         }
@@ -105,7 +105,7 @@ namespace WebApp.Controllers
             vm.ClientSelectList = new SelectList(
                 await _uow.BaseRepository<Client>().AllAsync(), 
                 nameof(Client.Id), 
-                nameof(Client.Address));
+                nameof(Client.CompanyName));
             return View(vm);
         }
 
@@ -131,7 +131,7 @@ namespace WebApp.Controllers
             vm.ClientSelectList = new SelectList(
                 await _uow.BaseRepository<Client>().AllAsync(), 
                 nameof(Client.Id), 
-                nameof(Client.Address));
+                nameof(Client.CompanyName));
             
             return View(vm);
         }

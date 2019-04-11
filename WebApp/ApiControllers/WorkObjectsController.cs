@@ -26,8 +26,7 @@ namespace WebApp.ApiControllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<WorkObject>>> GetWorkObjects()
         {
-            var res = await _uow.WorkObjects.AllAsync();
-            return Ok(res);
+            return Ok(await _uow.WorkObjects.GetAllAsync());
         }
 
         // GET: api/WorkObjects/5

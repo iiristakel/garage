@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Contracts.DAL.App.Repositories;
 using Contracts.DAL.Base;
+using DAL.App.DTO;
 using DAL.Base.EF.Repositories;
 using Domain;
 using Microsoft.EntityFrameworkCore;
@@ -31,6 +32,22 @@ namespace DAL.App.EF.Repositories
             }
             
             return client;
+        }
+
+        public virtual async Task<IEnumerable<ClientsDTO>> GetAllWithProductsCountAsync()
+        {
+            return await RepositoryDbSet
+                .Select(c => new ClientsDTO()
+                {
+                    Id = c.Id,
+                    ClientGroup = c.ClientGroup,
+                    ProductsCount = c.ProductsForClient.Count,
+                    CompanyName = c.CompanyName,
+                    Address = c.Address,
+                    Phone = c.Phone,
+                    ContactPerson = c.ContactPerson
+                })
+                .ToListAsync();
         }
     }
 }

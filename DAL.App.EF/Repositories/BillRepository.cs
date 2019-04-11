@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Contracts.DAL.App.Repositories;
 using Contracts.DAL.Base;
+using DAL.App.DTO;
 using DAL.Base.EF.Repositories;
 using Domain;
 using Microsoft.EntityFrameworkCore;
@@ -33,6 +34,26 @@ namespace DAL.App.EF.Repositories
             }
             
             return bill;
+        }
+
+        public virtual async Task<IEnumerable<BillsDTO>> GetAllWithPaymentsCountAsync()
+        {
+            return await RepositoryDbSet
+                .Select(c => new BillsDTO()
+                {
+                    Id = c.Id,
+                    Client = c.Client,
+                    BillLines = c.BillLines,
+                    PaymentsCount = c.Payments.Count,
+                    ArrivalFee = c.ArrivalFee,
+                    SumWithoutTaxes = c.Sum,
+                    TaxPercent = c.TaxPercent,
+                    FinalSum = c.FinalSum,
+                    DateTime = c.DateTime,
+                    InvoiceNr = c.InvoiceNr,
+                    Comment = c.Comment
+                })
+                .ToListAsync();
         }
     }
 }

@@ -8,7 +8,6 @@
       <e p="BLL.App.DTO" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="BLL.App.DTO.csproj" t="IncludeRecursive" />
-        <e p="Class1.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netstandard2.0" t="Include">
@@ -106,8 +105,10 @@
         </e>
       </e>
       <e p="DAL.App.DTO" t="IncludeRecursive">
+        <e p="BillsDTO.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="ClientGroupDTO.cs" t="Include" />
+        <e p="ClientsDTO.cs" t="Include" />
         <e p="DAL.App.DTO.csproj" t="IncludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
@@ -118,6 +119,7 @@
         </e>
         <e p="PaymentMethodDTO.cs" t="Include" />
         <e p="WorkerPositionDto.cs" t="Include" />
+        <e p="WorkObjectsDTO.cs" t="Include" />
       </e>
       <e p="DAL.App.EF" t="IncludeRecursive">
         <e p="AppDbContext.cs" t="Include" />
