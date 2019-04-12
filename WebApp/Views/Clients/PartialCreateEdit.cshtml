@@ -1,0 +1,27 @@
+@model WebApp.ViewModels.ClientCreateEditViewModel
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="form-group">
+    <label asp-for="Client.ClientGroupId" class="control-label"></label>
+    <select asp-for="Client.ClientGroupId" class ="form-control" asp-items="Model.ClientGroupSelectList"></select>
+</div>
+<div class="form-group">
+    <label asp-for="Client.CompanyName" class="control-label"></label>
+    <input asp-for="Client.CompanyName" class="form-control" />
+    <span asp-validation-for="Client.CompanyName" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Client.Address" class="control-label"></label>
+    <input asp-for="Client.Address" class="form-control" />
+    <span asp-validation-for="Client.Address" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Client.Phone" class="control-label"></label>
+    <input asp-for="Client.Phone" class="form-control" />
+    <span asp-validation-for="Client.Phone" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Client.ContactPerson" class="control-label"></label>
+    <input asp-for="Client.ContactPerson" class="form-control" />
+    <span asp-validation-for="Client.ContactPerson" class="text-danger"></span>
+</div>

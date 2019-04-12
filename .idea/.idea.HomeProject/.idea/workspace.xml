@@ -1,0 +1,1335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2f9de7e5-e99d-4024-a361-cd182a1ba08b" name="Default Changelist" comment="WebApp Controllers don't work">
+      <change afterPath="$PROJECT_DIR$/DAL.App.DTO/BillsDTO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DAL.App.DTO/ClientsDTO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DAL.App.DTO/WorkObjectsDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.HomeProject/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HomeProject/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.HomeProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HomeProject/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contracts.DAL.App/Repositories/IBillRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DAL.App/Repositories/IBillRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contracts.DAL.App/Repositories/IClientRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DAL.App/Repositories/IClientRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contracts.DAL.App/Repositories/IWorkObjectRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DAL.App/Repositories/IWorkObjectRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contracts.DAL.App/bin/Debug/netstandard2.0/Contracts.DAL.App.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DAL.App/bin/Debug/netstandard2.0/Contracts.DAL.App.deps.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contracts.DAL.App/bin/Debug/netstandard2.0/Contracts.DAL.App.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DAL.App/bin/Debug/netstandard2.0/Contracts.DAL.App.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contracts.DAL.App/bin/Debug/netstandard2.0/Contracts.DAL.App.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DAL.App/bin/Debug/netstandard2.0/Contracts.DAL.App.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contracts.DAL.App/bin/Debug/netstandard2.0/Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DAL.App/bin/Debug/netstandard2.0/Domain.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contracts.DAL.App/bin/Debug/netstandard2.0/Domain.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DAL.App/bin/Debug/netstandard2.0/Domain.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contracts.DAL.App/obj/Contracts.DAL.App.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DAL.App/obj/Contracts.DAL.App.csproj.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contracts.DAL.App/obj/Debug/netstandard2.0/Contracts.DAL.App.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DAL.App/obj/Debug/netstandard2.0/Contracts.DAL.App.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contracts.DAL.App/obj/Debug/netstandard2.0/Contracts.DAL.App.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DAL.App/obj/Debug/netstandard2.0/Contracts.DAL.App.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contracts.DAL.App/obj/Debug/netstandard2.0/Contracts.DAL.App.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DAL.App/obj/Debug/netstandard2.0/Contracts.DAL.App.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contracts.DAL.App/obj/Debug/netstandard2.0/Contracts.DAL.App.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DAL.App/obj/Debug/netstandard2.0/Contracts.DAL.App.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contracts.DAL.App/obj/Debug/netstandard2.0/Contracts.DAL.App.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DAL.App/obj/Debug/netstandard2.0/Contracts.DAL.App.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contracts.DAL.App/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DAL.App/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contracts.DAL.App/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DAL.App/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contracts.DAL.Base/obj/Debug/netstandard2.0/Contracts.DAL.Base.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DAL.Base/obj/Debug/netstandard2.0/Contracts.DAL.Base.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAL.App.EF/Repositories/BillRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DAL.App.EF/Repositories/BillRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAL.App.EF/Repositories/ClientRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DAL.App.EF/Repositories/ClientRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAL.App.EF/Repositories/WorkObjectRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DAL.App.EF/Repositories/WorkObjectRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAL.App.EF/bin/Debug/netstandard2.0/Contracts.DAL.App.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DAL.App.EF/bin/Debug/netstandard2.0/Contracts.DAL.App.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAL.App.EF/bin/Debug/netstandard2.0/Contracts.DAL.App.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DAL.App.EF/bin/Debug/netstandard2.0/Contracts.DAL.App.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAL.App.EF/bin/Debug/netstandard2.0/DAL.App.EF.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/DAL.App.EF/bin/Debug/netstandard2.0/DAL.App.EF.deps.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAL.App.EF/bin/Debug/netstandard2.0/DAL.App.EF.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DAL.App.EF/bin/Debug/netstandard2.0/DAL.App.EF.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAL.App.EF/bin/Debug/netstandard2.0/DAL.App.EF.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DAL.App.EF/bin/Debug/netstandard2.0/DAL.App.EF.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAL.App.EF/bin/Debug/netstandard2.0/Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DAL.App.EF/bin/Debug/netstandard2.0/Domain.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAL.App.EF/bin/Debug/netstandard2.0/Domain.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DAL.App.EF/bin/Debug/netstandard2.0/Domain.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAL.App.EF/obj/DAL.App.EF.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DAL.App.EF/obj/DAL.App.EF.csproj.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAL.App.EF/obj/Debug/netstandard2.0/DAL.App.EF.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DAL.App.EF/obj/Debug/netstandard2.0/DAL.App.EF.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAL.App.EF/obj/Debug/netstandard2.0/DAL.App.EF.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/DAL.App.EF/obj/Debug/netstandard2.0/DAL.App.EF.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAL.App.EF/obj/Debug/netstandard2.0/DAL.App.EF.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DAL.App.EF/obj/Debug/netstandard2.0/DAL.App.EF.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAL.App.EF/obj/Debug/netstandard2.0/DAL.App.EF.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DAL.App.EF/obj/Debug/netstandard2.0/DAL.App.EF.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAL.App.EF/obj/Debug/netstandard2.0/DAL.App.EF.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DAL.App.EF/obj/Debug/netstandard2.0/DAL.App.EF.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAL.App.EF/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/DAL.App.EF/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAL.App.EF/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/DAL.App.EF/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAL.Base.EF/obj/Debug/netstandard2.0/DAL.Base.EF.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DAL.Base.EF/obj/Debug/netstandard2.0/DAL.Base.EF.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/bin/Debug/netstandard2.0/Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/bin/Debug/netstandard2.0/Domain.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/bin/Debug/netstandard2.0/Domain.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/bin/Debug/netstandard2.0/Domain.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/obj/Debug/netstandard2.0/Domain.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obj/Debug/netstandard2.0/Domain.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/obj/Debug/netstandard2.0/Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obj/Debug/netstandard2.0/Domain.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/obj/Debug/netstandard2.0/Domain.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obj/Debug/netstandard2.0/Domain.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Identity/obj/Debug/netstandard2.0/Identity.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Identity/obj/Debug/netstandard2.0/Identity.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/ApiControllers/BillsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/ApiControllers/BillsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/ApiControllers/ClientsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/ApiControllers/ClientsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/ApiControllers/WorkObjectsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/ApiControllers/WorkObjectsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Controllers/BillsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Controllers/BillsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/Controllers/WorkObjectsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/Controllers/WorkObjectsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/bin/Debug/netcoreapp2.2/Contracts.DAL.App.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/bin/Debug/netcoreapp2.2/Contracts.DAL.App.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/bin/Debug/netcoreapp2.2/Contracts.DAL.App.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/bin/Debug/netcoreapp2.2/Contracts.DAL.App.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/bin/Debug/netcoreapp2.2/DAL.App.EF.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/bin/Debug/netcoreapp2.2/DAL.App.EF.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/bin/Debug/netcoreapp2.2/DAL.App.EF.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/bin/Debug/netcoreapp2.2/DAL.App.EF.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/bin/Debug/netcoreapp2.2/Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/bin/Debug/netcoreapp2.2/Domain.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/bin/Debug/netcoreapp2.2/Domain.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/bin/Debug/netcoreapp2.2/Domain.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/bin/Debug/netcoreapp2.2/WebApp.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/bin/Debug/netcoreapp2.2/WebApp.Views.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/bin/Debug/netcoreapp2.2/WebApp.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/bin/Debug/netcoreapp2.2/WebApp.Views.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/bin/Debug/netcoreapp2.2/WebApp.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/bin/Debug/netcoreapp2.2/WebApp.deps.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/bin/Debug/netcoreapp2.2/WebApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/bin/Debug/netcoreapp2.2/WebApp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/bin/Debug/netcoreapp2.2/WebApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/bin/Debug/netcoreapp2.2/WebApp.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Login.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Login.g.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Register.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Register.g.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/obj/Debug/netcoreapp2.2/Razor/Views/BillLines/Index.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/obj/Debug/netcoreapp2.2/Razor/Views/BillLines/Index.g.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/obj/Debug/netcoreapp2.2/Razor/Views/BillLines/PartialCreateEdit.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/obj/Debug/netcoreapp2.2/Razor/Views/BillLines/PartialCreateEdit.g.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/obj/Debug/netcoreapp2.2/Razor/Views/Bills/Index.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/obj/Debug/netcoreapp2.2/Razor/Views/Bills/Index.g.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/obj/Debug/netcoreapp2.2/WebApp.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/obj/Debug/netcoreapp2.2/WebApp.Views.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/obj/Debug/netcoreapp2.2/WebApp.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/obj/Debug/netcoreapp2.2/WebApp.Views.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/obj/Debug/netcoreapp2.2/WebApp.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/obj/Debug/netcoreapp2.2/WebApp.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/obj/Debug/netcoreapp2.2/WebApp.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/obj/Debug/netcoreapp2.2/WebApp.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/obj/Debug/netcoreapp2.2/WebApp.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/obj/Debug/netcoreapp2.2/WebApp.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/obj/Debug/netcoreapp2.2/WebApp.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/obj/Debug/netcoreapp2.2/WebApp.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/obj/Debug/netcoreapp2.2/WebApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/obj/Debug/netcoreapp2.2/WebApp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/obj/Debug/netcoreapp2.2/WebApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/obj/Debug/netcoreapp2.2/WebApp.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/obj/WebApp.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/obj/WebApp.csproj.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/obj/project.assets.json" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../WebClient/src/workobjects/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="532">
+              <caret line="42" selection-start-line="42" selection-end-line="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../WebClient/src/workobjects/edit.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="532">
+              <caret line="42" selection-start-line="42" selection-end-line="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../WebClient/src/workobjects/details.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="490">
+              <caret line="35" selection-start-line="35" selection-end-line="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../WebClient/src/workobjects/delete.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="124">
+              <caret line="17" column="29" lean-forward="true" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>007b</find>
+      <find>007bff</find>
+      <find>navbar-nav</find>
+      <find>ml-auto</find>
+      <find>login-box</find>
+      <find>bg-gray</find>
+      <find>over</find>
+      <find>min</find>
+      <find>min-</find>
+      <find>content-wrapper</find>
+      <find>.content</find>
+      <find>.container</find>
+      <find>footer</find>
+      <find>.main-footer</find>
+      <find>alert-info</find>
+      <find>.alert</find>
+      <find>result</find>
+      <find>body {</find>
+      <find>body</find>
+      <find>jquery.validat</find>
+      <find>localhost:5001</find>
+      <find>auth</find>
+      <find>conta</find>
+      <find>adda</find>
+      <find>DTO</find>
+      <find>name</find>
+      <find>options.s</find>
+      <find>tolistasync</find>
+      <find>addas</find>
+      <find>geta</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>ApiControllers</replace>
+      <replace />
+      <replace>-api</replace>
+      <replace>uow</replace>
+      <replace>368cbf</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/WebApp/ApiControllers/WorkersController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/ApiControllers/WorkObjectsController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/ApiControllers/WorkersOnObjectsController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/ApiControllers/WorkersInPositionsController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/ApiControllers/WorkersPositionsController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/ApiControllers/ClientGroupsController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/ApiControllers/ProductsForClientsController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/ApiControllers/BillLinesController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/ApiControllers/BillsController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/ApiControllers/PaymentsController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/ApiControllers/PaymentMethodsController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/ApiControllers/ProductsController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/ApiControllers/ClientsController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/obj/Debug/netcoreapp2.2/Razor/Views/PaymentMethods/PartialCreateEdit.g.cshtml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/Workers/PartialCreateEdit.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/Products/PartialCreateEdit.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Contracts.DAL.App/Repositories/IWorkObjectRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Contracts.DAL.App/Repositories/IBillLineRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/WorkersPositions/PartialCreateEdit.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Contracts.DAL.App/Repositories/IWorkerInPositionRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Contracts.DAL.App/Repositories/IWorkerRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Contracts.DAL.App/Repositories/IWorkerPositionRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/PaymentMethods/PartialCreateEdit.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Contracts.DAL.App/Repositories/IPaymentRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/ClientGroups/PartialCreateEdit.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Controllers/HomeController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Contracts.DAL.App/Repositories/IPaymentMethodRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Contracts.DAL.App/Repositories/IWorkerOnObjectRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Contracts.DAL.App/Repositories/IProductRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/Bills/Details.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Contracts.DAL.App/Repositories/IClientRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/Bills/Edit.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Contracts.DAL.App/Repositories/IProductForClientRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/Bills/Index.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Contracts.DAL.App/Repositories/IClientGroupRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/Bills/Create.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/BillLines/Details.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/BillLines/Edit.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/BillLines/Index.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/BillLines/Create.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Domain/WorkerInPosition.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/ClientGroups/Details.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/ClientGroups/Edit.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/ClientGroups/Create.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/Payments/Edit.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/ClientGroups/Delete.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/Payments/Create.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/Payments/Details.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/PaymentMethods/Edit.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/Clients/Edit.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/PaymentMethods/Create.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/Clients/Create.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/Clients/Details.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/Bills/Delete.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Identity/IdentityExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/Payments/Delete.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Areas/Identity/IdentityHostingStartup.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/BillLines/Delete.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Areas/Identity/Pages/_ViewImports.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/Clients/Delete.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Areas/Identity/Pages/_ViewStart.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Controllers/PaymentMethodsController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Controllers/PaymentsController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Contracts.DAL.App/Repositories/IBillRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Controllers/BillLinesController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Controllers/ClientsController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Contracts.DAL.Base/Repositories/IBaseRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Controllers/ClientGroupsController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Controllers/BillsController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DAL.Base.EF/Repositories/BaseRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Identity/JwtHelper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/ApiControllers/Identity/AccountController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Areas/Identity/Pages/Account/Manage/_ViewStart.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DAL.Base.EF/Helpers/BaseRepositoryProvider.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DAL.Base.EF/Helpers/BaseRepositoryFactory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Areas/Identity/Pages/Account/LoginWith2fa.cshtml.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Domain/BaseEntity.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DAL.App.EF/AppUnitOfWork.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Areas/Identity/Pages/Account/ExternalLogin.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Areas/Identity/Pages/Account/LoginWith2fa.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Areas/Identity/Pages/Account/ConfirmEmail.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Areas/Identity/Pages/Account/Register.cshtml.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Areas/Identity/Pages/Account/Register.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DAL.App.EF/AppDbContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Areas/Identity/Pages/Account/Login.cshtml.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Areas/Identity/Pages/Account/Lockout.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Areas/Identity/Pages/Account/Logout.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Areas/Identity/Pages/Account/Login.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Areas/Identity/Pages/Account/Manage/DeletePersonalData.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Areas/Identity/Pages/Account/Manage/ManageNavPages.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Areas/Identity/Pages/Account/Manage/Index.cshtml.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Areas/Identity/Pages/Account/Manage/_Layout.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Areas/Identity/Pages/Account/Manage/Index.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Areas/Admin/Controllers/HomeController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Areas/Admin/Views/_ViewStart.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Areas/Admin/Views/Shared/_Layout.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Areas/Admin/Views/Home/Index.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Contracts.DAL.Base/IBaseUnitOfWork.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/obj/Debug/netcoreapp2.2/Razor/Views/BillLines/PartialDetailsDelete.g.cshtml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Contracts.DAL.App/IAppUnitOfWork.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/ViewModels/ErrorViewModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Helpers/EmailSender.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/Shared/_LoginPartial.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/Shared/_Layout.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/Shared/_ValidationScriptsPartial.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/Home/Privacy.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/Home/Index.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/_ViewStart.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/WorkersPositions/PartialDetailsDelete.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/WorkObjects/PartialDetailsDelete.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/_ViewImports.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/WorkersInPositions/PartialDetailsDelete.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/WorkersOnObjects/PartialDetailsDelete.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/ProductsForClients/PartialDetailsDelete.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/Workers/PartialDetailsDelete.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/Payments/PartialDetailsDelete.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/Products/PartialDetailsDelete.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/Clients/PartialDetailsDelete.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/PaymentMethods/PartialDetailsDelete.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/ClientGroups/PartialDetailsDelete.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/WorkObjects/PartialCreateEdit.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/WorkersOnObjects/PartialCreateEdit.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/ViewModels/WorkObjectCreateEditViewModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/WorkersInPositions/PartialCreateEdit.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Startup.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/ViewModels/WorkerOnObjectCreateEditViewModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/ProductsForClients/PartialCreateEdit.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/ViewModels/WorkerInPositionCreateEditViewModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/Payments/PartialCreateEdit.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/ViewModels/ProductsForClientsCreateEditViewModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/Clients/PartialCreateEdit.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/ViewModels/PaymentCreateEditViewModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/Bills/PartialDetailsDelete.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/ViewModels/ClientCreateEditViewModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/Bills/PartialCreateEdit.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/BillLines/PartialDetailsDelete.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/ViewModels/BillCreateEditViewModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Contracts.Base/ITrackableInstance.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/PaymentMethods/Delete.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/PaymentMethods/Details.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Contracts.BLL.Base/Services/IBaseService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8246F26C-6C11-487F-9FE9-3C9A8FB2C1BC/95/f66925bf/PageModel.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Contracts.BLL.Base/IBaseBLL.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DAL.App.EF/Helpers/AppRepositoryFactory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2254925F-A632-4F31-B1D5-B3D82A28CAEE/57/ad843a9b/UserManager`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Contracts.BLL.App/IAppBLL.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/WorkersInPositions/Edit.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Contracts.DAL.Base/Helpers/IRepositoryProvider.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/WorkersInPositions/Details.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Contracts.DAL.Base/Helpers/IRepositoryFactory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/WorkersInPositions/Create.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/WorkersInPositions/Delete.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Contracts.DAL.Base/IDataContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/WorkersPositions/Edit.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/WorkersPositions/Details.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/WorkersPositions/Create.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Contracts.DAL.Base/IBaseEntity.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/WorkersPositions/Delete.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/Products/Edit.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/Products/Details.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/Products/Create.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/Products/Delete.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/WorkObjects/Edit.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/WorkObjects/Details.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/WorkObjects/Create.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DAL.App.DTO/ClientGroupDTO.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/WorkersOnObjects/Edit.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/WorkersOnObjects/Details.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DAL.App.DTO/PaymentMethodDTO.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/WorkersOnObjects/Create.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/BillLines/PartialCreateEdit.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/ViewModels/BillLineCreateEditViewModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/ProductsForClients/Edit.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/ProductsForClients/Details.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/ProductsForClients/Create.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/ProductsForClients/Index.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Domain/WorkObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Domain/WorkerOnObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Domain/WorkerPosition.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Domain/Worker.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Domain/ProductForClient.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Domain/Product.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Domain/PaymentMethod.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Domain/Payment.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Domain/ClientGroup.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Domain/Client.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Domain/BillLine.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DAL.App.DTO/WorkerPositionDTO.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Domain/Bill.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/B4EF600F-4A59-4FE2-865A-8F97F915FB9D/dc/dbb3ca64/ControllerBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Domain/Identity/AppRole.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/Workers/Delete.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Domain/Identity/AppUser.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Controllers/ProductsController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/ProductsForClients/Delete.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/Workers/Edit.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/Workers/Details.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/Workers/Create.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Controllers/WorkersOnObjectsController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/Workers/Index.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/WorkObjects/Delete.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Views/WorkersOnObjects/Delete.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Controllers/WorkObjectsController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Controllers/ProductsForClientsController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Controllers/WorkersInPositionsController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Controllers/WorkersPositionsController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/Controllers/WorkersController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApp/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Login.g.cshtml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/60C7208E-971E-4E2B-BFF0-F3388FEEDF37/73/7b83f4d7/SignInManager`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DAL.App.DTO/WorkObjectsDTO.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DAL.App.DTO/ClientsDTO.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DAL.App.DTO/BillsDTO.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DAL.App.EF/Repositories/WorkObjectRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DAL.App.EF/Repositories/WorkerOnObjectRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DAL.App.EF/Repositories/WorkerPositionRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DAL.App.EF/Repositories/ProductForClientRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DAL.App.EF/Repositories/WorkerInPositionRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DAL.App.EF/Repositories/PaymentRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DAL.App.EF/Repositories/PaymentMethodRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DAL.App.EF/Repositories/ClientRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DAL.App.EF/Repositories/ClientGroupRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DAL.App.EF/Repositories/WorkerRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DAL.App.EF/Repositories/ProductRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DAL.App.EF/Repositories/BillLineRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DAL.App.EF/Repositories/BillRepository.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/WebApp/Controllers/BillsController.cs" />
+        <option value="$PROJECT_DIR$/WebApp/Controllers/WorkObjectsController.cs" />
+        <option value="$PROJECT_DIR$/WebApp/Startup.cs" />
+        <option value="$PROJECT_DIR$/../WebClient/src/main-router.html" />
+        <option value="$PROJECT_DIR$/../WebClient/src/interfaces/IWorkObject.ts" />
+        <option value="$PROJECT_DIR$/../WebClient/src/work-objects/index.ts" />
+        <option value="$PROJECT_DIR$/../WebClient/src/services/workobject-service.ts" />
+        <option value="$PROJECT_DIR$/../WebClient/src/workobjects/index.ts" />
+        <option value="$PROJECT_DIR$/../WebClient/src/interfaces/IWorkobject.ts" />
+        <option value="$PROJECT_DIR$/../WebClient/src/main-router.ts" />
+        <option value="$PROJECT_DIR$/../WebClient/src/services/base-service.ts" />
+        <option value="$PROJECT_DIR$/DAL.App.DTO/WorkObjectsDTO.cs" />
+        <option value="$PROJECT_DIR$/DAL.App.DTO/ClientsDTO.cs" />
+        <option value="$PROJECT_DIR$/Contracts.DAL.App/Repositories/IBillRepository.cs" />
+        <option value="$PROJECT_DIR$/Contracts.DAL.App/Repositories/IWorkObjectRepository.cs" />
+        <option value="$PROJECT_DIR$/Contracts.DAL.App/Repositories/IClientRepository.cs" />
+        <option value="$PROJECT_DIR$/DAL.App.EF/Repositories/WorkObjectRepository.cs" />
+        <option value="$PROJECT_DIR$/DAL.App.EF/Repositories/ClientRepository.cs" />
+        <option value="$PROJECT_DIR$/WebApp/ApiControllers/BillsController.cs" />
+        <option value="$PROJECT_DIR$/WebApp/ApiControllers/WorkObjectsController.cs" />
+        <option value="$PROJECT_DIR$/WebApp/ApiControllers/ClientsController.cs" />
+        <option value="$PROJECT_DIR$/DAL.App.EF/Repositories/BillRepository.cs" />
+        <option value="$PROJECT_DIR$/DAL.App.DTO/BillsDTO.cs" />
+        <option value="$PROJECT_DIR$/../WebClient/src/interfaces/IBill.ts" />
+        <option value="$PROJECT_DIR$/../WebClient/src/workers/index.html" />
+        <option value="$PROJECT_DIR$/../WebClient/src/bills/create.ts" />
+        <option value="$PROJECT_DIR$/../WebClient/src/bills/create.html" />
+        <option value="$PROJECT_DIR$/../WebClient/src/bills/delete.html" />
+        <option value="$PROJECT_DIR$/../WebClient/src/bills/details.html" />
+        <option value="$PROJECT_DIR$/../WebClient/src/bills/edit.html" />
+        <option value="$PROJECT_DIR$/../WebClient/src/bills/edit.ts" />
+        <option value="$PROJECT_DIR$/../WebClient/src/bills/delete.ts" />
+        <option value="$PROJECT_DIR$/../WebClient/src/clients/create.ts" />
+        <option value="$PROJECT_DIR$/../WebClient/src/clients/edit.ts" />
+        <option value="$PROJECT_DIR$/../WebClient/src/bills/details.ts" />
+        <option value="$PROJECT_DIR$/../WebClient/src/clients/delete.ts" />
+        <option value="$PROJECT_DIR$/../WebClient/src/clients/details.ts" />
+        <option value="$PROJECT_DIR$/../WebClient/src/workobjects/create.ts" />
+        <option value="$PROJECT_DIR$/../WebClient/src/workobjects/delete.ts" />
+        <option value="$PROJECT_DIR$/../WebClient/src/workobjects/details.ts" />
+        <option value="$PROJECT_DIR$/../WebClient/src/workobjects/edit.ts" />
+        <option value="$PROJECT_DIR$/../WebClient/src/bills/index.html" />
+        <option value="$PROJECT_DIR$/../WebClient/src/clients/index.html" />
+        <option value="$PROJECT_DIR$/../WebClient/src/clients/create.html" />
+        <option value="$PROJECT_DIR$/../WebClient/src/clients/edit.html" />
+        <option value="$PROJECT_DIR$/../WebClient/src/clients/details.html" />
+        <option value="$PROJECT_DIR$/../WebClient/src/clients/delete.html" />
+        <option value="$PROJECT_DIR$/../WebClient/src/workobjects/index.html" />
+        <option value="$PROJECT_DIR$/../WebClient/src/workobjects/edit.html" />
+        <option value="$PROJECT_DIR$/../WebClient/src/workobjects/details.html" />
+        <option value="$PROJECT_DIR$/../WebClient/src/workobjects/delete.html" />
+      </list>
+    </option>
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="907" />
+    <option name="width" value="442" />
+    <option name="height" value="728" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="SolutionExplorer" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="FileSystemExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Project" type="161ac34:FileSystemExplorerRootNode" />
+              <item name="HomeProject" type="34e6ba20:FileSystemExplorerNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="AssemblyExplorer" />
+      <pane id="SolutionExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="HomeProject" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="HomeProject" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="WebApp" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="WebClient" type="9a108dff:SolutionExplorerFileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <option name="show-all-files" value="false" />
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="editor.config.ad.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Exam1801" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="settings.typescriptcompiler" />
+    <property name="ts.external.directory.path" value="C:\Users\kalle\RiderProjects\Project\WebClient\node_modules\typescript\lib" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="WebApp" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/WebApp/WebApp.csproj" />
+      <option name="LAUNCH_PROFILE_TFM" value=".NETCoreApp,Version=v2.2" />
+      <option name="LAUNCH_PROFILE_NAME" value="WebApp" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <method v="2">
+        <option name="Build" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2f9de7e5-e99d-4024-a361-cd182a1ba08b" name="Default Changelist" comment="" />
+      <created>1550744047889</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1550744047889</updated>
+      <workItem from="1550744049315" duration="12374000" />
+      <workItem from="1550840179125" duration="2807000" />
+      <workItem from="1550906198798" duration="5023000" />
+      <workItem from="1550927444006" duration="849000" />
+      <workItem from="1551544521216" duration="11022000" />
+      <workItem from="1551718009665" duration="13180000" />
+      <workItem from="1551881329883" duration="303000" />
+      <workItem from="1551881772438" duration="19291000" />
+      <workItem from="1552300186955" duration="680000" />
+      <workItem from="1552300942575" duration="3094000" />
+      <workItem from="1552391335237" duration="8963000" />
+      <workItem from="1552412768293" duration="824000" />
+      <workItem from="1552413655652" duration="954000" />
+      <workItem from="1552415095646" duration="401000" />
+      <workItem from="1552415795010" duration="563000" />
+      <workItem from="1552644213787" duration="355000" />
+      <workItem from="1552893882472" duration="1438000" />
+      <workItem from="1553250059386" duration="1395000" />
+      <workItem from="1553254503128" duration="1491000" />
+      <workItem from="1553451434952" duration="663000" />
+      <workItem from="1553579538092" duration="43276000" />
+      <workItem from="1553751901093" duration="6568000" />
+      <workItem from="1553766761893" duration="1944000" />
+      <workItem from="1553797060277" duration="4594000" />
+      <workItem from="1553852912075" duration="18775000" />
+      <workItem from="1553962491146" duration="8981000" />
+      <workItem from="1554055937522" duration="5518000" />
+      <workItem from="1554098615639" duration="3479000" />
+      <workItem from="1554104485957" duration="45000" />
+      <workItem from="1554454308734" duration="594000" />
+      <workItem from="1554456277539" duration="5807000" />
+      <workItem from="1554786169846" duration="11687000" />
+      <workItem from="1554805210353" duration="9033000" />
+      <workItem from="1554824816051" duration="29230000" />
+      <workItem from="1554959035322" duration="4634000" />
+      <workItem from="1554965277543" duration="25986000" />
+    </task>
+    <task id="LOCAL-00001" summary="Repositories, uow, but webpage throws error">
+      <created>1552414453765</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1552414453765</updated>
+    </task>
+    <task id="LOCAL-00002" summary="homepage error removed">
+      <created>1552416342403</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1552416342403</updated>
+    </task>
+    <task id="LOCAL-00003" summary="UOW-s">
+      <created>1553608327934</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1553608327934</updated>
+    </task>
+    <task id="LOCAL-00004" summary="UOW-s">
+      <created>1553683139276</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1553683139276</updated>
+    </task>
+    <task id="LOCAL-00005" summary="ViewModels and PartialViews done">
+      <created>1553691014757</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1553691014757</updated>
+    </task>
+    <task id="LOCAL-00006" summary=" layouts">
+      <created>1554061458007</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1554061458007</updated>
+    </task>
+    <task id="LOCAL-00007" summary="WebApp Controllers don't work">
+      <created>1554825337342</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1554825337342</updated>
+    </task>
+    <task id="LOCAL-00008" summary="login, logout, 3 DTO-s">
+      <created>1554892144275</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1554892144275</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="265821000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14901665" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Capture Tool" order="3" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3289689" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.36988544" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.46153846" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="NuGet" order="7" weight="0.5564648" />
+      <window_info anchor="bottom" id="Performance Profiler" order="8" />
+      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="10" />
+      <window_info anchor="bottom" id="Version Control" order="11" weight="0.3289689" />
+      <window_info anchor="bottom" id="Unit Tests" order="12" />
+      <window_info anchor="bottom" id="REST Client" order="13" weight="0.3289689" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="14" visible="true" weight="0.4844517" />
+      <window_info anchor="bottom" id="Event Log" order="15" side_tool="true" />
+      <window_info anchor="bottom" id="Build" order="16" weight="0.27986908" />
+      <window_info anchor="bottom" id="TypeScript" order="17" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="right" id="Errors In Solution" order="4" />
+      <window_info anchor="right" id="Unit Tests Coverage" order="5" weight="0.32980332" />
+      <window_info anchor="right" id="Database" order="6" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22314675" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Capture Tool" order="3" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.117839605" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="NuGet" order="7" weight="0.5564648" />
+      <window_info anchor="bottom" id="Performance Profiler" order="8" />
+      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="10" />
+      <window_info anchor="bottom" id="Version Control" order="11" weight="0.3289689" />
+      <window_info anchor="bottom" id="Unit Tests" order="12" />
+      <window_info anchor="bottom" id="REST Client" order="13" weight="0.3289689" />
+      <window_info anchor="bottom" id="Terminal" order="14" weight="0.4942717" />
+      <window_info anchor="bottom" id="Event Log" order="15" side_tool="true" />
+      <window_info anchor="bottom" id="Build" order="16" weight="0.28805238" />
+      <window_info anchor="bottom" id="TypeScript" order="17" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="right" id="Errors In Solution" order="4" />
+      <window_info anchor="right" id="Unit Tests Coverage" order="5" weight="0.32980332" />
+      <window_info anchor="right" id="Database" order="6" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Repositories, uow, but webpage throws error" />
+    <MESSAGE value="homepage error removed" />
+    <MESSAGE value="UOW-s" />
+    <MESSAGE value="ViewModels and PartialViews done" />
+    <MESSAGE value=" layouts" />
+    <MESSAGE value="WebApp Controllers don't work" />
+    <MESSAGE value="login, logout, 3 DTO-s" />
+    <option name="LAST_COMMIT_MESSAGE" value="login, logout, 3 DTO-s" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Contracts.DAL.App/Repositories/IBillRepository.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="10" selection-start-line="10" selection-end-line="11" />
+          <folding>
+            <marker date="1555008196631" expanded="false" signature="6:135" ph="..." />
+            <marker date="1555008196631" expanded="true" signature="177:327" ph="{...}" />
+            <marker date="1555008196631" expanded="true" signature="244:325" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Contracts.DAL.App/Repositories/IWorkObjectRepository.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="10" column="48" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
+          <folding>
+            <marker date="1555008457965" expanded="true" signature="6:135" ph="..." />
+            <marker date="1555008457965" expanded="true" signature="177:328" ph="{...}" />
+            <marker date="1555008457965" expanded="true" signature="256:326" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Domain/Client.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="27" column="23" lean-forward="true" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
+          <folding>
+            <marker date="1551549487719" expanded="false" signature="6:78" ph="..." />
+            <marker date="1551549487719" expanded="true" signature="96:964" ph="{...}" />
+            <marker date="1551549487719" expanded="true" signature="135:962" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Contracts.DAL.App/Repositories/IClientRepository.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="10" column="22" lean-forward="true" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+          <folding>
+            <marker date="1555008451254" expanded="true" signature="6:135" ph="..." />
+            <marker date="1555008451254" expanded="true" signature="177:332" ph="{...}" />
+            <marker date="1555008451254" expanded="true" signature="248:330" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DAL.App.EF/Repositories/ClientGroupRepository.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="34" column="31" lean-forward="true" selection-start-line="25" selection-start-column="12" selection-end-line="34" selection-end-column="31" />
+          <folding>
+            <marker date="1554890985839" expanded="false" signature="6:248" ph="..." />
+            <marker date="1554890985839" expanded="true" signature="283:1182" ph="{...}" />
+            <marker date="1554890985839" expanded="true" signature="378:1180" ph="{...}" />
+            <marker date="1554890985839" expanded="true" signature="467:487" ph="{...}" />
+            <marker date="1554890985839" expanded="true" signature="568:668" ph="{...}" />
+            <marker date="1554890985839" expanded="true" signature="761:1174" ph="{...}" />
+            <marker date="1554890985839" expanded="true" signature="890:1131" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DAL.App.EF/Repositories/WorkObjectRepository.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="373">
+          <caret line="48" column="35" selection-start-line="48" selection-start-column="35" selection-end-line="48" selection-end-column="35" />
+          <folding>
+            <marker date="1555009197985" expanded="false" signature="6:248" ph="..." />
+            <marker date="1555009197985" expanded="true" signature="283:1582" ph="{...}" />
+            <marker date="1555009197985" expanded="true" signature="375:1580" ph="{...}" />
+            <marker date="1555009197985" expanded="true" signature="463:483" ph="{...}" />
+            <marker date="1555009197985" expanded="true" signature="555:688" ph="{...}" />
+            <marker date="1555009197985" expanded="true" signature="766:1057" ph="{...}" />
+            <marker date="1555009197985" expanded="true" signature="868:1015" ph="{...}" />
+            <marker date="1555009197985" expanded="true" signature="1135:1574" ph="{...}" />
+            <marker date="1555009197985" expanded="true" signature="1253:1531" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DAL.App.EF/Repositories/ClientRepository.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="50" column="9" lean-forward="true" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
+          <folding>
+            <marker date="1555009195079" expanded="false" signature="6:248" ph="..." />
+            <marker date="1555009195079" expanded="true" signature="283:1622" ph="{...}" />
+            <marker date="1555009195079" expanded="true" signature="363:1620" ph="{...}" />
+            <marker date="1555009195079" expanded="true" signature="447:467" ph="{...}" />
+            <marker date="1555009195079" expanded="true" signature="543:681" ph="{...}" />
+            <marker date="1555009195079" expanded="true" signature="754:1025" ph="{...}" />
+            <marker date="1555009195079" expanded="true" signature="848:975" ph="{...}" />
+            <marker date="1555009195079" expanded="true" signature="1116:1614" ph="{...}" />
+            <marker date="1555009195079" expanded="true" signature="1230:1571" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/ApiControllers/PaymentMethodsController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="29" column="52" selection-start-line="29" selection-start-column="48" selection-end-line="29" selection-end-column="52" />
+          <folding>
+            <marker date="1554890985868" expanded="false" signature="6:274" ph="..." />
+            <marker date="1554890985868" expanded="true" signature="307:2518" ph="{...}" />
+            <marker date="1554890985868" expanded="true" signature="420:2516" ph="{...}" />
+            <marker date="1554890985868" expanded="true" signature="533:577" ph="{...}" />
+            <marker date="1554890985868" expanded="true" signature="722:850" ph="{...}" />
+            <marker date="1554890985868" expanded="true" signature="994:1225" ph="{...}" />
+            <marker date="1554890985868" expanded="true" signature="1117:1180" ph="{...}" />
+            <marker date="1554890985868" expanded="true" signature="1384:1641" ph="{...}" />
+            <marker date="1554890985868" expanded="true" signature="1434:1499" ph="{...}" />
+            <marker date="1554890985868" expanded="true" signature="1799:2028" ph="{...}" />
+            <marker date="1554890985868" expanded="true" signature="2181:2510" ph="{...}" />
+            <marker date="1554890985868" expanded="true" signature="2303:2366" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/ApiControllers/BillsController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="28" column="68" selection-start-line="28" selection-start-column="68" selection-end-line="28" selection-end-column="68" />
+          <folding>
+            <marker date="1555009536517" expanded="false" signature="6:255" ph="..." />
+            <marker date="1555009536517" expanded="true" signature="288:2175" ph="{...}" />
+            <marker date="1555009536517" expanded="true" signature="392:2173" ph="{...}" />
+            <marker date="1555009536517" expanded="true" signature="496:540" ph="{...}" />
+            <marker date="1555009536517" expanded="true" signature="655:775" ph="{...}" />
+            <marker date="1555009536517" expanded="true" signature="892:1087" ph="{...}" />
+            <marker date="1555009536517" expanded="true" signature="988:1051" ph="{...}" />
+            <marker date="1555009536517" expanded="true" signature="1210:1468" ph="{...}" />
+            <marker date="1555009536517" expanded="true" signature="1251:1316" ph="{...}" />
+            <marker date="1555009536517" expanded="true" signature="1581:1765" ph="{...}" />
+            <marker date="1555009536517" expanded="true" signature="1891:2166" ph="{...}" />
+            <marker date="1555009536517" expanded="true" signature="1986:2049" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/ApiControllers/WorkObjectsController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="28" column="56" selection-start-line="28" selection-start-column="56" selection-end-line="28" selection-end-column="56" />
+          <folding>
+            <marker date="1555009561340" expanded="false" signature="6:255" ph="..." />
+            <marker date="1555009561340" expanded="true" signature="288:2333" ph="{...}" />
+            <marker date="1555009561340" expanded="true" signature="398:2331" ph="{...}" />
+            <marker date="1555009561340" expanded="true" signature="508:552" ph="{...}" />
+            <marker date="1555009561340" expanded="true" signature="685:766" ph="{...}" />
+            <marker date="1555009561340" expanded="true" signature="901:1120" ph="{...}" />
+            <marker date="1555009561340" expanded="true" signature="1015:1078" ph="{...}" />
+            <marker date="1555009561340" expanded="true" signature="1267:1515" ph="{...}" />
+            <marker date="1555009561340" expanded="true" signature="1314:1379" ph="{...}" />
+            <marker date="1555009561340" expanded="true" signature="1658:1870" ph="{...}" />
+            <marker date="1555009561340" expanded="true" signature="2014:2325" ph="{...}" />
+            <marker date="1555009561340" expanded="true" signature="2127:2190" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/ApiControllers/ClientsController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="28" column="69" selection-start-line="28" selection-start-column="69" selection-end-line="28" selection-end-column="69" />
+          <folding>
+            <marker date="1555009562417" expanded="false" signature="6:255" ph="..." />
+            <marker date="1555009562417" expanded="true" signature="288:2224" ph="{...}" />
+            <marker date="1555009562417" expanded="true" signature="394:2222" ph="{...}" />
+            <marker date="1555009562417" expanded="true" signature="500:544" ph="{...}" />
+            <marker date="1555009562417" expanded="true" signature="665:786" ph="{...}" />
+            <marker date="1555009562417" expanded="true" signature="909:1112" ph="{...}" />
+            <marker date="1555009562417" expanded="true" signature="1011:1074" ph="{...}" />
+            <marker date="1555009562417" expanded="true" signature="1243:1479" ph="{...}" />
+            <marker date="1555009562417" expanded="true" signature="1286:1351" ph="{...}" />
+            <marker date="1555009562417" expanded="true" signature="1602:1796" ph="{...}" />
+            <marker date="1555009562417" expanded="true" signature="1928:2215" ph="{...}" />
+            <marker date="1555009562417" expanded="true" signature="2029:2092" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DAL.App.DTO/WorkObjectsDTO.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+          <folding>
+            <marker date="1555006596618" expanded="false" signature="6:61" ph="..." />
+            <marker date="1555006596618" expanded="true" signature="84:462" ph="{...}" />
+            <marker date="1555006596618" expanded="true" signature="118:460" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../WebClient/src/interfaces/IBill.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../WebClient/src/workers/index.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../WebClient/src/bills/index.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="13" column="33" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DAL.App.EF/Repositories/BillRepository.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="51" column="42" lean-forward="true" selection-start-line="51" selection-start-column="42" selection-end-line="51" selection-end-column="42" />
+          <folding>
+            <marker date="1555010203700" expanded="false" signature="6:248" ph="..." />
+            <marker date="1555010203700" expanded="true" signature="283:1747" ph="{...}" />
+            <marker date="1555010203700" expanded="true" signature="357:1745" ph="{...}" />
+            <marker date="1555010203700" expanded="true" signature="439:459" ph="{...}" />
+            <marker date="1555010203700" expanded="true" signature="526:659" ph="{...}" />
+            <marker date="1555010203700" expanded="true" signature="739:997" ph="{...}" />
+            <marker date="1555010203700" expanded="true" signature="829:949" ph="{...}" />
+            <marker date="1555010203700" expanded="true" signature="1086:1739" ph="{...}" />
+            <marker date="1555010203700" expanded="true" signature="1198:1696" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DAL.App.DTO/BillsDTO.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
+          <folding>
+            <marker date="1555010203725" expanded="false" signature="6:61" ph="..." />
+            <marker date="1555010203725" expanded="true" signature="84:671" ph="{...}" />
+            <marker date="1555010203725" expanded="true" signature="112:669" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../WebClient/src/workers/create.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="14">
+          <caret line="1" column="16" lean-forward="true" selection-start-line="1" selection-start-column="16" selection-end-line="2" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../WebClient/src/workers/create.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="10" column="8" selection-end-line="72" />
+          <folding>
+            <element signature="e#0#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../WebClient/src/bills/details.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="868">
+          <caret line="62" selection-start-line="62" selection-end-line="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../WebClient/src/bills/edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="53" column="42" selection-start-line="53" selection-start-column="42" selection-end-line="53" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../WebClient/src/bills/delete.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="10" selection-end-line="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Views/Bills/PartialCreateEdit.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="499">
+          <caret line="42" column="6" lean-forward="true" selection-start-line="2" selection-end-line="42" selection-end-column="6" />
+          <folding>
+            <marker date="1554885302543" expanded="true" signature="117:389" ph="&lt;div.../&gt;" />
+            <marker date="1554885302543" expanded="true" signature="390:624" ph="&lt;div.../&gt;" />
+            <marker date="1554885302543" expanded="true" signature="625:838" ph="&lt;div.../&gt;" />
+            <marker date="1554885302543" expanded="true" signature="839:1073" ph="&lt;div.../&gt;" />
+            <marker date="1554885302543" expanded="true" signature="1074:1302" ph="&lt;div.../&gt;" />
+            <marker date="1554885302543" expanded="true" signature="1303:1531" ph="&lt;div.../&gt;" />
+            <marker date="1554885302543" expanded="true" signature="1532:1763" ph="&lt;div.../&gt;" />
+            <marker date="1554885302543" expanded="true" signature="1764:1989" ph="&lt;div.../&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Views/Bills/Create.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="25" column="6" lean-forward="true" selection-start-line="6" selection-end-line="25" selection-end-column="6" />
+          <folding>
+            <marker date="1553684173064" expanded="true" signature="50:88" ph="@..." />
+            <marker date="1553684173064" expanded="true" signature="128:464" ph="&lt;div.../&gt;" />
+            <marker date="1553684173064" expanded="true" signature="150:457" ph="&lt;div.../&gt;" />
+            <marker date="1553684173064" expanded="true" signature="181:446" ph="&lt;form.../&gt;" />
+            <marker date="1553684173064" expanded="true" signature="308:430" ph="&lt;div.../&gt;" />
+            <marker date="1553684173064" expanded="true" signature="466:521" ph="&lt;div.../&gt;" />
+            <marker date="1553684173064" expanded="true" signature="523:610" ph="@{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../WebClient/src/workers/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="57" column="11" lean-forward="true" selection-start-line="57" selection-start-column="11" selection-end-line="57" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DAL.App.DTO/ClientsDTO.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="14" column="47" lean-forward="true" selection-start-line="14" selection-start-column="47" selection-end-line="14" selection-end-column="47" />
+          <folding>
+            <marker date="1555008196611" expanded="false" signature="6:92" ph="..." />
+            <marker date="1555008196611" expanded="true" signature="115:517" ph="{...}" />
+            <marker date="1555008196611" expanded="true" signature="145:515" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../WebClient/src/bills/create.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="22" column="23" selection-end-line="72" />
+          <folding>
+            <element signature="e#0#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../WebClient/src/bills/delete.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="49" column="9" selection-end-line="77" />
+          <folding>
+            <element signature="e#0#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../WebClient/src/bills/details.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="5" column="44" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../WebClient/src/bills/edit.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="54" lean-forward="true" selection-end-line="80" />
+          <folding>
+            <element signature="e#0#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../WebClient/src/clients/delete.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="67" column="6" selection-start-line="67" selection-start-column="6" selection-end-line="67" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../WebClient/src/clients/index.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../WebClient/src/clients/edit.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="68" column="6" lean-forward="true" selection-start-line="63" selection-start-column="4" selection-end-line="68" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../WebClient/src/clients/details.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="5" column="54" selection-start-line="5" selection-start-column="54" selection-end-line="5" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../WebClient/src/clients/create.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="31" column="3" lean-forward="true" selection-start-line="19" selection-start-column="2" selection-end-line="31" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../WebClient/src/workobjects/create.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="31" column="3" lean-forward="true" selection-start-line="19" selection-start-column="2" selection-end-line="31" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../WebClient/src/workobjects/details.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="54" column="3" selection-start-line="54" selection-start-column="3" selection-end-line="54" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../WebClient/src/workobjects/index.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../WebClient/src/workobjects/edit.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="69" column="3" selection-start-line="69" selection-start-column="3" selection-end-line="69" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../WebClient/src/workobjects/delete.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="61" column="2" selection-start-line="61" selection-start-column="2" selection-end-line="70" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../WebClient/src/bills/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="66" column="65" selection-start-line="66" selection-start-column="65" selection-end-line="66" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../WebClient/src/bills/create.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="8" selection-end-line="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../WebClient/src/clients/create.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="518">
+          <caret line="49" selection-start-line="49" selection-end-line="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../WebClient/src/clients/delete.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../WebClient/src/clients/details.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="48" selection-start-line="48" selection-end-line="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../WebClient/src/clients/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="742">
+          <caret line="53" column="69" selection-start-line="53" selection-start-column="69" selection-end-line="53" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../WebClient/src/clients/edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../WebClient/src/workobjects/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../WebClient/src/workobjects/edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../WebClient/src/workobjects/details.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="490">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../WebClient/src/workobjects/delete.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="17" column="29" lean-forward="true" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

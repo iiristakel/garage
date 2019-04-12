@@ -1,0 +1,8 @@
+@model Domain.WorkerPosition
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="form-group">
+    <label asp-for="WorkerPositionValue" class="control-label"></label>
+    <input asp-for="WorkerPositionValue" class="form-control"/>
+    <span asp-validation-for="WorkerPositionValue" class="text-danger"></span>
+</div>

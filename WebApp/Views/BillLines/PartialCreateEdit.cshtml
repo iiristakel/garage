@@ -1,0 +1,37 @@
+@model WebApp.ViewModels.BillLineCreateEditViewModel
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+<div class="form-group">
+    <label asp-for="BillLine.BillId" class="control-label"></label>
+    <select asp-for="BillLine.BillId" class="form-control" asp-items="Model.BillSelectList"></select>
+    <span asp-validation-for="BillLine.BillId" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="BillLine.Product" class="control-label"></label>
+    <input asp-for="BillLine.Product" class="form-control" />
+    <span asp-validation-for="BillLine.Product" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="BillLine.Sum" class="control-label"></label>
+    <input asp-for="BillLine.Sum" class="form-control"/>
+    <span asp-validation-for="BillLine.Sum" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="BillLine.Amount" class="control-label"></label>
+    <input asp-for="BillLine.Amount" class="form-control"/>
+    <span asp-validation-for="BillLine.Amount" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="BillLine.DiscountPercent" class="control-label"></label>
+    <input asp-for="BillLine.DiscountPercent" class="form-control"/>
+    <span asp-validation-for="BillLine.DiscountPercent" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="BillLine.SumWithDiscount" class="control-label"></label>
+    <input asp-for="BillLine.SumWithDiscount" class="form-control"/>
+    <span asp-validation-for="BillLine.SumWithDiscount" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <input type="submit" value="Save" class="btn btn-primary"/>
+</div>
