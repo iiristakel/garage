@@ -1,0 +1,81 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+    //Layout = "/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/AdminLTE/dist/css/adminlte.min.css"/>
+
+
+<body class="hold-transition login-page">
+<div class="login-box">
+    <div class="login-logo">
+        <h1>@ViewData["Title"]</h1>
+    </div>
+    <!-- /.login-logo -->
+    <div class="card">
+        <div class="card-body login-card-body">
+            <p class="login-box-msg">Sign in to start your session</p>
+
+            <form id="account" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="input-group mb-3">
+                    <input asp-for="Input.Email" type="email" class="form-control" placeholder="Email"/>
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    <div class="input-group-append">
+                        <span class="fa fa-envelope input-group-text"></span>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <input asp-for="Input.Password" type="password" class="form-control" placeholder="Password"/>
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    <div class="input-group-append">
+                        <span class="fa fa-lock input-group-text"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-8">
+                        <div class="checkbox icheck">
+                            <label>
+                                <input asp-for="Input.RememberMe"/>
+                                @Html.DisplayNameFor(m => m.Input.RememberMe)
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">Log in</button>
+                </div>
+                <div class="form-group">
+                    <p>
+                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                    </p>
+                    <p>
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                    </p>
+                </div>
+            </form>
+
+            <div class="social-auth-links text-center mb-3">
+                <p>- OR -</p>
+                <a href="#" class="btn btn-block btn-primary">
+                    <i class="fa fa-facebook mr-2"></i> Sign in using Facebook
+                </a>
+                <a href="#" class="btn btn-block btn-danger">
+                    <i class="fa fa-google-plus mr-2"></i> Sign in using Google+
+                </a>
+            </div>
+            <!-- /.social-auth-links -->
+        </div>
+        <!-- /.login-card-body -->
+    </div>
+</div>
+<!-- /.login-box -->
+
+</body>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial"/>
+}

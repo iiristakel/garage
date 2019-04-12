@@ -1,0 +1,21 @@
+@model WebApp.ViewModels.WorkerOnObjectCreateEditViewModel
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="WorkerOnObject.WorkerId" class="control-label"></label>
+                <select asp-for="WorkerOnObject.WorkerId" class ="form-control" asp-items="Model.WorkerSelectList"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerOnObject.WorkObjectId" class="control-label"></label>
+                <select asp-for="WorkerOnObject.WorkObjectId" class ="form-control" asp-items="Model.WorkObjectSelectList"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerOnObject.From" class="control-label"></label>
+                <input asp-for="WorkerOnObject.From" class="form-control" />
+                <span asp-validation-for="WorkerOnObject.From" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerOnObject.Until" class="control-label"></label>
+                <input asp-for="WorkerOnObject.Until" class="form-control" />
+                <span asp-validation-for="WorkerOnObject.Until" class="text-danger"></span>
+            </div>

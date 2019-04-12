@@ -1,0 +1,53 @@
+<template>
+  <h1>Create</h1>
+
+  <h4>BillLine</h4>
+  <hr/>
+  <div class="row">
+    <div class="col-md-4">
+      <form action="/BillLines/Create" method="post">
+        
+
+        <div class="form-group">
+          <label class="control-label" for="BillLine_BillId">BillId</label>
+          <select class="form-control" id="BillLine_BillId" name="BillLine.BillId"></select>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="BillLine_Product">Product</label>
+          <input class="form-control" type="text" id="BillLine_Product" maxlength="128" name="BillLine.Product" 
+                 value.bind="billLine.product" />
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="BillLine_Sum">Sum</label>
+          <input class="form-control" type="text" id="BillLine_Sum" name="BillLine.Sum" 
+                 value.bind="billLine.sumWithoutDiscount" />
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="BillLine_Amount">Amount</label>
+          <input class="form-control" type="text" id="BillLine_Amount" name="BillLine.Amount" value.bind="billLine.amount" />
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="BillLine_DiscountPercent">DiscountPercent</label>
+          <input class="form-control" type="text" id="BillLine_DiscountPercent" name="BillLine.DiscountPercent"
+                 value.bind="billLine.discountPercent"/>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="BillLine_SumWithDiscount">SumWithDiscount</label>
+          <input class="form-control" type="text" id="BillLine_SumWithDiscount" name="BillLine.SumWithDiscount" 
+                 value.bind="billl.sumWithDiscount"/>
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Save" class="btn btn-primary"/>
+        </div>
+
+    </div>
+  </div>
+
+  <div>
+    <a route-href="route: billsCreate">Back to Bill</a> 
+    <!--TODO: need to go back to bill creation-->
+    
+  </div>
+
+
+</template>

@@ -1,0 +1,127 @@
+<template>
+  <h1>Create</h1>
+
+  <h4>Bill</h4>
+  <hr/>
+  <div class="row">
+    <div class="col-md-4">
+      <form submit.delegate="submit()" method="post">
+
+        <div class="form-group">
+          <label class="control-label" for="Bill_InvoiceNr">InvoiceNr</label>
+          <input class="form-control" type="text" id="Bill_InvoiceNr" name="Bill.InvoiceNr"
+                 value.bind="bill.invoiceNr"/>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="Bill_DateTime">DateTime</label>
+          <input class="form-control" type="date" id="Bill_DateTime" name="Bill.DateTime" value.bind="bill.dateTime"/>
+          <span class="text-danger field-validation-valid" data-valmsg-for="Bill.DateTime"
+                data-valmsg-replace="true"></span>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="Bill_ClientId">Client</label>
+          <select class="form-control" data-val="true" id="Bill_ClientId" name="Bill.ClientId" 
+                  value.bind="bill.clientId">
+            <option model.bind="null">Choose...</option>
+            <option repeat.for="client of clients"
+                    model.bind="bill.clientId">
+              ${client.companyName}
+            </option>
+          </select>
+        </div>
+        
+        <div>
+          <a route-href="route: billlinesCreate">Add new billLine</a>
+        </div>
+        
+        <div if.bind="bill.billLines.length != null">
+          <table class="table">
+            <thead>
+            <tr>
+              <th>
+                Product
+              </th>
+              <th>
+                Sum
+              </th>
+              <th>
+                Amount
+              </th>
+              <th>
+                DiscountPercent
+              </th>
+              <th>
+                SumWithDiscount
+              </th>
+              <th></th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr repeat.for="billLine of bill.billLines">
+              <td>
+                ${billLine.product}
+              </td>
+              <td>
+                ${billLine.sumWithoutDiscount}€
+              </td>
+              <td>
+                ${billLine.amount}pc
+              </td>
+              <td>
+                ${billLine.discountPercent}€
+              </td>
+              <td>
+                ${billLine.sumWithDiscount}€
+              </td>
+              <td>
+                ${bill.taxPercent}%
+              </td>
+              <td>
+                ${bill.finalSum}€
+              </td>
+              <td>
+                ${bill.comment}
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="Bill_ArrivalFee">ArrivalFee</label>
+          <input class="form-control" type="text" id="Bill_ArrivalFee" name="Bill.ArrivalFee"
+                 value.bind="bill.arrivalFee"/>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="Bill_Sum">Sum (without taxes)</label>
+          <input class="form-control" type="text" id="Bill_Sum" name="Bill.Sum" value.bind="bill.sumWithoutTaxes"/>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="Bill_TaxPercent">TaxPercent</label>
+          <input class="form-control" type="text" id="Bill_TaxPercent" name="Bill.TaxPercent"
+                 value.bind="bill.taxPercent"/>
+        </div>
+        <!--<div class="form-group">-->
+        <!--<label class="control-label" for="Bill_FinalSum">FinalSum</label>-->
+        <!--<input class="form-control" type="text" id="Bill_FinalSum" name="Bill.FinalSum" value.bind="bill.finalSum" />-->
+        <!--<span class="text-danger field-validation-valid" data-valmsg-for="Bill.FinalSum" data-valmsg-replace="true"></span>-->
+        <!--</div>-->
+
+
+        <div class="form-group">
+          <label class="control-label" for="Bill_Comment">Comment</label>
+          <input class="form-control" type="text" id="Bill_Comment" name="Bill.Comment" value.bind="bill.comment"/>
+        </div>
+
+        <div class="form-group">
+          <input type="submit" value="Create" class="btn btn-primary"/>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div>
+    <a route-href="route: billsIndex">Back to List</a>
+  </div>
+
+</template>

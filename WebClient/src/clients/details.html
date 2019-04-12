@@ -1,0 +1,87 @@
+<template>
+
+
+  <h1>Details</h1>
+
+  <div>
+
+    <h4>Client</h4>
+    <hr/>
+    <dl class="row">
+      <dt class="col-sm-2">
+        ClientGroup
+      </dt>
+      <dd class="col-sm-10">
+        ${client.clientGroup}
+      </dd>
+      <dt class="col-sm-2">
+        CompanyName
+      </dt>
+      <dd class="col-sm-10">
+        ${client.companyName}
+
+      </dd>
+      <dt class="col-sm-2">
+        Address
+      </dt>
+      <dd class="col-sm-10">
+        ${client.address}
+
+      </dd>
+      <dt class="col-sm-2">
+        Phone
+      </dt>
+      <dd class="col-sm-10">
+        ${client.phone}
+
+      </dd>
+      <dt class="col-sm-2">
+        ContactPerson
+      </dt>
+      <dd class="col-sm-10">
+        ${client.contactPerson}
+      </dd>
+    </dl>
+
+    <div if.bind="client.productsForClient.length != null">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>
+            Product
+          </th>
+          <th>
+            Product code
+          </th>
+          <th>
+            Last service
+          </th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr repeat.for="product of client.productsForClient"> 
+          <!--TODO: product is null at the moment-->
+          <td>
+            ${product.productName}
+          </td>
+          <td>
+            ${product.productCode}
+          </td>
+          <td>
+            ${product.workobject.From}
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  <div>
+    <a route-href="route: clientsEdit">Edit</a> |
+    <a route-href="route: clientsIndex">Back to List</a>
+
+  </div>
+
+
+</template>

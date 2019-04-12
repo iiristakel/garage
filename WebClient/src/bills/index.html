@@ -1,0 +1,79 @@
+<template>
+  <h1>Bills</h1>
+
+  <p>
+    <a route-href="route: billsCreate">Create New Bill</a>
+  </p>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>
+        InvoiceNr
+      </th>
+      <th>
+        Client
+      </th>
+      <th>
+        DateTime
+      </th>
+      <th>
+        ArrivalFee
+      </th>
+      <th>
+        Sum
+      </th>
+      <th>
+        TaxPercent
+      </th>
+      <th>
+        FinalSum
+      </th>
+      <th>
+        Comment
+      </th>
+      <th>
+        PaymentsCount
+      </th>
+    </tr>
+    </thead>
+    
+    <tbody>
+    <tr repeat.for="bill of bills">
+      <td>
+        ${bill.invoiceNr}
+      </td>
+      <td>
+        ${bill.client}
+      </td>
+      <td>
+        ${bill.dateTime}
+      </td>
+      <td>
+        ${bill.arrivalFee}€
+      </td>
+      <td>
+        ${bill.sumWithoutTaxes}€
+      </td>
+      <td>
+        ${bill.taxPercent}%
+      </td>
+      <td>
+        ${bill.finalSum}€
+      </td>
+      <td>
+        ${bill.comment}
+      </td>
+      <td>
+        ${bill.paymentsCount}
+      </td>
+      <td>
+        <a route-href="route: billsEdit; params.bind: {id: bill.id}">Edit</a> |
+        <a route-href="route: billsDetails; params.bind: {id: bill.id}">Details</a> |
+        <a route-href="route: billsDelete; params.bind: {id: bill.id}">Delete</a>
+
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+</template>

@@ -1,0 +1,62 @@
+<template>
+
+  <h1>Index</h1>
+
+  <p>
+    <a route-href="route: clientsCreate">Create New</a>
+  </p>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>
+        ClientGroup
+      </th>
+      <th>
+        CompanyName
+      </th>
+      <th>
+        Address
+      </th>
+      <th>
+        Phone
+      </th>
+      <th>
+        ContactPerson
+      </th>
+      <th>
+        ProductsCount
+      </th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr repeat.for="client of clients">
+      <td>
+        ${client.clientGroup}
+      </td>
+      <td>
+        ${client.companyName}
+      </td>
+      <td>
+        ${client.address}
+      </td>
+      <td>
+        ${client.phone}
+      </td>
+      <td>
+        ${client.contactPerson}
+      </td>
+      <td>
+        ${client.productsCount}
+      </td>
+      <td>
+        <a route-href="route: clientsEdit; params.bind: {id: client.id}">Edit</a> |
+        <a route-href="route: clientsDetails; params.bind: {id: client.id}">Details</a> |
+        <a route-href="route: clientsDelete; params.bind: {id: client.id}">Delete</a>
+
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+</template>

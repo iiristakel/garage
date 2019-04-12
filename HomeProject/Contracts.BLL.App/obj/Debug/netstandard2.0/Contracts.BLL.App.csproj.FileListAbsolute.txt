@@ -1,0 +1,16 @@
+C:\Users\kalle\RiderProjects\Project\HomeProject\Contracts.BLL.App\bin\Debug\netstandard2.0\Contracts.BLL.App.deps.json
+C:\Users\kalle\RiderProjects\Project\HomeProject\Contracts.BLL.App\bin\Debug\netstandard2.0\Contracts.BLL.App.dll
+C:\Users\kalle\RiderProjects\Project\HomeProject\Contracts.BLL.App\bin\Debug\netstandard2.0\Contracts.BLL.App.pdb
+C:\Users\kalle\RiderProjects\Project\HomeProject\Contracts.BLL.App\bin\Debug\netstandard2.0\Contracts.Base.dll
+C:\Users\kalle\RiderProjects\Project\HomeProject\Contracts.BLL.App\bin\Debug\netstandard2.0\Contracts.BLL.Base.dll
+C:\Users\kalle\RiderProjects\Project\HomeProject\Contracts.BLL.App\bin\Debug\netstandard2.0\Contracts.DAL.Base.dll
+C:\Users\kalle\RiderProjects\Project\HomeProject\Contracts.BLL.App\bin\Debug\netstandard2.0\Contracts.BLL.Base.pdb
+C:\Users\kalle\RiderProjects\Project\HomeProject\Contracts.BLL.App\bin\Debug\netstandard2.0\Contracts.Base.pdb
+C:\Users\kalle\RiderProjects\Project\HomeProject\Contracts.BLL.App\bin\Debug\netstandard2.0\Contracts.DAL.Base.pdb
+C:\Users\kalle\RiderProjects\Project\HomeProject\Contracts.BLL.App\obj\Debug\netstandard2.0\Contracts.BLL.App.csprojAssemblyReference.cache
+C:\Users\kalle\RiderProjects\Project\HomeProject\Contracts.BLL.App\obj\Debug\netstandard2.0\Contracts.BLL.App.csproj.CoreCompileInputs.cache
+C:\Users\kalle\RiderProjects\Project\HomeProject\Contracts.BLL.App\obj\Debug\netstandard2.0\Contracts.BLL.App.AssemblyInfoInputs.cache
+C:\Users\kalle\RiderProjects\Project\HomeProject\Contracts.BLL.App\obj\Debug\netstandard2.0\Contracts.BLL.App.AssemblyInfo.cs
+C:\Users\kalle\RiderProjects\Project\HomeProject\Contracts.BLL.App\obj\Debug\netstandard2.0\Contracts.BLL.App.csproj.CopyComplete
+C:\Users\kalle\RiderProjects\Project\HomeProject\Contracts.BLL.App\obj\Debug\netstandard2.0\Contracts.BLL.App.dll
+C:\Users\kalle\RiderProjects\Project\HomeProject\Contracts.BLL.App\obj\Debug\netstandard2.0\Contracts.BLL.App.pdb
