@@ -6,8 +6,8 @@ using Domain;
 
 namespace Contracts.DAL.App.Repositories
 {
-    public interface IProductRepository: IBaseRepositoryAsync<Product>
+    public interface IProductRepository: IBaseRepository<Product>
     {
-        Task<IEnumerable<ProductDTO>> GetAllAsync();
+        Task<List<ProductDTO>> GetAllAsync();
     }
 }

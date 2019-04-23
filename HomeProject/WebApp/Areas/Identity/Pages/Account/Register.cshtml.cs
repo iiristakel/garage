@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using Domain;
 using Microsoft.AspNetCore.Authorization;
 using Domain.Identity;
 using Microsoft.AspNetCore.Identity;
@@ -57,15 +58,17 @@ namespace WebApp.Areas.Identity.Pages.Account
             public string ConfirmPassword { get; set; }
             
             
-//            [Required]
-//            [MaxLength(64)]
-//            [MinLength(1)]
-//            public string FirstName { get; set; }
-//            
-//            [Required]
-//            [MaxLength(64)]
-//            [MinLength(1)]
-//            public string LastName { get; set; }
+            [Required]
+            [MaxLength(64)]
+            [MinLength(1)]
+            public string FirstName { get; set; }
+            
+            [Required]
+            [MaxLength(64)]
+            [MinLength(1)]
+            public string LastName { get; set; }
+
+            public Company Company { get; set; }
 
         }
 
@@ -83,8 +86,8 @@ namespace WebApp.Areas.Identity.Pages.Account
                         {
                             UserName = Input.Email, 
                             Email = Input.Email,
-//                            FirstName = Input.FirstName,
-//                            LastName = Input.LastName,
+                            FirstName = Input.FirstName,
+                            LastName = Input.LastName
 
                         };
                         var result = await _userManager.CreateAsync(user, Input.Password);

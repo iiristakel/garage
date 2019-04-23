@@ -8,13 +8,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DAL.App.EF.Repositories
 {
-    public class ProductForClientRepository : BaseRepository<ProductForClient>, IProductForClientRepository
+    public class ProductForClientRepository : BaseRepository<ProductForClient, AppDbContext>, IProductForClientRepository
     {
-        public ProductForClientRepository(IDataContext dataContext) : base(dataContext)
+        public ProductForClientRepository(AppDbContext repositoryDbContext) : base(repositoryDbContext)
         {
         }
         
-        public override async Task<IEnumerable<ProductForClient>> AllAsync()
+        public override async Task<List<ProductForClient>> AllAsync()
         {
             return await RepositoryDbSet
                 .Include(p => p.Client)

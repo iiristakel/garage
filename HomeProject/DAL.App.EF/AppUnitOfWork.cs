@@ -7,16 +7,19 @@ using Contracts.DAL.Base;
 using Contracts.DAL.Base.Helpers;
 using Contracts.DAL.Base.Repositories;
 using DAL.App.EF.Repositories;
+using DAL.Base.EF;
 using DAL.Base.EF.Repositories;
 
 namespace DAL.App.EF
 {
-    public class AppUnitOfWork : IAppUnitOfWork
+    public class AppUnitOfWork : BaseUnitOfWork<AppDbContext>, IAppUnitOfWork
     {
-        private readonly AppDbContext _appDbContext;
-        
-        private readonly IRepositoryProvider _repositoryProvider;
-        
+        public AppUnitOfWork(AppDbContext dbContext, IBaseRepositoryProvider repositoryProvider) : 
+            base(dbContext, repositoryProvider)
+        {
+        }
+
+                
         public IBillRepository Bills => _repositoryProvider.GetRepository<IBillRepository>();
         
         public IBillLineRepository BillLines =>_repositoryProvider.GetRepository<IBillLineRepository>();
@@ -44,24 +47,6 @@ namespace DAL.App.EF
         public IWorkerInPositionRepository WorkersInPositions =>_repositoryProvider.GetRepository<IWorkerInPositionRepository>();
         
 
-        public IBaseRepositoryAsync<TEntity> BaseRepository<TEntity>() where TEntity : class, IBaseEntity, new() =>
-            _repositoryProvider.GetRepositoryForEntity<TEntity>();
-
-        
-        public AppUnitOfWork(IDataContext dataContext, IRepositoryProvider repositoryProvider)
-        {
-            _appDbContext = (dataContext as AppDbContext) ?? throw new ArgumentNullException(nameof(dataContext));
-            _repositoryProvider = repositoryProvider;
-        }
-
-        public virtual int SaveChanges()
-        {
-            return _appDbContext.SaveChanges();
-        }
-
-        public virtual async Task<int> SaveChangesAsync()
-        {
-            return await _appDbContext.SaveChangesAsync();
-        }
+       
     }
 }

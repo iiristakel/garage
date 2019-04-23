@@ -8,13 +8,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DAL.App.EF.Repositories
 {
-    public class WorkerOnObjectRepository : BaseRepository<WorkerOnObject>, IWorkerOnObjectRepository
+    public class WorkerOnObjectRepository : BaseRepository<WorkerOnObject,AppDbContext>, IWorkerOnObjectRepository
     {
-        public WorkerOnObjectRepository(IDataContext dataContext) : base(dataContext)
+        public WorkerOnObjectRepository(AppDbContext repositoryDbContext) : base(repositoryDbContext)
         {
         }
         
-        public override async Task<IEnumerable<WorkerOnObject>> AllAsync()
+        public override async Task<List<WorkerOnObject>> AllAsync()
         {
             return await RepositoryDbSet
                 .Include(p => p.WorkObject)

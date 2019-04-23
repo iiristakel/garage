@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Contracts.BLL.App;
 using Contracts.DAL.App;
 using DAL.App.DTO;
 using Microsoft.AspNetCore.Http;
@@ -16,18 +17,18 @@ namespace WebApp.ApiControllers
     [ApiController]
     public class BillLinesController : ControllerBase
     {
-        private readonly IAppUnitOfWork _uow;
+        private readonly IAppBLL _bll;
 
-        public BillLinesController(IAppUnitOfWork uow)
+        public BillLinesController(IAppBLL bll)
         {
-            _uow = uow;
+            _bll = bll;
         }
 
         // GET: api/BillLines
         [HttpGet]
         public async Task<ActionResult<IEnumerable<BillLineDTO>>> GetBillLines()
         {
-            var res = await _uow.BillLines.GetAllAsync();
+            var res = await _bll.BillLines.GetAllAsync();
             return Ok(res);
         }
 
@@ -35,7 +36,7 @@ namespace WebApp.ApiControllers
         [HttpGet("{id}")]
         public async Task<ActionResult<BillLine>> GetBillLine(int id)
         {
-            var billLine = await _uow.BillLines.FindAsync(id);
+            var billLine = await _bll.BillLines.FindAsync(id);
 
             if (billLine == null)
             {
@@ -54,8 +55,8 @@ namespace WebApp.ApiControllers
                 return BadRequest();
             }
 
-            _uow.BillLines.Update(billLine);
-            await _uow.SaveChangesAsync();
+            _bll.BillLines.Update(billLine);
+            await _bll.SaveChangesAsync();
 
 
             return NoContent();
@@ -65,26 +66,26 @@ namespace WebApp.ApiControllers
         [HttpPost]
         public async Task<ActionResult<BillLine>> PostBillLine(BillLine billLine)
         {
-            await _uow.BillLines.AddAsync(billLine);
-            await _uow.SaveChangesAsync();
+            await _bll.BillLines.AddAsync(billLine);
+            await _bll.SaveChangesAsync();
 
             return CreatedAtAction("GetBillLine", new {id = billLine.Id}, billLine);
         }
 
         // DELETE: api/BillLines/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<BillLine>> DeleteBillLine(int id)
+        public async Task<ActionResult> DeleteBillLine(int id)
         {
-            var billLine = await _uow.BillLines.FindAsync(id);
+            var billLine = await _bll.BillLines.FindAsync(id);
             if (billLine == null)
             {
                 return NotFound();
             }
 
-            _uow.BillLines.Remove(billLine);
-            await _uow.SaveChangesAsync();
+            _bll.BillLines.Remove(id);
+            await _bll.SaveChangesAsync();
 
-            return billLine;
+            return NoContent();
         }
     }
 }

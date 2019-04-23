@@ -9,13 +9,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DAL.App.EF.Repositories
 {
-    public class WorkerRepository : BaseRepository<Worker>, IWorkerRepository
+    public class WorkerRepository : BaseRepository<Worker, AppDbContext>, IWorkerRepository
     {
-        public WorkerRepository(IDataContext dataContext) : base(dataContext)
+        public WorkerRepository(AppDbContext repositoryDbContext) : base(repositoryDbContext)
         {
         }
 
-        public async Task<IEnumerable<Worker>> AllAsync(int userId)
+        public async Task<List<Worker>> AllAsync(int userId)
         {
             return await RepositoryDbSet
                 .Include(p => p.AppUser)

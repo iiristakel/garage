@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Contracts.BLL.App;
 using Contracts.DAL.App;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -17,17 +18,17 @@ namespace WebApp.Controllers
     [Authorize]
     public class PaymentsController : Controller
     {
-        private readonly IAppUnitOfWork _uow;
+        private readonly IAppBLL _bll;
 
-        public PaymentsController(IAppUnitOfWork uow)
+        public PaymentsController(IAppBLL bll)
         {
-            _uow = uow;
+            _bll = bll;
         }
 
         // GET: Payments
         public async Task<IActionResult> Index()
         {
-            var payments = await _uow.Payments.AllAsync();
+            var payments = await _bll.Payments.AllAsync();
                
             return View(payments);
         }
@@ -40,7 +41,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var payment = await _uow.Payments.FindAsync(id);
+            var payment = await _bll.Payments.FindAsync(id);
             
             if (payment == null)
             {
@@ -56,17 +57,17 @@ namespace WebApp.Controllers
             var vm = new PaymentCreateEditViewModel();
             
             vm.BillSelectList = new SelectList(
-                await _uow.BaseRepository<Bill>().AllAsync(),
+                await _bll.BaseEntityService<Bill>().AllAsync(),
                 nameof(Bill.Id), 
                 nameof(Bill.InvoiceNr));
             
             vm.ClientSelectList = new SelectList(
-                await _uow.BaseRepository<Client>().AllAsync(),
+                await _bll.BaseEntityService<Client>().AllAsync(),
                 nameof(Client.Id), 
                 nameof(Client.Address));
             
             vm.PaymentMethodSelectList = new SelectList(
-                await _uow.BaseRepository<PaymentMethod>().AllAsync(),
+                await _bll.BaseEntityService<PaymentMethod>().AllAsync(),
                 nameof(PaymentMethod.Id), 
                 nameof(PaymentMethod.PaymentMethodValue));
             
@@ -82,23 +83,23 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _uow.Payments.AddAsync(vm.Payment);
-                await _uow.SaveChangesAsync();
+                await _bll.Payments.AddAsync(vm.Payment);
+                await _bll.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             
             vm.BillSelectList = new SelectList(
-                await _uow.BaseRepository<Bill>().AllAsync(),
+                await _bll.BaseEntityService<Bill>().AllAsync(),
                 nameof(Bill.Id), 
                 nameof(Bill.InvoiceNr));
             
             vm.ClientSelectList = new SelectList(
-                await _uow.BaseRepository<Client>().AllAsync(),
+                await _bll.BaseEntityService<Client>().AllAsync(),
                 nameof(Client.Id), 
                 nameof(Client.Address));
             
             vm.PaymentMethodSelectList = new SelectList(
-                await _uow.BaseRepository<PaymentMethod>().AllAsync(),
+                await _bll.BaseEntityService<PaymentMethod>().AllAsync(),
                 nameof(PaymentMethod.Id), 
                 nameof(PaymentMethod.PaymentMethodValue));
             
@@ -113,7 +114,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var payment = await _uow.Payments.FindAsync(id);
+            var payment = await _bll.Payments.FindAsync(id);
             if (payment == null)
             {
                 return NotFound();
@@ -123,17 +124,17 @@ namespace WebApp.Controllers
             vm.Payment = payment;
             
             vm.BillSelectList = new SelectList(
-                await _uow.BaseRepository<Bill>().AllAsync(),
+                await _bll.BaseEntityService<Bill>().AllAsync(),
                 nameof(Bill.Id), 
                 nameof(Bill.InvoiceNr));
             
             vm.ClientSelectList = new SelectList(
-                await _uow.BaseRepository<Client>().AllAsync(),
+                await _bll.BaseEntityService<Client>().AllAsync(),
                 nameof(Client.Id), 
                 nameof(Client.Address));
             
             vm.PaymentMethodSelectList = new SelectList(
-                await _uow.BaseRepository<PaymentMethod>().AllAsync(),
+                await _bll.BaseEntityService<PaymentMethod>().AllAsync(),
                 nameof(PaymentMethod.Id), 
                 nameof(PaymentMethod.PaymentMethodValue));
             
@@ -155,23 +156,23 @@ namespace WebApp.Controllers
             if (ModelState.IsValid)
             {
                 
-                    _uow.Payments.Update(vm.Payment);
-                    await _uow.SaveChangesAsync();
+                    _bll.Payments.Update(vm.Payment);
+                    await _bll.SaveChangesAsync();
                 
                 return RedirectToAction(nameof(Index));
             }
             vm.BillSelectList = new SelectList(
-                await _uow.BaseRepository<Bill>().AllAsync(),
+                await _bll.BaseEntityService<Bill>().AllAsync(),
                 nameof(Bill.Id), 
                 nameof(Bill.InvoiceNr));
             
             vm.ClientSelectList = new SelectList(
-                await _uow.BaseRepository<Client>().AllAsync(),
+                await _bll.BaseEntityService<Client>().AllAsync(),
                 nameof(Client.Id), 
                 nameof(Client.Address));
             
             vm.PaymentMethodSelectList = new SelectList(
-                await _uow.BaseRepository<PaymentMethod>().AllAsync(),
+                await _bll.BaseEntityService<PaymentMethod>().AllAsync(),
                 nameof(PaymentMethod.Id), 
                 nameof(PaymentMethod.PaymentMethodValue));
             
@@ -186,7 +187,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var payment = await _uow.Payments.FindAsync(id);
+            var payment = await _bll.Payments.FindAsync(id);
             
             if (payment == null)
             {
@@ -201,8 +202,8 @@ namespace WebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            _uow.Payments.Remove(id);
-            await _uow.SaveChangesAsync();
+            _bll.Payments.Remove(id);
+            await _bll.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 

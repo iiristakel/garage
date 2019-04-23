@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Contracts.BLL.App;
 using Contracts.DAL.App;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -17,17 +18,17 @@ namespace WebApp.Controllers
     [Authorize]
     public class WorkersOnObjectsController : Controller
     {
-        private readonly IAppUnitOfWork _uow;
+        private readonly IAppBLL _bll;
 
-        public WorkersOnObjectsController(IAppUnitOfWork uow)
+        public WorkersOnObjectsController(IAppBLL bll)
         {
-            _uow = uow;
+            _bll = bll;
         }
 
         // GET: WorkersOnObjects
         public async Task<IActionResult> Index()
         {
-            var workerOnObject = await _uow.WorkersOnObjects.AllAsync();
+            var workerOnObject = await _bll.WorkersOnObjects.AllAsync();
 
             return View(workerOnObject);
         }
@@ -40,11 +41,11 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-//            var workerOnObject = await _uow.WorkersOnObjects
+//            var workerOnObject = await _bll.WorkersOnObjects
 //                .Include(w => w.WorkObject)
 //                .Include(w => w.Worker)
 //                .FirstOrDefaultAsync(m => m.Id == id);
-            var workerOnObject = await _uow.WorkersOnObjects.FindAsync(id);
+            var workerOnObject = await _bll.WorkersOnObjects.FindAsync(id);
 
             if (workerOnObject == null)
             {
@@ -60,12 +61,12 @@ namespace WebApp.Controllers
             var vm = new WorkerOnObjectCreateEditViewModel();
             
             vm.WorkObjectSelectList = new SelectList(
-                await _uow.BaseRepository<WorkObject>().AllAsync(),
+                await _bll.BaseEntityService<WorkObject>().AllAsync(),
                 nameof(WorkObject.Id), 
                 nameof(WorkObject.Id));
             
             vm.WorkerSelectList = new SelectList(
-                await _uow.BaseRepository<Worker>().AllAsync(),
+                await _bll.BaseEntityService<Worker>().AllAsync(),
                 nameof(Worker.Id), 
                 nameof(Worker.FirstLastName));
             
@@ -81,19 +82,19 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _uow.WorkersOnObjects.AddAsync(vm.WorkerOnObject);
-                await _uow.SaveChangesAsync();
+                await _bll.WorkersOnObjects.AddAsync(vm.WorkerOnObject);
+                await _bll.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
             
             vm.WorkObjectSelectList = new SelectList(
-                await _uow.BaseRepository<WorkObject>().AllAsync(),
+                await _bll.BaseEntityService<WorkObject>().AllAsync(),
                 nameof(WorkObject.Id), 
                 nameof(WorkObject.Id));
             
             vm.WorkerSelectList = new SelectList(
-                await _uow.BaseRepository<Worker>().AllAsync(),
+                await _bll.BaseEntityService<Worker>().AllAsync(),
                 nameof(Worker.Id), 
                 nameof(Worker.FirstLastName));
             
@@ -108,7 +109,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var workerOnObject = await _uow.WorkersOnObjects.FindAsync(id);
+            var workerOnObject = await _bll.WorkersOnObjects.FindAsync(id);
             if (workerOnObject == null)
             {
                 return NotFound();
@@ -118,12 +119,12 @@ namespace WebApp.Controllers
             vm.WorkerOnObject = workerOnObject;
             
             vm.WorkObjectSelectList = new SelectList(
-                await _uow.BaseRepository<WorkObject>().AllAsync(),
+                await _bll.BaseEntityService<WorkObject>().AllAsync(),
                 nameof(WorkObject.Id), 
                 nameof(WorkObject.Id));
             
             vm.WorkerSelectList = new SelectList(
-                await _uow.BaseRepository<Worker>().AllAsync(),
+                await _bll.BaseEntityService<Worker>().AllAsync(),
                 nameof(Worker.Id), 
                 nameof(Worker.FirstLastName));
             
@@ -144,19 +145,19 @@ namespace WebApp.Controllers
 
             if (ModelState.IsValid)
             {
-                _uow.WorkersOnObjects.Update(vm.WorkerOnObject);
-                await _uow.SaveChangesAsync();
+                _bll.WorkersOnObjects.Update(vm.WorkerOnObject);
+                await _bll.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
             
             vm.WorkObjectSelectList = new SelectList(
-                await _uow.BaseRepository<WorkObject>().AllAsync(),
+                await _bll.BaseEntityService<WorkObject>().AllAsync(),
                 nameof(WorkObject.Id), 
                 nameof(WorkObject.Id));
             
             vm.WorkerSelectList = new SelectList(
-                await _uow.BaseRepository<Worker>().AllAsync(),
+                await _bll.BaseEntityService<Worker>().AllAsync(),
                 nameof(Worker.Id), 
                 nameof(Worker.FirstLastName));
             
@@ -171,11 +172,11 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-//            var workerOnObject = await _uow.WorkersOnObjects
+//            var workerOnObject = await _bll.WorkersOnObjects
 //                .Include(w => w.WorkObject)
 //                .Include(w => w.Worker)
 //                .FirstOrDefaultAsync(m => m.Id == id);
-            var workerOnObject = await _uow.WorkersOnObjects.FindAsync(id);
+            var workerOnObject = await _bll.WorkersOnObjects.FindAsync(id);
             
             if (workerOnObject == null)
             {
@@ -190,8 +191,8 @@ namespace WebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            _uow.WorkersOnObjects.Remove(id);
-            await _uow.SaveChangesAsync();
+            _bll.WorkersOnObjects.Remove(id);
+            await _bll.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
     }

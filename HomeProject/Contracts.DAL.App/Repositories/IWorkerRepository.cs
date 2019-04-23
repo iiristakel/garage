@@ -5,9 +5,9 @@ using Domain;
 
 namespace Contracts.DAL.App.Repositories
 {
-    public interface IWorkerRepository: IBaseRepositoryAsync<Worker>
+    public interface IWorkerRepository: IBaseRepository<Worker>
     {
         //add here custom methods
-        Task<IEnumerable<Worker>> AllAsync(int userId);
+        Task<List<Worker>> AllAsync(int userId);
     }
 }

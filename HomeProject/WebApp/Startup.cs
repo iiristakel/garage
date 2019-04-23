@@ -4,6 +4,11 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BLL.App;
+using BLL.App.Helpers;
+using BLL.Base.Helpers;
+using Contracts.BLL.App;
+using Contracts.BLL.Base.Helpers;
 using Contracts.DAL.App;
 using Contracts.DAL.App.Repositories;
 using Contracts.DAL.Base;
@@ -58,10 +63,15 @@ namespace WebApp
                     Configuration.GetConnectionString("MysqlConnection")));
 
 
-            services.AddScoped<IDataContext, AppDbContext>();
-            services.AddSingleton<IRepositoryFactory, AppRepositoryFactory>();
-            services.AddScoped<IRepositoryProvider, BaseRepositoryProvider>();
+            //services.AddScoped<IDataContext, AppDbContext>();
+            services.AddScoped<IBaseRepositoryProvider, BaseRepositoryProvider<AppDbContext>>();
+            services.AddSingleton<IBaseRepositoryFactory<AppDbContext>, AppRepositoryFactory>();
             services.AddScoped<IAppUnitOfWork, AppUnitOfWork>();
+
+            services.AddSingleton<IBaseServiceFactory<IAppUnitOfWork>, AppServiceFactory>();
+            services.AddScoped<IBaseServiceProvider, BaseServiceProvider<IAppUnitOfWork>>();
+            services.AddScoped<IAppBLL, AppBLL>();
+
             
             
             services

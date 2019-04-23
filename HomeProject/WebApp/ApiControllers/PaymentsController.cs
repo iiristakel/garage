@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Contracts.BLL.App;
 using Contracts.DAL.App;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -15,18 +16,18 @@ namespace WebApp.ApiControllers
     [ApiController]
     public class PaymentsController : ControllerBase
     {
-        private readonly IAppUnitOfWork _uow;
+        private readonly IAppBLL _bll;
 
-        public PaymentsController(IAppUnitOfWork uow)
+        public PaymentsController(IAppBLL bll)
         {
-            _uow = uow;
+            _bll = bll;
         }
 
         // GET: api/Payments
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Payment>>> GetPayments()
         {
-            var res = await _uow.Payments.AllAsync();
+            var res = await _bll.Payments.AllAsync();
             return Ok(res);
         }
 
@@ -34,7 +35,7 @@ namespace WebApp.ApiControllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Payment>> GetPayment(int id)
         {
-            var payment = await _uow.Payments.FindAsync(id);
+            var payment = await _bll.Payments.FindAsync(id);
 
             if (payment == null)
             {
@@ -53,8 +54,8 @@ namespace WebApp.ApiControllers
                 return BadRequest();
             }
 
-            _uow.Payments.Update(payment);
-            await _uow.SaveChangesAsync();
+            _bll.Payments.Update(payment);
+            await _bll.SaveChangesAsync();
             
 
             return NoContent();
@@ -64,26 +65,26 @@ namespace WebApp.ApiControllers
         [HttpPost]
         public async Task<ActionResult<Payment>> PostPayment(Payment payment)
         {
-            await _uow.Payments.AddAsync(payment);
-            await _uow.SaveChangesAsync();
+            await _bll.Payments.AddAsync(payment);
+            await _bll.SaveChangesAsync();
 
             return CreatedAtAction("GetPayment", new { id = payment.Id }, payment);
         }
 
         // DELETE: api/Payments/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Payment>> DeletePayment(int id)
+        public async Task<ActionResult> DeletePayment(int id)
         {
-            var payment = await _uow.Payments.FindAsync(id);
+            var payment = await _bll.Payments.FindAsync(id);
             if (payment == null)
             {
                 return NotFound();
             }
 
-            _uow.Payments.Remove(payment);
-            await _uow.SaveChangesAsync();
+            _bll.Payments.Remove(id);
+            await _bll.SaveChangesAsync();
 
-            return payment;
+            return NoContent();
         }
     }
 }

@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using Domain;
 using Domain.Identity;
 using Identity;
 using Microsoft.AspNetCore.Identity;
@@ -75,8 +76,9 @@ namespace WebApp.ApiControllers.Identity
                 {
                     UserName = model.Email,
                     Email = model.Email,
-//                  FirstName = model.FirstName,
-//                  LastName = model.LastName
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Company = model.Company
                 };
                 var result = await _userManager.CreateAsync(appUser, model.Password);
                 if (result.Succeeded)
@@ -123,15 +125,17 @@ namespace WebApp.ApiControllers.Identity
 
         public class RegisterDTO
         {
-//          [Required]
-//          [MaxLength(64)]
-//          [MinLength(1)]
-//          public string FirstName { get; set; }
-//          
-//          [Required]
-//          [MaxLength(64)]
-//          [MinLength(1)]
-//          public string LastName { get; set; }
+          [Required]
+          [MaxLength(64)]
+          [MinLength(1)]
+          public string FirstName { get; set; }
+          
+          [Required]
+          [MaxLength(64)]
+          [MinLength(1)]
+          public string LastName { get; set; }
+
+          public Company Company { get; set; }
             public string Email { get; set; }
 
             [Required] [MinLength(6)] public string Password { get; set; }

@@ -10,18 +10,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DAL.App.EF.Repositories
 {
-    public class PaymentMethodRepository : BaseRepository<PaymentMethod>, IPaymentMethodRepository
+    public class PaymentMethodRepository : BaseRepository<PaymentMethod, AppDbContext>, IPaymentMethodRepository
     {
-        public PaymentMethodRepository(IDataContext dataContext) : base(dataContext)
+        public PaymentMethodRepository(AppDbContext repositoryDbContext) : base(repositoryDbContext)
         {
         }
 
-        public override async Task<IEnumerable<PaymentMethod>> AllAsync()
+        public override async Task<List<PaymentMethod>> AllAsync()
         {
             return await RepositoryDbSet.Include(c => c.Payments).ToListAsync();
         }
 
-        public virtual async Task<IEnumerable<PaymentMethodDTO>> GetAllWithPaymentsCountAsync()
+        public virtual async Task<List<PaymentMethodDTO>> GetAllWithPaymentsCountAsync()
         {           
             return await RepositoryDbSet
                 .Select(c => new PaymentMethodDTO()

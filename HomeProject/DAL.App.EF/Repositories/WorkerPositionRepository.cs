@@ -10,18 +10,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DAL.App.EF.Repositories
 {
-    public class WorkerPositionRepository : BaseRepository<WorkerPosition>, IWorkerPositionRepository
+    public class WorkerPositionRepository : BaseRepository<WorkerPosition, AppDbContext>, IWorkerPositionRepository
     {
-        public WorkerPositionRepository(IDataContext dataContext) : base(dataContext)
+        public WorkerPositionRepository(AppDbContext repositoryDbContext) : base(repositoryDbContext)
         {
         }
         
-        public override async Task<IEnumerable<WorkerPosition>> AllAsync()
+        public override async Task<List<WorkerPosition>> AllAsync()
         {
             return await RepositoryDbSet.Include(c => c.WorkersInPosition).ToListAsync();
         }
 
-        public virtual async Task<IEnumerable<WorkerPositionDTO>> GetAllWithWorkersCountAsync()
+        public virtual async Task<List<WorkerPositionDTO>> GetAllWithWorkersCountAsync()
         {           
             return await RepositoryDbSet
                 .Select(c => new WorkerPositionDTO()

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Contracts.BLL.App;
 using Contracts.DAL.App;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -15,25 +16,26 @@ namespace WebApp.ApiControllers
     [ApiController]
     public class WorkObjectsController : ControllerBase
     {
-        private readonly IAppUnitOfWork _uow;
+//        private readonly IAppUnitOfWork _bll;
+        private readonly IAppBLL _bll;
 
-        public WorkObjectsController(IAppUnitOfWork uow)
+        public WorkObjectsController(IAppBLL bll)
         {
-            _uow = uow;
+            _bll = bll;
         }
 
         // GET: api/WorkObjects
         [HttpGet]
         public async Task<ActionResult<IEnumerable<WorkObject>>> GetWorkObjects()
         {
-            return Ok(await _uow.WorkObjects.GetAllAsync());
+            return Ok(await _bll.WorkObjects.GetAllAsync());
         }
 
         // GET: api/WorkObjects/5
         [HttpGet("{id}")]
         public async Task<ActionResult<WorkObject>> GetWorkObject(int id)
         {
-            var workObject = await _uow.WorkObjects.FindAsync(id);
+            var workObject = await _bll.WorkObjects.FindAsync(id);
 
             if (workObject == null)
             {
@@ -52,8 +54,8 @@ namespace WebApp.ApiControllers
                 return BadRequest();
             }
 
-            _uow.WorkObjects.Update(workObject);
-            await _uow.SaveChangesAsync();
+            _bll.WorkObjects.Update(workObject);
+            await _bll.SaveChangesAsync();
 
             return NoContent();
         }
@@ -62,26 +64,26 @@ namespace WebApp.ApiControllers
         [HttpPost]
         public async Task<ActionResult<WorkObject>> PostWorkObject(WorkObject workObject)
         {
-            await _uow.WorkObjects.AddAsync(workObject);
-            await _uow.SaveChangesAsync();
+            await _bll.WorkObjects.AddAsync(workObject);
+            await _bll.SaveChangesAsync();
 
             return CreatedAtAction("GetWorkObject", new {id = workObject.Id}, workObject);
         }
 
         // DELETE: api/WorkObjects/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<WorkObject>> DeleteWorkObject(int id)
+        public async Task<ActionResult> DeleteWorkObject(int id)
         {
-            var workObject = await _uow.WorkObjects.FindAsync(id);
+            var workObject = await _bll.WorkObjects.FindAsync(id);
             if (workObject == null)
             {
                 return NotFound();
             }
 
-            _uow.WorkObjects.Remove(workObject);
-            await _uow.SaveChangesAsync();
+            _bll.WorkObjects.Remove(id);
+            await _bll.SaveChangesAsync();
 
-            return workObject;
+            return NoContent();
         }
     }
 }

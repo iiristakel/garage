@@ -6,9 +6,9 @@ using Domain;
 
 namespace Contracts.DAL.App.Repositories
 {
-    public interface IBillRepository: IBaseRepositoryAsync<Bill>
+    public interface IBillRepository: IBaseRepository<Bill>
     {
-        Task<IEnumerable<BillsDTO>> GetAllWithPaymentsCountAsync();
+        Task<List<BillsDTO>> GetAllWithPaymentsCountAsync();
 
     }
 }

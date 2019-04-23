@@ -25,14 +25,7 @@ export class MainRouter {
         {route: 'identity/login',    name: 'identity' + 'Login',    moduleId: PLATFORM.moduleName('identity/login'), nav: false, title: 'Login'},
         {route: 'identity/register', name: 'identity' + 'Register', moduleId: PLATFORM.moduleName('identity/register'), nav: false, title: 'Register'},
         {route: 'identity/logout',   name: 'identity' + 'Logout',   moduleId: PLATFORM.moduleName('identity/logout'), nav: false, title: 'Logout'},
-     
         
-        { route: ['workers', 'workers/index'], name: 'workers' + 'Index',  moduleId: PLATFORM.moduleName('workers/index'), nav: true, title: 'Workers' },
-        { route: 'workers/create',             name: 'workers' + 'Create', moduleId: PLATFORM.moduleName('workers/create'), nav: false, title: 'Workers - Create' },
-        { route: 'workers/edit/:id',               name: 'workers' + 'Edit',   moduleId: PLATFORM.moduleName('workers/edit'), nav: false, title: 'Workers - Edit' },
-        { route: 'workers/delete/:id',             name: 'workers' + 'Delete', moduleId: PLATFORM.moduleName('workers/delete'), nav: false, title: 'Workers - Delete' },
-        { route: 'workers/details/:id',             name: 'workers' + 'Details', moduleId: PLATFORM.moduleName('workers/details'), nav: false, title: 'Workers - Details' },
-
 
         { route: ['workobjects', 'workobjects/index'], name: 'workobjects' + 'Index',  moduleId: PLATFORM.moduleName('workobjects/index'), nav: true, title: 'Workobjects' },
         { route: 'workobjects/create',                  name: 'workobjects' + 'Create', moduleId: PLATFORM.moduleName('workobjects/create'), nav: false, title: 'workobjects - Create' },

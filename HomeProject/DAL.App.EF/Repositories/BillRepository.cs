@@ -11,14 +11,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DAL.App.EF.Repositories
 {
-    public class BillRepository : BaseRepository<Bill>, IBillRepository
+    public class BillRepository : BaseRepository<Bill, AppDbContext>, IBillRepository
     {
-        public BillRepository(IDataContext dataContext) : base(dataContext)
+        public BillRepository(AppDbContext repositoryDbContext) : base(repositoryDbContext)
         {
         }
 
 
-        public override async Task<IEnumerable<Bill>> AllAsync()
+        public override async Task<List<Bill>> AllAsync()
         {
             return await RepositoryDbSet
                 .Include(p => p.Client)
@@ -37,13 +37,14 @@ namespace DAL.App.EF.Repositories
             return bill;
         }
 
-        public virtual async Task<IEnumerable<BillsDTO>> GetAllWithPaymentsCountAsync()
+        public virtual async Task<List<BillsDTO>> GetAllWithPaymentsCountAsync()
         {
             return await RepositoryDbSet
                 .Select(c => new BillsDTO()
                 {
                     Id = c.Id,
-                    Client = c.Client.CompanyName,
+                    Client = c.Client,
+                    ClientId = c.ClientId,
                     BillLines = c.BillLines,
                     PaymentsCount = c.Payments.Count,
                     ArrivalFee = c.ArrivalFee,

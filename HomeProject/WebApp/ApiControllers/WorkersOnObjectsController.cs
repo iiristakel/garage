@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Contracts.BLL.App;
 using Contracts.DAL.App;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -15,18 +16,18 @@ namespace WebApp.ApiControllers
     [ApiController]
     public class WorkersOnObjectsController : ControllerBase
     {
-        private readonly IAppUnitOfWork _uow;
+        private readonly IAppBLL _bll;
 
-        public WorkersOnObjectsController(IAppUnitOfWork uow)
+        public WorkersOnObjectsController(IAppBLL bll)
         {
-            _uow = uow;
+            _bll = bll;
         }
 
         // GET: api/WorkersOnObjects
         [HttpGet]
         public async Task<ActionResult<IEnumerable<WorkerOnObject>>> GetWorkersOnObjects()
         {
-            var res = await _uow.WorkersOnObjects.AllAsync();
+            var res = await _bll.WorkersOnObjects.AllAsync();
             return Ok(res);
         }
 
@@ -34,7 +35,7 @@ namespace WebApp.ApiControllers
         [HttpGet("{id}")]
         public async Task<ActionResult<WorkerOnObject>> GetWorkerOnObject(int id)
         {
-            var workerOnObject = await _uow.WorkersOnObjects.FindAsync(id);
+            var workerOnObject = await _bll.WorkersOnObjects.FindAsync(id);
 
             if (workerOnObject == null)
             {
@@ -53,8 +54,8 @@ namespace WebApp.ApiControllers
                 return BadRequest();
             }
 
-            _uow.WorkersOnObjects.Update(workerOnObject);
-            await _uow.SaveChangesAsync();
+            _bll.WorkersOnObjects.Update(workerOnObject);
+            await _bll.SaveChangesAsync();
 
             return NoContent();
         }
@@ -63,26 +64,26 @@ namespace WebApp.ApiControllers
         [HttpPost]
         public async Task<ActionResult<WorkerOnObject>> PostWorkerOnObject(WorkerOnObject workerOnObject)
         {
-            await _uow.WorkersOnObjects.AddAsync(workerOnObject);
-            await _uow.SaveChangesAsync();
+            await _bll.WorkersOnObjects.AddAsync(workerOnObject);
+            await _bll.SaveChangesAsync();
 
             return CreatedAtAction("GetWorkerOnObject", new {id = workerOnObject.Id}, workerOnObject);
         }
 
         // DELETE: api/WorkersOnObjects/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<WorkerOnObject>> DeleteWorkerOnObject(int id)
+        public async Task<ActionResult> DeleteWorkerOnObject(int id)
         {
-            var workerOnObject = await _uow.WorkersOnObjects.FindAsync(id);
+            var workerOnObject = await _bll.WorkersOnObjects.FindAsync(id);
             if (workerOnObject == null)
             {
                 return NotFound();
             }
 
-            _uow.WorkersOnObjects.Remove(workerOnObject);
-            await _uow.SaveChangesAsync();
+            _bll.WorkersOnObjects.Remove(id);
+            await _bll.SaveChangesAsync();
 
-            return workerOnObject;
+            return NoContent();
         }
     }
 }

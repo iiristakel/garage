@@ -9,11 +9,12 @@ namespace DAL.App.DTO
     public class BillsDTO
     {
         public int Id { get; set; }
+        
+        public int ClientId { get; set; }
+        public Client Client { get; set; }
 
         public string InvoiceNr { get; set; }
 
-        public string Client { get; set; }
-        
         
         [DataType(DataType.Date)]
         public DateTime DateTime { get; set; }

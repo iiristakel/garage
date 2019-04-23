@@ -6,9 +6,9 @@ using Domain;
 
 namespace Contracts.DAL.App.Repositories
 {
-    public interface IWorkObjectRepository: IBaseRepositoryAsync<WorkObject>
+    public interface IWorkObjectRepository: IBaseRepository<WorkObject>
     {
-        Task<IEnumerable<WorkObjectsDTO>> GetAllAsync();
+        Task<List<WorkObjectsDTO>> GetAllAsync();
 
     }
 }

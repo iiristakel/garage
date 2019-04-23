@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Contracts.BLL.App;
 using Contracts.DAL.App;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -16,17 +17,17 @@ namespace WebApp.Controllers
     [Authorize]
     public class ProductsController : Controller
     {
-        private readonly IAppUnitOfWork _uow;
+        private readonly IAppBLL _bll;
 
-        public ProductsController(IAppUnitOfWork uow)
+        public ProductsController(IAppBLL bll)
         {
-            _uow = uow;
+            _bll = bll;
         }
 
         // GET: Products
         public async Task<IActionResult> Index()
         {
-            var products = await _uow.Products.AllAsync();
+            var products = await _bll.Products.AllAsync();
             
             return View(products);
         }
@@ -39,7 +40,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var product = await _uow.Products.FindAsync(id);
+            var product = await _bll.Products.FindAsync(id);
             if (product == null)
             {
                 return NotFound();
@@ -64,8 +65,8 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _uow.Products.AddAsync(product);
-                await _uow.SaveChangesAsync();
+                await _bll.Products.AddAsync(product);
+                await _bll.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
@@ -81,7 +82,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var product = await _uow.Products.FindAsync(id);
+            var product = await _bll.Products.FindAsync(id);
             if (product == null)
             {
                 return NotFound();
@@ -105,8 +106,8 @@ namespace WebApp.Controllers
 
             if (ModelState.IsValid)
             {
-                _uow.Products.Update(product);
-                await _uow.SaveChangesAsync();
+                _bll.Products.Update(product);
+                await _bll.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
@@ -122,7 +123,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var product = await _uow.Products.FindAsync(id);
+            var product = await _bll.Products.FindAsync(id);
             if (product == null)
             {
                 return NotFound();
@@ -136,8 +137,8 @@ namespace WebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            _uow.Products.Remove(id);
-            await _uow.SaveChangesAsync();
+            _bll.Products.Remove(id);
+            await _bll.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
     }

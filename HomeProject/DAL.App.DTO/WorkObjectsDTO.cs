@@ -8,7 +8,8 @@ namespace DAL.App.DTO
     public class WorkObjectsDTO
     {
         public int Id { get; set; }
-
+        
+        public int ClientId { get; set; }
         public Client Client { get; set; }
 
         public ICollection<WorkerOnObject> WorkersOnObject { get; set; }

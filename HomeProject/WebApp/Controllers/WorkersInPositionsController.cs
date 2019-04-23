@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Contracts.BLL.App;
 using Contracts.DAL.App;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -17,17 +18,17 @@ namespace WebApp.Controllers
     [Authorize]
     public class WorkersInPositionsController : Controller
     {
-        private readonly IAppUnitOfWork _uow;
+        private readonly IAppBLL _bll;
 
-        public WorkersInPositionsController(IAppUnitOfWork uow)
+        public WorkersInPositionsController(IAppBLL bll)
         {
-            _uow = uow;
+            _bll = bll;
         }
 
         // GET: WorkersInPositions
         public async Task<IActionResult> Index()
         {
-            var workersInPositions = await _uow.WorkersInPositions.AllAsync();
+            var workersInPositions = await _bll.WorkersInPositions.AllAsync();
             return View(workersInPositions);
         }
 
@@ -39,11 +40,11 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-//            var workerInPosition = await _uow.WorkersInPositions
+//            var workerInPosition = await _bll.WorkersInPositions
 //                .Include(w => w.Worker)
 //                .Include(w => w.WorkerPosition)
 //                .FirstOrDefaultAsync(m => m.Id == id);
-            var workerInPosition = await _uow.WorkersInPositions.FindAsync(id);
+            var workerInPosition = await _bll.WorkersInPositions.FindAsync(id);
             if (workerInPosition == null)
             {
                 return NotFound();
@@ -58,12 +59,12 @@ namespace WebApp.Controllers
             var vm = new WorkerInPositionCreateEditViewModel();
             
             vm.WorkerSelectList = new SelectList(
-                await _uow.BaseRepository<Worker>().AllAsync(), 
+                await _bll.BaseEntityService<Worker>().AllAsync(), 
                 nameof(Worker.Id), 
                 nameof(Worker.FirstLastName));
             
             vm.WorkerPositionSelectList = new SelectList(
-                await _uow.BaseRepository<WorkerPosition>().AllAsync(), 
+                await _bll.BaseEntityService<WorkerPosition>().AllAsync(), 
                 nameof(WorkerPosition.Id), 
                 nameof(WorkerPosition.WorkerPositionValue));
             
@@ -79,19 +80,19 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _uow.WorkersInPositions.AddAsync(vm.WorkerInPosition);
-                await _uow.SaveChangesAsync();
+                await _bll.WorkersInPositions.AddAsync(vm.WorkerInPosition);
+                await _bll.SaveChangesAsync();
                 
                 return RedirectToAction(nameof(Index));
             }
             
             vm.WorkerSelectList = new SelectList(
-                await _uow.BaseRepository<Worker>().AllAsync(), 
+                await _bll.BaseEntityService<Worker>().AllAsync(), 
                 nameof(Worker.Id), 
                 nameof(Worker.FirstLastName));
             
             vm.WorkerPositionSelectList = new SelectList(
-                await _uow.BaseRepository<WorkerPosition>().AllAsync(), 
+                await _bll.BaseEntityService<WorkerPosition>().AllAsync(), 
                 nameof(WorkerPosition.Id), 
                 nameof(WorkerPosition.WorkerPositionValue));
             
@@ -106,7 +107,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var workerInPosition = await _uow.WorkersInPositions.FindAsync(id);
+            var workerInPosition = await _bll.WorkersInPositions.FindAsync(id);
             if (workerInPosition == null)
             {
                 return NotFound();
@@ -116,12 +117,12 @@ namespace WebApp.Controllers
             vm.WorkerInPosition = workerInPosition;
             
             vm.WorkerSelectList = new SelectList(
-                await _uow.BaseRepository<Worker>().AllAsync(), 
+                await _bll.BaseEntityService<Worker>().AllAsync(), 
                 nameof(Worker.Id), 
                 nameof(Worker.FirstLastName));
             
             vm.WorkerPositionSelectList = new SelectList(
-                await _uow.BaseRepository<WorkerPosition>().AllAsync(), 
+                await _bll.BaseEntityService<WorkerPosition>().AllAsync(), 
                 nameof(WorkerPosition.Id), 
                 nameof(WorkerPosition.WorkerPositionValue));
             
@@ -143,20 +144,20 @@ namespace WebApp.Controllers
             if (ModelState.IsValid)
             {
                 
-                    _uow.WorkersInPositions.Update(vm.WorkerInPosition);
-                    await _uow.SaveChangesAsync();
+                    _bll.WorkersInPositions.Update(vm.WorkerInPosition);
+                    await _bll.SaveChangesAsync();
                 
                
                 return RedirectToAction(nameof(Index));
             }
             
             vm.WorkerSelectList = new SelectList(
-                await _uow.BaseRepository<Worker>().AllAsync(), 
+                await _bll.BaseEntityService<Worker>().AllAsync(), 
                 nameof(Worker.Id), 
                 nameof(Worker.FirstLastName));
             
             vm.WorkerPositionSelectList = new SelectList(
-                await _uow.BaseRepository<WorkerPosition>().AllAsync(), 
+                await _bll.BaseEntityService<WorkerPosition>().AllAsync(), 
                 nameof(WorkerPosition.Id), 
                 nameof(WorkerPosition.WorkerPositionValue));
             
@@ -171,11 +172,11 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-//            var workerInPosition = await _uow.WorkersInPositions
+//            var workerInPosition = await _bll.WorkersInPositions
 //                .Include(w => w.Worker)
 //                .Include(w => w.WorkerPosition)
 //                .FirstOrDefaultAsync(m => m.Id == id);
-            var workerInPosition = await _uow.WorkersInPositions.FindAsync(id);
+            var workerInPosition = await _bll.WorkersInPositions.FindAsync(id);
             
             if (workerInPosition == null)
             {
@@ -190,8 +191,8 @@ namespace WebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            _uow.WorkersInPositions.Remove(id);
-            await _uow.SaveChangesAsync();
+            _bll.WorkersInPositions.Remove(id);
+            await _bll.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 

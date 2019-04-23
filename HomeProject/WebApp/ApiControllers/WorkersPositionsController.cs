@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Contracts.BLL.App;
 using Contracts.DAL.App;
 using DAL.App.DTO;
 using Microsoft.AspNetCore.Http;
@@ -20,25 +21,25 @@ namespace WebApp.ApiControllers
 
     public class WorkersPositionsController : ControllerBase
     {
-        private readonly IAppUnitOfWork _uow;
+        private readonly IAppBLL _bll;
 
-        public WorkersPositionsController(IAppUnitOfWork uow)
+        public WorkersPositionsController(IAppBLL bll)
         {
-            _uow = uow;
+            _bll = bll;
         }
 
         // GET: api/WorkersPositions
         [HttpGet]
         public async Task<ActionResult<IEnumerable<WorkerPositionDTO>>> GetWorkersPositions()
         {
-            return Ok(await _uow.WorkersPositions.GetAllWithWorkersCountAsync());
+            return Ok(await _bll.WorkersPositions.GetAllWithWorkersCountAsync());
         }
 
         // GET: api/WorkersPositions/5
         [HttpGet("{id}")]
         public async Task<ActionResult<WorkerPosition>> GetWorkerPosition(int id)
         {
-            var workerPosition = await _uow.WorkersPositions.FindAsync(id);
+            var workerPosition = await _bll.WorkersPositions.FindAsync(id);
 
             if (workerPosition == null)
             {
@@ -57,8 +58,8 @@ namespace WebApp.ApiControllers
                 return BadRequest();
             }
 
-            _uow.WorkersPositions.Update(workerPosition);
-            await _uow.SaveChangesAsync();
+            _bll.WorkersPositions.Update(workerPosition);
+            await _bll.SaveChangesAsync();
 
 
             return NoContent();
@@ -68,26 +69,26 @@ namespace WebApp.ApiControllers
         [HttpPost]
         public async Task<ActionResult<WorkerPosition>> PostWorkerPosition(WorkerPosition workerPosition)
         {
-            await _uow.WorkersPositions.AddAsync(workerPosition);
-            await _uow.SaveChangesAsync();
+            await _bll.WorkersPositions.AddAsync(workerPosition);
+            await _bll.SaveChangesAsync();
 
             return CreatedAtAction("GetWorkerPosition", new {id = workerPosition.Id}, workerPosition);
         }
 
         // DELETE: api/WorkersPositions/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<WorkerPosition>> DeleteWorkerPosition(int id)
+        public async Task<ActionResult> DeleteWorkerPosition(int id)
         {
-            var workerPosition = await _uow.WorkersPositions.FindAsync(id);
+            var workerPosition = await _bll.WorkersPositions.FindAsync(id);
             if (workerPosition == null)
             {
                 return NotFound();
             }
 
-            _uow.WorkersPositions.Remove(workerPosition);
-            await _uow.SaveChangesAsync();
+            _bll.WorkersPositions.Remove(id);
+            await _bll.SaveChangesAsync();
 
-            return workerPosition;
+            return NoContent();
         }
     }
 }

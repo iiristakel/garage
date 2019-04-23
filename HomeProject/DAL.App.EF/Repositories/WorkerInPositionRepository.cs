@@ -8,13 +8,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DAL.App.EF.Repositories
 {
-    public class WorkerInPositionRepository : BaseRepository<WorkerInPosition>, IWorkerInPositionRepository
+    public class WorkerInPositionRepository : BaseRepository<WorkerInPosition, AppDbContext>, IWorkerInPositionRepository
     {
-        public WorkerInPositionRepository(IDataContext dataContext) : base(dataContext)
+        public WorkerInPositionRepository(AppDbContext repositoryDbContext) : base(repositoryDbContext)
         {
         }
         
-        public override async Task<IEnumerable<WorkerInPosition>> AllAsync()
+        public override async Task<List<WorkerInPosition>> AllAsync()
         {
             return await RepositoryDbSet
                 .Include(p => p.Worker)

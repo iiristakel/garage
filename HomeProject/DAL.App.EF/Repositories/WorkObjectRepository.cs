@@ -10,13 +10,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DAL.App.EF.Repositories
 {
-    public class WorkObjectRepository : BaseRepository<WorkObject>, IWorkObjectRepository
+    public class WorkObjectRepository : BaseRepository<WorkObject, AppDbContext >, IWorkObjectRepository
     {
-        public WorkObjectRepository(IDataContext dataContext) : base(dataContext)
+        public WorkObjectRepository(AppDbContext repositoryDbContext) : base(repositoryDbContext)
         {
         }
 
-        public override async Task<IEnumerable<WorkObject>> AllAsync()
+        public override async Task<List<WorkObject>> AllAsync()
         {
             return await RepositoryDbSet
                 .Include(p => p.Client)
@@ -36,13 +36,14 @@ namespace DAL.App.EF.Repositories
             return workObject;
         }
 
-        public virtual async Task<IEnumerable<WorkObjectsDTO>> GetAllAsync()
+        public virtual async Task<List<WorkObjectsDTO>> GetAllAsync()
         {
             return await RepositoryDbSet
                 .Select(c => new WorkObjectsDTO()
                 {
                     Id = c.Id,
                     Client = c.Client,
+                    ClientId = c.ClientId,
                     WorkersOnObject = c.WorkersOnObject,
                     ProductsForClient = c.ProductsForClient,
                     From = c.From,

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Contracts.BLL.App;
 using Contracts.DAL.App;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -17,17 +18,17 @@ namespace WebApp.Controllers
     [Authorize]
     public class ProductsForClientsController : Controller
     {
-        private readonly IAppUnitOfWork _uow;
+        private readonly IAppBLL _bll;
 
-        public ProductsForClientsController(IAppUnitOfWork uow)
+        public ProductsForClientsController(IAppBLL bll)
         {
-            _uow = uow;
+            _bll = bll;
         }
 
         // GET: ProductsForClients
         public async Task<IActionResult> Index()
         {
-            var productsForClients = await _uow.ProductsForClients.AllAsync();
+            var productsForClients = await _bll.ProductsForClients.AllAsync();
 
             return View(productsForClients);
         }
@@ -40,12 +41,12 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-//            var productForClient = await _uow.ProductsForClients
+//            var productForClient = await _bll.ProductsForClients
 //                .Include(p => p.Client)
 //                .Include(p => p.Product)
 //                .Include(p => p.WorkObject)
 //                .FirstOrDefaultAsync(m => m.Id == id);
-            var productForClient = await _uow.ProductsForClients.FindAsync(id);
+            var productForClient = await _bll.ProductsForClients.FindAsync(id);
 
             if (productForClient == null)
             {
@@ -61,17 +62,17 @@ namespace WebApp.Controllers
             var vm = new ProductsForClientsCreateEditViewModel();
             
             vm.ClientSelectList = new SelectList(
-                await _uow.BaseRepository<Client>().AllAsync(),
+                await _bll.BaseEntityService<Client>().AllAsync(),
                 nameof(Client.Id), 
                 nameof(Client.Address));
             
             vm.ProductSelectList = new SelectList(
-                await _uow.BaseRepository<Product>().AllAsync(),
+                await _bll.BaseEntityService<Product>().AllAsync(),
                 nameof(Product.Id), 
                 nameof(Product.ProductName));
             
             vm.WorkObjectSelectList = new SelectList(
-                await _uow.BaseRepository<WorkObject>().AllAsync(),
+                await _bll.BaseEntityService<WorkObject>().AllAsync(),
                 nameof(WorkObject.Id), 
                 nameof(WorkObject.Id));
 
@@ -87,24 +88,24 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _uow.ProductsForClients.AddAsync(vm.ProductForClient);
-                await _uow.SaveChangesAsync();
+                await _bll.ProductsForClients.AddAsync(vm.ProductForClient);
+                await _bll.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
             
             vm.ClientSelectList = new SelectList(
-                await _uow.BaseRepository<Client>().AllAsync(),
+                await _bll.BaseEntityService<Client>().AllAsync(),
                 nameof(Client.Id), 
                 nameof(Client.Address));
             
             vm.ProductSelectList = new SelectList(
-                await _uow.BaseRepository<Product>().AllAsync(),
+                await _bll.BaseEntityService<Product>().AllAsync(),
                 nameof(Product.Id), 
                 nameof(Product.ProductName));
             
             vm.WorkObjectSelectList = new SelectList(
-                await _uow.BaseRepository<WorkObject>().AllAsync(),
+                await _bll.BaseEntityService<WorkObject>().AllAsync(),
                 nameof(WorkObject.Id), 
                 nameof(WorkObject.Id));
 
@@ -119,7 +120,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var productForClient = await _uow.ProductsForClients.FindAsync(id);
+            var productForClient = await _bll.ProductsForClients.FindAsync(id);
             if (productForClient == null)
             {
                 return NotFound();
@@ -129,17 +130,17 @@ namespace WebApp.Controllers
             vm.ProductForClient = productForClient;
             
             vm.ClientSelectList = new SelectList(
-                await _uow.BaseRepository<Client>().AllAsync(),
+                await _bll.BaseEntityService<Client>().AllAsync(),
                 nameof(Client.Id), 
                 nameof(Client.Address));
             
             vm.ProductSelectList = new SelectList(
-                await _uow.BaseRepository<Product>().AllAsync(),
+                await _bll.BaseEntityService<Product>().AllAsync(),
                 nameof(Product.Id), 
                 nameof(Product.ProductName));
             
             vm.WorkObjectSelectList = new SelectList(
-                await _uow.BaseRepository<WorkObject>().AllAsync(),
+                await _bll.BaseEntityService<WorkObject>().AllAsync(),
                 nameof(WorkObject.Id), 
                 nameof(WorkObject.Id));
 
@@ -160,24 +161,24 @@ namespace WebApp.Controllers
 
             if (ModelState.IsValid)
             {
-                _uow.ProductsForClients.Update(vm.ProductForClient);
-                await _uow.SaveChangesAsync();
+                _bll.ProductsForClients.Update(vm.ProductForClient);
+                await _bll.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
 
             vm.ClientSelectList = new SelectList(
-                await _uow.BaseRepository<Client>().AllAsync(),
+                await _bll.BaseEntityService<Client>().AllAsync(),
                 nameof(Client.Id), 
                 nameof(Client.Address));
             
             vm.ProductSelectList = new SelectList(
-                await _uow.BaseRepository<Product>().AllAsync(),
+                await _bll.BaseEntityService<Product>().AllAsync(),
                 nameof(Product.Id), 
                 nameof(Product.ProductName));
             
             vm.WorkObjectSelectList = new SelectList(
-                await _uow.BaseRepository<WorkObject>().AllAsync(),
+                await _bll.BaseEntityService<WorkObject>().AllAsync(),
                 nameof(WorkObject.Id), 
                 nameof(WorkObject.Id));
 
@@ -192,7 +193,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var productForClient = await _uow.ProductsForClients.FindAsync(id);
+            var productForClient = await _bll.ProductsForClients.FindAsync(id);
                 
             if (productForClient == null)
             {
@@ -207,8 +208,8 @@ namespace WebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            _uow.ProductsForClients.Remove(id);
-            await _uow.SaveChangesAsync();
+            _bll.ProductsForClients.Remove(id);
+            await _bll.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
     }

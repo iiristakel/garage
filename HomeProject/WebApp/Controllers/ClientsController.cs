@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Contracts.BLL.App;
 using Contracts.DAL.App;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -18,17 +19,17 @@ namespace WebApp.Controllers
     [Authorize]
     public class ClientsController : Controller
     {
-        private readonly IAppUnitOfWork _uow;
+        private readonly IAppBLL _bll;
 
-        public ClientsController(IAppUnitOfWork uow)
+        public ClientsController(IAppBLL bll)
         {
-            _uow = uow;
+            _bll = bll;
         }
 
         // GET: Clients
         public async Task<IActionResult> Index()
         {
-            var clients = await _uow.Clients.AllAsync();
+            var clients = await _bll.Clients.AllAsync();
 
             return View(clients);
         }
@@ -44,7 +45,7 @@ namespace WebApp.Controllers
 //            var client = await _context.Clients
 //                .Include(c => c.ClientGroup)
 //                .FirstOrDefaultAsync(m => m.Id == id);
-            var client = await _uow.Clients.FindAsync(id);
+            var client = await _bll.Clients.FindAsync(id);
 
             if (client == null)
             {
@@ -60,7 +61,7 @@ namespace WebApp.Controllers
             var vm = new ClientCreateEditViewModel();
             
             vm.ClientGroupSelectList = new SelectList(
-                await _uow.BaseRepository<ClientGroup>().AllAsync(),
+                await _bll.BaseEntityService<ClientGroup>().AllAsync(),
                 nameof(ClientGroup.Id), 
                 nameof(ClientGroup.Name));
 
@@ -76,14 +77,14 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _uow.Clients.AddAsync(vm.Client);
-                await _uow.SaveChangesAsync();
+                await _bll.Clients.AddAsync(vm.Client);
+                await _bll.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
 
             vm.ClientGroupSelectList = new SelectList(
-                await _uow.BaseRepository<ClientGroup>().AllAsync(),
+                await _bll.BaseEntityService<ClientGroup>().AllAsync(),
                 nameof(ClientGroup.Id), 
                 nameof(ClientGroup.Name));
 
@@ -98,7 +99,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var client = await _uow.Clients.FindAsync(id);
+            var client = await _bll.Clients.FindAsync(id);
             if (client == null)
             {
                 return NotFound();
@@ -107,7 +108,7 @@ namespace WebApp.Controllers
             var vm = new ClientCreateEditViewModel();
             vm.Client = client;
             vm.ClientGroupSelectList = new SelectList(
-                await _uow.BaseRepository<ClientGroup>().AllAsync(),
+                await _bll.BaseEntityService<ClientGroup>().AllAsync(),
                 nameof(ClientGroup.Id), 
                 nameof(ClientGroup.Name));
 
@@ -128,14 +129,14 @@ namespace WebApp.Controllers
 
             if (ModelState.IsValid)
             {
-                _uow.Clients.Update(vm.Client);
-                await _uow.SaveChangesAsync();
+                _bll.Clients.Update(vm.Client);
+                await _bll.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
 
             vm.ClientGroupSelectList = new SelectList(
-                await _uow.BaseRepository<ClientGroup>().AllAsync(),
+                await _bll.BaseEntityService<ClientGroup>().AllAsync(),
                 nameof(ClientGroup.Id), 
                 nameof(ClientGroup.Name));
 
@@ -153,7 +154,7 @@ namespace WebApp.Controllers
 //            var client = await _context.Clients
 //                .Include(c => c.ClientGroup)
 //                .FirstOrDefaultAsync(m => m.Id == id);
-            var client = await _uow.Clients.FindAsync(id);
+            var client = await _bll.Clients.FindAsync(id);
             
             if (client == null)
             {
@@ -168,8 +169,8 @@ namespace WebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            _uow.Clients.Remove(id);
-            await _uow.SaveChangesAsync();
+            _bll.Clients.Remove(id);
+            await _bll.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
     }

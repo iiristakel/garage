@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Contracts.BLL.App;
 using Contracts.DAL.App;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -15,18 +16,18 @@ namespace WebApp.ApiControllers
     [ApiController]
     public class ProductsForClientsController : ControllerBase
     {
-        private readonly IAppUnitOfWork _uow;
+        private readonly IAppBLL _bll;
 
-        public ProductsForClientsController(IAppUnitOfWork uow)
+        public ProductsForClientsController(IAppBLL bll)
         {
-            _uow = uow;
+            _bll = bll;
         }
 
         // GET: api/ProductsForClients
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ProductForClient>>> GetProductsForClients()
         {
-            var res = await _uow.ProductsForClients.AllAsync();
+            var res = await _bll.ProductsForClients.AllAsync();
             return Ok(res);
         }
 
@@ -34,7 +35,7 @@ namespace WebApp.ApiControllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductForClient>> GetProductForClient(int id)
         {
-            var productForClient = await _uow.ProductsForClients.FindAsync(id);
+            var productForClient = await _bll.ProductsForClients.FindAsync(id);
 
             if (productForClient == null)
             {
@@ -53,8 +54,8 @@ namespace WebApp.ApiControllers
                 return BadRequest();
             }
 
-            _uow.ProductsForClients.Update(productForClient);
-             await _uow.SaveChangesAsync();
+            _bll.ProductsForClients.Update(productForClient);
+             await _bll.SaveChangesAsync();
            
 
             return NoContent();
@@ -64,26 +65,26 @@ namespace WebApp.ApiControllers
         [HttpPost]
         public async Task<ActionResult<ProductForClient>> PostProductForClient(ProductForClient productForClient)
         {
-            await _uow.ProductsForClients.AddAsync(productForClient);
-            await _uow.SaveChangesAsync();
+            await _bll.ProductsForClients.AddAsync(productForClient);
+            await _bll.SaveChangesAsync();
 
             return CreatedAtAction("GetProductForClient", new { id = productForClient.Id }, productForClient);
         }
 
         // DELETE: api/ProductsForClients/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<ProductForClient>> DeleteProductForClient(int id)
+        public async Task<ActionResult> DeleteProductForClient(int id)
         {
-            var productForClient = await _uow.ProductsForClients.FindAsync(id);
+            var productForClient = await _bll.ProductsForClients.FindAsync(id);
             if (productForClient == null)
             {
                 return NotFound();
             }
 
-            _uow.ProductsForClients.Remove(productForClient);
-            await _uow.SaveChangesAsync();
+            _bll.ProductsForClients.Remove(id);
+            await _bll.SaveChangesAsync();
 
-            return productForClient;
+            return NoContent();
         }
 
     }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Contracts.BLL.App;
 using Contracts.DAL.App;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -15,18 +16,18 @@ namespace WebApp.ApiControllers
     [ApiController]
     public class ClientsController : ControllerBase
     {
-        private readonly IAppUnitOfWork _uow;
+        private readonly IAppBLL _bll;
 
-        public ClientsController(IAppUnitOfWork uow)
+        public ClientsController(IAppBLL bll)
         {
-            _uow = uow;
+            _bll = bll;
         }
 
         // GET: api/Clients
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Client>>> GetClients()
         {
-            var res = await _uow.Clients.GetAllWithProductsCountAsync();
+            var res = await _bll.Clients.GetAllWithProductsCountAsync();
             return Ok(res);
         }
 
@@ -34,7 +35,7 @@ namespace WebApp.ApiControllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Client>> GetClient(int id)
         {
-            var client = await _uow.Clients.FindAsync(id);
+            var client = await _bll.Clients.FindAsync(id);
 
             if (client == null)
             {
@@ -53,8 +54,8 @@ namespace WebApp.ApiControllers
                 return BadRequest();
             }
 
-            _uow.Clients.Update(client);
-            await _uow.SaveChangesAsync();
+            _bll.Clients.Update(client);
+            await _bll.SaveChangesAsync();
 
             return NoContent();
         }
@@ -63,26 +64,26 @@ namespace WebApp.ApiControllers
         [HttpPost]
         public async Task<ActionResult<Client>> PostClient(Client client)
         {
-            await _uow.Clients.AddAsync(client);
-            await _uow.SaveChangesAsync();
+            await _bll.Clients.AddAsync(client);
+            await _bll.SaveChangesAsync();
 
             return CreatedAtAction("GetClient", new { id = client.Id }, client);
         }
 
         // DELETE: api/Clients/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Client>> DeleteClient(int id)
+        public async Task<ActionResult> DeleteClient(int id)
         {
-            var client = await _uow.Clients.FindAsync(id);
+            var client = await _bll.Clients.FindAsync(id);
             if (client == null)
             {
                 return NotFound();
             }
 
-            _uow.Clients.Remove(client);
-            await _uow.SaveChangesAsync();
+            _bll.Clients.Remove(id);
+            await _bll.SaveChangesAsync();
 
-            return client;
+            return NoContent();
         }
 
     }

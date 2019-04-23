@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Contracts.BLL.App;
 using Contracts.DAL.App;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -17,17 +18,17 @@ namespace WebApp.Controllers
     [Authorize]
     public class WorkObjectsController : Controller
     {
-        private readonly IAppUnitOfWork _uow;
+        private readonly IAppBLL _bll;
 
-        public WorkObjectsController(IAppUnitOfWork uow)
+        public WorkObjectsController(IAppBLL bll)
         {
-            _uow = uow;
+            _bll = bll;
         }
 
         // GET: WorkObjects
         public async Task<IActionResult> Index()
         {
-            var workObjects = await _uow.WorkObjects.AllAsync();
+            var workObjects = await _bll.WorkObjects.AllAsync();
 
             return View(workObjects);
         }
@@ -40,10 +41,10 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-//            var workObject = await _uow.WorkObjects
+//            var workObject = await _bll.WorkObjects
 //                .Include(w => w.Client)
 //                .FirstOrDefaultAsync(m => m.Id == id);
-            var workObject = await _uow.WorkObjects.FindAsync(id);
+            var workObject = await _bll.WorkObjects.FindAsync(id);
 
             if (workObject == null)
             {
@@ -59,7 +60,7 @@ namespace WebApp.Controllers
             var vm = new WorkObjectCreateEditViewModel();
             
             vm.ClientSelectList = new SelectList(
-                await _uow.BaseRepository<Client>().AllAsync(),
+                await _bll.BaseEntityService<Client>().AllAsync(),
                 nameof(Client.Id), 
                 nameof(Client.CompanyName));
             
@@ -75,14 +76,14 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _uow.WorkObjects.AddAsync(vm.WorkObject);
-                await _uow.SaveChangesAsync();
+                await _bll.WorkObjects.AddAsync(vm.WorkObject);
+                await _bll.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
 
             vm.ClientSelectList = new SelectList(
-                await _uow.BaseRepository<Client>().AllAsync(),
+                await _bll.BaseEntityService<Client>().AllAsync(),
                 nameof(Client.Id), 
                 nameof(Client.CompanyName));
             
@@ -97,7 +98,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var workObject = await _uow.WorkObjects.FindAsync(id);
+            var workObject = await _bll.WorkObjects.FindAsync(id);
             if (workObject == null)
             {
                 return NotFound();
@@ -107,7 +108,7 @@ namespace WebApp.Controllers
             vm.WorkObject = workObject;
             
             vm.ClientSelectList = new SelectList(
-                await _uow.BaseRepository<Client>().AllAsync(),
+                await _bll.BaseEntityService<Client>().AllAsync(),
                 nameof(Client.Id), 
                 nameof(Client.CompanyName));
             
@@ -128,14 +129,14 @@ namespace WebApp.Controllers
 
             if (ModelState.IsValid)
             {
-                _uow.WorkObjects.Update(vm.WorkObject);
-                await _uow.SaveChangesAsync();
+                _bll.WorkObjects.Update(vm.WorkObject);
+                await _bll.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
 
             vm.ClientSelectList = new SelectList(
-                await _uow.BaseRepository<Client>().AllAsync(),
+                await _bll.BaseEntityService<Client>().AllAsync(),
                 nameof(Client.Id), 
                 nameof(Client.CompanyName));
             
@@ -150,10 +151,10 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-//            var workObject = await _uow.WorkObjects
+//            var workObject = await _bll.WorkObjects
 //                .Include(w => w.Client)
 //                .FirstOrDefaultAsync(m => m.Id == id);
-            var workObject = await _uow.WorkObjects.FindAsync(id);
+            var workObject = await _bll.WorkObjects.FindAsync(id);
             
             if (workObject == null)
             {
@@ -168,8 +169,8 @@ namespace WebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            _uow.WorkObjects.Remove(id);
-            await _uow.SaveChangesAsync();
+            _bll.WorkObjects.Remove(id);
+            await _bll.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
     }

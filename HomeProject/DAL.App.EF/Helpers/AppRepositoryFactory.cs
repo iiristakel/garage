@@ -5,50 +5,55 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace DAL.App.EF.Helpers
 {
-    public class AppRepositoryFactory : BaseRepositoryFactory
+    public class AppRepositoryFactory : BaseRepositoryFactory<AppDbContext>
     {
 
         public AppRepositoryFactory()
         {
-            // add to dictionary all the repo creation methods we might need!
+            RegisterRepositories();
+        }
+        
+        private void RegisterRepositories()
+        {
+
             
-            RepositoryCreationMethods.Add(typeof(IBillLineRepository), 
+            AddToCreationMethods<IBillLineRepository>( 
                 dataContext => new BillLineRepository(dataContext));
             
-            RepositoryCreationMethods.Add(typeof(IBillRepository), 
+            AddToCreationMethods<IBillRepository>( 
                 dataContext => new BillRepository(dataContext));
             
-            RepositoryCreationMethods.Add(typeof(IClientGroupRepository), 
+            AddToCreationMethods<IClientGroupRepository>( 
                 dataContext => new ClientGroupRepository(dataContext));
             
-            RepositoryCreationMethods.Add(typeof(IClientRepository), 
+            AddToCreationMethods<IClientRepository>( 
                 dataContext => new ClientRepository(dataContext));
             
-            RepositoryCreationMethods.Add(typeof(IPaymentMethodRepository), 
+            AddToCreationMethods<IPaymentMethodRepository>( 
                 dataContext => new PaymentMethodRepository(dataContext));
             
-            RepositoryCreationMethods.Add(typeof(IPaymentRepository), 
+            AddToCreationMethods<IPaymentRepository>( 
                 dataContext => new PaymentRepository(dataContext));
             
-            RepositoryCreationMethods.Add(typeof(IProductForClientRepository), 
+            AddToCreationMethods<IProductForClientRepository>( 
                 dataContext => new ProductForClientRepository(dataContext));
             
-            RepositoryCreationMethods.Add(typeof(IProductRepository), 
+            AddToCreationMethods<IProductRepository>( 
                 dataContext => new ProductRepository(dataContext));
             
-            RepositoryCreationMethods.Add(typeof(IWorkerInPositionRepository), 
+            AddToCreationMethods<IWorkerInPositionRepository>( 
                 dataContext => new WorkerInPositionRepository(dataContext));
             
-            RepositoryCreationMethods.Add(typeof(IWorkerOnObjectRepository), 
+            AddToCreationMethods<IWorkerOnObjectRepository>( 
                 dataContext => new WorkerOnObjectRepository(dataContext));
             
-            RepositoryCreationMethods.Add(typeof(IWorkerPositionRepository), 
+            AddToCreationMethods<IWorkerPositionRepository>( 
                 dataContext => new WorkerPositionRepository(dataContext));
             
-            RepositoryCreationMethods.Add(typeof(IWorkerRepository), 
+            AddToCreationMethods<IWorkerRepository>( 
                 dataContext => new WorkerRepository(dataContext));
             
-            RepositoryCreationMethods.Add(typeof(IWorkObjectRepository), 
+            AddToCreationMethods<IWorkObjectRepository>( 
                 dataContext => new WorkObjectRepository(dataContext));
         }
     }

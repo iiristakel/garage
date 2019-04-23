@@ -6,8 +6,8 @@ using Domain;
 
 namespace Contracts.DAL.App.Repositories
 {
-    public interface IClientGroupRepository : IBaseRepositoryAsync<ClientGroup>
+    public interface IClientGroupRepository : IBaseRepository<ClientGroup>
     {
-        Task<IEnumerable<ClientGroupDTO>> GetAllWithClientCountAsync();
+        Task<List<ClientGroupDTO>> GetAllWithClientCountAsync();
     }
 }

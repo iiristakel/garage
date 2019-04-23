@@ -1,4 +1,5 @@
 ﻿@page
+@using Domain
 @model RegisterModel
 @{
     ViewData["Title"] = "Register";
@@ -18,20 +19,20 @@
 
             <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
                 <div asp-validation-summary="All" class="text-danger"></div>
-                @* <div class="input-group mb-3"> *@
-                @*     <input asp-for="Input.FirstName" class="form-control" placeholder="Firstname"/> *@
-                @*     <span asp-validation-for="Input.FirstName" class="text-danger"></span> *@
-                @*     <div class="input-group-append"> *@
-                @*         <span class="fa fa-user input-group-text"></span> *@
-                @*     </div> *@
-                @* </div> *@
-                @* <div class="input-group mb-3"> *@
-                @*     <input asp-for="Input.LastName" class="form-control" placeholder="Lastname"/> *@
-                @*     <span asp-validation-for="Input.LastName" class="text-danger"></span> *@
-                @*     <div class="input-group-append"> *@
-                @*         <span class="fa fa-user input-group-text"></span> *@
-                @*     </div> *@
-                @* </div> *@
+                <div class="input-group mb-3">
+                    <input asp-for="Input.FirstName" class="form-control" placeholder="Firstname"/>
+                    <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                    <div class="input-group-append">
+                        <span class="fa fa-user input-group-text"></span>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <input asp-for="Input.LastName" class="form-control" placeholder="Lastname"/>
+                    <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                    <div class="input-group-append">
+                        <span class="fa fa-user input-group-text"></span>
+                    </div>
+                </div>
                 <div class="input-group mb-3">
                     <input asp-for="Input.Email" class="form-control" placeholder="Email"/>
                     <span asp-validation-for="Input.Email" class="text-danger"></span>
@@ -39,6 +40,10 @@
                         <span class="fa fa-envelope input-group-text"></span>
                     </div>
                 </div>
+                <div class="input-group mb-3">
+                    <select asp-for="Input.Company" class="form-control" asp-items="Html.GetEnumSelectList<Company>()"/> 
+                </div>
+                <br/>
                 <div class="input-group mb-3">
                     <input asp-for="Input.Password" class="form-control" placeholder="Password"/>
                     <span asp-validation-for="Input.Password" class="text-danger"></span>

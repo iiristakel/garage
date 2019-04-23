@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Contracts.BLL.App;
 using Contracts.DAL.App;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -16,17 +17,17 @@ namespace WebApp.Controllers
     [Authorize]
     public class PaymentMethodsController : Controller
     {
-        private readonly IAppUnitOfWork _uow;
+        private readonly IAppBLL _bll;
 
-        public PaymentMethodsController(IAppUnitOfWork uow)
+        public PaymentMethodsController(IAppBLL bll)
         {
-            _uow = uow;
+            _bll = bll;
         }
 
         // GET: PaymentMethods
         public async Task<IActionResult> Index()
         {
-            return View(await _uow.PaymentMethods.AllAsync());
+            return View(await _bll.PaymentMethods.AllAsync());
         }
 
         // GET: PaymentMethods/Details/5
@@ -37,7 +38,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var paymentMethod = await _uow.PaymentMethods.FindAsync(id);
+            var paymentMethod = await _bll.PaymentMethods.FindAsync(id);
             if (paymentMethod == null)
             {
                 return NotFound();
@@ -61,8 +62,8 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _uow.PaymentMethods.AddAsync(paymentMethod);
-                await _uow.SaveChangesAsync();
+                await _bll.PaymentMethods.AddAsync(paymentMethod);
+                await _bll.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
 
@@ -77,7 +78,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var paymentMethod = await _uow.PaymentMethods.FindAsync(id);
+            var paymentMethod = await _bll.PaymentMethods.FindAsync(id);
             if (paymentMethod == null)
             {
                 return NotFound();
@@ -100,8 +101,8 @@ namespace WebApp.Controllers
 
             if (ModelState.IsValid)
             {
-                _uow.PaymentMethods.Update(paymentMethod);
-                await _uow.SaveChangesAsync();
+                _bll.PaymentMethods.Update(paymentMethod);
+                await _bll.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
@@ -117,7 +118,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var paymentMethod = await _uow.PaymentMethods.FindAsync(id);
+            var paymentMethod = await _bll.PaymentMethods.FindAsync(id);
             if (paymentMethod == null)
             {
                 return NotFound();
@@ -131,8 +132,8 @@ namespace WebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            _uow.PaymentMethods.Remove(id);
-            await _uow.SaveChangesAsync();
+            _bll.PaymentMethods.Remove(id);
+            await _bll.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
     }

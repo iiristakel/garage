@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Contracts.BLL.App;
 using Contracts.DAL.App;
 using DAL.App.DTO;
 using Microsoft.AspNetCore.Http;
@@ -16,18 +17,18 @@ namespace WebApp.ApiControllers
     [ApiController]
     public class PaymentMethodsController : ControllerBase
     {
-        private readonly IAppUnitOfWork _uow;
+        private readonly IAppBLL _bll;
 
-        public PaymentMethodsController(IAppUnitOfWork uow)
+        public PaymentMethodsController(IAppBLL bll)
         {
-            _uow = uow;
+            _bll = bll;
         }
 
         // GET: api/PaymentMethods
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PaymentMethodDTO>>> GetPaymentMethods()
         {
-            var res = await _uow.PaymentMethods.GetAllWithPaymentsCountAsync();
+            var res = await _bll.PaymentMethods.GetAllWithPaymentsCountAsync();
             return Ok(res);
         }
 
@@ -35,7 +36,7 @@ namespace WebApp.ApiControllers
         [HttpGet("{id}")]
         public async Task<ActionResult<PaymentMethod>> GetPaymentMethod(int id)
         {
-            var paymentMethod = await _uow.PaymentMethods.FindAsync(id);
+            var paymentMethod = await _bll.PaymentMethods.FindAsync(id);
 
             if (paymentMethod == null)
             {
@@ -54,8 +55,8 @@ namespace WebApp.ApiControllers
                 return BadRequest();
             }
 
-            _uow.PaymentMethods.Update(paymentMethod);
-            await _uow.SaveChangesAsync();
+            _bll.PaymentMethods.Update(paymentMethod);
+            await _bll.SaveChangesAsync();
 
             return NoContent();
         }
@@ -64,26 +65,26 @@ namespace WebApp.ApiControllers
         [HttpPost]
         public async Task<ActionResult<PaymentMethod>> PostPaymentMethod(PaymentMethod paymentMethod)
         {
-            await _uow.PaymentMethods.AddAsync(paymentMethod);
-            await _uow.SaveChangesAsync();
+            await _bll.PaymentMethods.AddAsync(paymentMethod);
+            await _bll.SaveChangesAsync();
 
             return CreatedAtAction("GetPaymentMethod", new { id = paymentMethod.Id }, paymentMethod);
         }
 
         // DELETE: api/PaymentMethods/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<PaymentMethod>> DeletePaymentMethod(int id)
+        public async Task<ActionResult> DeletePaymentMethod(int id)
         {
-            var paymentMethod = await _uow.PaymentMethods.FindAsync(id);
+            var paymentMethod = await _bll.PaymentMethods.FindAsync(id);
             if (paymentMethod == null)
             {
                 return NotFound();
             }
 
-            _uow.PaymentMethods.Remove(paymentMethod);
-            await _uow.SaveChangesAsync();
+            _bll.PaymentMethods.Remove(id);
+            await _bll.SaveChangesAsync();
 
-            return paymentMethod;
+            return NoContent();
         }
     }
 }

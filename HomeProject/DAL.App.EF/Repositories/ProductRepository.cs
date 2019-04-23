@@ -10,13 +10,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DAL.App.EF.Repositories
 {
-    public class ProductRepository : BaseRepository<Product>, IProductRepository
+    public class ProductRepository : BaseRepository<Product, AppDbContext>, IProductRepository
     {
-        public ProductRepository(IDataContext dataContext) : base(dataContext)
+        public ProductRepository(AppDbContext repositoryDbContext) : base(repositoryDbContext)
         {
         }
         
-        public virtual async Task<IEnumerable<ProductDTO>> GetAllAsync()
+        public virtual async Task<List<ProductDTO>> GetAllAsync()
         {
             return await RepositoryDbSet
                 .Select(c => new ProductDTO()

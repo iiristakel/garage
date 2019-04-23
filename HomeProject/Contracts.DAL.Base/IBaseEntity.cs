@@ -15,7 +15,7 @@ namespace Contracts.DAL.Base
     /// </summary>
     /// <typeparam name="TKey">primary key type</typeparam>
     public interface IBaseEntity<TKey> 
-        where TKey: struct, IComparable
+        where TKey: IComparable
     {
         TKey Id { get; set;}
     }

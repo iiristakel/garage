@@ -6,8 +6,28 @@
         <hr />
 
         <div class="form-group">
+          <label for="firstName">FirstName</label>
+          <input class="form-control" type="text" id="firstName" name="firstName" value.bind="firstName" />
+        </div>
+        <div class="form-group">
+          <label for="lastName">LastName</label>
+          <input class="form-control" type="text" id="lastName" name="lastName" value.bind="lastName" />
+        </div>
+        <div class="form-group">
           <label for="email">Email</label>
           <input class="form-control" type="email" id="email" name="email" value.bind="email" />
+        </div>
+        <!--<div class="form-group">-->
+          <!--<label for="company">Company</label>-->
+          <!--<input class="form-control"  id="company" name="company" value.bind="company" />-->
+        <!--</div>-->
+        
+        <div class="form-group">
+          <label for="company">Company</label>
+          <select id="company" value.bind="companyName">
+            <option model.bind="company[companyName]" repeat.for="companyName of Companies">${companyName}</option>
+          </select>
+
         </div>
         <div class="form-group">
           <label for="password">Password</label>

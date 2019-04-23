@@ -3,7 +3,7 @@ using Domain;
 
 namespace Contracts.DAL.App.Repositories
 {
-    public interface IWorkerOnObjectRepository: IBaseRepositoryAsync<WorkerOnObject>
+    public interface IWorkerOnObjectRepository: IBaseRepository<WorkerOnObject>
     {
         //add here custom methods
     }

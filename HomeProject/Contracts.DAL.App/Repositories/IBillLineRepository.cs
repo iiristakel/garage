@@ -6,8 +6,8 @@ using Domain;
 
 namespace Contracts.DAL.App.Repositories
 {
-    public interface IBillLineRepository : IBaseRepositoryAsync<BillLine>
+    public interface IBillLineRepository : IBaseRepository<BillLine>
     {
-        Task<IEnumerable<BillLineDTO>> GetAllAsync();
+        Task<List<BillLineDTO>> GetAllAsync();
     }
 }

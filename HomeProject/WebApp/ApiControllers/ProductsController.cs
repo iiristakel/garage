@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Contracts.BLL.App;
 using Contracts.DAL.App;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -19,18 +20,18 @@ namespace WebApp.ApiControllers
 
     public class ProductsController : ControllerBase
     {
-        private readonly IAppUnitOfWork _uow;
+        private readonly IAppBLL _bll;
 
-        public ProductsController(IAppUnitOfWork uow)
+        public ProductsController(IAppBLL bll)
         {
-            _uow = uow;
+            _bll = bll;
         }
 
         // GET: api/Products
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
-            var res = await _uow.Products.GetAllAsync();
+            var res = await _bll.Products.GetAllAsync();
             return Ok(res);
         }
 
@@ -38,7 +39,7 @@ namespace WebApp.ApiControllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
-            var product = await _uow.Products.FindAsync(id);
+            var product = await _bll.Products.FindAsync(id);
 
             if (product == null)
             {
@@ -57,8 +58,8 @@ namespace WebApp.ApiControllers
                 return BadRequest();
             }
 
-            _uow.Products.Update(product);
-            await _uow.SaveChangesAsync();
+            _bll.Products.Update(product);
+            await _bll.SaveChangesAsync();
            
             return NoContent();
         }
@@ -67,26 +68,26 @@ namespace WebApp.ApiControllers
         [HttpPost]
         public async Task<ActionResult<Product>> PostProduct(Product product)
         {
-            await _uow.Products.AddAsync(product);
-            await _uow.SaveChangesAsync();
+            await _bll.Products.AddAsync(product);
+            await _bll.SaveChangesAsync();
 
             return CreatedAtAction("GetProduct", new { id = product.Id }, product);
         }
 
         // DELETE: api/Products/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Product>> DeleteProduct(int id)
+        public async Task<ActionResult> DeleteProduct(int id)
         {
-            var product = await _uow.Products.FindAsync(id);
+            var product = await _bll.Products.FindAsync(id);
             if (product == null)
             {
                 return NotFound();
             }
 
-            _uow.Products.Remove(product);
-            await _uow.SaveChangesAsync();
+            _bll.Products.Remove(id);
+            await _bll.SaveChangesAsync();
 
-            return product;
+            return NoContent();
         }
     }
 }

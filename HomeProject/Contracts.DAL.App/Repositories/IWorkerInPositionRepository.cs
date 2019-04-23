@@ -3,7 +3,7 @@ using Domain;
 
 namespace Contracts.DAL.App.Repositories
 {
-    public interface IWorkerInPositionRepository: IBaseRepositoryAsync<WorkerInPosition>
+    public interface IWorkerInPositionRepository: IBaseRepository<WorkerInPosition>
     {
         //add here custom methods
     }

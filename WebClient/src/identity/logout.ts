@@ -1,8 +1,6 @@
 import { AppConfig } from 'app-config';
 import {LogManager, View, autoinject} from "aurelia-framework";
 import {RouteConfig, NavigationInstruction, Router} from "aurelia-router";
-import {IWorker} from "../interfaces/IWorker";
-import {WorkerService} from "../services/worker-service";
 import {BaseService} from "../services/base-service";
 
 export var log = LogManager.getLogger('Identity.Logout');
@@ -12,10 +10,8 @@ export var log = LogManager.getLogger('Identity.Logout');
 @autoinject
 export class Logout {
 
-  private workers: IWorker[] = [];
 
   constructor(
-    private workersService: WorkerService,
     private router: Router,
     private appConfig: AppConfig
   ) {

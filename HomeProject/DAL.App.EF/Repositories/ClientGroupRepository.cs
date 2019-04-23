@@ -10,18 +10,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DAL.App.EF.Repositories
 {
-    public class ClientGroupRepository : BaseRepository<ClientGroup>, IClientGroupRepository
+    public class ClientGroupRepository : BaseRepository<ClientGroup, AppDbContext>, IClientGroupRepository
     {
-        public ClientGroupRepository(IDataContext dataContext) : base(dataContext)
+        public ClientGroupRepository(AppDbContext repositoryDbContext) : base(repositoryDbContext)
         {
         }
         
-        public override async Task<IEnumerable<ClientGroup>> AllAsync()
+        public override async Task<List<ClientGroup>> AllAsync()
         {
             return await RepositoryDbSet.Include(c => c.Clients).ToListAsync();
         }
 
-        public virtual async Task<IEnumerable<ClientGroupDTO>> GetAllWithClientCountAsync()
+        public virtual async Task<List<ClientGroupDTO>> GetAllWithClientCountAsync()
         {           
             return await RepositoryDbSet
                 .Select(c => new ClientGroupDTO()

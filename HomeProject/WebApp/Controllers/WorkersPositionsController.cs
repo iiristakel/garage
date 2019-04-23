@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Contracts.BLL.App;
 using Contracts.DAL.App;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -16,17 +17,17 @@ namespace WebApp.Controllers
     [Authorize]
     public class WorkersPositionsController : Controller
     {
-        private readonly IAppUnitOfWork _uow;
+        private readonly IAppBLL _bll;
 
-        public WorkersPositionsController(IAppUnitOfWork uow)
+        public WorkersPositionsController(IAppBLL bll)
         {
-            _uow = uow;
+            _bll = bll;
         }
 
         // GET: WorkersPositions
         public async Task<IActionResult> Index()
         {
-            var workerPosition = await _uow.WorkersPositions.AllAsync();
+            var workerPosition = await _bll.WorkersPositions.AllAsync();
             return View(workerPosition);
         }
 
@@ -40,7 +41,7 @@ namespace WebApp.Controllers
 
 //            var workerPosition = await _context.WorkersPositions
 //                .FirstOrDefaultAsync(m => m.Id == id);
-            var workerPosition = await _uow.WorkersPositions.FindAsync(id);
+            var workerPosition = await _bll.WorkersPositions.FindAsync(id);
 
             if (workerPosition == null)
             {
@@ -65,8 +66,8 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _uow.WorkersPositions.AddAsync(workerPosition);
-                await _uow.SaveChangesAsync();
+                await _bll.WorkersPositions.AddAsync(workerPosition);
+                await _bll.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
@@ -82,7 +83,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var workerPosition = await _uow.WorkersPositions.FindAsync(id);
+            var workerPosition = await _bll.WorkersPositions.FindAsync(id);
             if (workerPosition == null)
             {
                 return NotFound();
@@ -105,8 +106,8 @@ namespace WebApp.Controllers
 
             if (ModelState.IsValid)
             {
-                _uow.WorkersPositions.Update(workerPosition);
-                await _uow.SaveChangesAsync();
+                _bll.WorkersPositions.Update(workerPosition);
+                await _bll.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
@@ -124,7 +125,7 @@ namespace WebApp.Controllers
 
 //            var workerPosition = await _context.WorkersPositions
 //                .FirstOrDefaultAsync(m => m.Id == id);
-            var workerPosition = await _uow.WorkersPositions.FindAsync(id);
+            var workerPosition = await _bll.WorkersPositions.FindAsync(id);
             
             if (workerPosition == null)
             {
@@ -139,8 +140,8 @@ namespace WebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            _uow.WorkersPositions.Remove(id);
-            await _uow.SaveChangesAsync();
+            _bll.WorkersPositions.Remove(id);
+            await _bll.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
