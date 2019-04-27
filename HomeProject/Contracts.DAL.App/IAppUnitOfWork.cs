@@ -14,10 +14,10 @@ namespace Contracts.DAL.App
         IProductRepository Products{ get; }
         IPaymentMethodRepository PaymentMethods{ get; }
         IProductForClientRepository ProductsForClients { get; }
-        IWorkerRepository Workers { get; }
+        IAppUserRepository AppUsers { get; }
         IWorkObjectRepository WorkObjects { get; }
-        IWorkerPositionRepository WorkersPositions{ get; }
-        IWorkerOnObjectRepository WorkersOnObjects { get; }
-        IWorkerInPositionRepository WorkersInPositions { get; }
+        IAppUserPositionRepository AppUsersPositions{ get; }
+        IAppUserOnObjectRepository AppUsersOnObjects { get; }
+        IAppUserInPositionRepository AppUsersInPositions { get; }
     }
 }

@@ -41,10 +41,6 @@
                     </div>
                 </div>
                 <div class="input-group mb-3">
-                    <select asp-for="Input.Company" class="form-control" asp-items="Html.GetEnumSelectList<Company>()"/> 
-                </div>
-                <br/>
-                <div class="input-group mb-3">
                     <input asp-for="Input.Password" class="form-control" placeholder="Password"/>
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                     <div class="input-group-append">

@@ -77,8 +77,7 @@ namespace WebApp.ApiControllers.Identity
                     UserName = model.Email,
                     Email = model.Email,
                     FirstName = model.FirstName,
-                    LastName = model.LastName,
-                    Company = model.Company
+                    LastName = model.LastName
                 };
                 var result = await _userManager.CreateAsync(appUser, model.Password);
                 if (result.Succeeded)
@@ -135,7 +134,6 @@ namespace WebApp.ApiControllers.Identity
           [MinLength(1)]
           public string LastName { get; set; }
 
-          public Company Company { get; set; }
             public string Email { get; set; }
 
             [Required] [MinLength(6)] public string Password { get; set; }

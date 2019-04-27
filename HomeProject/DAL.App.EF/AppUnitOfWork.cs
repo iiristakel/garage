@@ -36,15 +36,15 @@ namespace DAL.App.EF
         
         public IProductForClientRepository ProductsForClients =>_repositoryProvider.GetRepository<IProductForClientRepository>();
         
-        public IWorkerRepository Workers =>_repositoryProvider.GetRepository<IWorkerRepository>();
+        public IAppUserRepository AppUsers =>_repositoryProvider.GetRepository<IAppUserRepository>();
         
         public IWorkObjectRepository WorkObjects =>_repositoryProvider.GetRepository<IWorkObjectRepository>();
         
-        public IWorkerPositionRepository WorkersPositions =>_repositoryProvider.GetRepository<IWorkerPositionRepository>();
+        public IAppUserPositionRepository AppUsersPositions =>_repositoryProvider.GetRepository<IAppUserPositionRepository>();
         
-        public IWorkerOnObjectRepository WorkersOnObjects =>_repositoryProvider.GetRepository<IWorkerOnObjectRepository>();
+        public IAppUserOnObjectRepository AppUsersOnObjects =>_repositoryProvider.GetRepository<IAppUserOnObjectRepository>();
         
-        public IWorkerInPositionRepository WorkersInPositions =>_repositoryProvider.GetRepository<IWorkerInPositionRepository>();
+        public IAppUserInPositionRepository AppUsersInPositions =>_repositoryProvider.GetRepository<IAppUserInPositionRepository>();
         
 
        

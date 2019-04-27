@@ -24,10 +24,10 @@ namespace BLL.App.Helpers
             AddToCreationMethods<IPaymentService>(uow => new PaymentService(uow));
             AddToCreationMethods<IProductForClientService>(uow => new ProductForClientService(uow));
             AddToCreationMethods<IProductService>(uow => new ProductService(uow));
-            AddToCreationMethods<IWorkerInPositionService>(uow => new WorkerInPositionService(uow));
-            AddToCreationMethods<IWorkerOnObjectService>(uow => new WorkerOnObjectService(uow));
-            AddToCreationMethods<IWorkerPositionService>(uow => new WorkerPositionService(uow));
-            AddToCreationMethods<IWorkerService>(uow => new WorkerService(uow));
+            AddToCreationMethods<IAppUserInPositionService>(uow => new AppUserInPositionService(uow));
+            AddToCreationMethods<IAppUserOnObjectService>(uow => new AppUserOnObjectService(uow));
+            AddToCreationMethods<IAppUserPositionService>(uow => new AppUserPositionService(uow));
+            AddToCreationMethods<IAppUserService>(uow => new AppUserService(uow));
             AddToCreationMethods<IWorkObjectService>(uow => new WorkObjectService(uow));
 
         }

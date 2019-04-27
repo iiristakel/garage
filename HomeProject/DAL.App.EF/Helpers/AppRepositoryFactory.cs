@@ -41,17 +41,17 @@ namespace DAL.App.EF.Helpers
             AddToCreationMethods<IProductRepository>( 
                 dataContext => new ProductRepository(dataContext));
             
-            AddToCreationMethods<IWorkerInPositionRepository>( 
-                dataContext => new WorkerInPositionRepository(dataContext));
+            AddToCreationMethods<IAppUserInPositionRepository>( 
+                dataContext => new AppUserInPositionRepository(dataContext));
             
-            AddToCreationMethods<IWorkerOnObjectRepository>( 
-                dataContext => new WorkerOnObjectRepository(dataContext));
+            AddToCreationMethods<IAppUserOnObjectRepository>( 
+                dataContext => new AppUserOnObjectRepository(dataContext));
             
-            AddToCreationMethods<IWorkerPositionRepository>( 
-                dataContext => new WorkerPositionRepository(dataContext));
+            AddToCreationMethods<IAppUserPositionRepository>( 
+                dataContext => new AppUserPositionRepository(dataContext));
             
-            AddToCreationMethods<IWorkerRepository>( 
-                dataContext => new WorkerRepository(dataContext));
+            AddToCreationMethods<IAppUserRepository>( 
+                dataContext => new AppUserRepository(dataContext));
             
             AddToCreationMethods<IWorkObjectRepository>( 
                 dataContext => new WorkObjectRepository(dataContext));

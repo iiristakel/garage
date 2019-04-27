@@ -1,0 +1,8 @@
+@model Domain.AppUserPosition
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="form-group">
+    <label asp-for="PositionValue" class="control-label"></label>
+    <input asp-for="PositionValue" class="form-control"/>
+    <span asp-validation-for="PositionValue" class="text-danger"></span>
+</div>

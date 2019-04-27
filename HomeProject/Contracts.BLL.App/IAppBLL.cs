@@ -18,11 +18,11 @@ namespace Contracts.BLL.App
         IProductService Products{ get; }
         IPaymentMethodService PaymentMethods{ get; }
         IProductForClientService ProductsForClients { get; }
-        IWorkerService Workers { get; }
+        IAppUserService AppUsers { get; }
         IWorkObjectService WorkObjects { get; }
-        IWorkerPositionService WorkersPositions{ get; }
-        IWorkerOnObjectService WorkersOnObjects { get; }
-        IWorkerInPositionService WorkersInPositions { get; }
+        IAppUserPositionService AppUsersPositions{ get; }
+        IAppUserOnObjectService AppUsersOnObjects { get; }
+        IAppUserInPositionService AppUsersInPositions { get; }
 
     }
 }

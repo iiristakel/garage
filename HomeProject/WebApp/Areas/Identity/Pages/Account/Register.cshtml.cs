@@ -68,7 +68,6 @@ namespace WebApp.Areas.Identity.Pages.Account
             [MinLength(1)]
             public string LastName { get; set; }
 
-            public Company Company { get; set; }
 
         }
 

@@ -25,10 +25,10 @@ namespace BLL.App
         public IProductService Products=> ServiceProvider.GetService<IProductService>();
         public IPaymentMethodService PaymentMethods=> ServiceProvider.GetService<IPaymentMethodService>();
         public IProductForClientService ProductsForClients => ServiceProvider.GetService<IProductForClientService>();
-        public IWorkerService Workers => ServiceProvider.GetService<IWorkerService>();
+        public IAppUserService AppUsers => ServiceProvider.GetService<IAppUserService>();
         public IWorkObjectService WorkObjects => ServiceProvider.GetService<IWorkObjectService>();
-        public IWorkerPositionService WorkersPositions=> ServiceProvider.GetService<IWorkerPositionService>();
-        public IWorkerOnObjectService WorkersOnObjects => ServiceProvider.GetService<IWorkerOnObjectService>();
-        public IWorkerInPositionService WorkersInPositions => ServiceProvider.GetService<IWorkerInPositionService>();
+        public IAppUserPositionService AppUsersPositions => ServiceProvider.GetService<IAppUserPositionService>();
+        public IAppUserOnObjectService AppUsersOnObjects => ServiceProvider.GetService<IAppUserOnObjectService>();
+        public IAppUserInPositionService AppUsersInPositions => ServiceProvider.GetService<IAppUserInPositionService>();
     }
 }

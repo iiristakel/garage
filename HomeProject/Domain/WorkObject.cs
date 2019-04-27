@@ -9,7 +9,7 @@ namespace Domain
         public int ClientId { get; set; }
         public Client Client { get; set; }
 
-        public ICollection<WorkerOnObject> WorkersOnObject { get; set; }
+        public ICollection<AppUserOnObject> AppUsersOnObject { get; set; }
 
         public ICollection<ProductForClient> ProductsForClient { get; set; }
 

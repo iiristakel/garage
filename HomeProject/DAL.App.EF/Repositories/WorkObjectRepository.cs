@@ -44,7 +44,7 @@ namespace DAL.App.EF.Repositories
                     Id = c.Id,
                     Client = c.Client,
                     ClientId = c.ClientId,
-                    WorkersOnObject = c.WorkersOnObject,
+                    AppusersOnObject = c.AppUsersOnObject,
                     ProductsForClient = c.ProductsForClient,
                     From = c.From,
                     Until = c.Until
