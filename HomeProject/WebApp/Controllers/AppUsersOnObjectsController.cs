@@ -11,6 +11,7 @@ using DAL;
 using DAL.App.EF;
 using Domain;
 using Domain.Identity;
+using Identity;
 using Microsoft.AspNetCore.Authorization;
 using WebApp.ViewModels;
 
@@ -29,7 +30,7 @@ namespace WebApp.Controllers
         // GET: AppUsersOnObjects
         public async Task<IActionResult> Index()
         {
-            var appUserOnObject = await _bll.AppUsersOnObjects.AllAsync();
+            var appUserOnObject = await _bll.AppUsersOnObjects.AllForUserAsync(User.GetUserId());
 
             return View(appUserOnObject);
         }
@@ -42,11 +43,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-//            var appUserOnObject = await _bll.AppUsersOnObjects
-//                .Include(w => w.WorkObject)
-//                .Include(w => w.AppUser)
-//                .FirstOrDefaultAsync(m => m.Id == id);
-            var appUserOnObject = await _bll.AppUsersOnObjects.FindAsync(id);
+            var appUserOnObject = await _bll.AppUsersOnObjects.FindForUserAsync(id.Value, User.GetUserId());
 
             if (appUserOnObject == null)
             {
@@ -62,14 +59,14 @@ namespace WebApp.Controllers
             var vm = new AppUserOnObjectCreateEditViewModel();
             
             vm.WorkObjectSelectList = new SelectList(
-                await _bll.BaseEntityService<WorkObject>().AllAsync(),
-                nameof(WorkObject.Id), 
-                nameof(WorkObject.Id));
+                await _bll.WorkObjects.AllForUserAsync(User.GetUserId()),
+                nameof(BLL.App.DTO.WorkObject.Id), 
+                nameof(BLL.App.DTO.WorkObject.Id));
             
             vm.AppUserSelectList = new SelectList(
-                await _bll.BaseEntityService<AppUser>().AllAsync(),
-                nameof(AppUser.Id), 
-                nameof(AppUser.FirstLastName));
+                await _bll.AppUsers.AllForUserAsync(User.GetUserId()),
+                nameof(BLL.App.DTO.Identity.AppUser.Id), 
+                nameof(BLL.App.DTO.Identity.AppUser.FirstLastName));
             
             return View(vm);
         }
@@ -83,21 +80,21 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _bll.AppUsersOnObjects.AddAsync(vm.AppUserOnObject);
+                _bll.AppUsersOnObjects.Add(vm.AppUserOnObject);
                 await _bll.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
             
             vm.WorkObjectSelectList = new SelectList(
-                await _bll.BaseEntityService<WorkObject>().AllAsync(),
-                nameof(WorkObject.Id), 
-                nameof(WorkObject.Id));
+                await _bll.WorkObjects.AllForUserAsync(User.GetUserId()),
+                nameof(BLL.App.DTO.WorkObject.Id), 
+                nameof(BLL.App.DTO.WorkObject.Id));
             
             vm.AppUserSelectList = new SelectList(
-                await _bll.BaseEntityService<AppUser>().AllAsync(),
-                nameof(AppUser.Id), 
-                nameof(AppUser.FirstLastName));
+                await _bll.AppUsers.AllForUserAsync(User.GetUserId()),
+                nameof(BLL.App.DTO.Identity.AppUser.Id), 
+                nameof(BLL.App.DTO.Identity.AppUser.FirstLastName));
             
             return View(vm);
         }
@@ -110,7 +107,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var appUserOnObject = await _bll.AppUsersOnObjects.FindAsync(id);
+            var appUserOnObject = await _bll.AppUsersOnObjects.FindForUserAsync(id.Value, User.GetUserId());
             if (appUserOnObject == null)
             {
                 return NotFound();
@@ -120,14 +117,14 @@ namespace WebApp.Controllers
             vm.AppUserOnObject = appUserOnObject;
             
             vm.WorkObjectSelectList = new SelectList(
-                await _bll.BaseEntityService<WorkObject>().AllAsync(),
-                nameof(WorkObject.Id), 
-                nameof(WorkObject.Id));
+                await _bll.WorkObjects.AllForUserAsync(User.GetUserId()),
+                nameof(BLL.App.DTO.WorkObject.Id), 
+                nameof(BLL.App.DTO.WorkObject.Id));
             
             vm.AppUserSelectList = new SelectList(
-                await _bll.BaseEntityService<AppUser>().AllAsync(),
-                nameof(AppUser.Id), 
-                nameof(AppUser.FirstLastName));
+                await _bll.AppUsers.AllForUserAsync(User.GetUserId()),
+                nameof(BLL.App.DTO.Identity.AppUser.Id), 
+                nameof(BLL.App.DTO.Identity.AppUser.FirstLastName));
             
             return View(vm);
         }
@@ -143,6 +140,11 @@ namespace WebApp.Controllers
             {
                 return NotFound();
             }
+            
+            if (!await _bll.AppUsersOnObjects.BelongsToUserAsync(id, User.GetUserId()))
+            {
+                return NotFound();
+            }
 
             if (ModelState.IsValid)
             {
@@ -153,14 +155,14 @@ namespace WebApp.Controllers
             }
             
             vm.WorkObjectSelectList = new SelectList(
-                await _bll.BaseEntityService<WorkObject>().AllAsync(),
-                nameof(WorkObject.Id), 
-                nameof(WorkObject.Id));
+                await _bll.WorkObjects.AllForUserAsync(User.GetUserId()),
+                nameof(BLL.App.DTO.WorkObject.Id), 
+                nameof(BLL.App.DTO.WorkObject.Id));
             
             vm.AppUserSelectList = new SelectList(
-                await _bll.BaseEntityService<AppUser>().AllAsync(),
-                nameof(AppUser.Id), 
-                nameof(AppUser.FirstLastName));
+                await _bll.AppUsers.AllForUserAsync(User.GetUserId()),
+                nameof(BLL.App.DTO.Identity.AppUser.Id), 
+                nameof(BLL.App.DTO.Identity.AppUser.FirstLastName));
             
             return View(vm);
         }
@@ -173,11 +175,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-//            var appUserOnObject = await _bll.AppUsersOnObjects
-//                .Include(w => w.WorkObject)
-//                .Include(w => w.AppUser)
-//                .FirstOrDefaultAsync(m => m.Id == id);
-            var appUserOnObject = await _bll.AppUsersOnObjects.FindAsync(id);
+            var appUserOnObject = await _bll.AppUsersOnObjects.FindForUserAsync(id.Value, User.GetUserId());
             
             if (appUserOnObject == null)
             {
@@ -192,6 +190,11 @@ namespace WebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            if (!await _bll.AppUsersOnObjects.BelongsToUserAsync(id, User.GetUserId()))
+            {
+                return NotFound();
+            }
+            
             _bll.AppUsersOnObjects.Remove(id);
             await _bll.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

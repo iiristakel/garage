@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using BLL.App.DTO.Identity;
 
 namespace BLL.App.DTO
 {
@@ -9,6 +10,9 @@ namespace BLL.App.DTO
         
         public int ClientId { get; set; }
         public Client Client { get; set; }
+        
+        public int AppUserId { get; set; }
+        public AppUser AppUser { get; set; }
 
         public decimal ArrivalFee { get; set; }
         public decimal SumWithoutTaxes { get; set; }

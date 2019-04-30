@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using DAL;
 using DAL.App.EF;
 using Domain;
+using Identity;
 using Microsoft.AspNetCore.Authorization;
 using WebApp.ViewModels;
 
@@ -40,12 +41,7 @@ namespace WebApp.Controllers
             {
                 return NotFound();
             }
-
-//            var productForClient = await _bll.ProductsForClients
-//                .Include(p => p.Client)
-//                .Include(p => p.Product)
-//                .Include(p => p.WorkObject)
-//                .FirstOrDefaultAsync(m => m.Id == id);
+            
             var productForClient = await _bll.ProductsForClients.FindAsync(id);
 
             if (productForClient == null)
@@ -62,19 +58,19 @@ namespace WebApp.Controllers
             var vm = new ProductsForClientsCreateEditViewModel();
             
             vm.ClientSelectList = new SelectList(
-                await _bll.BaseEntityService<Client>().AllAsync(),
-                nameof(Client.Id), 
-                nameof(Client.Address));
+                await _bll.Clients.AllAsync(),
+                nameof(BLL.App.DTO.Client.Id), 
+                nameof(BLL.App.DTO.Client.CompanyName));
             
             vm.ProductSelectList = new SelectList(
-                await _bll.BaseEntityService<Product>().AllAsync(),
-                nameof(Product.Id), 
-                nameof(Product.ProductName));
+                await _bll.Products.AllAsync(),
+                nameof(BLL.App.DTO.Product.Id), 
+                nameof(BLL.App.DTO.Product.ProductName));
             
             vm.WorkObjectSelectList = new SelectList(
-                await _bll.BaseEntityService<WorkObject>().AllAsync(),
-                nameof(WorkObject.Id), 
-                nameof(WorkObject.Id));
+                await _bll.WorkObjects.AllForUserAsync(User.GetUserId()),
+                nameof(BLL.App.DTO.WorkObject.Id), 
+                nameof(BLL.App.DTO.WorkObject.Id));
 
             return View(vm);
         }
@@ -88,26 +84,26 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _bll.ProductsForClients.AddAsync(vm.ProductForClient);
+                _bll.ProductsForClients.Add(vm.ProductForClient);
                 await _bll.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
             
             vm.ClientSelectList = new SelectList(
-                await _bll.BaseEntityService<Client>().AllAsync(),
-                nameof(Client.Id), 
-                nameof(Client.Address));
+                await _bll.Clients.AllAsync(),
+                nameof(BLL.App.DTO.Client.Id), 
+                nameof(BLL.App.DTO.Client.CompanyName));
             
             vm.ProductSelectList = new SelectList(
-                await _bll.BaseEntityService<Product>().AllAsync(),
-                nameof(Product.Id), 
-                nameof(Product.ProductName));
+                await _bll.Products.AllAsync(),
+                nameof(BLL.App.DTO.Product.Id), 
+                nameof(BLL.App.DTO.Product.ProductName));
             
             vm.WorkObjectSelectList = new SelectList(
-                await _bll.BaseEntityService<WorkObject>().AllAsync(),
-                nameof(WorkObject.Id), 
-                nameof(WorkObject.Id));
+                await _bll.WorkObjects.AllForUserAsync(User.GetUserId()),
+                nameof(BLL.App.DTO.WorkObject.Id), 
+                nameof(BLL.App.DTO.WorkObject.Id));
 
             return View(vm);
         }
@@ -130,19 +126,19 @@ namespace WebApp.Controllers
             vm.ProductForClient = productForClient;
             
             vm.ClientSelectList = new SelectList(
-                await _bll.BaseEntityService<Client>().AllAsync(),
-                nameof(Client.Id), 
-                nameof(Client.Address));
+                await _bll.Clients.AllAsync(),
+                nameof(BLL.App.DTO.Client.Id), 
+                nameof(BLL.App.DTO.Client.CompanyName));
             
             vm.ProductSelectList = new SelectList(
-                await _bll.BaseEntityService<Product>().AllAsync(),
-                nameof(Product.Id), 
-                nameof(Product.ProductName));
+                await _bll.Products.AllAsync(),
+                nameof(BLL.App.DTO.Product.Id), 
+                nameof(BLL.App.DTO.Product.ProductName));
             
             vm.WorkObjectSelectList = new SelectList(
-                await _bll.BaseEntityService<WorkObject>().AllAsync(),
-                nameof(WorkObject.Id), 
-                nameof(WorkObject.Id));
+                await _bll.WorkObjects.AllForUserAsync(User.GetUserId()),
+                nameof(BLL.App.DTO.WorkObject.Id), 
+                nameof(BLL.App.DTO.WorkObject.Id));
 
             return View(vm);
         }
@@ -168,19 +164,19 @@ namespace WebApp.Controllers
             }
 
             vm.ClientSelectList = new SelectList(
-                await _bll.BaseEntityService<Client>().AllAsync(),
-                nameof(Client.Id), 
-                nameof(Client.Address));
+                await _bll.Clients.AllAsync(),
+                nameof(BLL.App.DTO.Client.Id), 
+                nameof(BLL.App.DTO.Client.CompanyName));
             
             vm.ProductSelectList = new SelectList(
-                await _bll.BaseEntityService<Product>().AllAsync(),
-                nameof(Product.Id), 
-                nameof(Product.ProductName));
+                await _bll.Products.AllAsync(),
+                nameof(BLL.App.DTO.Product.Id), 
+                nameof(BLL.App.DTO.Product.ProductName));
             
             vm.WorkObjectSelectList = new SelectList(
-                await _bll.BaseEntityService<WorkObject>().AllAsync(),
-                nameof(WorkObject.Id), 
-                nameof(WorkObject.Id));
+                await _bll.WorkObjects.AllForUserAsync(User.GetUserId()),
+                nameof(BLL.App.DTO.WorkObject.Id), 
+                nameof(BLL.App.DTO.WorkObject.Id));
 
             return View(vm);
         }

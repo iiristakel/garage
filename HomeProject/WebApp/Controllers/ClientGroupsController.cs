@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Contracts.BLL.App;
 using Contracts.DAL.App;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -16,17 +17,17 @@ namespace WebApp.Controllers
     [Authorize]
     public class ClientGroupsController : Controller
     {
-        private readonly IAppUnitOfWork _uow;
+        private readonly IAppBLL _bll;
 
-        public ClientGroupsController(IAppUnitOfWork uow)
+        public ClientGroupsController(IAppBLL bll)
         {
-            _uow = uow;
+            _bll = bll;
         }
 
         // GET: ClientGroups
         public async Task<IActionResult> Index()
         {
-            return View(await _uow.ClientGroups.AllAsync());
+            return View(await _bll.ClientGroups.AllAsync());
         }
 
         // GET: ClientGroups/Details/5
@@ -37,7 +38,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var clientGroup = await _uow.ClientGroups.FindAsync(id);
+            var clientGroup = await _bll.ClientGroups.FindAsync(id);
             if (clientGroup == null)
             {
                 return NotFound();
@@ -57,12 +58,13 @@ namespace WebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Name,Description,DiscountPercent,Id")] ClientGroup clientGroup)
+        public async Task<IActionResult> Create([Bind("Name,Description,DiscountPercent,Id")] 
+            BLL.App.DTO.ClientGroup clientGroup)
         {
             if (ModelState.IsValid)
             {
-                await _uow.ClientGroups.AddAsync(clientGroup);
-                await _uow.SaveChangesAsync();
+                _bll.ClientGroups.Add(clientGroup);
+                await _bll.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(clientGroup);
@@ -76,7 +78,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var clientGroup = await _uow.ClientGroups.FindAsync(id);
+            var clientGroup = await _bll.ClientGroups.FindAsync(id);
             if (clientGroup == null)
             {
                 return NotFound();
@@ -89,7 +91,8 @@ namespace WebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Name,Description,DiscountPercent,Id")] ClientGroup clientGroup)
+        public async Task<IActionResult> Edit(int id, [Bind("Name,Description,DiscountPercent,Id")] 
+            BLL.App.DTO.ClientGroup clientGroup)
         {
             if (id != clientGroup.Id)
             {
@@ -99,8 +102,8 @@ namespace WebApp.Controllers
             if (ModelState.IsValid)
             {
                 
-                    _uow.ClientGroups.Update(clientGroup);
-                    await _uow.SaveChangesAsync();
+                    _bll.ClientGroups.Update(clientGroup);
+                    await _bll.SaveChangesAsync();
                
                 return RedirectToAction(nameof(Index));
             }
@@ -115,7 +118,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var clientGroup = await _uow.ClientGroups.FindAsync(id);
+            var clientGroup = await _bll.ClientGroups.FindAsync(id);
             if (clientGroup == null)
             {
                 return NotFound();
@@ -129,8 +132,8 @@ namespace WebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            _uow.ClientGroups.Remove(id);
-            await _uow.SaveChangesAsync();
+            _bll.ClientGroups.Remove(id);
+            await _bll.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 

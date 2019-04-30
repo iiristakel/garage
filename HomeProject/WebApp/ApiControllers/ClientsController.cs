@@ -25,15 +25,14 @@ namespace WebApp.ApiControllers
 
         // GET: api/Clients
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Client>>> GetClients()
+        public async Task<ActionResult<IEnumerable<BLL.App.DTO.ClientWithProductsCount>>> GetClients()
         {
-            var res = await _bll.Clients.GetAllWithProductsCountAsync();
-            return Ok(res);
+            return await _bll.Clients.GetAllWithProductsCountAsync();
         }
 
         // GET: api/Clients/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Client>> GetClient(int id)
+        public async Task<ActionResult<BLL.App.DTO.Client>> GetClient(int id)
         {
             var client = await _bll.Clients.FindAsync(id);
 
@@ -47,7 +46,7 @@ namespace WebApp.ApiControllers
 
         // PUT: api/Clients/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutClient(int id, Client client)
+        public async Task<IActionResult> PutClient(int id, BLL.App.DTO.Client client)
         {
             if (id != client.Id)
             {
@@ -62,7 +61,7 @@ namespace WebApp.ApiControllers
 
         // POST: api/Clients
         [HttpPost]
-        public async Task<ActionResult<Client>> PostClient(Client client)
+        public async Task<ActionResult<BLL.App.DTO.Client>> PostClient(BLL.App.DTO.Client client)
         {
             await _bll.Clients.AddAsync(client);
             await _bll.SaveChangesAsync();
@@ -72,7 +71,7 @@ namespace WebApp.ApiControllers
 
         // DELETE: api/Clients/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteClient(int id)
+        public async Task<ActionResult<BLL.App.DTO.Client>> DeleteClient(int id)
         {
             var client = await _bll.Clients.FindAsync(id);
             if (client == null)

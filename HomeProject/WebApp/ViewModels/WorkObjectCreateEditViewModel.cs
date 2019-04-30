@@ -5,7 +5,7 @@ namespace WebApp.ViewModels
 {
     public class WorkObjectCreateEditViewModel
     {
-        public WorkObject WorkObject { get; set; }
+        public BLL.App.DTO.WorkObject WorkObject { get; set; }
         public SelectList ClientSelectList { get; set; }
 
     }

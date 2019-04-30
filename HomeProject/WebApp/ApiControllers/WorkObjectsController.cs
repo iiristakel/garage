@@ -9,14 +9,18 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DAL.App.EF;
 using Domain;
+using Domain.Identity;
+using Identity;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApp.ApiControllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class WorkObjectsController : ControllerBase
     {
-//        private readonly IAppUnitOfWork _bll;
         private readonly IAppBLL _bll;
 
         public WorkObjectsController(IAppBLL bll)
@@ -26,16 +30,16 @@ namespace WebApp.ApiControllers
 
         // GET: api/WorkObjects
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<WorkObject>>> GetWorkObjects()
+        public async Task<ActionResult<IEnumerable<BLL.App.DTO.WorkObject>>> GetWorkObjects()
         {
-            return Ok(await _bll.WorkObjects.GetAllAsync());
+            return await _bll.WorkObjects.AllForUserAsync(User.GetUserId());
         }
 
         // GET: api/WorkObjects/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<WorkObject>> GetWorkObject(int id)
+        public async Task<ActionResult<BLL.App.DTO.WorkObject>> GetWorkObject(int id)
         {
-            var workObject = await _bll.WorkObjects.FindAsync(id);
+            var workObject = await _bll.WorkObjects.FindForUserAsync(id, User.GetUserId());
 
             if (workObject == null)
             {
@@ -47,11 +51,16 @@ namespace WebApp.ApiControllers
 
         // PUT: api/WorkObjects/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutWorkObject(int id, WorkObject workObject)
+        public async Task<IActionResult> PutWorkObject(int id, BLL.App.DTO.WorkObject workObject)
         {
             if (id != workObject.Id)
             {
                 return BadRequest();
+            }
+            
+            if (!await _bll.WorkObjects.BelongsToUserAsync(id, User.GetUserId()))
+            {
+                return NotFound();
             }
 
             _bll.WorkObjects.Update(workObject);
@@ -62,9 +71,16 @@ namespace WebApp.ApiControllers
 
         // POST: api/WorkObjects
         [HttpPost]
-        public async Task<ActionResult<WorkObject>> PostWorkObject(WorkObject workObject)
+        public async Task<ActionResult<BLL.App.DTO.WorkObject>> PostWorkObject(
+            BLL.App.DTO.WorkObject workObject)
         {
-            await _bll.WorkObjects.AddAsync(workObject);
+            //TODO: is it correct? or should be through appusers
+            if (!await _bll.WorkObjects.BelongsToUserAsync(workObject.Id, User.GetUserId()))
+            {
+                return NotFound();
+            }
+
+            _bll.WorkObjects.Add(workObject);
             await _bll.SaveChangesAsync();
 
             return CreatedAtAction("GetWorkObject", new {id = workObject.Id}, workObject);
@@ -72,10 +88,9 @@ namespace WebApp.ApiControllers
 
         // DELETE: api/WorkObjects/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteWorkObject(int id)
+        public async Task<ActionResult<BLL.App.DTO.WorkObject>> DeleteWorkObject(int id)
         {
-            var workObject = await _bll.WorkObjects.FindAsync(id);
-            if (workObject == null)
+            if (!await _bll.WorkObjects.BelongsToUserAsync(id, User.GetUserId()))
             {
                 return NotFound();
             }

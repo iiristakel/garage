@@ -5,7 +5,7 @@ namespace WebApp.ViewModels
 {
     public class ClientCreateEditViewModel
     {
-        public Client Client { get; set; }
+        public BLL.App.DTO.Client Client { get; set; }
         public SelectList ClientGroupSelectList { get; set; }
     }
 }

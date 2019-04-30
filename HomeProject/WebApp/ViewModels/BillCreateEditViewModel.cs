@@ -5,7 +5,7 @@ namespace WebApp.ViewModels
 {
     public class BillCreateEditViewModel
     {
-        public Bill Bill { get; set; }
+        public BLL.App.DTO.Bill Bill { get; set; }
         public SelectList ClientSelectList { get; set; }
     }
 }

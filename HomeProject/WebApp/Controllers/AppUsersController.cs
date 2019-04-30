@@ -29,10 +29,7 @@ namespace WebApp.Controllers
         // GET: AppUsers
         public async Task<IActionResult> Index()
         {
-//            var appUsers = await _bll.AppUsers
-//                .Include(p => p.AppUser)
-//                .Where(p => p.AppUserId == User.GetUserId()).ToListAsync();
-            var appUsers = await _bll.AppUsers.AllAsync();
+            var appUsers = await _bll.AppUsers.AllForUserAsync(User.GetUserId());
 
             return View(appUsers);
         }
@@ -45,7 +42,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var appUser = await _bll.AppUsers.FindAsync(id);
+            var appUser = await _bll.AppUsers.FindForUserAsync(id.Value, User.GetUserId());
 
             if (appUser == null)
             {
@@ -74,7 +71,7 @@ namespace WebApp.Controllers
 //            
 //            if (ModelState.IsValid)
 //            {
-//                await _bll.AppUsers.AddAsync(appUser);
+//                _bll.AppUsers.Add(appUser);
 //                await _bll.SaveChangesAsync();
 //
 //                return RedirectToAction(nameof(Index));
@@ -91,7 +88,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var appUser = await _bll.AppUsers.FindAsync(id);
+            var appUser = await _bll.AppUsers.FindForUserAsync(id.Value, User.GetUserId());
             if (appUser == null)
             {
                 return NotFound();
@@ -106,9 +103,14 @@ namespace WebApp.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("FirstName,LastName,HiringDate,LeftJob,PhoneNr,Email,Id")]
-            AppUser appUser)
+            BLL.App.DTO.Identity.AppUser appUser)
         {
             if (id != appUser.Id)
+            {
+                return NotFound();
+            }
+            
+            if (!await _bll.AppUsers.BelongsToUserAsync(id, User.GetUserId()))
             {
                 return NotFound();
             }
@@ -132,7 +134,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var appUser = await _bll.AppUsers.FindAsync(id);
+            var appUser = await _bll.AppUsers.FindForUserAsync(id.Value, User.GetUserId());
                 
             if (appUser == null)
             {
@@ -147,6 +149,11 @@ namespace WebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            if (!await _bll.AppUsers.BelongsToUserAsync(id, User.GetUserId()))
+            {
+                return NotFound();
+            }
+            
             _bll.AppUsers.Remove(id);
             await _bll.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Contracts.BLL.App;
 using Contracts.DAL.App;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -18,17 +19,17 @@ namespace WebApp.Controllers
     [Authorize]
     public class BillsController : Controller
     {
-        private readonly IAppUnitOfWork _uow;
+        private readonly IAppBLL _bll;
 
-        public BillsController(IAppUnitOfWork uow)
+        public BillsController(IAppBLL bll)
         {
-            _uow = uow;
+            _bll = bll;
         }
 
         // GET: Bills
         public async Task<IActionResult> Index()
         {
-            var bills = await _uow.Bills.AllAsync();
+            var bills = await _bll.Bills.AllForUserAsync(User.GetUserId());
             
             return View(bills);
         }
@@ -41,7 +42,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var bill = await _uow.Bills.FindAsync(id);
+            var bill = await _bll.Bills.FindForUserAsync(id.Value, User.GetUserId());
             
             if (bill == null)
             {
@@ -57,9 +58,9 @@ namespace WebApp.Controllers
             var vm = new BillCreateEditViewModel();
             
             vm.ClientSelectList = new SelectList(
-                await _uow.BaseRepository<Client>().AllAsync(), 
-                nameof(Client.Id), 
-                nameof(Client.CompanyName));
+                await _bll.Clients.AllAsync(), 
+                nameof(BLL.App.DTO.Client.Id), 
+                nameof(BLL.App.DTO.Client.CompanyName));
             
             return View(vm);
         }
@@ -73,15 +74,15 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _uow.Bills.AddAsync(vm.Bill);
-                await _uow.SaveChangesAsync();
+                await _bll.Bills.AddAsync(vm.Bill);
+                await _bll.SaveChangesAsync();
                 
                 return RedirectToAction(nameof(Index));
             }
             vm.ClientSelectList = new SelectList(
-                await _uow.BaseRepository<Client>().AllAsync(), 
-                nameof(Client.Id), 
-                nameof(Client.CompanyName));
+                await _bll.Clients.AllAsync(), 
+                nameof(BLL.App.DTO.Client.Id), 
+                nameof(BLL.App.DTO.Client.CompanyName));
             
             return View(vm);
         }
@@ -94,18 +95,19 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var bill = await _uow.Bills.FindAsync(id);
+            var bill = await _bll.Bills.FindForUserAsync(id.Value, User.GetUserId());
             if (bill == null)
             {
                 return NotFound();
             }
             
             var vm = new BillCreateEditViewModel();
+            
             vm.Bill = bill;
             vm.ClientSelectList = new SelectList(
-                await _uow.BaseRepository<Client>().AllAsync(), 
-                nameof(Client.Id), 
-                nameof(Client.CompanyName));
+                await _bll.Clients.AllAsync(), 
+                nameof(BLL.App.DTO.Client.Id), 
+                nameof(BLL.App.DTO.Client.CompanyName));
             return View(vm);
         }
 
@@ -120,18 +122,23 @@ namespace WebApp.Controllers
             {
                 return NotFound();
             }
+            
+            if (!await _bll.Bills.BelongsToUserAsync(id, User.GetUserId()))
+            {
+                return NotFound();
+            }
 
             if (ModelState.IsValid)
             {
-                _uow.Bills.Update(vm.Bill);
-                await _uow.SaveChangesAsync();
+                _bll.Bills.Update(vm.Bill);
+                await _bll.SaveChangesAsync();
                 
                 return RedirectToAction(nameof(Index));
             }
             vm.ClientSelectList = new SelectList(
-                await _uow.BaseRepository<Client>().AllAsync(), 
-                nameof(Client.Id), 
-                nameof(Client.CompanyName));
+                await _bll.Clients.AllAsync(), 
+                nameof(BLL.App.DTO.Client.Id), 
+                nameof(BLL.App.DTO.Client.CompanyName));
             
             return View(vm);
         }
@@ -144,7 +151,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var bill = await _uow.Bills.FindAsync(id);
+            var bill = await _bll.Bills.FindForUserAsync(id.Value, User.GetUserId());
             
             if (bill == null)
             {
@@ -159,8 +166,13 @@ namespace WebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            _uow.Bills.Remove(id);
-            await _uow.SaveChangesAsync();
+            if (!await _bll.Bills.BelongsToUserAsync(id, User.GetUserId()))
+            {
+                return NotFound();
+            }
+            
+            _bll.Bills.Remove(id);
+            await _bll.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 

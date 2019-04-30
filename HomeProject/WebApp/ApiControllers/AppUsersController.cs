@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using DAL.App.EF;
 using Domain;
 using Domain.Identity;
+using Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 
@@ -17,7 +18,7 @@ namespace WebApp.ApiControllers
 {
     [Route("api/[controller]")]
     [ApiController]
-//    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class AppUsersController : ControllerBase
     {
         private readonly IAppBLL _bll;
@@ -29,17 +30,17 @@ namespace WebApp.ApiControllers
 
         // GET: api/AppUsers
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<AppUser>>> GetAppUsers()
+        public async Task<ActionResult<IEnumerable<BLL.App.DTO.Identity.AppUser>>> GetAppUsers()
         {
-            var res = await _bll.AppUsers.AllAsync();
-            return Ok(res);
+            return await _bll.AppUsers.AllForUserAsync(User.GetUserId());
+             
         }
 
         // GET: api/AppUsers/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<AppUser>> GetAppUser(int id)
+        public async Task<ActionResult<BLL.App.DTO.Identity.AppUser>> GetAppUser(int id)
         {
-            var appUser = await _bll.AppUsers.FindAsync(id);
+            var appUser = await _bll.AppUsers.FindForUserAsync(id, User.GetUserId());
 
             if (appUser == null)
             {
@@ -51,13 +52,20 @@ namespace WebApp.ApiControllers
 
         // PUT: api/AppUsers/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAppUser(int id, AppUser appUser)
+        public async Task<IActionResult> PutAppUser(int id, BLL.App.DTO.Identity.AppUser appUser)
         {
             if (id != appUser.Id)
             {
                 return BadRequest();
             }
 
+            if (!await _bll.AppUsers.BelongsToUserAsync(id, User.GetUserId()))
+            {
+                return NotFound();
+            }
+
+//            appUser.Id = User.GetUserId();
+            
             _bll.AppUsers.Update(appUser);
             await _bll.SaveChangesAsync();
 
@@ -66,9 +74,12 @@ namespace WebApp.ApiControllers
 
         // POST: api/AppUsers
         [HttpPost]
-        public async Task<ActionResult<AppUser>> PostAppUser(AppUser appUser)
+        public async Task<ActionResult<BLL.App.DTO.Identity.AppUser>> 
+            PostAppUser(BLL.App.DTO.Identity.AppUser appUser)
         {
-            await _bll.AppUsers.AddAsync(appUser);
+            appUser.Id = User.GetUserId();
+            
+            _bll.AppUsers.Add(appUser);
             await _bll.SaveChangesAsync();
 
             return CreatedAtAction("GetAppUser", new { id = appUser.Id }, appUser);
@@ -78,13 +89,14 @@ namespace WebApp.ApiControllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteAppUser(int id)
         {
-            var appUser = await _bll.AppUsers.FindAsync(id);
-            if (appUser == null)
+            if (!await _bll.AppUsers.BelongsToUserAsync(id, 
+                User.GetUserId()))
             {
                 return NotFound();
             }
 
             _bll.AppUsers.Remove(id);
+            
             await _bll.SaveChangesAsync();
 
             return NoContent();

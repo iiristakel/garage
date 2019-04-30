@@ -25,15 +25,14 @@ namespace WebApp.ApiControllers
 
         // GET: api/ProductsForClients
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ProductForClient>>> GetProductsForClients()
+        public async Task<ActionResult<IEnumerable<BLL.App.DTO.ProductForClient>>> GetProductsForClients()
         {
-            var res = await _bll.ProductsForClients.AllAsync();
-            return Ok(res);
+            return await _bll.ProductsForClients.AllAsync();
         }
 
         // GET: api/ProductsForClients/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<ProductForClient>> GetProductForClient(int id)
+        public async Task<ActionResult<BLL.App.DTO.ProductForClient>> GetProductForClient(int id)
         {
             var productForClient = await _bll.ProductsForClients.FindAsync(id);
 
@@ -47,7 +46,8 @@ namespace WebApp.ApiControllers
 
         // PUT: api/ProductsForClients/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProductForClient(int id, ProductForClient productForClient)
+        public async Task<IActionResult> PutProductForClient(int id, 
+            BLL.App.DTO.ProductForClient productForClient)
         {
             if (id != productForClient.Id)
             {
@@ -63,7 +63,8 @@ namespace WebApp.ApiControllers
 
         // POST: api/ProductsForClients
         [HttpPost]
-        public async Task<ActionResult<ProductForClient>> PostProductForClient(ProductForClient productForClient)
+        public async Task<ActionResult<ProductForClient>> PostProductForClient(
+            BLL.App.DTO.ProductForClient productForClient)
         {
             await _bll.ProductsForClients.AddAsync(productForClient);
             await _bll.SaveChangesAsync();
@@ -73,7 +74,7 @@ namespace WebApp.ApiControllers
 
         // DELETE: api/ProductsForClients/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteProductForClient(int id)
+        public async Task<ActionResult<BLL.App.DTO.ProductForClient>> DeleteProductForClient(int id)
         {
             var productForClient = await _bll.ProductsForClients.FindAsync(id);
             if (productForClient == null)
@@ -81,10 +82,10 @@ namespace WebApp.ApiControllers
                 return NotFound();
             }
 
-            _bll.ProductsForClients.Remove(id);
+            _bll.ProductsForClients.Remove(productForClient);
             await _bll.SaveChangesAsync();
 
-            return NoContent();
+            return productForClient;
         }
 
     }

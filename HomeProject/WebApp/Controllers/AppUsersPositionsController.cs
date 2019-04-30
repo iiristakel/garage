@@ -62,7 +62,8 @@ namespace WebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AppUserPositionValue,Id")] AppUserPosition appUserPosition)
+        public async Task<IActionResult> Create([Bind("AppUserPositionValue,Id")] 
+            BLL.App.DTO.AppUserPosition appUserPosition)
         {
             if (ModelState.IsValid)
             {
@@ -97,7 +98,8 @@ namespace WebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("AppUserPositionValue,Id")] AppUserPosition appUserPosition)
+        public async Task<IActionResult> Edit(int id, [Bind("AppUserPositionValue,Id")] 
+            BLL.App.DTO.AppUserPosition appUserPosition)
         {
             if (id != appUserPosition.Id)
             {

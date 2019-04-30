@@ -29,15 +29,14 @@ namespace WebApp.ApiControllers
 
         // GET: api/Products
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
+        public async Task<ActionResult<IEnumerable<BLL.App.DTO.Product>>> GetProducts()
         {
-            var res = await _bll.Products.GetAllAsync();
-            return Ok(res);
+            return await _bll.Products.AllAsync();
         }
 
         // GET: api/Products/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Product>> GetProduct(int id)
+        public async Task<ActionResult<BLL.App.DTO.Product>> GetProduct(int id)
         {
             var product = await _bll.Products.FindAsync(id);
 
@@ -51,7 +50,7 @@ namespace WebApp.ApiControllers
 
         // PUT: api/Products/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProduct(int id, Product product)
+        public async Task<IActionResult> PutProduct(int id, BLL.App.DTO.Product product)
         {
             if (id != product.Id)
             {
@@ -66,7 +65,7 @@ namespace WebApp.ApiControllers
 
         // POST: api/Products
         [HttpPost]
-        public async Task<ActionResult<Product>> PostProduct(Product product)
+        public async Task<ActionResult<BLL.App.DTO.Product>> PostProduct(BLL.App.DTO.Product product)
         {
             await _bll.Products.AddAsync(product);
             await _bll.SaveChangesAsync();
@@ -76,7 +75,7 @@ namespace WebApp.ApiControllers
 
         // DELETE: api/Products/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteProduct(int id)
+        public async Task<ActionResult<BLL.App.DTO.Product>> DeleteProduct(int id)
         {
             var product = await _bll.Products.FindAsync(id);
             if (product == null)
@@ -84,10 +83,10 @@ namespace WebApp.ApiControllers
                 return NotFound();
             }
 
-            _bll.Products.Remove(id);
+            _bll.Products.Remove(product);
             await _bll.SaveChangesAsync();
 
-            return NoContent();
+            return product;
         }
     }
 }

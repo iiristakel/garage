@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Contracts.BLL.App;
-using Contracts.DAL.App;
+using Domain.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using DAL;
-using DAL.App.EF;
-using Domain;
+using Identity;
 using Microsoft.AspNetCore.Authorization;
 using WebApp.ViewModels;
 
@@ -28,7 +26,7 @@ namespace WebApp.Controllers
         // GET: WorkObjects
         public async Task<IActionResult> Index()
         {
-            var workObjects = await _bll.WorkObjects.AllAsync();
+            var workObjects = await _bll.WorkObjects.AllForUserAsync(User.GetUserId());
 
             return View(workObjects);
         }
@@ -41,10 +39,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-//            var workObject = await _bll.WorkObjects
-//                .Include(w => w.Client)
-//                .FirstOrDefaultAsync(m => m.Id == id);
-            var workObject = await _bll.WorkObjects.FindAsync(id);
+            var workObject = await _bll.WorkObjects.FindForUserAsync(id.Value, User.GetUserId());
 
             if (workObject == null)
             {
@@ -57,13 +52,15 @@ namespace WebApp.Controllers
         // GET: WorkObjects/Create
         public async Task<IActionResult> Create()
         {
-            var vm = new WorkObjectCreateEditViewModel();
-            
-            vm.ClientSelectList = new SelectList(
-                await _bll.BaseEntityService<Client>().AllAsync(),
-                nameof(Client.Id), 
-                nameof(Client.CompanyName));
-            
+            var vm = new WorkObjectCreateEditViewModel
+            {
+                ClientSelectList = new SelectList(
+                    await _bll.Clients.AllAsync(),
+                    nameof(BLL.App.DTO.Client.Id),
+                    nameof(BLL.App.DTO.Client.CompanyName))
+            };
+
+
             return View(vm);
         }
 
@@ -76,16 +73,16 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _bll.WorkObjects.AddAsync(vm.WorkObject);
+                _bll.WorkObjects.Add(vm.WorkObject);
                 await _bll.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
 
             vm.ClientSelectList = new SelectList(
-                await _bll.BaseEntityService<Client>().AllAsync(),
-                nameof(Client.Id), 
-                nameof(Client.CompanyName));
+                await _bll.Clients.AllAsync(),
+                nameof(BLL.App.DTO.Client.Id), 
+                nameof(BLL.App.DTO.Client.CompanyName));
             
             return View(vm);
         }
@@ -98,19 +95,20 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var workObject = await _bll.WorkObjects.FindAsync(id);
+            var workObject = await _bll.WorkObjects.FindForUserAsync(id.Value, User.GetUserId());
             if (workObject == null)
             {
                 return NotFound();
             }
 
             var vm = new WorkObjectCreateEditViewModel();
+            
             vm.WorkObject = workObject;
             
             vm.ClientSelectList = new SelectList(
-                await _bll.BaseEntityService<Client>().AllAsync(),
-                nameof(Client.Id), 
-                nameof(Client.CompanyName));
+                await _bll.Clients.AllAsync(),
+                nameof(BLL.App.DTO.Client.Id), 
+                nameof(BLL.App.DTO.Client.CompanyName));
             
             return View(vm);
         }
@@ -126,6 +124,11 @@ namespace WebApp.Controllers
             {
                 return NotFound();
             }
+            
+            if (!await _bll.WorkObjects.BelongsToUserAsync(id, User.GetUserId()))
+            {
+                return NotFound();
+            }
 
             if (ModelState.IsValid)
             {
@@ -136,9 +139,9 @@ namespace WebApp.Controllers
             }
 
             vm.ClientSelectList = new SelectList(
-                await _bll.BaseEntityService<Client>().AllAsync(),
-                nameof(Client.Id), 
-                nameof(Client.CompanyName));
+                await _bll.Clients.AllAsync(),
+                nameof(BLL.App.DTO.Client.Id), 
+                nameof(BLL.App.DTO.Client.CompanyName));
             
             return View(vm);
         }
@@ -151,10 +154,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-//            var workObject = await _bll.WorkObjects
-//                .Include(w => w.Client)
-//                .FirstOrDefaultAsync(m => m.Id == id);
-            var workObject = await _bll.WorkObjects.FindAsync(id);
+            var workObject = await _bll.WorkObjects.FindForUserAsync(id.Value, User.GetUserId());
             
             if (workObject == null)
             {
@@ -169,6 +169,11 @@ namespace WebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            if (!await _bll.WorkObjects.BelongsToUserAsync(id, User.GetUserId()))
+            {
+                return NotFound();
+            }
+            
             _bll.WorkObjects.Remove(id);
             await _bll.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

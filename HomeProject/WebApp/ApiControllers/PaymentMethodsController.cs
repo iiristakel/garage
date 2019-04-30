@@ -26,15 +26,15 @@ namespace WebApp.ApiControllers
 
         // GET: api/PaymentMethods
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<PaymentMethodWithPaymentsCount>>> GetPaymentMethods()
+        public async Task<ActionResult<IEnumerable<
+            BLL.App.DTO.PaymentMethodWithPaymentsCount>>> GetPaymentMethods()
         {
-            var res = await _bll.PaymentMethods.GetAllWithPaymentsCountAsync();
-            return Ok(res);
+            return await _bll.PaymentMethods.GetAllWithPaymentsCountAsync();
         }
 
         // GET: api/PaymentMethods/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Domain.PaymentMethod>> GetPaymentMethod(int id)
+        public async Task<ActionResult<BLL.App.DTO.PaymentMethod>> GetPaymentMethod(int id)
         {
             var paymentMethod = await _bll.PaymentMethods.FindAsync(id);
 
@@ -48,7 +48,8 @@ namespace WebApp.ApiControllers
 
         // PUT: api/PaymentMethods/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutPaymentMethod(int id, Domain.PaymentMethod paymentMethod)
+        public async Task<IActionResult> PutPaymentMethod(int id, 
+            BLL.App.DTO.PaymentMethod paymentMethod)
         {
             if (id != paymentMethod.Id)
             {
@@ -63,7 +64,8 @@ namespace WebApp.ApiControllers
 
         // POST: api/PaymentMethods
         [HttpPost]
-        public async Task<ActionResult<Domain.PaymentMethod>> PostPaymentMethod(Domain.PaymentMethod paymentMethod)
+        public async Task<ActionResult<BLL.App.DTO.PaymentMethod>> PostPaymentMethod(
+            BLL.App.DTO.PaymentMethod paymentMethod)
         {
             await _bll.PaymentMethods.AddAsync(paymentMethod);
             await _bll.SaveChangesAsync();
@@ -73,7 +75,7 @@ namespace WebApp.ApiControllers
 
         // DELETE: api/PaymentMethods/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeletePaymentMethod(int id)
+        public async Task<ActionResult<BLL.App.DTO.PaymentMethod>> DeletePaymentMethod(int id)
         {
             var paymentMethod = await _bll.PaymentMethods.FindAsync(id);
             if (paymentMethod == null)

@@ -5,7 +5,7 @@ namespace WebApp.ViewModels
 {
     public class PaymentCreateEditViewModel
     {
-        public Payment Payment { get; set; }
+        public BLL.App.DTO.Payment Payment { get; set; }
         public SelectList BillSelectList { get; set; }
         public SelectList ClientSelectList { get; set; }
         public SelectList PaymentMethodSelectList { get; set; }

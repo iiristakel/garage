@@ -50,7 +50,7 @@ namespace DAL.App.EF.Repositories
         }
 
 
-        public async Task<List<WorkObject>> AllForUserAsync(int userId)
+        public async Task<List<DAL.App.DTO.WorkObject>> AllForUserAsync(int userId)
         {
             return await RepositoryDbSet
                 .Include(c => c.Client)

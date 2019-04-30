@@ -42,9 +42,6 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-//            var client = await _context.Clients
-//                .Include(c => c.ClientGroup)
-//                .FirstOrDefaultAsync(m => m.Id == id);
             var client = await _bll.Clients.FindAsync(id);
 
             if (client == null)
@@ -61,7 +58,7 @@ namespace WebApp.Controllers
             var vm = new ClientCreateEditViewModel();
             
             vm.ClientGroupSelectList = new SelectList(
-                await _bll.BaseEntityService<ClientGroup>().AllAsync(),
+                await _bll.ClientGroups.AllAsync(),
                 nameof(ClientGroup.Id), 
                 nameof(ClientGroup.Name));
 
@@ -77,14 +74,14 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _bll.Clients.AddAsync(vm.Client);
+                _bll.Clients.Add(vm.Client);
                 await _bll.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
 
             vm.ClientGroupSelectList = new SelectList(
-                await _bll.BaseEntityService<ClientGroup>().AllAsync(),
+                await _bll.ClientGroups.AllAsync(),
                 nameof(ClientGroup.Id), 
                 nameof(ClientGroup.Name));
 
@@ -108,7 +105,7 @@ namespace WebApp.Controllers
             var vm = new ClientCreateEditViewModel();
             vm.Client = client;
             vm.ClientGroupSelectList = new SelectList(
-                await _bll.BaseEntityService<ClientGroup>().AllAsync(),
+                await _bll.ClientGroups.AllAsync(),
                 nameof(ClientGroup.Id), 
                 nameof(ClientGroup.Name));
 
@@ -136,7 +133,7 @@ namespace WebApp.Controllers
             }
 
             vm.ClientGroupSelectList = new SelectList(
-                await _bll.BaseEntityService<ClientGroup>().AllAsync(),
+                await _bll.ClientGroups.AllAsync(),
                 nameof(ClientGroup.Id), 
                 nameof(ClientGroup.Name));
 
@@ -151,9 +148,6 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-//            var client = await _context.Clients
-//                .Include(c => c.ClientGroup)
-//                .FirstOrDefaultAsync(m => m.Id == id);
             var client = await _bll.Clients.FindAsync(id);
             
             if (client == null)

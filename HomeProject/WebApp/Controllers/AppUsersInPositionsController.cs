@@ -11,6 +11,7 @@ using DAL;
 using DAL.App.EF;
 using Domain;
 using Domain.Identity;
+using Identity;
 using Microsoft.AspNetCore.Authorization;
 using WebApp.ViewModels;
 
@@ -29,7 +30,7 @@ namespace WebApp.Controllers
         // GET: AppUsersInPositions
         public async Task<IActionResult> Index()
         {
-            var appUsersInPositions = await _bll.AppUsersInPositions.AllAsync();
+            var appUsersInPositions = await _bll.AppUsersInPositions.AllForUserAsync(User.GetUserId());
             return View(appUsersInPositions);
         }
 
@@ -41,11 +42,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-//            var appUserInPosition = await _bll.AppUsersInPositions
-//                .Include(w => w.AppUser)
-//                .Include(w => w.AppUserPosition)
-//                .FirstOrDefaultAsync(m => m.Id == id);
-            var appUserInPosition = await _bll.AppUsersInPositions.FindAsync(id);
+            var appUserInPosition = await _bll.AppUsersInPositions.FindForUserAsync(id.Value, User.GetUserId());
             if (appUserInPosition == null)
             {
                 return NotFound();
@@ -60,12 +57,12 @@ namespace WebApp.Controllers
             var vm = new AppUserInPositionCreateEditViewModel();
             
             vm.AppUserSelectList = new SelectList(
-                await _bll.BaseEntityService<AppUser>().AllAsync(), 
+                await _bll.AppUsers.AllForUserAsync(User.GetUserId()), 
                 nameof(AppUser.Id), 
                 nameof(AppUser.FirstLastName));
             
             vm.AppUserPositionSelectList = new SelectList(
-                await _bll.BaseEntityService<AppUserPosition>().AllAsync(), 
+                await _bll.AppUsersPositions.AllAsync(), 
                 nameof(AppUserPosition.Id), 
                 nameof(AppUserPosition.AppUserPositionValue));
             
@@ -81,19 +78,19 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _bll.AppUsersInPositions.AddAsync(vm.AppUserInPosition);
+                _bll.AppUsersInPositions.Add(vm.AppUserInPosition);
                 await _bll.SaveChangesAsync();
                 
                 return RedirectToAction(nameof(Index));
             }
             
             vm.AppUserSelectList = new SelectList(
-                await _bll.BaseEntityService<AppUser>().AllAsync(), 
+                await _bll.AppUsers.AllForUserAsync(User.GetUserId()), 
                 nameof(AppUser.Id), 
                 nameof(AppUser.FirstLastName));
             
             vm.AppUserPositionSelectList = new SelectList(
-                await _bll.BaseEntityService<AppUserPosition>().AllAsync(), 
+                await _bll.AppUsersPositions.AllAsync(), 
                 nameof(AppUserPosition.Id), 
                 nameof(AppUserPosition.AppUserPositionValue));
             
@@ -108,7 +105,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var appUserInPosition = await _bll.AppUsersInPositions.FindAsync(id);
+            var appUserInPosition = await _bll.AppUsersInPositions.FindForUserAsync(id.Value, User.GetUserId());
             if (appUserInPosition == null)
             {
                 return NotFound();
@@ -118,12 +115,12 @@ namespace WebApp.Controllers
             vm.AppUserInPosition = appUserInPosition;
             
             vm.AppUserSelectList = new SelectList(
-                await _bll.BaseEntityService<AppUser>().AllAsync(), 
+                await _bll.AppUsers.AllForUserAsync(User.GetUserId()), 
                 nameof(AppUser.Id), 
                 nameof(AppUser.FirstLastName));
             
             vm.AppUserPositionSelectList = new SelectList(
-                await _bll.BaseEntityService<AppUserPosition>().AllAsync(), 
+                await _bll.AppUsersPositions.AllAsync(), 
                 nameof(AppUserPosition.Id), 
                 nameof(AppUserPosition.AppUserPositionValue));
             
@@ -141,6 +138,11 @@ namespace WebApp.Controllers
             {
                 return NotFound();
             }
+            
+            if (!await _bll.AppUsersInPositions.BelongsToUserAsync(id, User.GetUserId()))
+            {
+                return NotFound();
+            }
 
             if (ModelState.IsValid)
             {
@@ -153,12 +155,12 @@ namespace WebApp.Controllers
             }
             
             vm.AppUserSelectList = new SelectList(
-                await _bll.BaseEntityService<AppUser>().AllAsync(), 
+                await _bll.AppUsers.AllForUserAsync(User.GetUserId()), 
                 nameof(AppUser.Id), 
                 nameof(AppUser.FirstLastName));
             
             vm.AppUserPositionSelectList = new SelectList(
-                await _bll.BaseEntityService<AppUserPosition>().AllAsync(), 
+                await _bll.AppUsersPositions.AllAsync(), 
                 nameof(AppUserPosition.Id), 
                 nameof(AppUserPosition.AppUserPositionValue));
             
@@ -173,11 +175,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-//            var appUserInPosition = await _bll.AppUsersInPositions
-//                .Include(w => w.AppUser)
-//                .Include(w => w.AppUserPosition)
-//                .FirstOrDefaultAsync(m => m.Id == id);
-            var appUserInPosition = await _bll.AppUsersInPositions.FindAsync(id);
+            var appUserInPosition = await _bll.AppUsersInPositions.FindForUserAsync(id.Value, User.GetUserId());
             
             if (appUserInPosition == null)
             {

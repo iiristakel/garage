@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using DAL;
 using DAL.App.EF;
 using Domain;
+using Identity;
 using Microsoft.AspNetCore.Authorization;
 using WebApp.ViewModels;
 
@@ -28,8 +29,8 @@ namespace WebApp.Controllers
         // GET: Payments
         public async Task<IActionResult> Index()
         {
-            var payments = await _bll.Payments.AllAsync();
-               
+            var payments = await _bll.Payments.AllForUserAsync(User.GetUserId());
+
             return View(payments);
         }
 
@@ -41,8 +42,8 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var payment = await _bll.Payments.FindAsync(id);
-            
+            var payment = await _bll.Payments.FindForUserAsync(id.Value, User.GetUserId());
+
             if (payment == null)
             {
                 return NotFound();
@@ -55,22 +56,22 @@ namespace WebApp.Controllers
         public async Task<IActionResult> Create()
         {
             var vm = new PaymentCreateEditViewModel();
-            
+
             vm.BillSelectList = new SelectList(
-                await _bll.BaseEntityService<Bill>().AllAsync(),
-                nameof(Bill.Id), 
+                await _bll.Bills.AllForUserAsync(User.GetUserId()),
+                nameof(Bill.Id),
                 nameof(Bill.InvoiceNr));
-            
+
             vm.ClientSelectList = new SelectList(
-                await _bll.BaseEntityService<Client>().AllAsync(),
-                nameof(Client.Id), 
-                nameof(Client.Address));
-            
+                await _bll.Clients.AllAsync(),
+                nameof(Client.Id),
+                nameof(Client.CompanyName));
+
             vm.PaymentMethodSelectList = new SelectList(
-                await _bll.BaseEntityService<PaymentMethod>().AllAsync(),
-                nameof(PaymentMethod.Id), 
+                await _bll.PaymentMethods.AllAsync(),
+                nameof(PaymentMethod.Id),
                 nameof(PaymentMethod.PaymentMethodValue));
-            
+
             return View(vm);
         }
 
@@ -87,22 +88,22 @@ namespace WebApp.Controllers
                 await _bll.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            
+
             vm.BillSelectList = new SelectList(
-                await _bll.BaseEntityService<Bill>().AllAsync(),
-                nameof(Bill.Id), 
+                await _bll.Bills.AllForUserAsync(User.GetUserId()),
+                nameof(Bill.Id),
                 nameof(Bill.InvoiceNr));
-            
+
             vm.ClientSelectList = new SelectList(
-                await _bll.BaseEntityService<Client>().AllAsync(),
-                nameof(Client.Id), 
-                nameof(Client.Address));
-            
+                await _bll.Clients.AllAsync(),
+                nameof(Client.Id),
+                nameof(Client.CompanyName));
+
             vm.PaymentMethodSelectList = new SelectList(
-                await _bll.BaseEntityService<PaymentMethod>().AllAsync(),
-                nameof(PaymentMethod.Id), 
+                await _bll.PaymentMethods.AllAsync(),
+                nameof(PaymentMethod.Id),
                 nameof(PaymentMethod.PaymentMethodValue));
-            
+
             return View(vm);
         }
 
@@ -114,30 +115,30 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var payment = await _bll.Payments.FindAsync(id);
+            var payment = await _bll.Payments.FindForUserAsync(id.Value, User.GetUserId());
             if (payment == null)
             {
                 return NotFound();
             }
-            
+
             var vm = new PaymentCreateEditViewModel();
             vm.Payment = payment;
-            
+
             vm.BillSelectList = new SelectList(
-                await _bll.BaseEntityService<Bill>().AllAsync(),
-                nameof(Bill.Id), 
+                await _bll.Bills.AllForUserAsync(User.GetUserId()),
+                nameof(Bill.Id),
                 nameof(Bill.InvoiceNr));
-            
+
             vm.ClientSelectList = new SelectList(
-                await _bll.BaseEntityService<Client>().AllAsync(),
-                nameof(Client.Id), 
-                nameof(Client.Address));
-            
+                await _bll.Clients.AllAsync(),
+                nameof(Client.Id),
+                nameof(Client.CompanyName));
+
             vm.PaymentMethodSelectList = new SelectList(
-                await _bll.BaseEntityService<PaymentMethod>().AllAsync(),
-                nameof(PaymentMethod.Id), 
+                await _bll.PaymentMethods.AllAsync(),
+                nameof(PaymentMethod.Id),
                 nameof(PaymentMethod.PaymentMethodValue));
-            
+
             return View(vm);
         }
 
@@ -153,29 +154,34 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
+            if (!await _bll.Payments.BelongsToUserAsync(id, User.GetUserId()))
+            {
+                return NotFound();
+            }
+
             if (ModelState.IsValid)
             {
-                
-                    _bll.Payments.Update(vm.Payment);
-                    await _bll.SaveChangesAsync();
-                
+                _bll.Payments.Update(vm.Payment);
+                await _bll.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
+
             vm.BillSelectList = new SelectList(
-                await _bll.BaseEntityService<Bill>().AllAsync(),
-                nameof(Bill.Id), 
+                await _bll.Bills.AllForUserAsync(User.GetUserId()),
+                nameof(Bill.Id),
                 nameof(Bill.InvoiceNr));
-            
+
             vm.ClientSelectList = new SelectList(
-                await _bll.BaseEntityService<Client>().AllAsync(),
-                nameof(Client.Id), 
-                nameof(Client.Address));
-            
+                await _bll.Clients.AllAsync(),
+                nameof(Client.Id),
+                nameof(Client.CompanyName));
+
             vm.PaymentMethodSelectList = new SelectList(
-                await _bll.BaseEntityService<PaymentMethod>().AllAsync(),
-                nameof(PaymentMethod.Id), 
+                await _bll.PaymentMethods.AllAsync(),
+                nameof(PaymentMethod.Id),
                 nameof(PaymentMethod.PaymentMethodValue));
-            
+
             return View(vm);
         }
 
@@ -187,8 +193,8 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var payment = await _bll.Payments.FindAsync(id);
-            
+            var payment = await _bll.Payments.FindForUserAsync(id.Value, User.GetUserId());
+
             if (payment == null)
             {
                 return NotFound();
@@ -202,10 +208,14 @@ namespace WebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            if (!await _bll.Payments.BelongsToUserAsync(id, User.GetUserId()))
+            {
+                return NotFound();
+            }
+            
             _bll.Payments.Remove(id);
             await _bll.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
     }
 }

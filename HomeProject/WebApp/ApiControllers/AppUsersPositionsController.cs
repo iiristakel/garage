@@ -30,14 +30,14 @@ namespace WebApp.ApiControllers
 
         // GET: api/AppUsersPositions
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<AppUserPositionDTO>>> GetAppUsersPositions()
+        public async Task<ActionResult<IEnumerable<BLL.App.DTO.AppUserPositionWithAppUsersCount>>> GetAppUsersPositions()
         {
-            return Ok(await _bll.AppUsersPositions.GetAllWithAppUsersCountAsync());
+            return await _bll.AppUsersPositions.GetAllWithAppUsersCountAsync();
         }
 
         // GET: api/AppUsersPositions/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<AppUserPosition>> GetAppUserPosition(int id)
+        public async Task<ActionResult<BLL.App.DTO.AppUserPosition>> GetAppUserPosition(int id)
         {
             var appUserPosition = await _bll.AppUsersPositions.FindAsync(id);
 
@@ -51,7 +51,8 @@ namespace WebApp.ApiControllers
 
         // PUT: api/AppUsersPositions/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAppUserPosition(int id, AppUserPosition appUserPosition)
+        public async Task<IActionResult> PutAppUserPosition(int id, 
+            BLL.App.DTO.AppUserPosition appUserPosition)
         {
             if (id != appUserPosition.Id)
             {
@@ -67,7 +68,8 @@ namespace WebApp.ApiControllers
 
         // POST: api/AppUsersPositions
         [HttpPost]
-        public async Task<ActionResult<AppUserPosition>> PostAppUserPosition(AppUserPosition appUserPosition)
+        public async Task<ActionResult<BLL.App.DTO.AppUserPosition>> PostAppUserPosition(
+            BLL.App.DTO.AppUserPosition appUserPosition)
         {
             await _bll.AppUsersPositions.AddAsync(appUserPosition);
             await _bll.SaveChangesAsync();
@@ -77,7 +79,7 @@ namespace WebApp.ApiControllers
 
         // DELETE: api/AppUsersPositions/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteAppUserPosition(int id)
+        public async Task<ActionResult<BLL.App.DTO.AppUserPosition>> DeleteAppUserPosition(int id)
         {
             var appUserPosition = await _bll.AppUsersPositions.FindAsync(id);
             if (appUserPosition == null)

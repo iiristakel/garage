@@ -1,4 +1,4 @@
-@using Domain.Identity
+@using BLL.App.DTO.Identity
 @inject SignInManager<AppUser> SignInManager
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();

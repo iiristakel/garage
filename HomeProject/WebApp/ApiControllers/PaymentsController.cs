@@ -9,11 +9,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DAL.App.EF;
 using Domain;
+using Identity;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApp.ApiControllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class PaymentsController : ControllerBase
     {
         private readonly IAppBLL _bll;
@@ -25,17 +29,16 @@ namespace WebApp.ApiControllers
 
         // GET: api/Payments
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Payment>>> GetPayments()
+        public async Task<ActionResult<IEnumerable<BLL.App.DTO.Payment>>> GetPayments()
         {
-            var res = await _bll.Payments.AllAsync();
-            return Ok(res);
+            return await _bll.Payments.AllForUserAsync(User.GetUserId());
         }
 
         // GET: api/Payments/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Payment>> GetPayment(int id)
+        public async Task<ActionResult<BLL.App.DTO.Payment>> GetPayment(int id)
         {
-            var payment = await _bll.Payments.FindAsync(id);
+            var payment = await _bll.Payments.FindForUserAsync(id, User.GetUserId());
 
             if (payment == null)
             {
@@ -47,11 +50,16 @@ namespace WebApp.ApiControllers
 
         // PUT: api/Payments/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutPayment(int id, Payment payment)
+        public async Task<IActionResult> PutPayment(int id, BLL.App.DTO.Payment payment)
         {
             if (id != payment.Id)
             {
                 return BadRequest();
+            }
+            
+            if (!await _bll.Payments.BelongsToUserAsync(id, User.GetUserId()))
+            {
+                return NotFound();
             }
 
             _bll.Payments.Update(payment);
@@ -63,9 +71,14 @@ namespace WebApp.ApiControllers
 
         // POST: api/Payments
         [HttpPost]
-        public async Task<ActionResult<Payment>> PostPayment(Payment payment)
+        public async Task<ActionResult<BLL.App.DTO.Payment>> PostPayment(BLL.App.DTO.Payment payment)
         {
-            await _bll.Payments.AddAsync(payment);
+            if (!await _bll.AppUsers.BelongsToUserAsync(payment.Bill.AppUserId, User.GetUserId()))
+            {
+                return NotFound();
+            }
+            
+            _bll.Payments.Add(payment);
             await _bll.SaveChangesAsync();
 
             return CreatedAtAction("GetPayment", new { id = payment.Id }, payment);
@@ -75,8 +88,7 @@ namespace WebApp.ApiControllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeletePayment(int id)
         {
-            var payment = await _bll.Payments.FindAsync(id);
-            if (payment == null)
+            if (!await _bll.Payments.BelongsToUserAsync(id, User.GetUserId()))
             {
                 return NotFound();
             }

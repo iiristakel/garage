@@ -7,8 +7,7 @@ using Contracts.DAL.App;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using DAL.App.EF;
-using Domain;
+using Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 
@@ -16,7 +15,7 @@ namespace WebApp.ApiControllers
 {
     [Route("api/[controller]")]
     [ApiController]
-//    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 
     public class AppUsersInPositionsController : ControllerBase
     {
@@ -29,17 +28,16 @@ namespace WebApp.ApiControllers
 
         // GET: api/AppUsersInPositions
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<AppUserInPosition>>> GetAppUsersInPositions()
+        public async Task<ActionResult<IEnumerable<BLL.App.DTO.AppUserInPosition>>> GetAppUsersInPositions()
         {
-            var res = await _bll.AppUsersInPositions.AllAsync();
-            return Ok(res);
+            return await _bll.AppUsersInPositions.AllForUserAsync(User.GetUserId());
         }
 
         // GET: api/AppUsersInPositions/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<AppUserInPosition>> GetAppUserInPosition(int id)
+        public async Task<ActionResult<BLL.App.DTO.AppUserInPosition>> GetAppUserInPosition(int id)
         {
-            var appUserInPosition = await _bll.AppUsersInPositions.FindAsync(id);
+            var appUserInPosition = await _bll.AppUsersInPositions.FindForUserAsync(id, User.GetUserId());
 
             if (appUserInPosition == null)
             {
@@ -51,13 +49,18 @@ namespace WebApp.ApiControllers
 
         // PUT: api/AppUsersInPositions/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAppUserInPosition(int id, AppUserInPosition appUserInPosition)
+        public async Task<IActionResult> PutAppUserInPosition(int id, BLL.App.DTO.AppUserInPosition appUserInPosition)
         {
             if (id != appUserInPosition.Id)
             {
                 return BadRequest();
             }
 
+            if (!await _bll.AppUsersInPositions.BelongsToUserAsync(id, User.GetUserId()))
+            {
+                return NotFound();
+            }
+            
             _bll.AppUsersInPositions.Update(appUserInPosition);
             await _bll.SaveChangesAsync();
 
@@ -66,20 +69,26 @@ namespace WebApp.ApiControllers
 
         // POST: api/AppUsersInPositions
         [HttpPost]
-        public async Task<ActionResult<AppUserInPosition>> PostAppUserInPosition(AppUserInPosition appUserInPosition)
+        public async Task<ActionResult<BLL.App.DTO.AppUserInPosition>> PostAppUserInPosition(
+            BLL.App.DTO.AppUserInPosition appUserInPosition)
         {
-            await _bll.AppUsersInPositions.AddAsync(appUserInPosition);
+            if (!await _bll.AppUsers.BelongsToUserAsync(appUserInPosition.AppUserId, User.GetUserId()))
+            {
+                return NotFound();
+            }
+            
+            _bll.AppUsersInPositions.Add(appUserInPosition);
             await _bll.SaveChangesAsync();
 
-            return CreatedAtAction("GetAppUserInPosition", new { id = appUserInPosition.Id }, appUserInPosition);
+            return CreatedAtAction("GetAppUserInPosition", 
+                new { id = appUserInPosition.Id }, appUserInPosition);
         }
 
         // DELETE: api/AppUsersInPositions/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteAppUserInPosition(int id)
+        public async Task<ActionResult<BLL.App.DTO.AppUserInPosition>> DeleteAppUserInPosition(int id)
         {
-            var appUserInPosition = await _bll.AppUsersInPositions.FindAsync(id);
-            if (appUserInPosition == null)
+            if (!await _bll.AppUsersInPositions.BelongsToUserAsync(id, User.GetUserId()))
             {
                 return NotFound();
             }

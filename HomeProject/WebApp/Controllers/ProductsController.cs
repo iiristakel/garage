@@ -61,7 +61,7 @@ namespace WebApp.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ProductName,ProductCode,Price,Id")]
-            Product product)
+            BLL.App.DTO.Product product)
         {
             if (ModelState.IsValid)
             {
@@ -97,7 +97,7 @@ namespace WebApp.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ProductName,ProductCode,Price,Id")]
-            Product product)
+            BLL.App.DTO.Product product)
         {
             if (id != product.Id)
             {

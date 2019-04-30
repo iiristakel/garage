@@ -10,12 +10,16 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DAL.App.EF;
 using Domain;
+using Identity;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using BillLine = DAL.App.DTO.BillLine;
 
 namespace WebApp.ApiControllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class BillLinesController : ControllerBase
     {
         private readonly IAppBLL _bll;
@@ -27,17 +31,16 @@ namespace WebApp.ApiControllers
 
         // GET: api/BillLines
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<BillLine>>> GetBillLines()
+        public async Task<ActionResult<IEnumerable<BLL.App.DTO.BillLine>>> GetBillLines()
         {
-            var res = await _bll.BillLines.GetAllAsync();
-            return Ok(res);
+            return await _bll.BillLines.AllForUserAsync(User.GetUserId());
         }
 
         // GET: api/BillLines/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Domain.BillLine>> GetBillLine(int id)
+        public async Task<ActionResult<BLL.App.DTO.BillLine>> GetBillLine(int id)
         {
-            var billLine = await _bll.BillLines.FindAsync(id);
+            var billLine = await _bll.BillLines.FindForUserAsync(id, User.GetUserId());
 
             if (billLine == null)
             {
@@ -49,13 +52,18 @@ namespace WebApp.ApiControllers
 
         // PUT: api/BillLines/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutBillLine(int id, Domain.BillLine billLine)
+        public async Task<IActionResult> PutBillLine(int id, BLL.App.DTO.BillLine billLine)
         {
             if (id != billLine.Id)
             {
                 return BadRequest();
             }
 
+            if (!await _bll.BillLines.BelongsToUserAsync(id, User.GetUserId()))
+            {
+                return NotFound();
+            }
+            
             _bll.BillLines.Update(billLine);
             await _bll.SaveChangesAsync();
 
@@ -65,9 +73,15 @@ namespace WebApp.ApiControllers
 
         // POST: api/BillLines
         [HttpPost]
-        public async Task<ActionResult<Domain.BillLine>> PostBillLine(Domain.BillLine billLine)
+        public async Task<ActionResult<BLL.App.DTO.BillLine>> PostBillLine(
+            BLL.App.DTO.BillLine billLine)
         {
-            await _bll.BillLines.AddAsync(billLine);
+            if (!await _bll.AppUsers.BelongsToUserAsync(billLine.Bill.AppUserId, User.GetUserId()))
+            {
+                return NotFound();
+            }
+            
+            _bll.BillLines.Add(billLine);
             await _bll.SaveChangesAsync();
 
             return CreatedAtAction("GetBillLine", new {id = billLine.Id}, billLine);
@@ -75,10 +89,9 @@ namespace WebApp.ApiControllers
 
         // DELETE: api/BillLines/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteBillLine(int id)
+        public async Task<ActionResult<BLL.App.DTO.BillLine>> DeleteBillLine(int id)
         {
-            var billLine = await _bll.BillLines.FindAsync(id);
-            if (billLine == null)
+            if (!await _bll.BillLines.BelongsToUserAsync(id, User.GetUserId()))
             {
                 return NotFound();
             }
