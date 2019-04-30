@@ -14,7 +14,7 @@ namespace Domain
         public ICollection<ProductForClient> ProductsForClient { get; set; }
 
         [DataType(DataType.Date)]
-        public DateTime From { get; set; }
+        public DateTime? From { get; set; }
         
         [DataType(DataType.Date)]
         public DateTime? Until { get; set; }

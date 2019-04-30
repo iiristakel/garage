@@ -1,13 +1,17 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Contracts.DAL.Base.Repositories;
-using DAL.App.DTO;
-using Domain;
+using DALAppDTO = DAL.App.DTO;
 
 namespace Contracts.DAL.App.Repositories
 {
-    public interface IClientGroupRepository : IBaseRepository<ClientGroup>
+    public interface IClientGroupRepository : IClientGroupRepository<DALAppDTO.ClientGroup>
     {
-        Task<List<ClientGroupDTO>> GetAllWithClientCountAsync();
+        Task<List<DALAppDTO.ClientGroupWithClientCount>> GetAllWithClientCountAsync();
+    }
+    
+    public interface IClientGroupRepository<TDALEntity> : IBaseRepository<TDALEntity>
+        where TDALEntity : class, new()
+    {
     }
 }

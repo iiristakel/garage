@@ -2,32 +2,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Contracts.DAL.App.Repositories;
-using Contracts.DAL.Base;
 using DAL.App.DTO;
+using DAL.App.EF.Mappers;
 using DAL.Base.EF.Repositories;
-using Domain;
 using Microsoft.EntityFrameworkCore;
 
 namespace DAL.App.EF.Repositories
 {
-    public class AppUserPositionRepository : BaseRepository<AppUserPosition, AppDbContext>, IAppUserPositionRepository
+    public class AppUserPositionRepository 
+        : BaseRepository<DAL.App.DTO.AppUserPosition, Domain.AppUserPosition,
+            AppDbContext>, IAppUserPositionRepository
     {
-        public AppUserPositionRepository(AppDbContext repositoryDbContext) : base(repositoryDbContext)
+        public AppUserPositionRepository(AppDbContext repositoryDbContext) 
+            : base(repositoryDbContext, new AppUserPositionMapper())
         {
         }
         
-        public override async Task<List<AppUserPosition>> AllAsync()
+        public override async Task<List<DAL.App.DTO.AppUserPosition>> AllAsync()
         {
-            return await RepositoryDbSet.Include(c => c.AppUsers).ToListAsync();
+            return await RepositoryDbSet
+                .Include(c => c.AppUsers)
+                .Select(e => AppUserPositionMapper.MapFromDomain(e))
+                .ToListAsync();
         }
 
-        public virtual async Task<List<AppUserPositionDTO>> GetAllWithAppUsersCountAsync()
+        public virtual async Task<List<AppUserPositionWithAppUsersCount>> GetAllWithAppUsersCountAsync()
         {           
             return await RepositoryDbSet
-                .Select(c => new AppUserPositionDTO()
+                .Select(c => new AppUserPositionWithAppUsersCount()
                 {
                     Id = c.Id,
-                    AppUserPositionValue = c.PositionValue,
+                    AppUserPositionValue = c.AppUserPositionValue,
                     AppUsersCount = c.AppUsers.Count
                 })
                 .ToListAsync();

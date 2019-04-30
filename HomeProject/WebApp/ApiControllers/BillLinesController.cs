@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DAL.App.EF;
 using Domain;
+using BillLine = DAL.App.DTO.BillLine;
 
 namespace WebApp.ApiControllers
 {
@@ -26,7 +27,7 @@ namespace WebApp.ApiControllers
 
         // GET: api/BillLines
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<BillLineDTO>>> GetBillLines()
+        public async Task<ActionResult<IEnumerable<BillLine>>> GetBillLines()
         {
             var res = await _bll.BillLines.GetAllAsync();
             return Ok(res);
@@ -34,7 +35,7 @@ namespace WebApp.ApiControllers
 
         // GET: api/BillLines/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<BillLine>> GetBillLine(int id)
+        public async Task<ActionResult<Domain.BillLine>> GetBillLine(int id)
         {
             var billLine = await _bll.BillLines.FindAsync(id);
 
@@ -48,7 +49,7 @@ namespace WebApp.ApiControllers
 
         // PUT: api/BillLines/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutBillLine(int id, BillLine billLine)
+        public async Task<IActionResult> PutBillLine(int id, Domain.BillLine billLine)
         {
             if (id != billLine.Id)
             {
@@ -64,7 +65,7 @@ namespace WebApp.ApiControllers
 
         // POST: api/BillLines
         [HttpPost]
-        public async Task<ActionResult<BillLine>> PostBillLine(BillLine billLine)
+        public async Task<ActionResult<Domain.BillLine>> PostBillLine(Domain.BillLine billLine)
         {
             await _bll.BillLines.AddAsync(billLine);
             await _bll.SaveChangesAsync();

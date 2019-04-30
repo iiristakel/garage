@@ -25,7 +25,7 @@ namespace WebApp.ApiControllers
 
         // GET: api/ClientGroups
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ClientGroupDTO>>> GetClientGroups()
+        public async Task<ActionResult<IEnumerable<ClientGroupWithClientCount>>> GetClientGroups()
         {
             var res = await _uow.ClientGroups.GetAllWithClientCountAsync();
             return Ok(res);
@@ -33,7 +33,7 @@ namespace WebApp.ApiControllers
 
         // GET: api/ClientGroups/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<ClientGroup>> GetClientGroup(int id)
+        public async Task<ActionResult<Domain.ClientGroup>> GetClientGroup(int id)
         {
             var clientGroup = await _uow.ClientGroups.FindAsync(id);
 
@@ -47,7 +47,7 @@ namespace WebApp.ApiControllers
 
         // PUT: api/ClientGroups/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutClientGroup(int id, ClientGroup clientGroup)
+        public async Task<IActionResult> PutClientGroup(int id, Domain.ClientGroup clientGroup)
         {
             if (id != clientGroup.Id)
             {
@@ -62,7 +62,7 @@ namespace WebApp.ApiControllers
 
         // POST: api/ClientGroups
         [HttpPost]
-        public async Task<ActionResult<ClientGroup>> PostClientGroup(ClientGroup clientGroup)
+        public async Task<ActionResult<Domain.ClientGroup>> PostClientGroup(Domain.ClientGroup clientGroup)
         {
             await _uow.ClientGroups.AddAsync(clientGroup);
             await _uow.SaveChangesAsync();
@@ -72,7 +72,7 @@ namespace WebApp.ApiControllers
 
         // DELETE: api/ClientGroups/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<ClientGroup>> DeleteClientGroup(int id)
+        public async Task<ActionResult<Domain.ClientGroup>> DeleteClientGroup(int id)
         {
             var clientGroup = await _uow.ClientGroups.FindAsync(id);
             if (clientGroup == null)

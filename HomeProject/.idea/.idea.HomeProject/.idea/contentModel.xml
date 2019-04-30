@@ -12,6 +12,21 @@
         <e p="Helpers" t="Include">
           <e p="AppServiceFactory.cs" t="Include" />
         </e>
+        <e p="Mappers" t="Include">
+          <e p="AppUserInPositionMapper.cs" t="Include" />
+          <e p="AppUserMapper.cs" t="Include" />
+          <e p="AppUserOnObjectMapper.cs" t="Include" />
+          <e p="AppUserPositionMapper.cs" t="Include" />
+          <e p="BillLineMapper.cs" t="Include" />
+          <e p="BillMapper.cs" t="Include" />
+          <e p="ClientGroupMapper.cs" t="Include" />
+          <e p="ClientMapper.cs" t="Include" />
+          <e p="PaymentMapper.cs" t="Include" />
+          <e p="PaymentMethodMapper.cs" t="Include" />
+          <e p="ProductForClientMapper.cs" t="Include" />
+          <e p="ProductMapper.cs" t="Include" />
+          <e p="WorkObjectMapper.cs" t="Include" />
+        </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netstandard2.0" t="Include">
@@ -20,6 +35,10 @@
           </e>
         </e>
         <e p="Services" t="Include">
+          <e p="AppUserInPositionService.cs" t="Include" />
+          <e p="AppUserOnObjectService.cs" t="Include" />
+          <e p="AppUserPositionService.cs" t="Include" />
+          <e p="AppUserService.cs" t="Include" />
           <e p="BillLineService.cs" t="Include" />
           <e p="BillService.cs" t="Include" />
           <e p="ClientGroupService.cs" t="Include" />
@@ -28,16 +47,27 @@
           <e p="PaymentService.cs" t="Include" />
           <e p="ProductForClientService.cs" t="Include" />
           <e p="ProductService.cs" t="Include" />
-          <e p="WorkerInPositionService.cs" t="Include" />
-          <e p="WorkerOnObjectService.cs" t="Include" />
-          <e p="WorkerPositionService.cs" t="Include" />
-          <e p="WorkerService.cs" t="Include" />
           <e p="WorkObjectService.cs" t="Include" />
         </e>
       </e>
       <e p="BLL.App.DTO" t="IncludeRecursive">
+        <e p="AppUserInPosition.cs" t="Include" />
+        <e p="AppUserOnObject.cs" t="Include" />
+        <e p="AppUserPosition.cs" t="Include" />
+        <e p="AppUserPositionWithAppUsersCount.cs" t="Include" />
+        <e p="Bill.cs" t="Include" />
+        <e p="BillLine.cs" t="Include" />
+        <e p="BillWithPaymentsCount.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="BLL.App.DTO.csproj" t="IncludeRecursive" />
+        <e p="Client.cs" t="Include" />
+        <e p="ClientGroup.cs" t="Include" />
+        <e p="ClientGroupWithClientCount.cs" t="Include" />
+        <e p="ClientWithProductsCount.cs" t="Include" />
+        <e p="Identity" t="Include">
+          <e p="AppRole.cs" t="Include" />
+          <e p="AppUser.cs" t="Include" />
+        </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netstandard2.0" t="Include">
@@ -45,6 +75,12 @@
             </e>
           </e>
         </e>
+        <e p="Payment.cs" t="Include" />
+        <e p="PaymentMethod.cs" t="Include" />
+        <e p="PaymentMethodWithPaymentsCount.cs" t="Include" />
+        <e p="Product.cs" t="Include" />
+        <e p="ProductForClient.cs" t="Include" />
+        <e p="WorkObject.cs" t="Include" />
       </e>
       <e p="BLL.Base" t="IncludeRecursive">
         <e p="BaseBLL.cs" t="Include" />
@@ -53,6 +89,9 @@
         <e p="Helpers" t="Include">
           <e p="BaseServiceFactory.cs" t="Include" />
           <e p="BaseServiceProvider.cs" t="Include" />
+        </e>
+        <e p="Mappers" t="Include">
+          <e p="BaseBLLMapper.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
@@ -90,6 +129,10 @@
           </e>
         </e>
         <e p="Services" t="Include">
+          <e p="IAppUserInPositionService.cs" t="Include" />
+          <e p="IAppUserOnObjectService.cs" t="Include" />
+          <e p="IAppUserPositionService.cs" t="Include" />
+          <e p="IAppUserService.cs" t="Include" />
           <e p="IBillLineService.cs" t="Include" />
           <e p="IBillService.cs" t="Include" />
           <e p="IClientGroupService.cs" t="Include" />
@@ -98,10 +141,6 @@
           <e p="IPaymentService.cs" t="Include" />
           <e p="IProductForClientService.cs" t="Include" />
           <e p="IProductService.cs" t="Include" />
-          <e p="IWorkerInPositionService.cs" t="Include" />
-          <e p="IWorkerOnObjectService.cs" t="Include" />
-          <e p="IWorkerPositionService.cs" t="Include" />
-          <e p="IWorkerService.cs" t="Include" />
           <e p="IWorkObjectService.cs" t="Include" />
         </e>
       </e>
@@ -113,6 +152,9 @@
           <e p="IBaseServiceProvider.cs" t="Include" />
         </e>
         <e p="IBaseBLL.cs" t="Include" />
+        <e p="Mappers" t="Include">
+          <e p="IBaseBLLMapper.cs" t="Include" />
+        </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netstandard2.0" t="Include">
@@ -121,7 +163,6 @@
           </e>
         </e>
         <e p="Services" t="Include">
-          <e p="IBaseEntityService.cs" t="Include" />
           <e p="IBaseService.cs" t="Include" />
         </e>
       </e>
@@ -137,6 +178,10 @@
           </e>
         </e>
         <e p="Repositories" t="Include">
+          <e p="IAppUserInPositionRepository.cs" t="Include" />
+          <e p="IAppuserOnObjectRepository.cs" t="Include" />
+          <e p="IAppUserPositionRepository.cs" t="Include" />
+          <e p="IAppUserRepository.cs" t="Include" />
           <e p="IBillLineRepository.cs" t="Include" />
           <e p="IBillRepository.cs" t="Include" />
           <e p="IClientGroupRepository.cs" t="Include" />
@@ -145,10 +190,6 @@
           <e p="IPaymentRepository.cs" t="Include" />
           <e p="IProductForClientRepository.cs" t="Include" />
           <e p="IProductRepository.cs" t="Include" />
-          <e p="IWorkerInPositionRepository.cs" t="Include" />
-          <e p="IWorkerOnObjectRepository.cs" t="Include" />
-          <e p="IWorkerPositionRepository.cs" t="Include" />
-          <e p="IWorkerRepository.cs" t="Include" />
           <e p="IWorkObjectRepository.cs" t="Include" />
         </e>
       </e>
@@ -159,9 +200,12 @@
           <e p="IBaseRepositoryFactory.cs" t="Include" />
           <e p="IBaseRepositoryProvider.cs" t="Include" />
         </e>
-        <e p="IBaseEntity.cs" t="Include" />
         <e p="IBaseUnitOfWork.cs" t="Include" />
         <e p="IDataContext.cs" t="Include" />
+        <e p="IDomainEntity.cs" t="Include" />
+        <e p="Mappers" t="Include">
+          <e p="IBaseDALMapper.cs" t="Include" />
+        </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netstandard2.0" t="Include">
@@ -174,12 +218,23 @@
         </e>
       </e>
       <e p="DAL.App.DTO" t="IncludeRecursive">
-        <e p="BillLineDTO.cs" t="Include" />
-        <e p="BillsDTO.cs" t="Include" />
+        <e p="AppUserInPosition.cs" t="Include" />
+        <e p="AppUserOnObject.cs" t="Include" />
+        <e p="AppUserPosition.cs" t="Include" />
+        <e p="AppUserPositionWithAppUsersCount.cs" t="Include" />
+        <e p="Bill.cs" t="Include" />
+        <e p="BillLine.cs" t="Include" />
+        <e p="BillWithPaymentsCount.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
-        <e p="ClientGroupDTO.cs" t="Include" />
-        <e p="ClientsDTO.cs" t="Include" />
+        <e p="Client.cs" t="Include" />
+        <e p="ClientGroup.cs" t="Include" />
+        <e p="ClientGroupWithClientCount.cs" t="Include" />
+        <e p="ClientWithProductsCount.cs" t="Include" />
         <e p="DAL.App.DTO.csproj" t="IncludeRecursive" />
+        <e p="Identity" t="Include">
+          <e p="AppRole.cs" t="Include" />
+          <e p="AppUser.cs" t="Include" />
+        </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netstandard2.0" t="Include">
@@ -187,10 +242,12 @@
             </e>
           </e>
         </e>
-        <e p="PaymentMethodDTO.cs" t="Include" />
-        <e p="ProductDTO.cs" t="Include" />
-        <e p="WorkerPositionDto.cs" t="Include" />
-        <e p="WorkObjectsDTO.cs" t="Include" />
+        <e p="Payment.cs" t="Include" />
+        <e p="PaymentMethod.cs" t="Include" />
+        <e p="PaymentMethodWithPaymentsCount.cs" t="Include" />
+        <e p="Product.cs" t="Include" />
+        <e p="ProductForClient.cs" t="Include" />
+        <e p="WorkObject.cs" t="Include" />
       </e>
       <e p="DAL.App.EF" t="IncludeRecursive">
         <e p="AppDbContext.cs" t="Include" />
@@ -200,9 +257,24 @@
         <e p="Helpers" t="Include">
           <e p="AppRepositoryFactory.cs" t="Include" />
         </e>
+        <e p="Mappers" t="Include">
+          <e p="AppUserInPositionMapper.cs" t="Include" />
+          <e p="AppUserMapper.cs" t="Include" />
+          <e p="AppUserOnObjectMapper.cs" t="Include" />
+          <e p="AppUserPositionMapper.cs" t="Include" />
+          <e p="BillLineMapper.cs" t="Include" />
+          <e p="BillMapper.cs" t="Include" />
+          <e p="ClientGroupMapper.cs" t="Include" />
+          <e p="ClientMapper.cs" t="Include" />
+          <e p="PaymentMapper.cs" t="Include" />
+          <e p="PaymentMethodMapper.cs" t="Include" />
+          <e p="ProductForClientMapper.cs" t="Include" />
+          <e p="ProductMapper.cs" t="Include" />
+          <e p="WorkObjectMapper.cs" t="Include" />
+        </e>
         <e p="Migrations" t="Include">
-          <e p="20190416121132_InitialDbCreation.cs" t="Include" />
-          <e p="20190416121132_InitialDbCreation.Designer.cs" t="Include" />
+          <e p="20190427090919_InitialDbCreation.cs" t="Include" />
+          <e p="20190427090919_InitialDbCreation.Designer.cs" t="Include" />
           <e p="AppDbContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
@@ -213,6 +285,10 @@
           </e>
         </e>
         <e p="Repositories" t="Include">
+          <e p="AppUserInPositionRepository.cs" t="Include" />
+          <e p="AppUserOnObjectRepository.cs" t="Include" />
+          <e p="AppUserPositionRepository.cs" t="Include" />
+          <e p="AppUserRepository.cs" t="Include" />
           <e p="BillLineRepository.cs" t="Include" />
           <e p="BillRepository.cs" t="Include" />
           <e p="ClientGroupRepository.cs" t="Include" />
@@ -221,10 +297,6 @@
           <e p="PaymentRepository.cs" t="Include" />
           <e p="ProductForClientRepository.cs" t="Include" />
           <e p="ProductRepository.cs" t="Include" />
-          <e p="WorkerInPositionRepository.cs" t="Include" />
-          <e p="WorkerOnObjectRepository.cs" t="Include" />
-          <e p="WorkerPositionRepository.cs" t="Include" />
-          <e p="WorkerRepository.cs" t="Include" />
           <e p="WorkObjectRepository.cs" t="Include" />
         </e>
       </e>
@@ -235,6 +307,9 @@
         <e p="Helpers" t="Include">
           <e p="BaseRepositoryFactory.cs" t="Include" />
           <e p="BaseRepositoryProvider.cs" t="Include" />
+        </e>
+        <e p="Mappers" t="Include">
+          <e p="BaseDALMapper.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
@@ -248,13 +323,15 @@
         </e>
       </e>
       <e p="Domain" t="IncludeRecursive">
+        <e p="AppUserInPosition.cs" t="Include" />
+        <e p="AppUserOnObject.cs" t="Include" />
+        <e p="AppUserPosition.cs" t="Include" />
         <e p="BaseEntity.cs" t="Include" />
         <e p="Bill.cs" t="Include" />
         <e p="BillLine.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="Client.cs" t="Include" />
         <e p="ClientGroup.cs" t="Include" />
-        <e p="Company.cs" t="Include" />
         <e p="Domain.csproj" t="IncludeRecursive" />
         <e p="Identity" t="Include">
           <e p="AppRole.cs" t="Include" />
@@ -271,10 +348,6 @@
         <e p="PaymentMethod.cs" t="Include" />
         <e p="Product.cs" t="Include" />
         <e p="ProductForClient.cs" t="Include" />
-        <e p="Worker.cs" t="Include" />
-        <e p="WorkerInPosition.cs" t="Include" />
-        <e p="WorkerOnObject.cs" t="Include" />
-        <e p="WorkerPosition.cs" t="Include" />
         <e p="WorkObject.cs" t="Include" />
       </e>
       <e p="HomeProject.sln" t="IncludeFlat" />
@@ -294,9 +367,27 @@
       <e p="packages" t="ExcludeRecursive" />
       <e p="regenerateApiControllers.sh" t="Include" />
       <e p="regenerateControllers.sh" t="Include" />
+      <e p="Resources" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Default.Designer.cs" t="Include" />
+        <e p="Default.et.resx" t="Include" />
+        <e p="Default.resx" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="Resources.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Resources.csproj" t="IncludeRecursive" />
+      </e>
       <e p="Solution Items" t="Include" />
       <e p="WebApp" t="IncludeRecursive">
         <e p="ApiControllers" t="Include">
+          <e p="AppUsersController.cs" t="Include" />
+          <e p="AppUsersInPositionsController.cs" t="Include" />
+          <e p="AppUsersOnObjectsController.cs" t="Include" />
+          <e p="AppUsersPositionsController.cs" t="Include" />
           <e p="BillLinesController.cs" t="Include" />
           <e p="BillsController.cs" t="Include" />
           <e p="ClientGroupsController.cs" t="Include" />
@@ -308,10 +399,6 @@
           <e p="PaymentsController.cs" t="Include" />
           <e p="ProductsController.cs" t="Include" />
           <e p="ProductsForClientsController.cs" t="Include" />
-          <e p="WorkersController.cs" t="Include" />
-          <e p="WorkersInPositionsController.cs" t="Include" />
-          <e p="WorkersOnObjectsController.cs" t="Include" />
-          <e p="WorkersPositionsController.cs" t="Include" />
           <e p="WorkObjectsController.cs" t="Include" />
         </e>
         <e p="appsettings.Development.json" t="Include" />
@@ -405,6 +492,10 @@
         </e>
         <e p="bin" t="ExcludeRecursive" />
         <e p="Controllers" t="Include">
+          <e p="AppUsersController.cs" t="Include" />
+          <e p="AppUsersInPositionsController.cs" t="Include" />
+          <e p="AppUsersOnObjectsController.cs" t="Include" />
+          <e p="AppUsersPositionsController.cs" t="Include" />
           <e p="BillLinesController.cs" t="Include" />
           <e p="BillsController.cs" t="Include" />
           <e p="ClientGroupsController.cs" t="Include" />
@@ -414,10 +505,6 @@
           <e p="PaymentsController.cs" t="Include" />
           <e p="ProductsController.cs" t="Include" />
           <e p="ProductsForClientsController.cs" t="Include" />
-          <e p="WorkersController.cs" t="Include" />
-          <e p="WorkersInPositionsController.cs" t="Include" />
-          <e p="WorkersOnObjectsController.cs" t="Include" />
-          <e p="WorkersPositionsController.cs" t="Include" />
           <e p="WorkObjectsController.cs" t="Include" />
         </e>
         <e p="Helpers" t="Include">
@@ -436,19 +523,54 @@
         </e>
         <e p="Startup.cs" t="Include" />
         <e p="ViewModels" t="Include">
+          <e p="AppUserInPositionCreateEditViewModel.cs" t="Include" />
+          <e p="AppUserOnObjectCreateEditViewModel.cs" t="Include" />
           <e p="BillCreateEditViewModel.cs" t="Include" />
           <e p="BillLineCreateEditViewModel.cs" t="Include" />
           <e p="ClientCreateEditViewModel.cs" t="Include" />
           <e p="ErrorViewModel.cs" t="Include" />
           <e p="PaymentCreateEditViewModel.cs" t="Include" />
           <e p="ProductsForClientsCreateEditViewModel.cs" t="Include" />
-          <e p="WorkerInPositionCreateEditViewModel.cs" t="Include" />
-          <e p="WorkerOnObjectCreateEditViewModel.cs" t="Include" />
           <e p="WorkObjectCreateEditViewModel.cs" t="Include" />
         </e>
         <e p="Views" t="Include">
           <e p="_ViewImports.cshtml" t="Include" />
           <e p="_ViewStart.cshtml" t="Include" />
+          <e p="AppUsers" t="Include">
+            <e p="Delete.cshtml" t="Include" />
+            <e p="Details.cshtml" t="Include" />
+            <e p="Edit.cshtml" t="Include" />
+            <e p="Index.cshtml" t="Include" />
+            <e p="PartialCreateEdit.cshtml" t="Include" />
+            <e p="PartialDetailsDelete.cshtml" t="Include" />
+          </e>
+          <e p="AppUsersInPositions" t="Include">
+            <e p="Create.cshtml" t="Include" />
+            <e p="Delete.cshtml" t="Include" />
+            <e p="Details.cshtml" t="Include" />
+            <e p="Edit.cshtml" t="Include" />
+            <e p="Index.cshtml" t="Include" />
+            <e p="PartialCreateEdit.cshtml" t="Include" />
+            <e p="PartialDetailsDelete.cshtml" t="Include" />
+          </e>
+          <e p="AppUsersOnObjects" t="Include">
+            <e p="Create.cshtml" t="Include" />
+            <e p="Delete.cshtml" t="Include" />
+            <e p="Details.cshtml" t="Include" />
+            <e p="Edit.cshtml" t="Include" />
+            <e p="Index.cshtml" t="Include" />
+            <e p="PartialCreateEdit.cshtml" t="Include" />
+            <e p="PartialDetailsDelete.cshtml" t="Include" />
+          </e>
+          <e p="AppUsersPositions" t="Include">
+            <e p="Create.cshtml" t="Include" />
+            <e p="Delete.cshtml" t="Include" />
+            <e p="Details.cshtml" t="Include" />
+            <e p="Edit.cshtml" t="Include" />
+            <e p="Index.cshtml" t="Include" />
+            <e p="PartialCreateEdit.cshtml" t="Include" />
+            <e p="PartialDetailsDelete.cshtml" t="Include" />
+          </e>
           <e p="BillLines" t="Include">
             <e p="Create.cshtml" t="Include" />
             <e p="Delete.cshtml" t="Include" />
@@ -531,42 +653,6 @@
             <e p="_LoginPartial.cshtml" t="Include" />
             <e p="_ValidationScriptsPartial.cshtml" t="Include" />
             <e p="Error.cshtml" t="Include" />
-          </e>
-          <e p="Workers" t="Include">
-            <e p="Create.cshtml" t="Include" />
-            <e p="Delete.cshtml" t="Include" />
-            <e p="Details.cshtml" t="Include" />
-            <e p="Edit.cshtml" t="Include" />
-            <e p="Index.cshtml" t="Include" />
-            <e p="PartialCreateEdit.cshtml" t="Include" />
-            <e p="PartialDetailsDelete.cshtml" t="Include" />
-          </e>
-          <e p="WorkersInPositions" t="Include">
-            <e p="Create.cshtml" t="Include" />
-            <e p="Delete.cshtml" t="Include" />
-            <e p="Details.cshtml" t="Include" />
-            <e p="Edit.cshtml" t="Include" />
-            <e p="Index.cshtml" t="Include" />
-            <e p="PartialCreateEdit.cshtml" t="Include" />
-            <e p="PartialDetailsDelete.cshtml" t="Include" />
-          </e>
-          <e p="WorkersOnObjects" t="Include">
-            <e p="Create.cshtml" t="Include" />
-            <e p="Delete.cshtml" t="Include" />
-            <e p="Details.cshtml" t="Include" />
-            <e p="Edit.cshtml" t="Include" />
-            <e p="Index.cshtml" t="Include" />
-            <e p="PartialCreateEdit.cshtml" t="Include" />
-            <e p="PartialDetailsDelete.cshtml" t="Include" />
-          </e>
-          <e p="WorkersPositions" t="Include">
-            <e p="Create.cshtml" t="Include" />
-            <e p="Delete.cshtml" t="Include" />
-            <e p="Details.cshtml" t="Include" />
-            <e p="Edit.cshtml" t="Include" />
-            <e p="Index.cshtml" t="Include" />
-            <e p="PartialCreateEdit.cshtml" t="Include" />
-            <e p="PartialDetailsDelete.cshtml" t="Include" />
           </e>
           <e p="WorkObjects" t="Include">
             <e p="Create.cshtml" t="Include" />

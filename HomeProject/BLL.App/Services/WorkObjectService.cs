@@ -1,23 +1,47 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using BLL.App.DTO;
+using BLL.App.Mappers;
 using BLL.Base.Services;
 using Contracts.BLL.App.Services;
 using Contracts.DAL.App;
-using Contracts.DAL.Base;
-using DAL.App.DTO;
-using Domain;
 
-namespace BLL.App.DTO
+namespace BLL.App.Services
 {
-    public class WorkObjectService  : BaseEntityService<WorkObject, IAppUnitOfWork>, IWorkObjectService
+    public class WorkObjectService  
+        : BaseEntityService<BLL.App.DTO.WorkObject, DAL.App.DTO.WorkObject,
+            IAppUnitOfWork>, IWorkObjectService
     {
-        public WorkObjectService(IAppUnitOfWork uow) : base(uow)
+        public WorkObjectService(IAppUnitOfWork uow) : base(uow, new WorkObjectMapper())
         {
+            ServiceRepository = Uow.BaseRepository<DAL.App.DTO.WorkObject, Domain.WorkObject>();
+
         }
 
-        public async Task<List<WorkObjectsDTO>> GetAllAsync()
+        public async Task<List<DTO.WorkObject>> GetAllAsync()
         {
-            return await Uow.WorkObjects.GetAllAsync();
+            return (await Uow.WorkObjects.AllAsync())
+                .Select(e => WorkObjectMapper.MapFromDAL(e))
+                .ToList();
+        }
+
+        public async Task<List<WorkObject>> AllForUserAsync(int userId)
+        {
+            return (await Uow.WorkObjects
+                    .AllForUserAsync(userId))
+                .Select(e => WorkObjectMapper
+                    .MapFromDAL(e)).ToList();
+        }
+
+        public async Task<WorkObject> FindForUserAsync(int id, int userId)
+        {
+            return WorkObjectMapper.MapFromDAL( await Uow.WorkObjects.FindForUserAsync(id, userId));
+        }
+
+        public async Task<bool> BelongsToUserAsync(int id, int userId)
+        {
+            return await Uow.WorkObjects.BelongsToUserAsync(id, userId);
         }
     }
 }

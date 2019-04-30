@@ -6,14 +6,16 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Domain.Identity
 {
-    public class AppUser : IdentityUser<int>, IBaseEntity
+    public class AppUser : IdentityUser<int>, IDomainEntity
 // PK type is int
     {
-//        public ICollection<Worker> Workers { get; set; }
 
-        public ICollection<AppUserInPosition> Positions { get; set; }
+        public ICollection<AppUserInPosition> AppUserInPositions { get; set; }
 
-        public ICollection<AppUserOnObject> Objects { get; set; }
+        public ICollection<AppUserOnObject> AppUserOnObjects { get; set; }
+        
+        public ICollection<Bill> Bills { get; set; }
+
         
         [MaxLength(64)]
         [MinLength(1)]

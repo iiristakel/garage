@@ -26,7 +26,7 @@ namespace WebApp.ApiControllers
 
         // GET: api/PaymentMethods
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<PaymentMethodDTO>>> GetPaymentMethods()
+        public async Task<ActionResult<IEnumerable<PaymentMethodWithPaymentsCount>>> GetPaymentMethods()
         {
             var res = await _bll.PaymentMethods.GetAllWithPaymentsCountAsync();
             return Ok(res);
@@ -34,7 +34,7 @@ namespace WebApp.ApiControllers
 
         // GET: api/PaymentMethods/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<PaymentMethod>> GetPaymentMethod(int id)
+        public async Task<ActionResult<Domain.PaymentMethod>> GetPaymentMethod(int id)
         {
             var paymentMethod = await _bll.PaymentMethods.FindAsync(id);
 
@@ -48,7 +48,7 @@ namespace WebApp.ApiControllers
 
         // PUT: api/PaymentMethods/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutPaymentMethod(int id, PaymentMethod paymentMethod)
+        public async Task<IActionResult> PutPaymentMethod(int id, Domain.PaymentMethod paymentMethod)
         {
             if (id != paymentMethod.Id)
             {
@@ -63,7 +63,7 @@ namespace WebApp.ApiControllers
 
         // POST: api/PaymentMethods
         [HttpPost]
-        public async Task<ActionResult<PaymentMethod>> PostPaymentMethod(PaymentMethod paymentMethod)
+        public async Task<ActionResult<Domain.PaymentMethod>> PostPaymentMethod(Domain.PaymentMethod paymentMethod)
         {
             await _bll.PaymentMethods.AddAsync(paymentMethod);
             await _bll.SaveChangesAsync();

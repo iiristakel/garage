@@ -1,11 +1,13 @@
+using BLL.App.DTO.Identity;
 using Contracts.BLL.Base.Services;
 using Contracts.DAL.App.Repositories;
-using Domain;
-using Domain.Identity;
 
-namespace Contracts.BLL.App
+
+namespace Contracts.BLL.App.Services
 {
-    public  interface IAppUserService: IBaseEntityService<AppUser>, IAppUserRepository
+    public  interface IAppUserService
+        : IBaseEntityService<AppUser>, 
+            IAppUserRepository<AppUser>
     {
     }
 }

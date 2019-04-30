@@ -24,5 +24,6 @@ namespace Contracts.BLL.App
         IAppUserOnObjectService AppUsersOnObjects { get; }
         IAppUserInPositionService AppUsersInPositions { get; }
 
+        // TODO: Public facing services
     }
 }

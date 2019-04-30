@@ -1,37 +1,70 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Contracts.DAL.App.Repositories;
-using Contracts.DAL.Base;
+using DAL.App.EF.Mappers;
 using DAL.Base.EF.Repositories;
-using Domain;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using DAL.App.DTO;
 
 namespace DAL.App.EF.Repositories
 {
-    public class AppUserOnObjectRepository : BaseRepository<AppUserOnObject,AppDbContext>, IAppUserOnObjectRepository
+    public class AppUserOnObjectRepository 
+        : BaseRepository<DAL.App.DTO.AppUserOnObject, Domain.AppUserOnObject,
+            AppDbContext>, IAppUserOnObjectRepository
     {
-        public AppUserOnObjectRepository(AppDbContext repositoryDbContext) : base(repositoryDbContext)
+        public AppUserOnObjectRepository(AppDbContext repositoryDbContext) 
+            : base(repositoryDbContext, new AppUserOnObjectMapper())
         {
         }
         
-        public override async Task<List<AppUserOnObject>> AllAsync()
+        public override async Task<List<DAL.App.DTO.AppUserOnObject>> AllAsync()
         {
             return await RepositoryDbSet
                 .Include(p => p.WorkObject)
+                .Include(c => c.AppUser)
+                .Select(e => AppUserOnObjectMapper.MapFromDomain(e))
                 .ToListAsync();
         }
         
-        public override async Task<AppUserOnObject> FindAsync(params object[] id)
+        public override async Task<DAL.App.DTO.AppUserOnObject> FindAsync(params object[] id)
         {
-            var workerOnObject = await base.FindAsync(id);
+            var appUserOnObject = await base.FindAsync(id);
 
-            if (workerOnObject != null)
+            if (appUserOnObject != null)
             {
-                await RepositoryDbContext.Entry(workerOnObject).Reference(c => c.WorkObject).LoadAsync();
+                await RepositoryDbContext.Entry(appUserOnObject)
+                    .Reference(c => c.WorkObject).LoadAsync();
 
             }
             
-            return workerOnObject;
+            return appUserOnObject;
+        }
+
+        public async Task<List<AppUserOnObject>> AllForUserAsync(int userId)
+        {
+            return await RepositoryDbSet
+                .Include(c => c.WorkObject)
+                .Include(c => c.AppUser)
+                .Where(c => c.AppUser.Id == userId)
+                .Select(e => AppUserOnObjectMapper.MapFromDomain(e))
+                .ToListAsync();        
+        }
+
+        public async Task<AppUserOnObject> FindForUserAsync(int id, int userId)
+        {
+            var appUserOnObject = await RepositoryDbSet
+                .Include(c => c.WorkObject)
+                .Include(c => c.AppUser)
+                .FirstOrDefaultAsync(m => m.Id == id && m.AppUser.Id == userId);
+
+            return AppUserOnObjectMapper.MapFromDomain(appUserOnObject) ;        
+        }
+
+        public async Task<bool> BelongsToUserAsync(int id, int userId)
+        {
+            return await RepositoryDbSet
+                .AnyAsync(c => c.Id == id && c.AppUser.Id == userId);
         }
     }
 }

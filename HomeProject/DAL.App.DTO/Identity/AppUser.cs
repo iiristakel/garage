@@ -9,11 +9,10 @@ namespace DAL.App.DTO.Identity
     {
         public int Id { get; set; }
         
-//        public ICollection<Worker> Workers { get; set; }
 
-        public ICollection<AppUserInPosition> Positions { get; set; }
-
-        public ICollection<AppUserOnObject> Objects { get; set; }
+//        public ICollection<AppUserInPosition> Positions { get; set; }
+//
+//        public ICollection<AppUserOnObject> Objects { get; set; }
         
         [MaxLength(64)]
         [MinLength(1)]
@@ -29,7 +28,7 @@ namespace DAL.App.DTO.Identity
         public string FirstLastName => FirstName + " " + LastName;
         
         [DataType(DataType.Date)]
-        public DateTime HiringDate { get; set; }
+        public DateTime? HiringDate { get; set; }
         
         [DataType(DataType.Date)]
         public DateTime? LeftJob { get; set; }

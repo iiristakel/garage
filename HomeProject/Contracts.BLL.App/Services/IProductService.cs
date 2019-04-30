@@ -1,10 +1,12 @@
 using Contracts.BLL.Base.Services;
 using Contracts.DAL.App.Repositories;
-using Domain;
+using BLLAppDTO = BLL.App.DTO;
 
 namespace Contracts.BLL.App.Services
 {
-    public  interface IProductService: IBaseEntityService<Product>, IProductRepository
+    public  interface IProductService
+        : IBaseEntityService<BLLAppDTO.Product>, 
+            IProductRepository<BLLAppDTO.Product>
     {
     }
 }

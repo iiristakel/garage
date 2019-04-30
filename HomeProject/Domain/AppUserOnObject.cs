@@ -11,7 +11,7 @@ namespace Domain
         public int WorkObjectId { get; set; }
         public WorkObject WorkObject { get; set; }
 
-        public DateTime From { get; set; }
+        public DateTime? From { get; set; }
         public DateTime? Until { get; set; }
     }
 }

@@ -1,28 +1,34 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Contracts.DAL.App.Repositories;
-using Contracts.DAL.Base;
+using DAL.App.EF.Mappers;
 using DAL.Base.EF.Repositories;
 using Domain;
 using Microsoft.EntityFrameworkCore;
+using Payment = DAL.App.DTO.Payment;
 
 namespace DAL.App.EF.Repositories
 {
-    public class PaymentRepository : BaseRepository<Payment,AppDbContext>, IPaymentRepository
+    public class PaymentRepository 
+        : BaseRepository<DAL.App.DTO.Payment, Domain.Payment,
+            AppDbContext>, IPaymentRepository
     {
-        public PaymentRepository(AppDbContext repositoryDbContext) : base(repositoryDbContext)
+        public PaymentRepository(AppDbContext repositoryDbContext) 
+            : base(repositoryDbContext, new PaymentMapper())
         {
         }
-        public override async Task<List<Payment>> AllAsync()
+        public override async Task<List<DAL.App.DTO.Payment>> AllAsync()
         {
             return await RepositoryDbSet
                 .Include(p => p.Bill)
                 .Include(p => p.Client)
                 .Include(p => p.PaymentMethod)
+                .Select(e => PaymentMapper.MapFromDomain(e))
                 .ToListAsync();
         }
         
-        public override async Task<Payment> FindAsync(params object[] id)
+        public override async Task<DAL.App.DTO.Payment> FindAsync(params object[] id)
         {
             var payment = await base.FindAsync(id);
 
@@ -34,6 +40,32 @@ namespace DAL.App.EF.Repositories
           }
             
             return payment;
+        }
+
+        public async Task<List<Payment>> AllForUserAsync(int userId)
+        {
+            return await RepositoryDbSet
+                .Include(p => p.Bill)
+                .Include(p => p.Client)
+                .Include(p => p.PaymentMethod)
+                .Where(c => c.Bill.AppUserId == userId)
+                .Select(e => PaymentMapper.MapFromDomain(e)).ToListAsync();
+        }
+
+        public async Task<Payment> FindForUserAsync(int id, int userId)
+        {
+            var payment = await RepositoryDbSet
+                .Include(p => p.Bill)
+                .Include(p => p.Client)
+                .Include(p => p.PaymentMethod)
+                .FirstOrDefaultAsync(m => m.Id == id && m.Bill.AppUserId == userId);
+
+            return PaymentMapper.MapFromDomain(payment);        }
+
+        public async Task<bool> BelongsToUserAsync(int id, int userId)
+        {
+            return await RepositoryDbSet
+                .AnyAsync(c => c.Id == id && c.Bill.AppUserId == userId);
         }
     }
 }

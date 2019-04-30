@@ -1,8 +1,7 @@
-using Domain;
 
 namespace DAL.App.DTO
 {
-    public class BillLineDTO
+    public class BillLine
     {
         public int Id { get; set; }
         

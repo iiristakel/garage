@@ -2,40 +2,59 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Contracts.DAL.App.Repositories;
-using Contracts.DAL.Base;
+using DAL.App.EF.Mappers;
 using DAL.Base.EF.Repositories;
-using Domain;
 using Domain.Identity;
 using Microsoft.EntityFrameworkCore;
+using AppUser = DAL.App.DTO.Identity.AppUser;
 
 namespace DAL.App.EF.Repositories
 {
-    public class AppUserRepository : BaseRepository<AppUser, AppDbContext>, IAppUserRepository
+    public class AppUserRepository 
+        : BaseRepository<DAL.App.DTO.Identity.AppUser, Domain.Identity.AppUser,
+            AppDbContext>, IAppUserRepository
     {
-        public AppUserRepository(AppDbContext repositoryDbContext) : base(repositoryDbContext)
+        public AppUserRepository(AppDbContext repositoryDbContext) 
+            : base(repositoryDbContext, new AppUserMapper())
         {
         }
 
-        public async Task<List<AppUser>> AllAsync()
+        public async Task<List<DAL.App.DTO.Identity.AppUser>> AllAsync()
         {
             return await RepositoryDbSet
-                .Include(c =>c.Objects)
-                .Include(d=> d.Positions)
+                .Include(c =>c.AppUserOnObjects)
+                .Include(d=> d.AppUserInPositions)
+                .Select(e => AppUserMapper.MapFromDomain(e))
                 .ToListAsync();
         }
         
-        public override async Task<AppUser> FindAsync(params object[] id)
+//        public async Task<DAL.App.DTO.Identity.AppUser> FindAsync(int id)
+//        {
+//            var appUser = await base.FindAsync(id);
+//
+//            if (appUser != null)
+//            {
+//            }
+//            
+//            return appUser;
+//        }
+
+        public async Task<List<AppUser>> AllForUserAsync(int userId)
         {
-            var appUser = await base.FindAsync(id);
+            return await RepositoryDbSet
+                .Where(c => c.Id == userId)
+                .Select(e => AppUserMapper.MapFromDomain(e))
+                .ToListAsync();        }
 
-            if (appUser != null)
-            {
-                await RepositoryDbContext.Entry(appUser).Reference(c => c.Objects).LoadAsync();
-                await RepositoryDbContext.Entry(appUser).Reference(c => c.Positions).LoadAsync();
+        public async Task<AppUser> FindForUserAsync(int id, int userId)
+        {
+            return AppUserMapper.MapFromDomain(await RepositoryDbSet
+                .FirstOrDefaultAsync(p => p.Id == id && p.Id == userId));
+        }
 
-            }
-            
-            return appUser;
+        public async Task<bool> BelongsToUserAsync(int id, int userId)
+        {
+            return await RepositoryDbSet.AnyAsync(p => p.Id == id && p.Id == userId);
         }
     }
 }

@@ -1,6 +1,6 @@
-namespace DAL.App.DTO
+namespace BLL.App.DTO
 {
-    public class ProductDTO
+    public class Product
     {
         
         public int Id { get; set; }

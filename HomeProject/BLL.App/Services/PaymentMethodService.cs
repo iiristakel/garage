@@ -1,23 +1,28 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using BLL.App.Mappers;
 using BLL.Base.Services;
 using Contracts.BLL.App.Services;
 using Contracts.DAL.App;
-using Contracts.DAL.Base;
-using DAL.App.DTO;
-using Domain;
+using PaymentMethodWithPaymentsCount = BLL.App.DTO.PaymentMethodWithPaymentsCount;
 
-namespace BLL.App.DTO
+namespace BLL.App.Services
 {
-    public class PaymentMethodService : BaseEntityService<PaymentMethod, IAppUnitOfWork>, IPaymentMethodService
+    public class PaymentMethodService 
+        : BaseEntityService<BLL.App.DTO.PaymentMethod, DAL.App.DTO.PaymentMethod,
+            IAppUnitOfWork>, IPaymentMethodService
     {
-        public PaymentMethodService(IAppUnitOfWork uow) : base(uow)
+        public PaymentMethodService(IAppUnitOfWork uow) : base(uow, new PaymentMethodMapper())
         {
+            ServiceRepository = Uow.BaseRepository<DAL.App.DTO.PaymentMethod, Domain.PaymentMethod>();
         }
 
-        public async Task<List<PaymentMethodDTO>> GetAllWithPaymentsCountAsync()
+        public async Task<List<PaymentMethodWithPaymentsCount>> GetAllWithPaymentsCountAsync()
         {
-            return await Uow.PaymentMethods.GetAllWithPaymentsCountAsync();
+            return (await Uow.PaymentMethods.GetAllWithPaymentsCountAsync())
+                .Select(e => PaymentMethodMapper.MapFromDAL(e))
+                .ToList();
 
         }
     }

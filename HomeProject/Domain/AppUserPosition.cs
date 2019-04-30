@@ -10,6 +10,6 @@ namespace Domain
         [MaxLength(64)]
         [MinLength(1)]
         [Required]
-        public string PositionValue { get; set; }
+        public string AppUserPositionValue { get; set; }
     }
 }

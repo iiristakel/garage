@@ -13,13 +13,16 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.AppUser)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Client)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ArrivalFee)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Sum)
+                @Html.DisplayNameFor(model => model.SumWithOutTaxes)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.TaxPercent)
@@ -43,13 +46,16 @@
 @foreach (var item in Model) {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.AppUser.FirstLastName)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Client.CompanyName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ArrivalFee)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Sum)
+                @Html.DisplayFor(modelItem => item.SumWithOutTaxes)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TaxPercent)

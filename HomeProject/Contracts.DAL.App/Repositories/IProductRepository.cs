@@ -1,13 +1,16 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Contracts.DAL.Base.Repositories;
-using DAL.App.DTO;
-using Domain;
+using DALAppDTO = DAL.App.DTO;
 
 namespace Contracts.DAL.App.Repositories
 {
-    public interface IProductRepository: IBaseRepository<Product>
+    public interface IProductRepository : IProductRepository<DALAppDTO.Product>
     {
-        Task<List<ProductDTO>> GetAllAsync();
+    }
+
+    public interface IProductRepository<TDALEntity> : IBaseRepository<TDALEntity>
+        where TDALEntity : class, new()
+    {
     }
 }

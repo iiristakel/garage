@@ -67,7 +67,7 @@ namespace WebApp.Controllers
             vm.AppUserPositionSelectList = new SelectList(
                 await _bll.BaseEntityService<AppUserPosition>().AllAsync(), 
                 nameof(AppUserPosition.Id), 
-                nameof(AppUserPosition.PositionValue));
+                nameof(AppUserPosition.AppUserPositionValue));
             
             return View(vm);
         }
@@ -95,7 +95,7 @@ namespace WebApp.Controllers
             vm.AppUserPositionSelectList = new SelectList(
                 await _bll.BaseEntityService<AppUserPosition>().AllAsync(), 
                 nameof(AppUserPosition.Id), 
-                nameof(AppUserPosition.PositionValue));
+                nameof(AppUserPosition.AppUserPositionValue));
             
             return View(vm);
         }
@@ -125,7 +125,7 @@ namespace WebApp.Controllers
             vm.AppUserPositionSelectList = new SelectList(
                 await _bll.BaseEntityService<AppUserPosition>().AllAsync(), 
                 nameof(AppUserPosition.Id), 
-                nameof(AppUserPosition.PositionValue));
+                nameof(AppUserPosition.AppUserPositionValue));
             
             return View(vm);
         }
@@ -160,7 +160,7 @@ namespace WebApp.Controllers
             vm.AppUserPositionSelectList = new SelectList(
                 await _bll.BaseEntityService<AppUserPosition>().AllAsync(), 
                 nameof(AppUserPosition.Id), 
-                nameof(AppUserPosition.PositionValue));
+                nameof(AppUserPosition.AppUserPositionValue));
             
             return View(vm);
         }

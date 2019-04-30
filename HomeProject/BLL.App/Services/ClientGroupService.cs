@@ -1,23 +1,28 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using BLL.App.Mappers;
 using BLL.Base.Services;
 using Contracts.BLL.App.Services;
 using Contracts.DAL.App;
-using Contracts.DAL.Base;
-using DAL.App.DTO;
-using Domain;
 
-namespace BLL.App.DTO
+namespace BLL.App.Services
 {
-    public class ClientGroupService  : BaseEntityService<ClientGroup, IAppUnitOfWork>, IClientGroupService
+    public class ClientGroupService  
+        : BaseEntityService<BLL.App.DTO.ClientGroup, DAL.App.DTO.ClientGroup,
+            IAppUnitOfWork>, IClientGroupService
     {
-        public ClientGroupService(IAppUnitOfWork uow) : base(uow)
+        public ClientGroupService(IAppUnitOfWork uow) : base(uow, new ClientGroupMapper())
         {
+            ServiceRepository = Uow.BaseRepository<DAL.App.DTO.ClientGroup, Domain.ClientGroup>();
+
         }
 
-        public async Task<List<ClientGroupDTO>> GetAllWithClientCountAsync()
+        public async Task<List<BLL.App.DTO.ClientGroupWithClientCount>> GetAllWithClientCountAsync()
         {
-            return await Uow.ClientGroups.GetAllWithClientCountAsync();
+            return (await Uow.ClientGroups.GetAllWithClientCountAsync())
+                .Select(e => ClientGroupMapper.MapFromDAL(e))
+                .ToList();
 
         }
     }

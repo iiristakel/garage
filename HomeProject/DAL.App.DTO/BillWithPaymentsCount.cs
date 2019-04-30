@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace DAL.App.DTO
 {
-    public class BillsDTO
+    public class BillWithPaymentsCount 
     {
         public int Id { get; set; }
         
@@ -19,7 +19,7 @@ namespace DAL.App.DTO
         [DataType(DataType.Date)]
         public DateTime DateTime { get; set; }
 
-        public ICollection<BillLine> BillLines { get; set; }
+//        public ICollection<BillLine> BillLines { get; set; }
 
         public int PaymentsCount { get; set; }
 

@@ -1,23 +1,28 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using BLL.App.Mappers;
 using BLL.Base.Services;
 using Contracts.BLL.App.Services;
 using Contracts.DAL.App;
-using Contracts.DAL.Base;
-using DAL.App.DTO;
-using Domain;
 
-namespace BLL.App.DTO
+namespace BLL.App.Services
 {
-    public class ProductService : BaseEntityService<Product, IAppUnitOfWork>, IProductService
+    public class ProductService 
+        : BaseEntityService<BLL.App.DTO.Product, DAL.App.DTO.Product,
+            IAppUnitOfWork>, IProductService
     {
-        public ProductService(IAppUnitOfWork uow) : base(uow)
+        public ProductService(IAppUnitOfWork uow) : base(uow, new ProductMapper())
         {
+            ServiceRepository = Uow.BaseRepository<DAL.App.DTO.Product, Domain.Product>();
+
         }
 
-        public async Task<List<ProductDTO>> GetAllAsync()
+        public async Task<List<DTO.Product>> GetAllAsync()
         {
-            return await Uow.Products.GetAllAsync();
+            return (await Uow.Products.AllAsync())
+                .Select(e => ProductMapper.MapFromDAL(e))
+                .ToList();
 
         }
     }

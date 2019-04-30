@@ -1,14 +1,19 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Contracts.DAL.Base.Repositories;
-using Domain;
-using Domain.Identity;
+using DALAppDTO = DAL.App.DTO;
 
 namespace Contracts.DAL.App.Repositories
 {
-    public interface IAppUserRepository: IBaseRepository<AppUser>
+    public interface IAppUserRepository : IAppUserRepository<DALAppDTO.Identity.AppUser>
     {
-        //add here custom methods
-        Task<List<AppUser>> AllAsync();
+    }
+
+    public interface IAppUserRepository<TDALEntity> : IBaseRepository<TDALEntity>
+        where TDALEntity : class, new()
+    {
+        Task<List<TDALEntity>> AllForUserAsync(int userId);
+        Task<TDALEntity> FindForUserAsync(int id, int userId);
+        Task<bool> BelongsToUserAsync(int id, int userId);
     }
 }

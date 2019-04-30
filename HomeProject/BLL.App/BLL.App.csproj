@@ -2,17 +2,12 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <RootNamespace>BLL.App.DTO</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\BLL.App.DTO\BLL.App.DTO.csproj" />
       <ProjectReference Include="..\BLL.Base\BLL.Base.csproj" />
       <ProjectReference Include="..\Contracts.BLL.App\Contracts.BLL.App.csproj" />
-      <ProjectReference Include="..\Contracts.DAL.App\Contracts.DAL.App.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Mappers" />
     </ItemGroup>
 
 </Project>

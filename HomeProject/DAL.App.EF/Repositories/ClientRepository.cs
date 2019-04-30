@@ -4,25 +4,31 @@ using System.Threading.Tasks;
 using Contracts.DAL.App.Repositories;
 using Contracts.DAL.Base;
 using DAL.App.DTO;
+using DAL.App.EF.Mappers;
 using DAL.Base.EF.Repositories;
 using Domain;
 using Microsoft.EntityFrameworkCore;
 
 namespace DAL.App.EF.Repositories
 {
-    public class ClientRepository : BaseRepository<Client, AppDbContext>, IClientRepository
+    public class ClientRepository 
+        : BaseRepository<DAL.App.DTO.Client, Domain.Client,
+            AppDbContext>, IClientRepository
     {
-        public ClientRepository(AppDbContext repositoryDbContext) : base(repositoryDbContext)
+        public ClientRepository(AppDbContext repositoryDbContext) 
+            : base(repositoryDbContext, new ClientMapper())
         {
         }
         
-        public override async Task<List<Client>> AllAsync()
+        public override async Task<List<DAL.App.DTO.Client>> AllAsync()
         {
             return await RepositoryDbSet
                 .Include(p => p.ClientGroup)
+                .Include(p => p.ProductsForClient)
+                .Select(e => ClientMapper.MapFromDomain(e))
                 .ToListAsync();
         }
-        public override async Task<Client> FindAsync(params object[] id)
+        public override async Task<DAL.App.DTO.Client> FindAsync(params object[] id)
         {
             var client = await base.FindAsync(id);
 
@@ -34,15 +40,14 @@ namespace DAL.App.EF.Repositories
             return client;
         }
 
-        public virtual async Task<List<ClientsDTO>> GetAllWithProductsCountAsync()
+        public virtual async Task<List<ClientWithProductsCount>> GetAllWithProductsCountAsync()
         {
             return await RepositoryDbSet
-                .Select(c => new ClientsDTO()
+                .Select(c => new ClientWithProductsCount()
                 {
                     Id = c.Id,
-                    ClientGroup = c.ClientGroup,
+                    ClientGroup = ClientGroupMapper.MapFromDomain(c.ClientGroup),
                     ClientGroupId = c.ClientGroupId,
-                    ProductsForClient = c.ProductsForClient,
                     ProductsCount = c.ProductsForClient.Count,
                     CompanyName = c.CompanyName,
                     Address = c.Address,

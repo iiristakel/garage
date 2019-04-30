@@ -1,13 +1,17 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Contracts.DAL.Base.Repositories;
-using DAL.App.DTO;
-using Domain;
+using DALAppDTO = DAL.App.DTO;
 
 namespace Contracts.DAL.App.Repositories
 {
-    public interface IPaymentMethodRepository : IBaseRepository<PaymentMethod>
+    public interface IPaymentMethodRepository : IPaymentMethodRepository<DALAppDTO.PaymentMethod>
     {
-        Task<List<PaymentMethodDTO>> GetAllWithPaymentsCountAsync();
+        Task<List<DALAppDTO.PaymentMethodWithPaymentsCount>> GetAllWithPaymentsCountAsync();
+    }
+
+    public interface IPaymentMethodRepository<TDALEntity> : IBaseRepository<TDALEntity>
+        where TDALEntity : class, new()
+    {
     }
 }
