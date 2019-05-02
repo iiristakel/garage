@@ -14,7 +14,7 @@ namespace BLL.App.Services
     {
         public ClientGroupService(IAppUnitOfWork uow) : base(uow, new ClientGroupMapper())
         {
-            ServiceRepository = Uow.BaseRepository<DAL.App.DTO.ClientGroup, Domain.ClientGroup>();
+            ServiceRepository = Uow.ClientGroups;
 
         }
 

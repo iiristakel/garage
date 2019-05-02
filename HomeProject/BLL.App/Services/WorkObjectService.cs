@@ -15,7 +15,7 @@ namespace BLL.App.Services
     {
         public WorkObjectService(IAppUnitOfWork uow) : base(uow, new WorkObjectMapper())
         {
-            ServiceRepository = Uow.BaseRepository<DAL.App.DTO.WorkObject, Domain.WorkObject>();
+            ServiceRepository = Uow.WorkObjects;
 
         }
 

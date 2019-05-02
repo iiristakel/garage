@@ -16,7 +16,7 @@ namespace BLL.App.Services
     {
         public AppUserPositionService(IAppUnitOfWork uow) : base(uow, new AppUserPositionMapper())
         {
-            ServiceRepository = Uow.BaseRepository<DAL.App.DTO.AppUserPosition, Domain.AppUserPosition>();
+            ServiceRepository = Uow.AppUsersPositions;
         }
 
         public async Task<List<AppUserPositionWithAppUsersCount>> GetAllWithAppUsersCountAsync()

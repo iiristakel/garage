@@ -15,7 +15,7 @@ namespace BLL.App.Services
     {
         public ClientService(IAppUnitOfWork uow) : base(uow, new ClientMapper())
         {
-            ServiceRepository = Uow.BaseRepository<DAL.App.DTO.Client, Domain.Client>();
+            ServiceRepository = Uow.Clients;
         }
 
         public async Task<List<BLL.App.DTO.ClientWithProductsCount>> GetAllWithProductsCountAsync()

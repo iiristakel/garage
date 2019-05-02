@@ -14,7 +14,7 @@ namespace BLL.App.Services
     {
         public ProductService(IAppUnitOfWork uow) : base(uow, new ProductMapper())
         {
-            ServiceRepository = Uow.BaseRepository<DAL.App.DTO.Product, Domain.Product>();
+            ServiceRepository = Uow.Products;
 
         }
 

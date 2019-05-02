@@ -15,7 +15,7 @@ namespace BLL.App.Services
     {
         public AppUserService(IAppUnitOfWork uow) : base(uow, new AppUserMapper())
         {
-            ServiceRepository = Uow.BaseRepository<DAL.App.DTO.Identity.AppUser, Domain.Identity.AppUser>();
+            ServiceRepository = Uow.AppUsers;
         }
 
         public async Task<List<AppUser>> AllForUserAsync(int userId)

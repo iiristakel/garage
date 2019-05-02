@@ -26,40 +26,51 @@
         <nav class="main-header navbar navbar-expand bg-success-gradient navbar-light border-bottom">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">WebApp</a>
 
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">@Resources.Views.Shared._Layout.NavHome</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                    <a class="nav-link" asp-area="" asp-controller="AppUsers" asp-action="Index">@Resources.Views.Shared._Layout.NavWorkers</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a class="nav-link" asp-area="" asp-controller="AppUsers" asp-action="Index">Workers</a>
+                    <a class="nav-link" asp-area="" asp-controller="Clients" asp-action="Index">@Resources.Views.Shared._Layout.NavClients</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a class="nav-link" asp-area="" asp-controller="Clients" asp-action="Index">Clients</a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a class="nav-link" asp-area="" asp-controller="Bills" asp-action="Index">Bills</a>
+                    <a class="nav-link" asp-area="" asp-controller="Bills" asp-action="Index">@Resources.Views.Shared._Layout.NavBills</a>
                 </li>
                 <li class="nav-item" d-none d-sm-inline-block>
-                    <a class="nav-link" asp-area="" asp-controller="BillLines" asp-action="Index">BillLines</a>
+                    <a class="nav-link" asp-area="" asp-controller="BillLines" asp-action="Index">@Resources.Views.Shared._Layout.NavBillLines</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a class="nav-link" asp-area="" asp-controller="WorkObjects" asp-action="Index">WorkObjects</a>
+                    <a class="nav-link" asp-area="" asp-controller="WorkObjects" asp-action="Index">@Resources.Views.Shared._Layout.NavWorkObjects</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a class="nav-link" asp-area="" asp-controller="Products" asp-action="Index">Products</a>
+                    <a class="nav-link" asp-area="" asp-controller="Products" asp-action="Index">@Resources.Views.Shared._Layout.NavProducts</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a class="nav-link" asp-area="" asp-controller="Payments" asp-action="Index">Payments</a>
+                    <a class="nav-link" asp-area="" asp-controller="AppUsersInPositions" asp-action="Index">@Resources.Views.Shared._Layout.NavAppUsersInPositions</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a class="nav-link" asp-area="" asp-controller="AppusersOnObjects" asp-action="Index">@Resources.Views.Shared._Layout.NavAppUsersOnObjects</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a class="nav-link" asp-area="" asp-controller="ClientGroups" asp-action="Index">@Resources.Views.Shared._Layout.NavClientGroups</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a class="nav-link" asp-area="" asp-controller="Payments" asp-action="Index">@Resources.Views.Shared._Layout.NavPayments</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a class="nav-link" asp-area="" asp-controller="PaymentMethods" asp-action="Index">@Resources.Views.Shared._Layout.NavPaymentMethods</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a class="nav-link" asp-area="" asp-controller="ProductsForClients" asp-action="Index">@Resources.Views.Shared._Layout.NavProductsForClients</a>
                 </li>
             </ul>
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
-                
+
                 <partial name="_LoginPartial"/>
             </ul>
         </nav>
@@ -79,14 +90,20 @@
 
     <footer class="main-footer">
         <div class="container">
-            &copy; 2019 - WebApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-            Culture:@CultureInfo.CurrentCulture.Name  UICulture:@CultureInfo.CurrentUICulture.Name
-            
-            Hello: @Resources.Default.Hello
+            &copy; 2019 - WebApp -
+            <a asp-area="" asp-controller="Home" asp-action="Privacy">
+                @Resources.Views.Shared._Layout.NavPrivacy
+            </a>
 
             <div class="float-right d-none d-sm-inline-block">
-                <b>Iiris Takel</b>
+                <partial name="_LanguageSelectionPartial"/>
+                UICulture: @CultureInfo.CurrentUICulture.Name Culture: @CultureInfo.CurrentUICulture.Name
             </div>
+            
+        <div class="float-left d-none d-sm-inline-block">
+            <b>Iiris Takel  </b>
+</div>
+
         </div>
     </footer>
 </div>

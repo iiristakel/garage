@@ -12,7 +12,7 @@ namespace BLL.App.Services
     {
         public ProductForClientService(IAppUnitOfWork uow) : base(uow, new ProductForClientMapper())
         {
-            ServiceRepository = Uow.BaseRepository<DAL.App.DTO.ProductForClient, Domain.ProductForClient>();
+            ServiceRepository = Uow.ProductsForClients;
 
         }
     }

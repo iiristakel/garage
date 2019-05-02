@@ -15,7 +15,7 @@ namespace BLL.App.Services
     {
         public BillService(IAppUnitOfWork uow) : base(uow, new BillMapper())
         {
-            ServiceRepository = Uow.BaseRepository<DAL.App.DTO.Bill, Domain.Bill>();
+            ServiceRepository = Uow.Bills;
         }
 
         public async Task<List<BLL.App.DTO.BillWithPaymentsCount>> GetAllWithPaymentsCountAsync()

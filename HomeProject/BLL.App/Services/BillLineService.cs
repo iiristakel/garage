@@ -15,7 +15,7 @@ namespace BLL.App.Services
     {
         public BillLineService(IAppUnitOfWork uow) : base(uow, new BillLineMapper())
         {
-            ServiceRepository = Uow.BaseRepository<DAL.App.DTO.BillLine, Domain.BillLine>();
+            ServiceRepository = Uow.BillLines;
         }
 
         public async Task<List<DTO.BillLine>> GetAllAsync()

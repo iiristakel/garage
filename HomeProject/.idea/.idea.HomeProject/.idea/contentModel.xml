@@ -372,6 +372,64 @@
         <e p="Default.Designer.cs" t="Include" />
         <e p="Default.et.resx" t="Include" />
         <e p="Default.resx" t="Include" />
+        <e p="Domain" t="Include">
+          <e p="AppUser.Designer.cs" t="Include" />
+          <e p="AppUser.et.Designer.cs" t="Include" />
+          <e p="AppUser.et.resx" t="Include" />
+          <e p="AppUser.resx" t="Include" />
+          <e p="AppUserInPosition.Designer.cs" t="Include" />
+          <e p="AppUserInPosition.et.Designer.cs" t="Include" />
+          <e p="AppUserInPosition.et.resx" t="Include" />
+          <e p="AppUserInPosition.resx" t="Include" />
+          <e p="AppUserOnObject.Designer.cs" t="Include" />
+          <e p="AppUserOnObject.et.Designer.cs" t="Include" />
+          <e p="AppUserOnObject.et.resx" t="Include" />
+          <e p="AppUserOnObject.resx" t="Include" />
+          <e p="AppUserPosition.Designer.cs" t="Include" />
+          <e p="AppUserPosition.et.Designer.cs" t="Include" />
+          <e p="AppUserPosition.et.resx" t="Include" />
+          <e p="AppUserPosition.resx" t="Include" />
+          <e p="Bill.Designer.cs" t="Include" />
+          <e p="Bill.et.Designer.cs" t="Include" />
+          <e p="Bill.et.resx" t="Include" />
+          <e p="Bill.resx" t="Include" />
+          <e p="BillLine.Designer.cs" t="Include" />
+          <e p="BillLine.et.Designer.cs" t="Include" />
+          <e p="BillLine.et.resx" t="Include" />
+          <e p="BillLine.resx" t="Include" />
+          <e p="Client.Designer.cs" t="Include" />
+          <e p="Client.et.Designer.cs" t="Include" />
+          <e p="Client.et.resx" t="Include" />
+          <e p="Client.resx" t="Include" />
+          <e p="ClientGroup.Designer.cs" t="Include" />
+          <e p="ClientGroup.et.Designer.cs" t="Include" />
+          <e p="ClientGroup.et.resx" t="Include" />
+          <e p="ClientGroup.resx" t="Include" />
+          <e p="Common.Designer.cs" t="Include" />
+          <e p="Common.et.Designer.cs" t="Include" />
+          <e p="Common.et.resx" t="Include" />
+          <e p="Common.resx" t="Include" />
+          <e p="Payment.Designer.cs" t="Include" />
+          <e p="Payment.et.Designer.cs" t="Include" />
+          <e p="Payment.et.resx" t="Include" />
+          <e p="Payment.resx" t="Include" />
+          <e p="PaymentMethod.Designer.cs" t="Include" />
+          <e p="PaymentMethod.et.Designer.cs" t="Include" />
+          <e p="PaymentMethod.et.resx" t="Include" />
+          <e p="PaymentMethod.resx" t="Include" />
+          <e p="Product.Designer.cs" t="Include" />
+          <e p="Product.et.Designer.cs" t="Include" />
+          <e p="Product.et.resx" t="Include" />
+          <e p="Product.resx" t="Include" />
+          <e p="ProductForClient.Designer.cs" t="Include" />
+          <e p="ProductForClient.et.Designer.cs" t="Include" />
+          <e p="ProductForClient.et.resx" t="Include" />
+          <e p="ProductForClient.resx" t="Include" />
+          <e p="WorkObject.Designer.cs" t="Include" />
+          <e p="WorkObject.et.Designer.cs" t="Include" />
+          <e p="WorkObject.et.resx" t="Include" />
+          <e p="WorkObject.resx" t="Include" />
+        </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netstandard2.0" t="Include">
@@ -380,6 +438,18 @@
           </e>
         </e>
         <e p="Resources.csproj" t="IncludeRecursive" />
+        <e p="Views" t="Include">
+          <e p="Common.Designer.cs" t="Include" />
+          <e p="Common.et.Designer.cs" t="Include" />
+          <e p="Common.et.resx" t="Include" />
+          <e p="Common.resx" t="Include" />
+          <e p="Shared" t="Include">
+            <e p="_Layout.Designer.cs" t="Include" />
+            <e p="_Layout.et.Designer.cs" t="Include" />
+            <e p="_Layout.et.resx" t="Include" />
+            <e p="_Layout.resx" t="Include" />
+          </e>
+        </e>
       </e>
       <e p="Solution Items" t="Include" />
       <e p="WebApp" t="IncludeRecursive">
@@ -649,6 +719,7 @@
           </e>
           <e p="Shared" t="Include">
             <e p="_CookieConsentPartial.cshtml" t="Include" />
+            <e p="_LanguageSelectionPartial.cshtml" t="Include" />
             <e p="_Layout.cshtml" t="Include" />
             <e p="_LoginPartial.cshtml" t="Include" />
             <e p="_ValidationScriptsPartial.cshtml" t="Include" />

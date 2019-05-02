@@ -15,7 +15,7 @@ namespace BLL.App.Services
     {
         public PaymentMethodService(IAppUnitOfWork uow) : base(uow, new PaymentMethodMapper())
         {
-            ServiceRepository = Uow.BaseRepository<DAL.App.DTO.PaymentMethod, Domain.PaymentMethod>();
+            ServiceRepository = Uow.PaymentMethods;
         }
 
         public async Task<List<PaymentMethodWithPaymentsCount>> GetAllWithPaymentsCountAsync()

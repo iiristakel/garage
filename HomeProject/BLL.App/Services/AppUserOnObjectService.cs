@@ -17,7 +17,7 @@ namespace BLL.App.Services
     {
         public AppUserOnObjectService(IAppUnitOfWork uow) : base(uow, new AppUserOnObjectMapper())
         {
-            ServiceRepository = Uow.BaseRepository<DAL.App.DTO.AppUserOnObject, Domain.AppUserOnObject>();
+            ServiceRepository = Uow.AppUsersOnObjects;
 
         }
 

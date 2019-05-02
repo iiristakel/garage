@@ -15,7 +15,7 @@ namespace BLL.App.Services
     {
         public PaymentService(IAppUnitOfWork uow) : base(uow, new PaymentMapper())
         {
-            ServiceRepository = Uow.BaseRepository<DAL.App.DTO.Payment, Domain.Payment>();
+            ServiceRepository = Uow.Payments;
 
         }
 
