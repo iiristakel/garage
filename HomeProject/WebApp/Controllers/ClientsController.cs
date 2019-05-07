@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DAL;
 using DAL.App.EF;
-using Domain;
 using Identity;
 using Microsoft.AspNetCore.Authorization;
 using WebApp.ViewModels;
@@ -55,12 +54,14 @@ namespace WebApp.Controllers
         // GET: Clients/Create
         public async Task<IActionResult> Create()
         {
-            var vm = new ClientCreateEditViewModel();
-            
-            vm.ClientGroupSelectList = new SelectList(
-                await _bll.ClientGroups.AllAsync(),
-                nameof(ClientGroup.Id), 
-                nameof(ClientGroup.Name));
+            var vm = new ClientCreateEditViewModel
+            {
+                ClientGroupSelectList = new SelectList(
+                    await _bll.ClientGroups.AllAsync(),
+                    nameof(BLL.App.DTO.ClientGroup.Id),
+                    nameof(BLL.App.DTO.ClientGroup.Name))
+            };
+
 
             return View(vm);
         }
@@ -82,8 +83,8 @@ namespace WebApp.Controllers
 
             vm.ClientGroupSelectList = new SelectList(
                 await _bll.ClientGroups.AllAsync(),
-                nameof(ClientGroup.Id), 
-                nameof(ClientGroup.Name));
+                nameof(BLL.App.DTO.ClientGroup.Id), 
+                nameof(BLL.App.DTO.ClientGroup.Name));
 
             return View(vm);
         }
@@ -106,8 +107,8 @@ namespace WebApp.Controllers
             vm.Client = client;
             vm.ClientGroupSelectList = new SelectList(
                 await _bll.ClientGroups.AllAsync(),
-                nameof(ClientGroup.Id), 
-                nameof(ClientGroup.Name));
+                nameof(BLL.App.DTO.ClientGroup.Id), 
+                nameof(BLL.App.DTO.ClientGroup.Name));
 
             return View(vm);
         }
@@ -134,8 +135,8 @@ namespace WebApp.Controllers
 
             vm.ClientGroupSelectList = new SelectList(
                 await _bll.ClientGroups.AllAsync(),
-                nameof(ClientGroup.Id), 
-                nameof(ClientGroup.Name));
+                nameof(BLL.App.DTO.ClientGroup.Id), 
+                nameof(BLL.App.DTO.ClientGroup.Name));
 
             return View(vm);
         }

@@ -36,13 +36,12 @@ export class IdentityService {
 
   }
 
-  register(firstName: string, lastName: string, user: string, company: any, password: string): Promise<any> {
+  register(firstName: string, lastName: string, user: string, password: string): Promise<any> {
     let url = this.appConfig.apiUrl + "account/register";
     let registerDTO = {
       firstName: firstName,
       lastName: lastName,
       email: user,
-      company: company,
       password: password
     };
 

@@ -1,13 +1,13 @@
-@model IEnumerable<BLL.App.DTO.ClientGroup>
+@model IEnumerable<BLL.App.DTO.ClientGroupWithClientCount>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>@Resources.Domain.ClientGroup.ClientGroupsString</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">@Resources.Views.Common.CreateNew</a>
 </p>
 <table class="table">
     <thead>
@@ -21,7 +21,10 @@
             <th>
                 @Html.DisplayNameFor(model => model.DiscountPercent)
             </th>
-            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClientCount)
+
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -37,9 +40,12 @@
                 @Html.DisplayFor(modelItem => item.DiscountPercent)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                @Html.DisplayFor(modelItem => item.ClientCount)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">@Resources.Views.Common.Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">@Resources.Views.Common.Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">@Resources.Views.Common.Delete</a>
             </td>
         </tr>
 }

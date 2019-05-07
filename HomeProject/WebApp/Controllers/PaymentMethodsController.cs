@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DAL;
 using DAL.App.EF;
-using Domain;
 using Microsoft.AspNetCore.Authorization;
 
 namespace WebApp.Controllers

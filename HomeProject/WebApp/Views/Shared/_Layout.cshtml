@@ -52,7 +52,10 @@
                     <a class="nav-link" asp-area="" asp-controller="AppUsersInPositions" asp-action="Index">@Resources.Views.Shared._Layout.NavAppUsersInPositions</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a class="nav-link" asp-area="" asp-controller="AppusersOnObjects" asp-action="Index">@Resources.Views.Shared._Layout.NavAppUsersOnObjects</a>
+                    <a class="nav-link" asp-area="" asp-controller="AppUsersOnObjects" asp-action="Index">@Resources.Views.Shared._Layout.NavAppUsersOnObjects</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a class="nav-link" asp-area="" asp-controller="AppUsersPositions" asp-action="Index">@Resources.Views.Shared._Layout.NavAppUsersPositions</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a class="nav-link" asp-area="" asp-controller="ClientGroups" asp-action="Index">@Resources.Views.Shared._Layout.NavClientGroups</a>
@@ -90,19 +93,16 @@
 
     <footer class="main-footer">
         <div class="container">
-            &copy; 2019 - WebApp -
-            <a asp-area="" asp-controller="Home" asp-action="Privacy">
-                @Resources.Views.Shared._Layout.NavPrivacy
-            </a>
-
-            <div class="float-right d-none d-sm-inline-block">
-                <partial name="_LanguageSelectionPartial"/>
-                UICulture: @CultureInfo.CurrentUICulture.Name Culture: @CultureInfo.CurrentUICulture.Name
+            <div class="row">
+                <div class="col-md-4">&copy; 2019 - WebApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">@Resources.Views.Shared._Layout.NavPrivacy</a></div>
+                <div class="col-md-4">UICulture: @CultureInfo.CurrentUICulture.Name Culture: @CultureInfo.CurrentUICulture.Name</div>
+                <div class="col-md-4"><partial name="_LanguageSelectionPartial"/></div>
             </div>
-            
-        <div class="float-left d-none d-sm-inline-block">
-            <b>Iiris Takel  </b>
-</div>
+
+
+            <div class="float-left d-none d-sm-inline-block">
+                <b>Iiris Takel </b>
+            </div>
 
         </div>
     </footer>

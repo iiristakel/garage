@@ -4,7 +4,7 @@ using Domain.Identity;
 
 namespace Domain
 {
-    public class AppUserInPosition : BaseEntity
+    public class AppUserInPosition : DomainEntity
     {
         public int AppUserId { get; set; }
         public AppUser AppUser { get; set; }

@@ -36,6 +36,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL.App.DTO", "BLL.App.DTO\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resources", "Resources\Resources.csproj", "{BFDAD388-690F-498D-A865-D87BBAB21EEB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PublicApi.v1.DTO", "PublicApi.v1.DTO\PublicApi.v1.DTO.csproj", "{68E609A8-E30D-4835-9AFD-820CB2AFD5E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PublicApi.v1", "PublicApi.v1\PublicApi.v1.csproj", "{8FB2557B-B23E-46E2-A421-96BDBE654269}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -102,5 +106,13 @@ Global
 		{BFDAD388-690F-498D-A865-D87BBAB21EEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFDAD388-690F-498D-A865-D87BBAB21EEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFDAD388-690F-498D-A865-D87BBAB21EEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68E609A8-E30D-4835-9AFD-820CB2AFD5E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68E609A8-E30D-4835-9AFD-820CB2AFD5E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68E609A8-E30D-4835-9AFD-820CB2AFD5E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68E609A8-E30D-4835-9AFD-820CB2AFD5E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FB2557B-B23E-46E2-A421-96BDBE654269}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FB2557B-B23E-46E2-A421-96BDBE654269}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FB2557B-B23E-46E2-A421-96BDBE654269}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FB2557B-B23E-46E2-A421-96BDBE654269}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

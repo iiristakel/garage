@@ -12,9 +12,9 @@ namespace DAL.App.DTO
         public int ClientId { get; set; }
         public Client Client { get; set; }
 
-//        public ICollection<AppUserOnObject> AppusersOnObject { get; set; }
+        public ICollection<AppUserOnObject> AppUsersOnObject { get; set; }
 
-//        public ICollection<ProductForClient> ProductsForClient { get; set; }
+        public ICollection<ProductForClient> ProductsForClient { get; set; }
 
         [DataType(DataType.Date)]
         public DateTime? From { get; set; }

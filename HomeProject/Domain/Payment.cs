@@ -2,7 +2,7 @@ using System;
 
 namespace Domain
 {
-    public class Payment : BaseEntity
+    public class Payment : DomainEntity
     {
         public int BillId { get; set; }
         public Bill Bill { get; set; }

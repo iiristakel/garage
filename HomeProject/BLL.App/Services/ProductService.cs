@@ -18,12 +18,5 @@ namespace BLL.App.Services
 
         }
 
-        public async Task<List<DTO.Product>> GetAllAsync()
-        {
-            return (await Uow.Products.AllAsync())
-                .Select(e => ProductMapper.MapFromDAL(e))
-                .ToList();
-
-        }
     }
 }

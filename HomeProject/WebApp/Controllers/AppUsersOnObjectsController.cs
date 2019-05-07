@@ -9,8 +9,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DAL;
 using DAL.App.EF;
-using Domain;
-using Domain.Identity;
 using Identity;
 using Microsoft.AspNetCore.Authorization;
 using WebApp.ViewModels;

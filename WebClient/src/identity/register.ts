@@ -12,7 +12,6 @@ export class Register {
 
   private firstName: string;
   private lastName: string;
-  private company: any;
   private email: string;
   private password: string;
   private confirmPassword: string;
@@ -66,15 +65,15 @@ export class Register {
 
   // ==================== View methods ================
   submit(): void {
-    log.debug("submit", this.firstName, this.lastName, this.email, this.company, this.password);
-    if (this.password==null || this.confirmPassword==null || this.email == null ||
-      this.password != this.confirmPassword || this.password.length < 6 ||
+    log.debug("submit", this.firstName, this.lastName, this.email, this.password);
+    if (this.password==null || this.confirmPassword==null || this.email == null || this.firstName == null ||
+      this.lastName == null || this.password != this.confirmPassword || this.password.length < 6 || 
       this.email.length == 0){
       alert('Passwords dont match or password too short or username too short!');
       return;
     }
 
-    this.identityService.register(this.firstName, this.lastName, this.email, this.company, this.password)
+    this.identityService.register(this.firstName, this.lastName, this.email, this.password)
       .then(jwtDTO => {
         if (jwtDTO.token !== undefined) {
           log.debug("submit token", jwtDTO.token);

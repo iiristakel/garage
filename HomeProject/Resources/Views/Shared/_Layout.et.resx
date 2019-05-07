@@ -174,4 +174,7 @@
   <data name="Register" xml:space="preserve">
     <value>Registreeru</value>
   </data>
+  <data name="NavAppUsersPositions" xml:space="preserve">
+    <value>Töötajate positsioonid</value>
+  </data>
 </root>

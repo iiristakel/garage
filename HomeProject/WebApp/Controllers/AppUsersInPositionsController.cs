@@ -9,8 +9,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DAL;
 using DAL.App.EF;
-using Domain;
-using Domain.Identity;
 using Identity;
 using Microsoft.AspNetCore.Authorization;
 using WebApp.ViewModels;
@@ -58,13 +56,13 @@ namespace WebApp.Controllers
             
             vm.AppUserSelectList = new SelectList(
                 await _bll.AppUsers.AllForUserAsync(User.GetUserId()), 
-                nameof(AppUser.Id), 
-                nameof(AppUser.FirstLastName));
+                nameof(BLL.App.DTO.Identity.AppUser.Id), 
+                nameof(BLL.App.DTO.Identity.AppUser.FirstLastName));
             
             vm.AppUserPositionSelectList = new SelectList(
                 await _bll.AppUsersPositions.AllAsync(), 
-                nameof(AppUserPosition.Id), 
-                nameof(AppUserPosition.AppUserPositionValue));
+                nameof(BLL.App.DTO.AppUserPosition.Id), 
+                nameof(BLL.App.DTO.AppUserPosition.AppUserPositionValue));
             
             return View(vm);
         }
@@ -86,13 +84,13 @@ namespace WebApp.Controllers
             
             vm.AppUserSelectList = new SelectList(
                 await _bll.AppUsers.AllForUserAsync(User.GetUserId()), 
-                nameof(AppUser.Id), 
-                nameof(AppUser.FirstLastName));
+                nameof(BLL.App.DTO.Identity.AppUser.Id), 
+                nameof(BLL.App.DTO.Identity.AppUser.FirstLastName));
             
             vm.AppUserPositionSelectList = new SelectList(
                 await _bll.AppUsersPositions.AllAsync(), 
-                nameof(AppUserPosition.Id), 
-                nameof(AppUserPosition.AppUserPositionValue));
+                nameof(BLL.App.DTO.AppUserPosition.Id), 
+                nameof(BLL.App.DTO.AppUserPosition.AppUserPositionValue));
             
             return View(vm);
         }
@@ -116,13 +114,13 @@ namespace WebApp.Controllers
             
             vm.AppUserSelectList = new SelectList(
                 await _bll.AppUsers.AllForUserAsync(User.GetUserId()), 
-                nameof(AppUser.Id), 
-                nameof(AppUser.FirstLastName));
+                nameof(BLL.App.DTO.Identity.AppUser.Id), 
+                nameof(BLL.App.DTO.Identity.AppUser.FirstLastName));
             
             vm.AppUserPositionSelectList = new SelectList(
                 await _bll.AppUsersPositions.AllAsync(), 
-                nameof(AppUserPosition.Id), 
-                nameof(AppUserPosition.AppUserPositionValue));
+                nameof(BLL.App.DTO.AppUserPosition.Id), 
+                nameof(BLL.App.DTO.AppUserPosition.AppUserPositionValue));
             
             return View(vm);
         }
@@ -156,13 +154,13 @@ namespace WebApp.Controllers
             
             vm.AppUserSelectList = new SelectList(
                 await _bll.AppUsers.AllForUserAsync(User.GetUserId()), 
-                nameof(AppUser.Id), 
-                nameof(AppUser.FirstLastName));
+                nameof(BLL.App.DTO.Identity.AppUser.Id), 
+                nameof(BLL.App.DTO.Identity.AppUser.FirstLastName));
             
             vm.AppUserPositionSelectList = new SelectList(
                 await _bll.AppUsersPositions.AllAsync(), 
-                nameof(AppUserPosition.Id), 
-                nameof(AppUserPosition.AppUserPositionValue));
+                nameof(BLL.App.DTO.AppUserPosition.Id), 
+                nameof(BLL.App.DTO.AppUserPosition.AppUserPositionValue));
             
             return View(vm);
         }

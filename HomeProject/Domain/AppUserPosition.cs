@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Domain
 {
-    public class AppUserPosition : BaseEntity
+    public class AppUserPosition : DomainEntity
     {
         public ICollection<AppUserInPosition> AppUsers { get; set; }
 

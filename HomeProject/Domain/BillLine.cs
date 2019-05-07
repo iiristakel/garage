@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Domain
 {
-    public class BillLine : BaseEntity
+    public class BillLine : DomainEntity
     {
         public int? BillId { get; set; }
         public Bill Bill { get; set; }

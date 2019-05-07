@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DAL;
 using DAL.App.EF;
-using Domain;
 using Microsoft.AspNetCore.Authorization;
 
 namespace WebApp.Controllers
@@ -27,7 +26,7 @@ namespace WebApp.Controllers
         // GET: ClientGroups
         public async Task<IActionResult> Index()
         {
-            return View(await _bll.ClientGroups.AllAsync());
+            return View(await _bll.ClientGroups.GetAllWithClientCountAsync());
         }
 
         // GET: ClientGroups/Details/5

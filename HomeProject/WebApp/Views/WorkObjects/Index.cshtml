@@ -4,10 +4,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>@Resources.Domain.WorkObject.WorkObjectsString</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">@Resources.Views.Common.CreateNew</a>
 </p>
 <table class="table">
     <thead>
@@ -21,7 +21,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Until)
             </th>
-            <th></th>
+            @* <th> *@
+            @*     @Html.DisplayNameFor(model => model.AppUsersOnObject) *@
+            @* </th> *@
         </tr>
     </thead>
     <tbody>
@@ -36,10 +38,13 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Until)
             </td>
+            @* <td> *@
+            @*     @Html.DisplayFor(modelItem => item.AppUsersOnObject) *@
+            @* </td> *@
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id">@Resources.Views.Common.Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">@Resources.Views.Common.Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">@Resources.Views.Common.Delete</a>
             </td>
         </tr>
 }

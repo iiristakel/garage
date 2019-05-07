@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DAL;
 using DAL.App.EF;
-using Domain;
 using Identity;
 using Microsoft.AspNetCore.Authorization;
 using WebApp.ViewModels;
@@ -59,18 +58,18 @@ namespace WebApp.Controllers
 
             vm.BillSelectList = new SelectList(
                 await _bll.Bills.AllForUserAsync(User.GetUserId()),
-                nameof(Bill.Id),
-                nameof(Bill.InvoiceNr));
+                nameof(BLL.App.DTO.Bill.Id),
+                nameof(BLL.App.DTO.Bill.InvoiceNr));
 
             vm.ClientSelectList = new SelectList(
                 await _bll.Clients.AllAsync(),
-                nameof(Client.Id),
-                nameof(Client.CompanyName));
+                nameof(BLL.App.DTO.Client.Id),
+                nameof(BLL.App.DTO.Client.CompanyName));
 
             vm.PaymentMethodSelectList = new SelectList(
                 await _bll.PaymentMethods.AllAsync(),
-                nameof(PaymentMethod.Id),
-                nameof(PaymentMethod.PaymentMethodValue));
+                nameof(BLL.App.DTO.PaymentMethod.Id),
+                nameof(BLL.App.DTO.PaymentMethod.PaymentMethodValue));
 
             return View(vm);
         }
@@ -91,19 +90,18 @@ namespace WebApp.Controllers
 
             vm.BillSelectList = new SelectList(
                 await _bll.Bills.AllForUserAsync(User.GetUserId()),
-                nameof(Bill.Id),
-                nameof(Bill.InvoiceNr));
+                nameof(BLL.App.DTO.Bill.Id),
+                nameof(BLL.App.DTO.Bill.InvoiceNr));
 
             vm.ClientSelectList = new SelectList(
                 await _bll.Clients.AllAsync(),
-                nameof(Client.Id),
-                nameof(Client.CompanyName));
+                nameof(BLL.App.DTO.Client.Id),
+                nameof(BLL.App.DTO.Client.CompanyName));
 
             vm.PaymentMethodSelectList = new SelectList(
                 await _bll.PaymentMethods.AllAsync(),
-                nameof(PaymentMethod.Id),
-                nameof(PaymentMethod.PaymentMethodValue));
-
+                nameof(BLL.App.DTO.PaymentMethod.Id),
+                nameof(BLL.App.DTO.PaymentMethod.PaymentMethodValue));
             return View(vm);
         }
 
@@ -126,18 +124,18 @@ namespace WebApp.Controllers
 
             vm.BillSelectList = new SelectList(
                 await _bll.Bills.AllForUserAsync(User.GetUserId()),
-                nameof(Bill.Id),
-                nameof(Bill.InvoiceNr));
+                nameof(BLL.App.DTO.Bill.Id),
+                nameof(BLL.App.DTO.Bill.InvoiceNr));
 
             vm.ClientSelectList = new SelectList(
                 await _bll.Clients.AllAsync(),
-                nameof(Client.Id),
-                nameof(Client.CompanyName));
+                nameof(BLL.App.DTO.Client.Id),
+                nameof(BLL.App.DTO.Client.CompanyName));
 
             vm.PaymentMethodSelectList = new SelectList(
                 await _bll.PaymentMethods.AllAsync(),
-                nameof(PaymentMethod.Id),
-                nameof(PaymentMethod.PaymentMethodValue));
+                nameof(BLL.App.DTO.PaymentMethod.Id),
+                nameof(BLL.App.DTO.PaymentMethod.PaymentMethodValue));
 
             return View(vm);
         }
@@ -166,21 +164,21 @@ namespace WebApp.Controllers
 
                 return RedirectToAction(nameof(Index));
             }
-
+      
             vm.BillSelectList = new SelectList(
                 await _bll.Bills.AllForUserAsync(User.GetUserId()),
-                nameof(Bill.Id),
-                nameof(Bill.InvoiceNr));
+                nameof(BLL.App.DTO.Bill.Id),
+                nameof(BLL.App.DTO.Bill.InvoiceNr));
 
             vm.ClientSelectList = new SelectList(
                 await _bll.Clients.AllAsync(),
-                nameof(Client.Id),
-                nameof(Client.CompanyName));
+                nameof(BLL.App.DTO.Client.Id),
+                nameof(BLL.App.DTO.Client.CompanyName));
 
             vm.PaymentMethodSelectList = new SelectList(
                 await _bll.PaymentMethods.AllAsync(),
-                nameof(PaymentMethod.Id),
-                nameof(PaymentMethod.PaymentMethodValue));
+                nameof(BLL.App.DTO.PaymentMethod.Id),
+                nameof(BLL.App.DTO.PaymentMethod.PaymentMethodValue));
 
             return View(vm);
         }

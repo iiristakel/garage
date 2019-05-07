@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Domain
 {
-    public class ClientGroup : BaseEntity
+    public class ClientGroup : DomainEntity
     {
         public ICollection<Client> Clients { get; set; }
 

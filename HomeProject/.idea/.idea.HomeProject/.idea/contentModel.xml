@@ -273,8 +273,8 @@
           <e p="WorkObjectMapper.cs" t="Include" />
         </e>
         <e p="Migrations" t="Include">
-          <e p="20190430185247_InitialDbCreation.cs" t="Include" />
-          <e p="20190430185247_InitialDbCreation.Designer.cs" t="Include" />
+          <e p="20190506051520_InitialDbCreation.cs" t="Include" />
+          <e p="20190506051520_InitialDbCreation.Designer.cs" t="Include" />
           <e p="AppDbContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
@@ -326,17 +326,18 @@
         <e p="AppUserInPosition.cs" t="Include" />
         <e p="AppUserOnObject.cs" t="Include" />
         <e p="AppUserPosition.cs" t="Include" />
-        <e p="BaseEntity.cs" t="Include" />
         <e p="Bill.cs" t="Include" />
         <e p="BillLine.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="Client.cs" t="Include" />
         <e p="ClientGroup.cs" t="Include" />
         <e p="Domain.csproj" t="IncludeRecursive" />
+        <e p="DomainEntity.cs" t="Include" />
         <e p="Identity" t="Include">
           <e p="AppRole.cs" t="Include" />
           <e p="AppUser.cs" t="Include" />
         </e>
+        <e p="MultiLangString.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netstandard2.0" t="Include">
@@ -348,6 +349,7 @@
         <e p="PaymentMethod.cs" t="Include" />
         <e p="Product.cs" t="Include" />
         <e p="ProductForClient.cs" t="Include" />
+        <e p="Translation.cs" t="Include" />
         <e p="WorkObject.cs" t="Include" />
       </e>
       <e p="HomeProject.sln" t="IncludeFlat" />
@@ -365,6 +367,64 @@
         </e>
       </e>
       <e p="packages" t="ExcludeRecursive" />
+      <e p="PublicApi.v1" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Mappers" t="Include">
+          <e p="AppUserInPositionMapper.cs" t="Include" />
+          <e p="AppUserMapper.cs" t="Include" />
+          <e p="AppUserOnObjectMapper.cs" t="Include" />
+          <e p="AppUserPositionMapper.cs" t="Include" />
+          <e p="BillLineMapper.cs" t="Include" />
+          <e p="BillMapper.cs" t="Include" />
+          <e p="ClientGroupMapper.cs" t="Include" />
+          <e p="ClientMapper.cs" t="Include" />
+          <e p="PaymentMapper.cs" t="Include" />
+          <e p="PaymentMethodMapper.cs" t="Include" />
+          <e p="ProductForClientMapper.cs" t="Include" />
+          <e p="ProductMapper.cs" t="Include" />
+          <e p="WorkObjectMapper.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="PublicApi.v1.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="PublicApi.v1.csproj" t="IncludeRecursive" />
+      </e>
+      <e p="PublicApi.v1.DTO" t="IncludeRecursive">
+        <e p="AppUserInPosition.cs" t="Include" />
+        <e p="AppUserOnObject.cs" t="Include" />
+        <e p="AppUserPosition.cs" t="Include" />
+        <e p="AppUserPositionWithAppUsersCount.cs" t="Include" />
+        <e p="Bill.cs" t="Include" />
+        <e p="BillLine.cs" t="Include" />
+        <e p="BillWithPaymentsCount.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Client.cs" t="Include" />
+        <e p="ClientGroup.cs" t="Include" />
+        <e p="ClientGroupWithClientCount.cs" t="Include" />
+        <e p="ClientWithProductsCount.cs" t="Include" />
+        <e p="Identity" t="Include">
+          <e p="AppRole.cs" t="Include" />
+          <e p="AppUser.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="PublicApi.v1.DTO.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Payment.cs" t="Include" />
+        <e p="PaymentMethod.cs" t="Include" />
+        <e p="PaymentMethodWithPaymentsCount.cs" t="Include" />
+        <e p="Product.cs" t="Include" />
+        <e p="ProductForClient.cs" t="Include" />
+        <e p="PublicApi.v1.DTO.csproj" t="IncludeRecursive" />
+        <e p="WorkObject.cs" t="Include" />
+      </e>
       <e p="regenerateApiControllers.sh" t="Include" />
       <e p="regenerateControllers.sh" t="Include" />
       <e p="Resources" t="IncludeRecursive">
@@ -454,22 +514,24 @@
       <e p="Solution Items" t="Include" />
       <e p="WebApp" t="IncludeRecursive">
         <e p="ApiControllers" t="Include">
-          <e p="AppUsersController.cs" t="Include" />
-          <e p="AppUsersInPositionsController.cs" t="Include" />
-          <e p="AppUsersOnObjectsController.cs" t="Include" />
-          <e p="AppUsersPositionsController.cs" t="Include" />
-          <e p="BillLinesController.cs" t="Include" />
-          <e p="BillsController.cs" t="Include" />
-          <e p="ClientGroupsController.cs" t="Include" />
-          <e p="ClientsController.cs" t="Include" />
-          <e p="Identity" t="Include">
-            <e p="AccountController.cs" t="Include" />
+          <e p="v1_0" t="Include">
+            <e p="AppUsersController.cs" t="Include" />
+            <e p="AppUsersInPositionsController.cs" t="Include" />
+            <e p="AppUsersOnObjectsController.cs" t="Include" />
+            <e p="AppUsersPositionsController.cs" t="Include" />
+            <e p="BillLinesController.cs" t="Include" />
+            <e p="BillsController.cs" t="Include" />
+            <e p="ClientGroupsController.cs" t="Include" />
+            <e p="ClientsController.cs" t="Include" />
+            <e p="Identity" t="Include">
+              <e p="AccountController.cs" t="Include" />
+            </e>
+            <e p="PaymentMethodsController.cs" t="Include" />
+            <e p="PaymentsController.cs" t="Include" />
+            <e p="ProductsController.cs" t="Include" />
+            <e p="ProductsForClientsController.cs" t="Include" />
+            <e p="WorkObjectsController.cs" t="Include" />
           </e>
-          <e p="PaymentMethodsController.cs" t="Include" />
-          <e p="PaymentsController.cs" t="Include" />
-          <e p="ProductsController.cs" t="Include" />
-          <e p="ProductsForClientsController.cs" t="Include" />
-          <e p="WorkObjectsController.cs" t="Include" />
         </e>
         <e p="appsettings.Development.json" t="Include" />
         <e p="appsettings.json" t="Include" />
@@ -561,6 +623,7 @@
           </e>
         </e>
         <e p="bin" t="ExcludeRecursive" />
+        <e p="ConfigureSwaggerOptions.cs" t="Include" />
         <e p="Controllers" t="Include">
           <e p="AppUsersController.cs" t="Include" />
           <e p="AppUsersInPositionsController.cs" t="Include" />

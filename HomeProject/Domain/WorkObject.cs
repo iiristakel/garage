@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Domain
 {
-    public class WorkObject : BaseEntity
+    public class WorkObject : DomainEntity
     {
         public int ClientId { get; set; }
         public Client Client { get; set; }

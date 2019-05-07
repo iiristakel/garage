@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DAL;
 using DAL.App.EF;
-using Domain;
 using Identity;
 using Microsoft.AspNetCore.Authorization;
 using WebApp.Models;
@@ -73,7 +72,7 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _bll.BillLines.AddAsync(vm.BillLine);
+                _bll.BillLines.Add(vm.BillLine);
                 await _bll.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));

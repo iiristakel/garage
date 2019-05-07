@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Domain
 {
-    public class Product : BaseEntity
+    public class Product : DomainEntity
     {
         public ICollection<ProductForClient> ProductsForClients { get; set; }
 

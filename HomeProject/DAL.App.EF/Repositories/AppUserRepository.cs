@@ -19,11 +19,12 @@ namespace DAL.App.EF.Repositories
         {
         }
 
-        public async Task<List<DAL.App.DTO.Identity.AppUser>> AllAsync()
+        public override async Task<List<DAL.App.DTO.Identity.AppUser>> AllAsync()
         {
             return await RepositoryDbSet
                 .Include(c =>c.AppUserOnObjects)
                 .Include(d=> d.AppUserInPositions)
+                .Include(e => e.Bills)
                 .Select(e => AppUserMapper.MapFromDomain(e))
                 .ToListAsync();
         }
@@ -42,13 +43,21 @@ namespace DAL.App.EF.Repositories
         public async Task<List<AppUser>> AllForUserAsync(int userId)
         {
             return await RepositoryDbSet
+                .Include(c =>c.AppUserOnObjects)
+                .Include(d=> d.AppUserInPositions)
+                .Include(e => e.Bills)
                 .Where(c => c.Id == userId)
                 .Select(e => AppUserMapper.MapFromDomain(e))
-                .ToListAsync();        }
+                .ToListAsync();        
+        }
 
         public async Task<AppUser> FindForUserAsync(int id, int userId)
         {
-            return AppUserMapper.MapFromDomain(await RepositoryDbSet
+            return AppUserMapper.MapFromDomain(
+                await RepositoryDbSet
+                    .Include(c =>c.AppUserOnObjects)
+                    .Include(d=> d.AppUserInPositions)
+                    .Include(e => e.Bills)
                 .FirstOrDefaultAsync(p => p.Id == id && p.Id == userId));
         }
 

@@ -5,7 +5,7 @@ using Domain.Identity;
 
 namespace Domain
 {
-    public class Bill : BaseEntity
+    public class Bill : DomainEntity
     {
         public int ClientId { get; set; }
         public Client Client { get; set; }

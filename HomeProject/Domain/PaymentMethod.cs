@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Domain
 {
-    public class PaymentMethod : BaseEntity
+    public class PaymentMethod : DomainEntity
     {
         public ICollection<Payment> Payments { get; set; }
 

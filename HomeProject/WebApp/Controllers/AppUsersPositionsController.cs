@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DAL;
 using DAL.App.EF;
-using Domain;
 using Microsoft.AspNetCore.Authorization;
 
 namespace WebApp.Controllers
@@ -27,7 +26,7 @@ namespace WebApp.Controllers
         // GET: AppUsersPositions
         public async Task<IActionResult> Index()
         {
-            var appUserPosition = await _bll.AppUsersPositions.AllAsync();
+            var appUserPosition = await _bll.AppUsersPositions.GetAllWithAppUsersCountAsync();
             return View(appUserPosition);
         }
 

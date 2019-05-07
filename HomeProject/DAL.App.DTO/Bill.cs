@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Domain;
 using Domain.Identity;
@@ -15,6 +16,9 @@ namespace DAL.App.DTO
 
         public int AppUserId { get; set; }
         public AppUser AppUser { get; set; }
+        
+        public ICollection<BillLine> BillLines { get; set; }
+
         public decimal ArrivalFee { get; set; }
         public decimal SumWithoutTaxes { get; set; }
         public decimal? TaxPercent { get; set; }
