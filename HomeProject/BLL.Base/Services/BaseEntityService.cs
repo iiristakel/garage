@@ -41,6 +41,13 @@ namespace BLL.Base.Services
         {
             ServiceRepository.Remove(id);
         }
+        
+        public TBLLEntity GetUpdatesAfterUOWSaveChanges(TBLLEntity entity)
+        {
+            return _mapper.Map<TBLLEntity>(ServiceRepository.GetUpdatesAfterUOWSaveChanges(_mapper.Map<TDALEntity>(entity)));
+
+        }
+
 
         public virtual async Task<List<TBLLEntity>> AllAsync()
         {
@@ -52,10 +59,10 @@ namespace BLL.Base.Services
             return _mapper.Map<TBLLEntity>(await ServiceRepository.FindAsync(id));
         }
 
-        public virtual async Task AddAsync(TBLLEntity entity)
+        public virtual async Task<TBLLEntity> AddAsync(TBLLEntity entity)
         {
-            await ServiceRepository.AddAsync(_mapper.Map<TDALEntity>(entity));
-        }
+            return  _mapper.Map<TBLLEntity>(await 
+                ServiceRepository.AddAsync(_mapper.Map<TDALEntity>(entity)));        }
 
         public List<TBLLEntity> All()
         {
@@ -67,9 +74,9 @@ namespace BLL.Base.Services
             return _mapper.Map<TBLLEntity>(ServiceRepository.Find(id));
         }
 
-        public void Add(TBLLEntity entity)
+        public TBLLEntity Add(TBLLEntity entity)
         {
-            ServiceRepository.Add(_mapper.Map<TDALEntity>(entity));
-        }
+            return _mapper.Map<TBLLEntity>(
+                ServiceRepository.Add(_mapper.Map<TDALEntity>(entity)));        }
     }
 }

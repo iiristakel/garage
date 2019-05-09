@@ -9,6 +9,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApp.ApiControllers.v1_0
 {
+    /// <summary>
+    /// Represents a RESTful bills service.
+    /// </summary>
     [ApiVersion( "1.0" )]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
@@ -17,12 +20,19 @@ namespace WebApp.ApiControllers.v1_0
     {
         private readonly IAppBLL _bll;
 
+        /// <summary>
+        /// Bills controller.
+        /// </summary>
+        /// <param name="bll"></param>
         public BillsController(IAppBLL bll)
         {
             _bll = bll;
         }
 
-        // GET: api/Bills
+        /// <summary>
+        /// Get all bills for current user.
+        /// </summary>
+        /// <returns>All bills for current user.</returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PublicApi.v1.DTO.Bill>>> GetBills()
         {
@@ -32,7 +42,11 @@ namespace WebApp.ApiControllers.v1_0
                 .ToList();
         }
 
-        // GET: api/Bills/5
+        /// <summary>
+        /// Get single bill.
+        /// </summary>
+        /// <param name="id">Identifier for requested bill.</param>
+        /// <returns>Requested bill.</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<PublicApi.v1.DTO.Bill>> GetBill(int id)
         {
@@ -47,7 +61,12 @@ namespace WebApp.ApiControllers.v1_0
             return bill;
         }
 
-        // PUT: api/Bills/5
+        /// <summary>
+        /// Update bill.
+        /// </summary>
+        /// <param name="id">Identifier for bill.</param>
+        /// <param name="bill">Bill which is updated.</param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutBill(int id, PublicApi.v1.DTO.Bill bill)
         {
@@ -68,7 +87,11 @@ namespace WebApp.ApiControllers.v1_0
             return NoContent();
         }
 
-        // POST: api/Bills
+        /// <summary>
+        /// Create new bill.
+        /// </summary>
+        /// <param name="bill"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<PublicApi.v1.DTO.Bill>> PostBill(PublicApi.v1.DTO.Bill bill)
         {
@@ -93,7 +116,11 @@ namespace WebApp.ApiControllers.v1_0
             }, bill);
         }
 
-        // DELETE: api/Bills/5
+        /// <summary>
+        /// Delete bill.
+        /// </summary>
+        /// <param name="id">Identifier for bill.</param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<ActionResult<PublicApi.v1.DTO.Bill>> DeleteBill(int id)
         {

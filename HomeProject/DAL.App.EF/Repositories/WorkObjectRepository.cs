@@ -38,7 +38,7 @@ namespace DAL.App.EF.Repositories
 
         public override async Task<DAL.App.DTO.WorkObject> FindAsync(params object[] id)
         {
-            var workObject = await base.FindAsync(id);
+            var workObject = await RepositoryDbSet.FindAsync(id);
 
             if (workObject != null)
             {
@@ -46,7 +46,7 @@ namespace DAL.App.EF.Repositories
                     .Reference(c => c.Client).LoadAsync();
             }
 
-            return workObject;
+            return WorkObjectMapper.MapFromDomain(workObject);
         }
 
 

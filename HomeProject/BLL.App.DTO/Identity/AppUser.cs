@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace BLL.App.DTO.Identity
@@ -23,6 +24,10 @@ namespace BLL.App.DTO.Identity
 
         
         public string FirstLastName => FirstName + " " + LastName;
+        
+        //TODO: translation
+        public ICollection<AppUserInPosition> AppUserInPositions { get; set; }
+
 
         [Display(Name = nameof(HiringDate), ResourceType = typeof(Resources.Domain.AppUser))]
         [DataType(DataType.Date)]

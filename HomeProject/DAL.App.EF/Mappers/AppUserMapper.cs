@@ -33,7 +33,6 @@ namespace DAL.App.EF.Mappers
                 Id = appUser.Id,
                 FirstName = appUser.FirstName,
                 LastName = appUser.LastName,
-                Email = appUser.Email,
                 HiringDate = appUser.HiringDate,
                 LeftJob = appUser.LeftJob,
                 PhoneNr = appUser.PhoneNr
@@ -50,7 +49,6 @@ namespace DAL.App.EF.Mappers
                 Id = appUser.Id,
                 FirstName = appUser.FirstName,
                 LastName = appUser.LastName,
-                Email = appUser.Email,
                 HiringDate = appUser.HiringDate,
                 LeftJob = appUser.LeftJob,
                 PhoneNr = appUser.PhoneNr

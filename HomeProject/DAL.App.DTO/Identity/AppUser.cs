@@ -26,6 +26,8 @@ namespace DAL.App.DTO.Identity
 
         
         public string FirstLastName => FirstName + " " + LastName;
+        public ICollection<AppUserInPosition> AppUserInPositions { get; set; }
+
         
         [DataType(DataType.Date)]
         public DateTime? HiringDate { get; set; }

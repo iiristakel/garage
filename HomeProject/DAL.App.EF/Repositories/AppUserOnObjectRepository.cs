@@ -29,7 +29,7 @@ namespace DAL.App.EF.Repositories
         
         public override async Task<DAL.App.DTO.AppUserOnObject> FindAsync(params object[] id)
         {
-            var appUserOnObject = await base.FindAsync(id);
+            var appUserOnObject = await RepositoryDbSet.FindAsync(id);
 
             if (appUserOnObject != null)
             {
@@ -38,7 +38,7 @@ namespace DAL.App.EF.Repositories
 
             }
             
-            return appUserOnObject;
+            return AppUserOnObjectMapper.MapFromDomain(appUserOnObject);
         }
 
         public async Task<List<AppUserOnObject>> AllForUserAsync(int userId)

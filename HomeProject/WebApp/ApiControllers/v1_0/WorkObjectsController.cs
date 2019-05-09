@@ -9,6 +9,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApp.ApiControllers.v1_0
 {
+    /// <summary>
+    /// Represents a RESTful app users service.
+    /// </summary>
     [ApiVersion( "1.0" )]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
@@ -17,12 +20,19 @@ namespace WebApp.ApiControllers.v1_0
     {
         private readonly IAppBLL _bll;
 
+        /// <summary>
+        /// Work objects controller.
+        /// </summary>
+        /// <param name="bll"></param>
         public WorkObjectsController(IAppBLL bll)
         {
             _bll = bll;
         }
 
-        // GET: api/WorkObjects
+        /// <summary>
+        /// Get all work objects.
+        /// </summary>
+        /// <returns>All work objects for current user.</returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PublicApi.v1.DTO.WorkObject>>> GetWorkObjects()
         {
@@ -31,7 +41,11 @@ namespace WebApp.ApiControllers.v1_0
                     PublicApi.v1.Mappers.WorkObjectMapper.MapFromInternal(e))
                 .ToList();        }
 
-        // GET: api/WorkObjects/5
+        /// <summary>
+        /// Get single work object.
+        /// </summary>
+        /// <param name="id">Identifier for product.</param>
+        /// <returns>Requested product.</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<PublicApi.v1.DTO.WorkObject>> GetWorkObject(int id)
         {
@@ -46,7 +60,12 @@ namespace WebApp.ApiControllers.v1_0
             return workObject;
         }
 
-        // PUT: api/WorkObjects/5
+        /// <summary>
+        /// Update information about work object.
+        /// </summary>
+        /// <param name="id">Identifier for work object.</param>
+        /// <param name="workObject">Object which is updated.</param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutWorkObject(int id, PublicApi.v1.DTO.WorkObject workObject)
         {
@@ -66,7 +85,11 @@ namespace WebApp.ApiControllers.v1_0
             return NoContent();
         }
 
-        // POST: api/WorkObjects
+        /// <summary>
+        /// Create new work object.
+        /// </summary>
+        /// <param name="workObject"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<PublicApi.v1.DTO.WorkObject>> PostWorkObject(
             PublicApi.v1.DTO.WorkObject workObject)
@@ -92,7 +115,11 @@ namespace WebApp.ApiControllers.v1_0
             }, workObject);
         }
 
-        // DELETE: api/WorkObjects/5
+        /// <summary>
+        /// Delete work object.
+        /// </summary>
+        /// <param name="id">Identifier for work object.</param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<ActionResult<PublicApi.v1.DTO.WorkObject>> DeleteWorkObject(int id)
         {

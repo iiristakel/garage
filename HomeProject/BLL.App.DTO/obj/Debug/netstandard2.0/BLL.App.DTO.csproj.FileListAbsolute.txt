@@ -1,9 +1,13 @@
 C:\Users\kalle\RiderProjects\Project\HomeProject\BLL.App.DTO\bin\Debug\netstandard2.0\BLL.App.DTO.deps.json
 C:\Users\kalle\RiderProjects\Project\HomeProject\BLL.App.DTO\bin\Debug\netstandard2.0\BLL.App.DTO.dll
 C:\Users\kalle\RiderProjects\Project\HomeProject\BLL.App.DTO\bin\Debug\netstandard2.0\BLL.App.DTO.pdb
+C:\Users\kalle\RiderProjects\Project\HomeProject\BLL.App.DTO\obj\Debug\netstandard2.0\BLL.App.DTO.csprojAssemblyReference.cache
 C:\Users\kalle\RiderProjects\Project\HomeProject\BLL.App.DTO\obj\Debug\netstandard2.0\BLL.App.DTO.csproj.CoreCompileInputs.cache
 C:\Users\kalle\RiderProjects\Project\HomeProject\BLL.App.DTO\obj\Debug\netstandard2.0\BLL.App.DTO.AssemblyInfoInputs.cache
 C:\Users\kalle\RiderProjects\Project\HomeProject\BLL.App.DTO\obj\Debug\netstandard2.0\BLL.App.DTO.AssemblyInfo.cs
 C:\Users\kalle\RiderProjects\Project\HomeProject\BLL.App.DTO\obj\Debug\netstandard2.0\BLL.App.DTO.dll
 C:\Users\kalle\RiderProjects\Project\HomeProject\BLL.App.DTO\obj\Debug\netstandard2.0\BLL.App.DTO.pdb
-C:\Users\kalle\RiderProjects\Project\HomeProject\BLL.App.DTO\obj\Debug\netstandard2.0\BLL.App.DTO.csprojAssemblyReference.cache
+C:\Users\kalle\RiderProjects\Project\HomeProject\BLL.App.DTO\bin\Debug\netstandard2.0\Resources.dll
+C:\Users\kalle\RiderProjects\Project\HomeProject\BLL.App.DTO\bin\Debug\netstandard2.0\Resources.pdb
+C:\Users\kalle\RiderProjects\Project\HomeProject\BLL.App.DTO\bin\Debug\netstandard2.0\et\Resources.resources.dll
+C:\Users\kalle\RiderProjects\Project\HomeProject\BLL.App.DTO\obj\Debug\netstandard2.0\BLL.App.DTO.csproj.CopyComplete

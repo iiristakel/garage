@@ -39,7 +39,7 @@ namespace DAL.App.EF.Repositories
 
         public override async Task<DAL.App.DTO.BillLine> FindAsync(params object[] id)
         {
-            var billLine = await base.FindAsync(id);
+            var billLine = await RepositoryDbSet.FindAsync(id);
 
             if (billLine != null)
             {
@@ -47,7 +47,7 @@ namespace DAL.App.EF.Repositories
                     .Reference(c => c.Bill).LoadAsync();
             }
 
-            return billLine;
+            return BillLineMapper.MapFromDomain(billLine);
         }
 
 

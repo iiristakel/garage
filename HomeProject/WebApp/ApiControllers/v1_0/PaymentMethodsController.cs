@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApp.ApiControllers.v1_0
 {
+    /// <summary>
+    /// Represents a RESTful payment methods service.
+    /// </summary>
     [ApiVersion( "1.0" )]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
@@ -13,12 +16,19 @@ namespace WebApp.ApiControllers.v1_0
     {
         private readonly IAppBLL _bll;
 
+        /// <summary>
+        /// Payment methods controller.
+        /// </summary>
+        /// <param name="bll"></param>
         public PaymentMethodsController(IAppBLL bll)
         {
             _bll = bll;
         }
 
-        // GET: api/PaymentMethods
+        /// <summary>
+        /// Get all payment methods.
+        /// </summary>
+        /// <returns>All payment methods with payments count.</returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<
             PublicApi.v1.DTO.PaymentMethodWithPaymentsCount>>> GetPaymentMethods()
@@ -29,7 +39,11 @@ namespace WebApp.ApiControllers.v1_0
                 .ToList();
         }
 
-        // GET: api/PaymentMethods/5
+        /// <summary>
+        /// Get single payment method.
+        /// </summary>
+        /// <param name="id">Identifier for payment method.</param>
+        /// <returns>Requested payment method.</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<PublicApi.v1.DTO.PaymentMethod>> GetPaymentMethod(int id)
         {
@@ -44,7 +58,12 @@ namespace WebApp.ApiControllers.v1_0
             return paymentMethod;
         }
 
-        // PUT: api/PaymentMethods/5
+        /// <summary>
+        /// Update payment method.
+        /// </summary>
+        /// <param name="id">Identifier for payment method.</param>
+        /// <param name="paymentMethod">Payment method which is updated.</param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutPaymentMethod(int id, 
             PublicApi.v1.DTO.PaymentMethod paymentMethod)
@@ -60,7 +79,11 @@ namespace WebApp.ApiControllers.v1_0
             return NoContent();
         }
 
-        // POST: api/PaymentMethods
+        /// <summary>
+        /// Create new payment method.
+        /// </summary>
+        /// <param name="paymentMethod"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<PublicApi.v1.DTO.PaymentMethod>> PostPaymentMethod(
             PublicApi.v1.DTO.PaymentMethod paymentMethod)
@@ -82,7 +105,11 @@ namespace WebApp.ApiControllers.v1_0
             }, paymentMethod);
         }
 
-        // DELETE: api/PaymentMethods/5
+        /// <summary>
+        /// Delete payment method.
+        /// </summary>
+        /// <param name="id">Identifier for payment method.</param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<ActionResult<PublicApi.v1.DTO.PaymentMethod>> DeletePaymentMethod(int id)
         {

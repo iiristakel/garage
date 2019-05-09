@@ -6,7 +6,8 @@ namespace Contracts.DAL.Base.Repositories
 {
     #region Async and non-async methods together - full set of methods
 
-    public interface IBaseRepository<TDALEntity> : IBaseRepositoryAsync<TDALEntity>, IBaseRepositorySynchronous<TDALEntity>
+    public interface IBaseRepository<TDALEntity> : IBaseRepositoryAsync<TDALEntity>, 
+        IBaseRepositorySynchronous<TDALEntity>
         where TDALEntity : class, new()
     {
     }
@@ -22,7 +23,7 @@ namespace Contracts.DAL.Base.Repositories
     {
         Task<List<TDALEntity>> AllAsync();
         Task<TDALEntity> FindAsync(params object[] id);
-        Task AddAsync(TDALEntity entity);
+        Task<TDALEntity> AddAsync(TDALEntity entity);
     }
 
 
@@ -36,7 +37,7 @@ namespace Contracts.DAL.Base.Repositories
     {
         List<TDALEntity> All();
         TDALEntity Find(params object[] id);
-        void Add(TDALEntity entity);
+        TDALEntity Add(TDALEntity entity);
     }
 
 
@@ -50,6 +51,8 @@ namespace Contracts.DAL.Base.Repositories
         TDALEntity Update(TDALEntity entity);
         void Remove(TDALEntity entity);
         void Remove(params object[] id);
+        
+        TDALEntity GetUpdatesAfterUOWSaveChanges(TDALEntity entity);
     }
 
     #endregion

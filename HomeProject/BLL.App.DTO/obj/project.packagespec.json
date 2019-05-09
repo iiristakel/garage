@@ -14,7 +14,11 @@
     ],
     "frameworks": {
       "netstandard2.0": {
-        "projectReferences": {}
+        "projectReferences": {
+          "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\Resources\\Resources.csproj": {
+            "projectPath": "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\Resources\\Resources.csproj"
+          }
+        }
       }
     },
     "warningProperties": {
@@ -31,6 +35,10 @@
           "target": "Package",
           "version": "[2.0.3, )",
           "autoReferenced": true
+        },
+        "System.ComponentModel.Annotations": {
+          "target": "Package",
+          "version": "[4.5.0, )"
         }
       },
       "imports": [

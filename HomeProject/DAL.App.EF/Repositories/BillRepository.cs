@@ -35,7 +35,7 @@ namespace DAL.App.EF.Repositories
         
         public override async Task<DAL.App.DTO.Bill> FindAsync(params object[] id)
         {
-            var bill = await base.FindAsync(id);
+            var bill = await RepositoryDbSet.FindAsync(id);
 
             if (bill != null)
             {
@@ -45,7 +45,7 @@ namespace DAL.App.EF.Repositories
 
             }
             
-            return bill;
+            return BillMapper.MapFromDomain(bill);
         }
 
         public virtual async Task<List<BillWithPaymentsCount>> GetAllWithPaymentsCountAsync()

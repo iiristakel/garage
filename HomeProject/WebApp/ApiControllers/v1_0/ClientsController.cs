@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApp.ApiControllers.v1_0
 {
+    /// <summary>
+    /// Represents a RESTful clients service.
+    /// </summary>
     [ApiVersion( "1.0" )]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
@@ -13,12 +16,19 @@ namespace WebApp.ApiControllers.v1_0
     {
         private readonly IAppBLL _bll;
 
+        /// <summary>
+        /// Clients controller.
+        /// </summary>
+        /// <param name="bll"></param>
         public ClientsController(IAppBLL bll)
         {
             _bll = bll;
         }
 
-        // GET: api/Clients
+        /// <summary>
+        /// Get all clients.
+        /// </summary>
+        /// <returns>All clients with products count.</returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PublicApi.v1.DTO.ClientWithProductsCount>>> GetClients()
         {
@@ -28,7 +38,11 @@ namespace WebApp.ApiControllers.v1_0
                 .ToList();
         }
 
-        // GET: api/Clients/5
+        /// <summary>
+        /// Get single client.
+        /// </summary>
+        /// <param name="id">Identifier for client.</param>
+        /// <returns>Requested client object.</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<PublicApi.v1.DTO.Client>> GetClient(int id)
         {
@@ -43,7 +57,12 @@ namespace WebApp.ApiControllers.v1_0
             return client;
         }
 
-        // PUT: api/Clients/5
+        /// <summary>
+        /// Update client.
+        /// </summary>
+        /// <param name="id">Identifier for client.</param>
+        /// <param name="client">Client which is updated.</param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutClient(int id, PublicApi.v1.DTO.Client client)
         {
@@ -58,7 +77,11 @@ namespace WebApp.ApiControllers.v1_0
             return NoContent();
         }
 
-        // POST: api/Clients
+        /// <summary>
+        /// Create new client
+        /// </summary>
+        /// <param name="client"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<PublicApi.v1.DTO.Client>> PostClient(PublicApi.v1.DTO.Client client)
         {
@@ -74,7 +97,11 @@ namespace WebApp.ApiControllers.v1_0
             }, client);
         }
 
-        // DELETE: api/Clients/5
+        /// <summary>
+        /// Delete client.
+        /// </summary>
+        /// <param name="id">Identifier for client.</param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<ActionResult<PublicApi.v1.DTO.Client>> DeleteClient(int id)
         {

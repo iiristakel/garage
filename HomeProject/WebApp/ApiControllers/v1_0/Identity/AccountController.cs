@@ -11,7 +11,10 @@ using WebApp.Areas.Identity.Pages.Account;
 
 namespace WebApp.ApiControllers.v1_0.Identity
 {
-    [ApiVersion( "1.0" )]
+    /// <summary>
+    /// 
+    /// </summary>
+    [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]/[action]")]
     [ApiController]
     public class AccountController : ControllerBase
@@ -22,6 +25,14 @@ namespace WebApp.ApiControllers.v1_0.Identity
         private readonly IEmailSender _emailSender;
         private readonly IConfiguration _configuration;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="signInManager"></param>
+        /// <param name="configuration"></param>
+        /// <param name="userManager"></param>
+        /// <param name="logger"></param>
+        /// <param name="emailSender"></param>
         public AccountController(SignInManager<AppUser> signInManager, IConfiguration configuration,
             UserManager<AppUser> userManager, ILogger<RegisterModel> logger, IEmailSender emailSender)
         {
@@ -32,6 +43,11 @@ namespace WebApp.ApiControllers.v1_0.Identity
             _emailSender = emailSender;
         }
 
+        /// <summary>
+        /// Log in app user.
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<string>> Login([FromBody] LoginDTO model)
         {
@@ -65,6 +81,11 @@ namespace WebApp.ApiControllers.v1_0.Identity
             return StatusCode(403);
         }
 
+        /// <summary>
+        /// Register new app user.
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<string>> Register([FromBody] RegisterDTO model)
         {
@@ -92,7 +113,7 @@ namespace WebApp.ApiControllers.v1_0.Identity
 
                     await _emailSender.SendEmailAsync(model.Email, "Confirm your email",
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
-*/
+                    */
 
                     // create claims based user 
                     var claimsPrincipal = await _signInManager.CreateUserPrincipalAsync(appUser);
@@ -113,29 +134,53 @@ namespace WebApp.ApiControllers.v1_0.Identity
             return StatusCode(400); //400 Bad Request
         }
 
-
+        /// <summary>
+        /// App user login DTO.
+        /// </summary>
         public class LoginDTO
         {
+            /// <summary>
+            /// App user's email 
+            /// </summary>
             public string Email { get; set; }
+
+            /// <summary>
+            /// App user's password
+            /// </summary>
             public string Password { get; set; }
         }
 
+        /// <summary>
+        /// App user register DTO.
+        /// </summary>
         public class RegisterDTO
         {
-          [Required]
-          [MaxLength(64)]
-          [MinLength(1)]
-          public string FirstName { get; set; }
-          
-          [Required]
-          [MaxLength(64)]
-          [MinLength(1)]
-          public string LastName { get; set; }
+            /// <summary>
+            /// App user's first name.
+            /// </summary>
+            [Required]
+            [MaxLength(64)]
+            [MinLength(1)]
+            public string FirstName { get; set; }
 
+            /// <summary>
+            /// App user's last name
+            /// </summary>
+            [Required]
+            [MaxLength(64)]
+            [MinLength(1)]
+            public string LastName { get; set; }
+
+            /// <summary>
+            /// App user's email.
+            /// </summary>
             public string Email { get; set; }
 
-            [Required] 
-            [MinLength(6)] 
+            /// <summary>
+            /// App user's password.
+            /// </summary>
+            [Required]
+            [MinLength(6)]
             public string Password { get; set; }
         }
     }

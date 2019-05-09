@@ -40,8 +40,5 @@ namespace Domain.Identity
         [MinLength(1)]
         public string PhoneNr { get; set; }
         
-        [MaxLength(64)]
-        [MinLength(1)]
-        public string Email { get; set; }
     }
 }

@@ -2,6 +2,19 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.2": {
+      "AutoMapper/8.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.5.0",
+          "System.Reflection.Emit": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/AutoMapper.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/AutoMapper.dll": {}
+        }
+      },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
         "type": "package",
         "dependencies": {
@@ -1091,6 +1104,31 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.TagHelpers.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Mvc.Versioning/3.1.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Mvc.Core": "[2.2.0, 3.0.0)"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Versioning.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Versioning.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer/3.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Mvc.ApiExplorer": "[2.2.0, 3.0.0)",
+          "Microsoft.AspNetCore.Mvc.Versioning": "3.1.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer.dll": {}
         }
       },
       "Microsoft.AspNetCore.Mvc.ViewFeatures/2.2.0": {
@@ -3157,6 +3195,63 @@
           }
         }
       },
+      "Swashbuckle.AspNetCore/4.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Swashbuckle.AspNetCore.Swagger": "4.0.1",
+          "Swashbuckle.AspNetCore.SwaggerGen": "4.0.1",
+          "Swashbuckle.AspNetCore.SwaggerUI": "4.0.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Swashbuckle.AspNetCore.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Swashbuckle.AspNetCore.dll": {}
+        }
+      },
+      "Swashbuckle.AspNetCore.Swagger/4.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Mvc.Core": "2.0.0",
+          "Microsoft.AspNetCore.Mvc.Formatters.Json": "2.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Swashbuckle.AspNetCore.Swagger.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Swashbuckle.AspNetCore.Swagger.dll": {}
+        }
+      },
+      "Swashbuckle.AspNetCore.SwaggerGen/4.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Mvc.ApiExplorer": "2.0.0",
+          "Microsoft.AspNetCore.Mvc.Core": "2.0.0",
+          "Microsoft.AspNetCore.Mvc.DataAnnotations": "2.0.0",
+          "Swashbuckle.AspNetCore.Swagger": "4.0.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Swashbuckle.AspNetCore.SwaggerGen.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Swashbuckle.AspNetCore.SwaggerGen.dll": {}
+        }
+      },
+      "Swashbuckle.AspNetCore.SwaggerUI/4.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Routing": "2.0.0",
+          "Microsoft.AspNetCore.StaticFiles": "2.0.0",
+          "Microsoft.Extensions.FileProviders.Embedded": "2.0.0",
+          "Newtonsoft.Json": "9.0.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {}
+        }
+      },
       "System.AppContext/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -4757,6 +4852,89 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
+      "BLL.App/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "BLL.App.DTO": "1.0.0",
+          "BLL.Base": "1.0.0",
+          "Contracts.BLL.App": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/BLL.App.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BLL.App.dll": {}
+        }
+      },
+      "BLL.App.DTO/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Resources": "1.0.0",
+          "System.ComponentModel.Annotations": "4.5.0"
+        },
+        "compile": {
+          "bin/placeholder/BLL.App.DTO.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BLL.App.DTO.dll": {}
+        }
+      },
+      "BLL.Base/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "AutoMapper": "8.1.0",
+          "Contracts.BLL.Base": "1.0.0",
+          "DAL.Base.EF": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/BLL.Base.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BLL.Base.dll": {}
+        }
+      },
+      "Contracts.Base/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Contracts.Base.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Contracts.Base.dll": {}
+        }
+      },
+      "Contracts.BLL.App/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "BLL.App.DTO": "1.0.0",
+          "Contracts.BLL.Base": "1.0.0",
+          "Contracts.DAL.App": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Contracts.BLL.App.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Contracts.BLL.App.dll": {}
+        }
+      },
+      "Contracts.BLL.Base/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Contracts.Base": "1.0.0",
+          "Contracts.DAL.Base": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Contracts.BLL.Base.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Contracts.BLL.Base.dll": {}
+        }
+      },
       "Contracts.DAL.App/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -4775,6 +4953,9 @@
       "Contracts.DAL.Base/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "2.2.2"
+        },
         "compile": {
           "bin/placeholder/Contracts.DAL.Base.dll": {}
         },
@@ -4786,7 +4967,8 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Domain": "1.0.0"
+          "Domain": "1.0.0",
+          "System.ComponentModel.Annotations": "4.5.0"
         },
         "compile": {
           "bin/placeholder/DAL.App.DTO.dll": {}
@@ -4799,6 +4981,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "BLL.App": "1.0.0",
           "Contracts.DAL.App": "1.0.0",
           "DAL.App.DTO": "1.0.0",
           "DAL.Base.EF": "1.0.0",
@@ -4817,6 +5000,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "AutoMapper": "8.1.0",
           "Contracts.DAL.Base": "1.0.0",
           "Microsoft.EntityFrameworkCore": "2.2.2"
         },
@@ -4851,10 +5035,65 @@
         "runtime": {
           "bin/placeholder/Identity.dll": {}
         }
+      },
+      "PublicApi.v1/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "BLL.App.DTO": "1.0.0",
+          "PublicApi.v1.DTO": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/PublicApi.v1.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PublicApi.v1.dll": {}
+        }
+      },
+      "PublicApi.v1.DTO/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Resources": "1.0.0",
+          "System.ComponentModel.Annotations": "4.5.0"
+        },
+        "compile": {
+          "bin/placeholder/PublicApi.v1.DTO.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PublicApi.v1.DTO.dll": {}
+        }
+      },
+      "Resources/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Resources.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Resources.dll": {}
+        }
       }
     }
   },
   "libraries": {
+    "AutoMapper/8.1.0": {
+      "sha512": "YyGENUyP7CdOJcw2TCEMtkuRgj9iRFLHeACrfBEDPY5xIiTB/iDxNFdOy5br4abWR8KnSdQeK/x+GQLE7uiFtQ==",
+      "type": "package",
+      "path": "automapper/8.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "automapper.8.1.0.nupkg.sha512",
+        "automapper.nuspec",
+        "lib/net461/AutoMapper.dll",
+        "lib/net461/AutoMapper.pdb",
+        "lib/net461/AutoMapper.xml",
+        "lib/netstandard2.0/AutoMapper.dll",
+        "lib/netstandard2.0/AutoMapper.pdb",
+        "lib/netstandard2.0/AutoMapper.xml"
+      ]
+    },
     "Microsoft.AspNet.WebApi.Client/5.2.6": {
       "sha512": "owAlEIUZXWSnkK8Z1c+zR47A0X6ykF4XjbPok4lQKNuciUfHLGPd6QnI+rt/8KlQ17PmF+I4S3f+m+Qe4IvViw==",
       "type": "package",
@@ -5716,6 +5955,36 @@
         "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.TagHelpers.xml",
         "microsoft.aspnetcore.mvc.taghelpers.2.2.0.nupkg.sha512",
         "microsoft.aspnetcore.mvc.taghelpers.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Mvc.Versioning/3.1.2": {
+      "sha512": "/SzDQOmzhvfBKorhBR4QKmIbyfe7nzjm/tekmbH+631nuBS5JJTeEf+T6SDAZE1TJXP0h2YTRIPj1a1Vv6j/8g==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.mvc.versioning/3.1.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Versioning.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Versioning.pdb",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Versioning.xml",
+        "microsoft.aspnetcore.mvc.versioning.3.1.2.nupkg.sha512",
+        "microsoft.aspnetcore.mvc.versioning.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer/3.2.0": {
+      "sha512": "+Xaa1Qsny2idroDWfnjQh2ye1E+Fp/SjiS7DNUDFDKjf0iDbD0s15Phq+nzWXf5xJtY1T5QnZPvxiPBe4w0E1w==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.mvc.versioning.apiexplorer/3.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer.pdb",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer.xml",
+        "microsoft.aspnetcore.mvc.versioning.apiexplorer.3.2.0.nupkg.sha512",
+        "microsoft.aspnetcore.mvc.versioning.apiexplorer.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Mvc.ViewFeatures/2.2.0": {
@@ -8587,6 +8856,57 @@
         "runtimes/win-x86/native/sni.dll",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "Swashbuckle.AspNetCore/4.0.1": {
+      "sha512": "Zq6lkFieuFPNDwXwQ+e8i5zy2VMrexcRFU8mQORxqIc8r7Y+qKX63vg57yL1HeGCINHQGGzxGfw2rP63IeEqhg==",
+      "type": "package",
+      "path": "swashbuckle.aspnetcore/4.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Swashbuckle.AspNetCore.dll",
+        "swashbuckle.aspnetcore.4.0.1.nupkg.sha512",
+        "swashbuckle.aspnetcore.nuspec"
+      ]
+    },
+    "Swashbuckle.AspNetCore.Swagger/4.0.1": {
+      "sha512": "rqzS3vHrjz+tR5j0nZOKZyaMTDfLGbVYkwMq205aYuGbsiGwbOlNU0Q8lq4Q0ptQPMKVkUf8XouCIdJ3qpK17w==",
+      "type": "package",
+      "path": "swashbuckle.aspnetcore.swagger/4.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Swashbuckle.AspNetCore.Swagger.dll",
+        "lib/netstandard2.0/Swashbuckle.AspNetCore.Swagger.xml",
+        "swashbuckle.aspnetcore.swagger.4.0.1.nupkg.sha512",
+        "swashbuckle.aspnetcore.swagger.nuspec"
+      ]
+    },
+    "Swashbuckle.AspNetCore.SwaggerGen/4.0.1": {
+      "sha512": "ztAj0T1U+2AqQNA8b+nr8yVkDW9XzNaAfez6d1jO13sdn2A/JW5Syn9TThsakrHxYNLt6y6aQCXbyBfQXpcQwA==",
+      "type": "package",
+      "path": "swashbuckle.aspnetcore.swaggergen/4.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Swashbuckle.AspNetCore.SwaggerGen.dll",
+        "lib/netstandard2.0/Swashbuckle.AspNetCore.SwaggerGen.xml",
+        "swashbuckle.aspnetcore.swaggergen.4.0.1.nupkg.sha512",
+        "swashbuckle.aspnetcore.swaggergen.nuspec"
+      ]
+    },
+    "Swashbuckle.AspNetCore.SwaggerUI/4.0.1": {
+      "sha512": "d2U7NyV0e4UhyCzAVK9QHm0iz2QoVPUa9XzJ/Gr0rn/jBZWFpVLvigKv0vxFzO2E793sY605+4h885gvCdKSxQ==",
+      "type": "package",
+      "path": "swashbuckle.aspnetcore.swaggerui/4.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Swashbuckle.AspNetCore.SwaggerUI.dll",
+        "lib/netstandard2.0/Swashbuckle.AspNetCore.SwaggerUI.xml",
+        "swashbuckle.aspnetcore.swaggerui.4.0.1.nupkg.sha512",
+        "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
     },
     "System.AppContext/4.3.0": {
@@ -13184,6 +13504,36 @@
         "system.xml.xpath.xdocument.nuspec"
       ]
     },
+    "BLL.App/1.0.0": {
+      "type": "project",
+      "path": "../BLL.App/BLL.App.csproj",
+      "msbuildProject": "../BLL.App/BLL.App.csproj"
+    },
+    "BLL.App.DTO/1.0.0": {
+      "type": "project",
+      "path": "../BLL.App.DTO/BLL.App.DTO.csproj",
+      "msbuildProject": "../BLL.App.DTO/BLL.App.DTO.csproj"
+    },
+    "BLL.Base/1.0.0": {
+      "type": "project",
+      "path": "../BLL.Base/BLL.Base.csproj",
+      "msbuildProject": "../BLL.Base/BLL.Base.csproj"
+    },
+    "Contracts.Base/1.0.0": {
+      "type": "project",
+      "path": "../Contracts.Base/Contracts.Base.csproj",
+      "msbuildProject": "../Contracts.Base/Contracts.Base.csproj"
+    },
+    "Contracts.BLL.App/1.0.0": {
+      "type": "project",
+      "path": "../Contracts.BLL.App/Contracts.BLL.App.csproj",
+      "msbuildProject": "../Contracts.BLL.App/Contracts.BLL.App.csproj"
+    },
+    "Contracts.BLL.Base/1.0.0": {
+      "type": "project",
+      "path": "../Contracts.BLL.Base/Contracts.BLL.Base.csproj",
+      "msbuildProject": "../Contracts.BLL.Base/Contracts.BLL.Base.csproj"
+    },
     "Contracts.DAL.App/1.0.0": {
       "type": "project",
       "path": "../Contracts.DAL.App/Contracts.DAL.App.csproj",
@@ -13218,17 +13568,40 @@
       "type": "project",
       "path": "../Identity/Identity.csproj",
       "msbuildProject": "../Identity/Identity.csproj"
+    },
+    "PublicApi.v1/1.0.0": {
+      "type": "project",
+      "path": "../PublicApi.v1/PublicApi.v1.csproj",
+      "msbuildProject": "../PublicApi.v1/PublicApi.v1.csproj"
+    },
+    "PublicApi.v1.DTO/1.0.0": {
+      "type": "project",
+      "path": "../PublicApi.v1.DTO/PublicApi.v1.DTO.csproj",
+      "msbuildProject": "../PublicApi.v1.DTO/PublicApi.v1.DTO.csproj"
+    },
+    "Resources/1.0.0": {
+      "type": "project",
+      "path": "../Resources/Resources.csproj",
+      "msbuildProject": "../Resources/Resources.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
+      "BLL.App >= 1.0.0",
+      "BLL.Base >= 1.0.0",
+      "Contracts.BLL.Base >= 1.0.0",
       "DAL.App.EF >= 1.0.0",
       "Identity >= 1.0.0",
       "Microsoft.AspNetCore.App >= 2.2.0",
+      "Microsoft.AspNetCore.Mvc.Versioning >= 3.1.2",
+      "Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer >= 3.2.0",
       "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
       "Microsoft.NETCore.App >= 2.2.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.2.2",
-      "Pomelo.EntityFrameworkCore.MySql >= 2.2.0"
+      "Pomelo.EntityFrameworkCore.MySql >= 2.2.0",
+      "PublicApi.v1 >= 1.0.0",
+      "Resources >= 1.0.0",
+      "Swashbuckle.AspNetCore >= 4.0.1"
     ]
   },
   "packageFolders": {
@@ -13261,11 +13634,26 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
+            "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\BLL.App\\BLL.App.csproj": {
+              "projectPath": "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\BLL.App\\BLL.App.csproj"
+            },
+            "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\BLL.Base\\BLL.Base.csproj": {
+              "projectPath": "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\BLL.Base\\BLL.Base.csproj"
+            },
+            "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\Contracts.BLL.Base\\Contracts.BLL.Base.csproj": {
+              "projectPath": "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\Contracts.BLL.Base\\Contracts.BLL.Base.csproj"
+            },
             "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\DAL.App.EF\\DAL.App.EF.csproj": {
               "projectPath": "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\DAL.App.EF\\DAL.App.EF.csproj"
             },
             "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\Identity\\Identity.csproj": {
               "projectPath": "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\Identity\\Identity.csproj"
+            },
+            "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\PublicApi.v1\\PublicApi.v1.csproj": {
+              "projectPath": "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\PublicApi.v1\\PublicApi.v1.csproj"
+            },
+            "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\Resources\\Resources.csproj": {
+              "projectPath": "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\Resources\\Resources.csproj"
             }
           }
         }
@@ -13285,6 +13673,14 @@
             "version": "[2.2.0, )",
             "autoReferenced": true
           },
+          "Microsoft.AspNetCore.Mvc.Versioning": {
+            "target": "Package",
+            "version": "[3.1.2, )"
+          },
+          "Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer": {
+            "target": "Package",
+            "version": "[3.2.0, )"
+          },
           "Microsoft.AspNetCore.Razor.Design": {
             "suppressParent": "All",
             "target": "Package",
@@ -13303,6 +13699,10 @@
           "Pomelo.EntityFrameworkCore.MySql": {
             "target": "Package",
             "version": "[2.2.0, )"
+          },
+          "Swashbuckle.AspNetCore": {
+            "target": "Package",
+            "version": "[4.0.1, )"
           }
         },
         "imports": [

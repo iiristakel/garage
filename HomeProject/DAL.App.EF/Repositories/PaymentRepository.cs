@@ -30,7 +30,7 @@ namespace DAL.App.EF.Repositories
         
         public override async Task<DAL.App.DTO.Payment> FindAsync(params object[] id)
         {
-            var payment = await base.FindAsync(id);
+            var payment = await RepositoryDbSet.FindAsync(id);
 
             if (payment != null)
             {
@@ -39,7 +39,7 @@ namespace DAL.App.EF.Repositories
                 await RepositoryDbContext.Entry(payment).Reference(c => c.PaymentMethod).LoadAsync();
           }
             
-            return payment;
+            return PaymentMapper.MapFromDomain(payment);
         }
 
         public async Task<List<Payment>> AllForUserAsync(int userId)

@@ -30,7 +30,7 @@ namespace DAL.App.EF.Repositories
         
         public override async Task<DAL.App.DTO.ProductForClient> FindAsync(params object[] id)
         {
-            var productForClient = await base.FindAsync(id);
+            var productForClient = await RepositoryDbSet.FindAsync(id);
 
             if (productForClient != null)
             {
@@ -40,7 +40,7 @@ namespace DAL.App.EF.Repositories
 
             }
             
-            return productForClient;
+            return ProductForClientMapper.MapFromDomain(productForClient);
         }
     }
 }

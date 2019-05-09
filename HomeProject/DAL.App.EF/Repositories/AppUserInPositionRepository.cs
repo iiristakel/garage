@@ -28,14 +28,14 @@ namespace DAL.App.EF.Repositories
 
         public override async Task<DAL.App.DTO.AppUserInPosition> FindAsync(params object[] id)
         {
-            var workerInPosition = await base.FindAsync(id);
+            var workerInPosition = await RepositoryDbSet.FindAsync(id);
 
             if (workerInPosition != null)
             {
                 await RepositoryDbContext.Entry(workerInPosition).Reference(c => c.AppUserPosition).LoadAsync();
             }
 
-            return workerInPosition;
+            return AppUserInPositionMapper.MapFromDomain(workerInPosition);
         }
 
         public async Task<List<DAL.App.DTO.AppUserInPosition>> AllForUserAsync(int userId)

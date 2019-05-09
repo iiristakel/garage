@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApp.ApiControllers.v1_0
 {
+    /// <summary>
+    /// Represents a RESTful client groups service.
+    /// </summary>
     [ApiVersion( "1.0" )]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
@@ -13,13 +16,20 @@ namespace WebApp.ApiControllers.v1_0
     {
         private readonly IAppBLL _bll;
         
+        /// <summary>
+        /// Client groups controller.
+        /// </summary>
+        /// <param name="bll"></param>
         public ClientGroupsController(IAppBLL bll)
         {
             _bll = bll;
             
         }
 
-        // GET: api/ClientGroups
+        /// <summary>
+        /// Get all client groups.
+        /// </summary>
+        /// <returns>All client groups with clients count.</returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PublicApi.v1.DTO.ClientGroupWithClientCount>>> GetClientGroups()
         {
@@ -29,7 +39,11 @@ namespace WebApp.ApiControllers.v1_0
                .ToList();
         }
 
-        // GET: api/ClientGroups/5
+        /// <summary>
+        /// Gets single client group.
+        /// </summary>
+        /// <param name="id">Identifier for client group.</param>
+        /// <returns>Requested client group.</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<PublicApi.v1.DTO.ClientGroup>> GetClientGroup(int id)
         {
@@ -44,7 +58,12 @@ namespace WebApp.ApiControllers.v1_0
             return clientGroup;
         }
 
-        // PUT: api/ClientGroups/5
+        /// <summary>
+        /// Updates client group.
+        /// </summary>
+        /// <param name="id">Identifier for client group.</param>
+        /// <param name="clientGroup">Client group which is updated.</param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutClientGroup(int id, PublicApi.v1.DTO.ClientGroup clientGroup)
         {
@@ -59,7 +78,11 @@ namespace WebApp.ApiControllers.v1_0
             return NoContent();
         }
 
-        // POST: api/ClientGroups
+        /// <summary>
+        /// Create new client group.
+        /// </summary>
+        /// <param name="clientGroup"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<PublicApi.v1.DTO.ClientGroup>> PostClientGroup(PublicApi.v1.DTO.ClientGroup clientGroup)
         {
@@ -79,7 +102,11 @@ namespace WebApp.ApiControllers.v1_0
             }, clientGroup);
         }
 
-        // DELETE: api/ClientGroups/5
+        /// <summary>
+        /// Delete client group.
+        /// </summary>
+        /// <param name="id">Identifier for client group.</param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<ActionResult<PublicApi.v1.DTO.ClientGroup>> DeleteClientGroup(int id)
         {

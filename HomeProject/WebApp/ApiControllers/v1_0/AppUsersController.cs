@@ -9,6 +9,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApp.ApiControllers.v1_0
 {
+    /// <summary>
+    /// Represents a RESTful app users service.
+    /// </summary>
     [ApiVersion( "1.0" )]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
@@ -17,12 +20,19 @@ namespace WebApp.ApiControllers.v1_0
     {
         private readonly IAppBLL _bll;
 
+        /// <summary>
+        /// App users controller.
+        /// </summary>
+        /// <param name="bll"></param>
         public AppUsersController(IAppBLL bll)
         {
             _bll = bll;
         }
 
-        // GET: api/AppUsers
+        /// <summary>
+        /// Get all app users for logged in user.
+        /// </summary>
+        /// <returns> All app users for current user. </returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PublicApi.v1.DTO.Identity.AppUser>>> GetAppUsers()
         {
@@ -33,7 +43,11 @@ namespace WebApp.ApiControllers.v1_0
              
         }
 
-        // GET: api/AppUsers/5
+        /// <summary>
+        /// Get single user.
+        /// </summary>
+        /// <param name="id">Requested user identifier.</param>
+        /// <returns> Requested person.</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<PublicApi.v1.DTO.Identity.AppUser>> GetAppUser(int id)
         {
@@ -48,7 +62,12 @@ namespace WebApp.ApiControllers.v1_0
             return appUser;
         }
 
-        // PUT: api/AppUsers/5
+        /// <summary>
+        /// Update app user.
+        /// </summary>
+        /// <param name="id">Requested user identifier.</param>
+        /// <param name="appUser">App user to update.</param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAppUser(int id, PublicApi.v1.DTO.Identity.AppUser appUser)
         {
@@ -70,7 +89,11 @@ namespace WebApp.ApiControllers.v1_0
             return NoContent();
         }
 
-        // POST: api/AppUsers
+        /// <summary>
+        /// Creates new app user.
+        /// </summary>
+        /// <param name="appUser"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<PublicApi.v1.DTO.Identity.AppUser>> 
             PostAppUser(PublicApi.v1.DTO.Identity.AppUser appUser)
@@ -93,7 +116,11 @@ namespace WebApp.ApiControllers.v1_0
             }, appUser);
         }
 
-        // DELETE: api/AppUsers/5
+        /// <summary>
+        /// Deletes app user.
+        /// </summary>
+        /// <param name="id">Requested user identifier.</param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteAppUser(int id)
         {

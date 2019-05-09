@@ -30,14 +30,16 @@ namespace DAL.App.EF.Repositories
         }
         public override async Task<DAL.App.DTO.Client> FindAsync(params object[] id)
         {
-            var client = await base.FindAsync(id);
+            var client = await RepositoryDbSet.FindAsync(id);
 
             if (client != null)
             {
                 await RepositoryDbContext.Entry(client).Reference(c => c.ClientGroup).LoadAsync();
+                await RepositoryDbContext.Entry(client).Reference(c => c.ProductsForClient).LoadAsync();
+
             }
             
-            return client;
+            return ClientMapper.MapFromDomain(client);
         }
 
         public virtual async Task<List<ClientWithProductsCount>> GetAllWithProductsCountAsync()

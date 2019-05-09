@@ -17,11 +17,14 @@ namespace DAL.App.EF
         public DbSet<PaymentMethod> PaymentMethods { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductForClient> ProductsForClients { get; set; }
-//        public DbSet<Appuser> Appusers { get; set; }
+        public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<AppUserPosition> AppUsersPositions { get; set; }
         public DbSet<AppUserOnObject> AppUsersOnObjects { get; set; }
         public DbSet<WorkObject> WorkObjects { get; set; }
         public DbSet<AppUserInPosition> AppUsersInPositions { get; set; }
+        
+        public DbSet<MultiLangString> MultiLangStrings { get; set; }
+        public DbSet<Translation> Translations { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {

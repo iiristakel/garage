@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApp.ApiControllers.v1_0
 {
+    /// <summary>
+    /// Represents a RESTful app user positions/workers service.
+    /// </summary>
     [ApiVersion( "1.0" )]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
@@ -15,12 +18,19 @@ namespace WebApp.ApiControllers.v1_0
     {
         private readonly IAppBLL _bll;
 
+        /// <summary>
+        /// Positions controller.
+        /// </summary>
+        /// <param name="bll"></param>
         public AppUsersPositionsController(IAppBLL bll)
         {
             _bll = bll;
         }
 
-        // GET: api/AppUsersPositions
+        /// <summary>
+        /// Get all positions with app users count.
+        /// </summary>
+        /// <returns>All positions with app users count.</returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PublicApi.v1.DTO.AppUserPositionWithAppUsersCount>>> GetAppUsersPositions()
         {
@@ -30,7 +40,11 @@ namespace WebApp.ApiControllers.v1_0
                 .ToList();
         }
 
-        // GET: api/AppUsersPositions/5
+        /// <summary>
+        /// Get single position.
+        /// </summary>
+        /// <param name="id">Requested position identifier.</param>
+        /// <returns>Requested position.</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<PublicApi.v1.DTO.AppUserPosition>> GetAppUserPosition(int id)
         {
@@ -45,7 +59,12 @@ namespace WebApp.ApiControllers.v1_0
             return appUserPosition;
         }
 
-        // PUT: api/AppUsersPositions/5
+        /// <summary>
+        /// Update position.
+        /// </summary>
+        /// <param name="id">Identifier for position. </param>
+        /// <param name="appUserPosition">Object which is updated.</param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAppUserPosition(int id, 
             PublicApi.v1.DTO.AppUserPosition appUserPosition)
@@ -62,7 +81,11 @@ namespace WebApp.ApiControllers.v1_0
             return NoContent();
         }
 
-        // POST: api/AppUsersPositions
+        /// <summary>
+        /// Create new position.
+        /// </summary>
+        /// <param name="appUserPosition"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<PublicApi.v1.DTO.AppUserPosition>> PostAppUserPosition(
             PublicApi.v1.DTO.AppUserPosition appUserPosition)
@@ -84,7 +107,11 @@ namespace WebApp.ApiControllers.v1_0
             }, appUserPosition);
         }
 
-        // DELETE: api/AppUsersPositions/5
+        /// <summary>
+        /// Delete position.
+        /// </summary>
+        /// <param name="id">Identifier for position.</param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<ActionResult<PublicApi.v1.DTO.AppUserPosition>> DeleteAppUserPosition(int id)
         {

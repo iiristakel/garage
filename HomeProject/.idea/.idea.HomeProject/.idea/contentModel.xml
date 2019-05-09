@@ -4,6 +4,7 @@
     <e p="C:\Users\kalle\.Rider2018.3\config\scratches" t="IncludeRecursive" />
     <e p="C:\Users\kalle\.Rider2018.3\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\kalle\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_HomeProject.1526170497.00" t="ExcludeRecursive" />
+    <e p="C:\Users\kalle\RiderProjects\Project\.gitignore" t="Include" />
     <e p="C:\Users\kalle\RiderProjects\Project\HomeProject" t="IncludeFlat">
       <e p="BLL.App" t="IncludeRecursive">
         <e p="AppBLL.cs" t="Include" />
@@ -273,8 +274,8 @@
           <e p="WorkObjectMapper.cs" t="Include" />
         </e>
         <e p="Migrations" t="Include">
-          <e p="20190506051520_InitialDbCreation.cs" t="Include" />
-          <e p="20190506051520_InitialDbCreation.Designer.cs" t="Include" />
+          <e p="20190508110142_InitialDbCreation.cs" t="Include" />
+          <e p="20190508110142_InitialDbCreation.Designer.cs" t="Include" />
           <e p="AppDbContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">

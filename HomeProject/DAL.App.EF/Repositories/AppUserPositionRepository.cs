@@ -21,7 +21,6 @@ namespace DAL.App.EF.Repositories
         public override async Task<List<DAL.App.DTO.AppUserPosition>> AllAsync()
         {
             return await RepositoryDbSet
-                .Include(c => c.AppUsers)
                 .Select(e => AppUserPositionMapper.MapFromDomain(e))
                 .ToListAsync();
         }

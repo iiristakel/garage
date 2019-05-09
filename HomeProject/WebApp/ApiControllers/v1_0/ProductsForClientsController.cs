@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApp.ApiControllers.v1_0
 {
+    /// <summary>
+    /// Represents a RESTful products for clients service.
+    /// </summary>
     [ApiVersion( "1.0" )]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
@@ -14,12 +17,19 @@ namespace WebApp.ApiControllers.v1_0
     {
         private readonly IAppBLL _bll;
 
+        /// <summary>
+        /// Products for clients controller.
+        /// </summary>
+        /// <param name="bll"></param>
         public ProductsForClientsController(IAppBLL bll)
         {
             _bll = bll;
         }
 
-        // GET: api/ProductsForClients
+        /// <summary>
+        /// Get all products for clients.
+        /// </summary>
+        /// <returns>All products for clients.</returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PublicApi.v1.DTO.ProductForClient>>> GetProductsForClients()
         {
@@ -29,7 +39,11 @@ namespace WebApp.ApiControllers.v1_0
                 .ToList();
         }
 
-        // GET: api/ProductsForClients/5
+        /// <summary>
+        /// Get single product for client.
+        /// </summary>
+        /// <param name="id">Identifier for product for client.</param>
+        /// <returns>Requested product for client.</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<PublicApi.v1.DTO.ProductForClient>> GetProductForClient(int id)
         {
@@ -44,7 +58,12 @@ namespace WebApp.ApiControllers.v1_0
             return productForClient;
         }
 
-        // PUT: api/ProductsForClients/5
+        /// <summary>
+        /// Update client's product.
+        /// </summary>
+        /// <param name="id">Identifier for product for client.</param>
+        /// <param name="productForClient">Product for client which is updated.</param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProductForClient(int id, 
             PublicApi.v1.DTO.ProductForClient productForClient)
@@ -61,7 +80,11 @@ namespace WebApp.ApiControllers.v1_0
             return NoContent();
         }
 
-        // POST: api/ProductsForClients
+        /// <summary>
+        /// Add new product for client.
+        /// </summary>
+        /// <param name="productForClient"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<ProductForClient>> PostProductForClient(
             PublicApi.v1.DTO.ProductForClient productForClient)
@@ -83,7 +106,11 @@ namespace WebApp.ApiControllers.v1_0
             }, productForClient);
         }
 
-        // DELETE: api/ProductsForClients/5
+        /// <summary>
+        /// Remove product from client.
+        /// </summary>
+        /// <param name="id">Identifier for product for client.</param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<ActionResult<PublicApi.v1.DTO.ProductForClient>> DeleteProductForClient(int id)
         {

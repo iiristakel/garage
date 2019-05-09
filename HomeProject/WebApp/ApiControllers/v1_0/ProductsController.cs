@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApp.ApiControllers.v1_0
 {
+    /// <summary>
+    /// Represents a RESTful products service.
+    /// </summary>
     [ApiVersion( "1.0" )]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
@@ -15,12 +18,19 @@ namespace WebApp.ApiControllers.v1_0
     {
         private readonly IAppBLL _bll;
 
+        /// <summary>
+        /// Products controller.
+        /// </summary>
+        /// <param name="bll"></param>
         public ProductsController(IAppBLL bll)
         {
             _bll = bll;
         }
 
-        // GET: api/Products
+        /// <summary>
+        /// Get all products.
+        /// </summary>
+        /// <returns>All products.</returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PublicApi.v1.DTO.Product>>> GetProducts()
         {
@@ -30,7 +40,11 @@ namespace WebApp.ApiControllers.v1_0
                 .ToList();
         }
 
-        // GET: api/Products/5
+        /// <summary>
+        /// Get single product.
+        /// </summary>
+        /// <param name="id">Identifier for product.</param>
+        /// <returns>Requested product.</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<PublicApi.v1.DTO.Product>> GetProduct(int id)
         {
@@ -45,7 +59,12 @@ namespace WebApp.ApiControllers.v1_0
             return product;
         }
 
-        // PUT: api/Products/5
+        /// <summary>
+        /// Update product information.
+        /// </summary>
+        /// <param name="id">Identifier for product.</param>
+        /// <param name="product">Product which is updated.</param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProduct(int id, PublicApi.v1.DTO.Product product)
         {
@@ -60,7 +79,11 @@ namespace WebApp.ApiControllers.v1_0
             return NoContent();
         }
 
-        // POST: api/Products
+        /// <summary>
+        /// Create new product.
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<PublicApi.v1.DTO.Product>> PostProduct(PublicApi.v1.DTO.Product product)
         {
@@ -80,7 +103,11 @@ namespace WebApp.ApiControllers.v1_0
             }, product);
         }
 
-        // DELETE: api/Products/5
+        /// <summary>
+        /// Delete product.
+        /// </summary>
+        /// <param name="id">Identifier for product.</param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<ActionResult<PublicApi.v1.DTO.Product>> DeleteProduct(int id)
         {
