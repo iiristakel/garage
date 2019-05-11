@@ -2,6 +2,40 @@
   "version": 3,
   "targets": {
     ".NETStandard,Version=v2.0": {
+      "ee.itcollege.iiounm.Contracts.Base/1.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/ee.itcollege.iiounm.Contracts.Base.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/ee.itcollege.iiounm.Contracts.Base.dll": {}
+        }
+      },
+      "ee.itcollege.iiounm.Contracts.BLL.Base/1.0.2": {
+        "type": "package",
+        "dependencies": {
+          "ee.itcollege.iiounm.Contracts.Base": "1.0.2",
+          "ee.itcollege.iiounm.Contracts.DAL.Base": "1.0.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/ee.itcollege.iiounm.Contracts.BLL.Base.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/ee.itcollege.iiounm.Contracts.BLL.Base.dll": {}
+        }
+      },
+      "ee.itcollege.iiounm.Contracts.DAL.Base/1.0.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "2.2.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/ee.itcollege.iiounm.Contracts.DAL.Base.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/ee.itcollege.iiounm.Contracts.DAL.Base.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Cryptography.Internal/2.2.0": {
         "type": "package",
         "compile": {
@@ -653,56 +687,19 @@
           "bin/placeholder/BLL.App.DTO.dll": {}
         }
       },
-      "Contracts.Base/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "compile": {
-          "bin/placeholder/Contracts.Base.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Contracts.Base.dll": {}
-        }
-      },
-      "Contracts.BLL.Base/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "Contracts.Base": "1.0.0",
-          "Contracts.DAL.Base": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/Contracts.BLL.Base.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Contracts.BLL.Base.dll": {}
-        }
-      },
       "Contracts.DAL.App/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Contracts.DAL.Base": "1.0.0",
           "DAL.App.DTO": "1.0.0",
-          "Domain": "1.0.0"
+          "Domain": "1.0.0",
+          "ee.itcollege.iiounm.Contracts.DAL.Base": "1.0.2"
         },
         "compile": {
           "bin/placeholder/Contracts.DAL.App.dll": {}
         },
         "runtime": {
           "bin/placeholder/Contracts.DAL.App.dll": {}
-        }
-      },
-      "Contracts.DAL.Base/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore": "2.2.2"
-        },
-        "compile": {
-          "bin/placeholder/Contracts.DAL.Base.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Contracts.DAL.Base.dll": {}
         }
       },
       "DAL.App.DTO/1.0.0": {
@@ -723,9 +720,10 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Contracts.DAL.Base": "1.0.0",
           "Microsoft.Extensions.Identity.Stores": "2.2.0",
-          "System.ComponentModel.Annotations": "4.5.0"
+          "System.ComponentModel.Annotations": "4.5.0",
+          "ee.itcollege.iiounm.Contracts.Base": "1.0.2",
+          "ee.itcollege.iiounm.Contracts.DAL.Base": "1.0.2"
         },
         "compile": {
           "bin/placeholder/Domain.dll": {}
@@ -747,6 +745,42 @@
     }
   },
   "libraries": {
+    "ee.itcollege.iiounm.Contracts.Base/1.0.2": {
+      "sha512": "jsq8QnGQhvZYnohcrCvmgRiSVeK73TDZ6cUO5STCeMjN5JaxehTV2fmkooLt/mQWwel/dk0hAGQKuC2gVayYSQ==",
+      "type": "package",
+      "path": "ee.itcollege.iiounm.contracts.base/1.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ee.itcollege.iiounm.contracts.base.1.0.2.nupkg.sha512",
+        "ee.itcollege.iiounm.contracts.base.nuspec",
+        "lib/netstandard2.0/ee.itcollege.iiounm.Contracts.Base.dll"
+      ]
+    },
+    "ee.itcollege.iiounm.Contracts.BLL.Base/1.0.2": {
+      "sha512": "KK0A+9K4dtGaGHab4AXnEGtGUtoPesJBnIz/S4Uhq1a8wL5fzDK1PclLjJ14n5jZ9J7+OKGOSsBazmhj0uMVtg==",
+      "type": "package",
+      "path": "ee.itcollege.iiounm.contracts.bll.base/1.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ee.itcollege.iiounm.contracts.bll.base.1.0.2.nupkg.sha512",
+        "ee.itcollege.iiounm.contracts.bll.base.nuspec",
+        "lib/netstandard2.0/ee.itcollege.iiounm.Contracts.BLL.Base.dll"
+      ]
+    },
+    "ee.itcollege.iiounm.Contracts.DAL.Base/1.0.2": {
+      "sha512": "K6UoWJGAMjERx16u/6dQovwmGVA1ASDxC6SVlHS9PYhGyOKyvZ71V8c4yEHy3KNTseh0TX3RvfTHa2LIIetFKQ==",
+      "type": "package",
+      "path": "ee.itcollege.iiounm.contracts.dal.base/1.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ee.itcollege.iiounm.contracts.dal.base.1.0.2.nupkg.sha512",
+        "ee.itcollege.iiounm.contracts.dal.base.nuspec",
+        "lib/netstandard2.0/ee.itcollege.iiounm.Contracts.DAL.Base.dll"
+      ]
+    },
     "Microsoft.AspNetCore.Cryptography.Internal/2.2.0": {
       "sha512": "GXmMD8/vuTLPLvKzKEPz/4vapC5e0cwx1tUVd83ePRyWF9CCrn/pg4/1I+tGkQqFLPvi3nlI2QtPtC6MQN8Nww==",
       "type": "package",
@@ -2779,25 +2813,10 @@
       "path": "../BLL.App.DTO/BLL.App.DTO.csproj",
       "msbuildProject": "../BLL.App.DTO/BLL.App.DTO.csproj"
     },
-    "Contracts.Base/1.0.0": {
-      "type": "project",
-      "path": "../Contracts.Base/Contracts.Base.csproj",
-      "msbuildProject": "../Contracts.Base/Contracts.Base.csproj"
-    },
-    "Contracts.BLL.Base/1.0.0": {
-      "type": "project",
-      "path": "../Contracts.BLL.Base/Contracts.BLL.Base.csproj",
-      "msbuildProject": "../Contracts.BLL.Base/Contracts.BLL.Base.csproj"
-    },
     "Contracts.DAL.App/1.0.0": {
       "type": "project",
       "path": "../Contracts.DAL.App/Contracts.DAL.App.csproj",
       "msbuildProject": "../Contracts.DAL.App/Contracts.DAL.App.csproj"
-    },
-    "Contracts.DAL.Base/1.0.0": {
-      "type": "project",
-      "path": "../Contracts.DAL.Base/Contracts.DAL.Base.csproj",
-      "msbuildProject": "../Contracts.DAL.Base/Contracts.DAL.Base.csproj"
     },
     "DAL.App.DTO/1.0.0": {
       "type": "project",
@@ -2818,9 +2837,9 @@
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
       "BLL.App.DTO >= 1.0.0",
-      "Contracts.BLL.Base >= 1.0.0",
       "Contracts.DAL.App >= 1.0.0",
-      "NETStandard.Library >= 2.0.3"
+      "NETStandard.Library >= 2.0.3",
+      "ee.itcollege.iiounm.Contracts.BLL.Base >= 1.0.2"
     ]
   },
   "packageFolders": {
@@ -2848,6 +2867,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Users\\kalle\\RiderProjects\\nuget_repo": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2855,9 +2875,6 @@
           "projectReferences": {
             "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\BLL.App.DTO\\BLL.App.DTO.csproj": {
               "projectPath": "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\BLL.App.DTO\\BLL.App.DTO.csproj"
-            },
-            "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\Contracts.BLL.Base\\Contracts.BLL.Base.csproj": {
-              "projectPath": "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\Contracts.BLL.Base\\Contracts.BLL.Base.csproj"
             },
             "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\Contracts.DAL.App\\Contracts.DAL.App.csproj": {
               "projectPath": "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\Contracts.DAL.App\\Contracts.DAL.App.csproj"
@@ -2879,6 +2896,10 @@
             "target": "Package",
             "version": "[2.0.3, )",
             "autoReferenced": true
+          },
+          "ee.itcollege.iiounm.Contracts.BLL.Base": {
+            "target": "Package",
+            "version": "[1.0.2, )"
           }
         },
         "imports": [

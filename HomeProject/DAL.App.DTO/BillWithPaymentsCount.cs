@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Domain;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace DAL.App.DTO
 {

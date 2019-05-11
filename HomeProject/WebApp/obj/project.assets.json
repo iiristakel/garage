@@ -15,6 +15,81 @@
           "lib/netstandard2.0/AutoMapper.dll": {}
         }
       },
+      "ee.itcollege.iiounm.BLL.Base/1.0.2": {
+        "type": "package",
+        "dependencies": {
+          "AutoMapper": "8.1.0",
+          "ee.itcollege.iiounm.Contracts.BLL.Base": "1.0.2",
+          "ee.itcollege.iiounm.DAL.Base.EF": "1.0.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/ee.itcollege.iiounm.BLL.Base.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/ee.itcollege.iiounm.BLL.Base.dll": {}
+        }
+      },
+      "ee.itcollege.iiounm.Contracts.Base/1.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/ee.itcollege.iiounm.Contracts.Base.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/ee.itcollege.iiounm.Contracts.Base.dll": {}
+        }
+      },
+      "ee.itcollege.iiounm.Contracts.BLL.Base/1.0.2": {
+        "type": "package",
+        "dependencies": {
+          "ee.itcollege.iiounm.Contracts.Base": "1.0.2",
+          "ee.itcollege.iiounm.Contracts.DAL.Base": "1.0.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/ee.itcollege.iiounm.Contracts.BLL.Base.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/ee.itcollege.iiounm.Contracts.BLL.Base.dll": {}
+        }
+      },
+      "ee.itcollege.iiounm.Contracts.DAL.Base/1.0.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "2.2.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/ee.itcollege.iiounm.Contracts.DAL.Base.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/ee.itcollege.iiounm.Contracts.DAL.Base.dll": {}
+        }
+      },
+      "ee.itcollege.iiounm.DAL.Base.EF/1.0.2": {
+        "type": "package",
+        "dependencies": {
+          "AutoMapper": "8.1.0",
+          "Microsoft.EntityFrameworkCore": "2.2.2",
+          "ee.itcollege.iiounm.Contracts.DAL.Base": "1.0.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/ee.itcollege.iiounm.DAL.Base.EF.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/ee.itcollege.iiounm.DAL.Base.EF.dll": {}
+        }
+      },
+      "ee.itcollege.iiounm.Identity/1.0.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.IdentityModel.Tokens": "5.4.0",
+          "System.IdentityModel.Tokens.Jwt": "5.4.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/ee.itcollege.iiounm.Identity.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/ee.itcollege.iiounm.Identity.dll": {}
+        }
+      },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
         "type": "package",
         "dependencies": {
@@ -2426,10 +2501,10 @@
           "lib/netstandard2.0/Microsoft.Extensions.WebEncoders.dll": {}
         }
       },
-      "Microsoft.IdentityModel.JsonWebTokens/5.3.0": {
+      "Microsoft.IdentityModel.JsonWebTokens/5.4.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.IdentityModel.Tokens": "5.3.0",
+          "Microsoft.IdentityModel.Tokens": "5.4.0",
           "Newtonsoft.Json": "10.0.1"
         },
         "compile": {
@@ -2439,7 +2514,7 @@
           "lib/netstandard2.0/Microsoft.IdentityModel.JsonWebTokens.dll": {}
         }
       },
-      "Microsoft.IdentityModel.Logging/5.3.0": {
+      "Microsoft.IdentityModel.Logging/5.4.0": {
         "type": "package",
         "dependencies": {
           "System.Diagnostics.Tracing": "4.3.0",
@@ -2500,10 +2575,10 @@
           "lib/netstandard2.0/Microsoft.IdentityModel.Protocols.WsFederation.dll": {}
         }
       },
-      "Microsoft.IdentityModel.Tokens/5.3.0": {
+      "Microsoft.IdentityModel.Tokens/5.4.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.IdentityModel.Logging": "5.3.0",
+          "Microsoft.IdentityModel.Logging": "5.4.0",
           "Newtonsoft.Json": "10.0.1",
           "System.Collections": "4.3.0",
           "System.Diagnostics.Tools": "4.3.0",
@@ -3678,11 +3753,11 @@
           }
         }
       },
-      "System.IdentityModel.Tokens.Jwt/5.3.0": {
+      "System.IdentityModel.Tokens.Jwt/5.4.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.IdentityModel.JsonWebTokens": "5.3.0",
-          "Microsoft.IdentityModel.Tokens": "5.3.0",
+          "Microsoft.IdentityModel.JsonWebTokens": "5.4.0",
+          "Microsoft.IdentityModel.Tokens": "5.4.0",
           "Newtonsoft.Json": "10.0.1"
         },
         "compile": {
@@ -4857,8 +4932,8 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "BLL.App.DTO": "1.0.0",
-          "BLL.Base": "1.0.0",
-          "Contracts.BLL.App": "1.0.0"
+          "Contracts.BLL.App": "1.0.0",
+          "ee.itcollege.iiounm.BLL.Base": "1.0.2"
         },
         "compile": {
           "bin/placeholder/BLL.App.dll": {}
@@ -4881,86 +4956,34 @@
           "bin/placeholder/BLL.App.DTO.dll": {}
         }
       },
-      "BLL.Base/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "AutoMapper": "8.1.0",
-          "Contracts.BLL.Base": "1.0.0",
-          "DAL.Base.EF": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/BLL.Base.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/BLL.Base.dll": {}
-        }
-      },
-      "Contracts.Base/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "compile": {
-          "bin/placeholder/Contracts.Base.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Contracts.Base.dll": {}
-        }
-      },
       "Contracts.BLL.App/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "BLL.App.DTO": "1.0.0",
-          "Contracts.BLL.Base": "1.0.0",
-          "Contracts.DAL.App": "1.0.0"
+          "Contracts.DAL.App": "1.0.0",
+          "ee.itcollege.iiounm.Contracts.BLL.Base": "1.0.2"
         },
         "compile": {
           "bin/placeholder/Contracts.BLL.App.dll": {}
         },
         "runtime": {
           "bin/placeholder/Contracts.BLL.App.dll": {}
-        }
-      },
-      "Contracts.BLL.Base/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "Contracts.Base": "1.0.0",
-          "Contracts.DAL.Base": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/Contracts.BLL.Base.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Contracts.BLL.Base.dll": {}
         }
       },
       "Contracts.DAL.App/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Contracts.DAL.Base": "1.0.0",
           "DAL.App.DTO": "1.0.0",
-          "Domain": "1.0.0"
+          "Domain": "1.0.0",
+          "ee.itcollege.iiounm.Contracts.DAL.Base": "1.0.2"
         },
         "compile": {
           "bin/placeholder/Contracts.DAL.App.dll": {}
         },
         "runtime": {
           "bin/placeholder/Contracts.DAL.App.dll": {}
-        }
-      },
-      "Contracts.DAL.Base/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore": "2.2.2"
-        },
-        "compile": {
-          "bin/placeholder/Contracts.DAL.Base.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Contracts.DAL.Base.dll": {}
         }
       },
       "DAL.App.DTO/1.0.0": {
@@ -4984,56 +5007,32 @@
           "BLL.App": "1.0.0",
           "Contracts.DAL.App": "1.0.0",
           "DAL.App.DTO": "1.0.0",
-          "DAL.Base.EF": "1.0.0",
           "Domain": "1.0.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "2.2.0",
-          "Pomelo.EntityFrameworkCore.MySql": "2.2.0"
+          "Pomelo.EntityFrameworkCore.MySql": "2.2.0",
+          "ee.itcollege.iiounm.DAL.Base.EF": "1.0.2"
         },
         "compile": {
           "bin/placeholder/DAL.App.EF.dll": {}
         },
         "runtime": {
           "bin/placeholder/DAL.App.EF.dll": {}
-        }
-      },
-      "DAL.Base.EF/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "AutoMapper": "8.1.0",
-          "Contracts.DAL.Base": "1.0.0",
-          "Microsoft.EntityFrameworkCore": "2.2.2"
-        },
-        "compile": {
-          "bin/placeholder/DAL.Base.EF.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/DAL.Base.EF.dll": {}
         }
       },
       "Domain/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Contracts.DAL.Base": "1.0.0",
           "Microsoft.Extensions.Identity.Stores": "2.2.0",
-          "System.ComponentModel.Annotations": "4.5.0"
+          "System.ComponentModel.Annotations": "4.5.0",
+          "ee.itcollege.iiounm.Contracts.Base": "1.0.2",
+          "ee.itcollege.iiounm.Contracts.DAL.Base": "1.0.2"
         },
         "compile": {
           "bin/placeholder/Domain.dll": {}
         },
         "runtime": {
           "bin/placeholder/Domain.dll": {}
-        }
-      },
-      "Identity/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "compile": {
-          "bin/placeholder/Identity.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Identity.dll": {}
         }
       },
       "PublicApi.v1/1.0.0": {
@@ -5092,6 +5091,78 @@
         "lib/netstandard2.0/AutoMapper.dll",
         "lib/netstandard2.0/AutoMapper.pdb",
         "lib/netstandard2.0/AutoMapper.xml"
+      ]
+    },
+    "ee.itcollege.iiounm.BLL.Base/1.0.2": {
+      "sha512": "O4JZPT/XiZeIVgHCoTNqf5ZaKTtGd3z7Abm4TbHi2lGBGeMqhZ4wU0+pbOyCEglV7BUMsOh235a6sFXvhZ8W8Q==",
+      "type": "package",
+      "path": "ee.itcollege.iiounm.bll.base/1.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ee.itcollege.iiounm.bll.base.1.0.2.nupkg.sha512",
+        "ee.itcollege.iiounm.bll.base.nuspec",
+        "lib/netstandard2.0/ee.itcollege.iiounm.BLL.Base.dll"
+      ]
+    },
+    "ee.itcollege.iiounm.Contracts.Base/1.0.2": {
+      "sha512": "jsq8QnGQhvZYnohcrCvmgRiSVeK73TDZ6cUO5STCeMjN5JaxehTV2fmkooLt/mQWwel/dk0hAGQKuC2gVayYSQ==",
+      "type": "package",
+      "path": "ee.itcollege.iiounm.contracts.base/1.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ee.itcollege.iiounm.contracts.base.1.0.2.nupkg.sha512",
+        "ee.itcollege.iiounm.contracts.base.nuspec",
+        "lib/netstandard2.0/ee.itcollege.iiounm.Contracts.Base.dll"
+      ]
+    },
+    "ee.itcollege.iiounm.Contracts.BLL.Base/1.0.2": {
+      "sha512": "KK0A+9K4dtGaGHab4AXnEGtGUtoPesJBnIz/S4Uhq1a8wL5fzDK1PclLjJ14n5jZ9J7+OKGOSsBazmhj0uMVtg==",
+      "type": "package",
+      "path": "ee.itcollege.iiounm.contracts.bll.base/1.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ee.itcollege.iiounm.contracts.bll.base.1.0.2.nupkg.sha512",
+        "ee.itcollege.iiounm.contracts.bll.base.nuspec",
+        "lib/netstandard2.0/ee.itcollege.iiounm.Contracts.BLL.Base.dll"
+      ]
+    },
+    "ee.itcollege.iiounm.Contracts.DAL.Base/1.0.2": {
+      "sha512": "K6UoWJGAMjERx16u/6dQovwmGVA1ASDxC6SVlHS9PYhGyOKyvZ71V8c4yEHy3KNTseh0TX3RvfTHa2LIIetFKQ==",
+      "type": "package",
+      "path": "ee.itcollege.iiounm.contracts.dal.base/1.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ee.itcollege.iiounm.contracts.dal.base.1.0.2.nupkg.sha512",
+        "ee.itcollege.iiounm.contracts.dal.base.nuspec",
+        "lib/netstandard2.0/ee.itcollege.iiounm.Contracts.DAL.Base.dll"
+      ]
+    },
+    "ee.itcollege.iiounm.DAL.Base.EF/1.0.2": {
+      "sha512": "d07M/+uo74o+OrBkTf5zGGWesgi6bPTKamvex/ldhZrJCgs5C8p4iJmwwW9ZWwBSoi2Zu2FCHmItm2ySE2Jo9Q==",
+      "type": "package",
+      "path": "ee.itcollege.iiounm.dal.base.ef/1.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ee.itcollege.iiounm.dal.base.ef.1.0.2.nupkg.sha512",
+        "ee.itcollege.iiounm.dal.base.ef.nuspec",
+        "lib/netstandard2.0/ee.itcollege.iiounm.DAL.Base.EF.dll"
+      ]
+    },
+    "ee.itcollege.iiounm.Identity/1.0.2": {
+      "sha512": "sUcnZwZk/lw14ce/4wns9i0ebjxqfdnYrkcsXatX9GtPpvgmm4euW9URjAhBe17FGCm6wgNtL8ZyQPk7EonwNw==",
+      "type": "package",
+      "path": "ee.itcollege.iiounm.identity/1.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ee.itcollege.iiounm.identity.1.0.2.nupkg.sha512",
+        "ee.itcollege.iiounm.identity.nuspec",
+        "lib/netstandard2.0/ee.itcollege.iiounm.Identity.dll"
       ]
     },
     "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -7322,10 +7393,10 @@
         "microsoft.extensions.webencoders.nuspec"
       ]
     },
-    "Microsoft.IdentityModel.JsonWebTokens/5.3.0": {
-      "sha512": "5LW5VYvGZLvrbEGxyaE6dSQhT1B5frnpwX/c4/PWrNXeuJ6GkYmiOPf2u5Iwk1qQXPTvDedwEfnBg+i/0cFAyA==",
+    "Microsoft.IdentityModel.JsonWebTokens/5.4.0": {
+      "sha512": "WTk0k+csFrUEXvtl1BhGvAmAp3UTuGt250L7BDasTxRZN6O7bWEJ41RW11RYWZWX1W5cD+mPr2jihA745URsWw==",
       "type": "package",
-      "path": "microsoft.identitymodel.jsonwebtokens/5.3.0",
+      "path": "microsoft.identitymodel.jsonwebtokens/5.4.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -7344,14 +7415,14 @@
         "lib/netstandard2.0/Microsoft.IdentityModel.JsonWebTokens.dll",
         "lib/netstandard2.0/Microsoft.IdentityModel.JsonWebTokens.pdb",
         "lib/netstandard2.0/Microsoft.IdentityModel.JsonWebTokens.xml",
-        "microsoft.identitymodel.jsonwebtokens.5.3.0.nupkg.sha512",
+        "microsoft.identitymodel.jsonwebtokens.5.4.0.nupkg.sha512",
         "microsoft.identitymodel.jsonwebtokens.nuspec"
       ]
     },
-    "Microsoft.IdentityModel.Logging/5.3.0": {
-      "sha512": "o+bBauEMOi6ZI0MlJEC69Sw9UPwKLFmN+lD942g9UCx5pfiLFvJBKp8OPmxtGFL02ZxzXCIUyhyKn85izBDsnQ==",
+    "Microsoft.IdentityModel.Logging/5.4.0": {
+      "sha512": "Y8IN/3GDrlts6NW/ROBuniDM25px9ARbUL+IBhP40xnA99kukpePK/MWyJma82xI6oRbc+yWllZpvZKNpE+ykA==",
       "type": "package",
-      "path": "microsoft.identitymodel.logging/5.3.0",
+      "path": "microsoft.identitymodel.logging/5.4.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -7370,7 +7441,7 @@
         "lib/netstandard2.0/Microsoft.IdentityModel.Logging.dll",
         "lib/netstandard2.0/Microsoft.IdentityModel.Logging.pdb",
         "lib/netstandard2.0/Microsoft.IdentityModel.Logging.xml",
-        "microsoft.identitymodel.logging.5.3.0.nupkg.sha512",
+        "microsoft.identitymodel.logging.5.4.0.nupkg.sha512",
         "microsoft.identitymodel.logging.nuspec"
       ]
     },
@@ -7452,10 +7523,10 @@
         "microsoft.identitymodel.protocols.wsfederation.nuspec"
       ]
     },
-    "Microsoft.IdentityModel.Tokens/5.3.0": {
-      "sha512": "/piauST4FL0qzVI6oqLWxqhFReg12KwVGy0jRlnVOpGMeOVSKdtNVtHsN/hARc25hOOPEp9WKMce5ILzyMx/tQ==",
+    "Microsoft.IdentityModel.Tokens/5.4.0": {
+      "sha512": "DiKt1lXqbaA4nTsVymsKwbRJzvCv24ZRau00X7nV8NbGIcmtVHyc6s388ZZSsZpzkN4e1ODwv23t1JtZzDJMGQ==",
       "type": "package",
-      "path": "microsoft.identitymodel.tokens/5.3.0",
+      "path": "microsoft.identitymodel.tokens/5.4.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -7474,7 +7545,7 @@
         "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.dll",
         "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.pdb",
         "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.xml",
-        "microsoft.identitymodel.tokens.5.3.0.nupkg.sha512",
+        "microsoft.identitymodel.tokens.5.4.0.nupkg.sha512",
         "microsoft.identitymodel.tokens.nuspec"
       ]
     },
@@ -10116,10 +10187,10 @@
         "system.globalization.extensions.nuspec"
       ]
     },
-    "System.IdentityModel.Tokens.Jwt/5.3.0": {
-      "sha512": "EdcMk+36u9gQtbwTiPQ7ckIfiADBwOmCZ6rGD2rfkaozIdW1t7vbXk/FPVAu2r9KgCQZ5245Z+P0YMM/0Q0G2g==",
+    "System.IdentityModel.Tokens.Jwt/5.4.0": {
+      "sha512": "juMUUwWFVe6zmxyFyS44G1nkYTjDCMGOD+Ij7R5EQ3ILxOdN0AwResmg5blZClDkqp+D2kMjzMln2KeMJnAgJQ==",
       "type": "package",
-      "path": "system.identitymodel.tokens.jwt/5.3.0",
+      "path": "system.identitymodel.tokens.jwt/5.4.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -10138,7 +10209,7 @@
         "lib/netstandard2.0/System.IdentityModel.Tokens.Jwt.dll",
         "lib/netstandard2.0/System.IdentityModel.Tokens.Jwt.pdb",
         "lib/netstandard2.0/System.IdentityModel.Tokens.Jwt.xml",
-        "system.identitymodel.tokens.jwt.5.3.0.nupkg.sha512",
+        "system.identitymodel.tokens.jwt.5.4.0.nupkg.sha512",
         "system.identitymodel.tokens.jwt.nuspec"
       ]
     },
@@ -13514,35 +13585,15 @@
       "path": "../BLL.App.DTO/BLL.App.DTO.csproj",
       "msbuildProject": "../BLL.App.DTO/BLL.App.DTO.csproj"
     },
-    "BLL.Base/1.0.0": {
-      "type": "project",
-      "path": "../BLL.Base/BLL.Base.csproj",
-      "msbuildProject": "../BLL.Base/BLL.Base.csproj"
-    },
-    "Contracts.Base/1.0.0": {
-      "type": "project",
-      "path": "../Contracts.Base/Contracts.Base.csproj",
-      "msbuildProject": "../Contracts.Base/Contracts.Base.csproj"
-    },
     "Contracts.BLL.App/1.0.0": {
       "type": "project",
       "path": "../Contracts.BLL.App/Contracts.BLL.App.csproj",
       "msbuildProject": "../Contracts.BLL.App/Contracts.BLL.App.csproj"
     },
-    "Contracts.BLL.Base/1.0.0": {
-      "type": "project",
-      "path": "../Contracts.BLL.Base/Contracts.BLL.Base.csproj",
-      "msbuildProject": "../Contracts.BLL.Base/Contracts.BLL.Base.csproj"
-    },
     "Contracts.DAL.App/1.0.0": {
       "type": "project",
       "path": "../Contracts.DAL.App/Contracts.DAL.App.csproj",
       "msbuildProject": "../Contracts.DAL.App/Contracts.DAL.App.csproj"
-    },
-    "Contracts.DAL.Base/1.0.0": {
-      "type": "project",
-      "path": "../Contracts.DAL.Base/Contracts.DAL.Base.csproj",
-      "msbuildProject": "../Contracts.DAL.Base/Contracts.DAL.Base.csproj"
     },
     "DAL.App.DTO/1.0.0": {
       "type": "project",
@@ -13554,20 +13605,10 @@
       "path": "../DAL.App.EF/DAL.App.EF.csproj",
       "msbuildProject": "../DAL.App.EF/DAL.App.EF.csproj"
     },
-    "DAL.Base.EF/1.0.0": {
-      "type": "project",
-      "path": "../DAL.Base.EF/DAL.Base.EF.csproj",
-      "msbuildProject": "../DAL.Base.EF/DAL.Base.EF.csproj"
-    },
     "Domain/1.0.0": {
       "type": "project",
       "path": "../Domain/Domain.csproj",
       "msbuildProject": "../Domain/Domain.csproj"
-    },
-    "Identity/1.0.0": {
-      "type": "project",
-      "path": "../Identity/Identity.csproj",
-      "msbuildProject": "../Identity/Identity.csproj"
     },
     "PublicApi.v1/1.0.0": {
       "type": "project",
@@ -13588,10 +13629,7 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
       "BLL.App >= 1.0.0",
-      "BLL.Base >= 1.0.0",
-      "Contracts.BLL.Base >= 1.0.0",
       "DAL.App.EF >= 1.0.0",
-      "Identity >= 1.0.0",
       "Microsoft.AspNetCore.App >= 2.2.0",
       "Microsoft.AspNetCore.Mvc.Versioning >= 3.1.2",
       "Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer >= 3.2.0",
@@ -13601,7 +13639,10 @@
       "Pomelo.EntityFrameworkCore.MySql >= 2.2.0",
       "PublicApi.v1 >= 1.0.0",
       "Resources >= 1.0.0",
-      "Swashbuckle.AspNetCore >= 4.0.1"
+      "Swashbuckle.AspNetCore >= 4.0.1",
+      "ee.itcollege.iiounm.BLL.Base >= 1.0.2",
+      "ee.itcollege.iiounm.Contracts.BLL.Base >= 1.0.2",
+      "ee.itcollege.iiounm.Identity >= 1.0.2"
     ]
   },
   "packageFolders": {
@@ -13629,6 +13670,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Users\\kalle\\RiderProjects\\nuget_repo": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -13637,17 +13679,8 @@
             "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\BLL.App\\BLL.App.csproj": {
               "projectPath": "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\BLL.App\\BLL.App.csproj"
             },
-            "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\BLL.Base\\BLL.Base.csproj": {
-              "projectPath": "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\BLL.Base\\BLL.Base.csproj"
-            },
-            "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\Contracts.BLL.Base\\Contracts.BLL.Base.csproj": {
-              "projectPath": "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\Contracts.BLL.Base\\Contracts.BLL.Base.csproj"
-            },
             "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\DAL.App.EF\\DAL.App.EF.csproj": {
               "projectPath": "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\DAL.App.EF\\DAL.App.EF.csproj"
-            },
-            "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\Identity\\Identity.csproj": {
-              "projectPath": "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\Identity\\Identity.csproj"
             },
             "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\PublicApi.v1\\PublicApi.v1.csproj": {
               "projectPath": "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\PublicApi.v1\\PublicApi.v1.csproj"
@@ -13703,6 +13736,18 @@
           "Swashbuckle.AspNetCore": {
             "target": "Package",
             "version": "[4.0.1, )"
+          },
+          "ee.itcollege.iiounm.BLL.Base": {
+            "target": "Package",
+            "version": "[1.0.2, )"
+          },
+          "ee.itcollege.iiounm.Contracts.BLL.Base": {
+            "target": "Package",
+            "version": "[1.0.2, )"
+          },
+          "ee.itcollege.iiounm.Identity": {
+            "target": "Package",
+            "version": "[1.0.2, )"
           }
         },
         "imports": [

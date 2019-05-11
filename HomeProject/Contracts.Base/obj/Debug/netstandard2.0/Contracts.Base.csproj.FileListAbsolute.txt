@@ -1,9 +1,0 @@
-C:\Users\kalle\RiderProjects\Project\HomeProject\Contracts.Base\bin\Debug\netstandard2.0\Contracts.Base.deps.json
-C:\Users\kalle\RiderProjects\Project\HomeProject\Contracts.Base\bin\Debug\netstandard2.0\Contracts.Base.dll
-C:\Users\kalle\RiderProjects\Project\HomeProject\Contracts.Base\bin\Debug\netstandard2.0\Contracts.Base.pdb
-C:\Users\kalle\RiderProjects\Project\HomeProject\Contracts.Base\obj\Debug\netstandard2.0\Contracts.Base.csprojAssemblyReference.cache
-C:\Users\kalle\RiderProjects\Project\HomeProject\Contracts.Base\obj\Debug\netstandard2.0\Contracts.Base.csproj.CoreCompileInputs.cache
-C:\Users\kalle\RiderProjects\Project\HomeProject\Contracts.Base\obj\Debug\netstandard2.0\Contracts.Base.AssemblyInfoInputs.cache
-C:\Users\kalle\RiderProjects\Project\HomeProject\Contracts.Base\obj\Debug\netstandard2.0\Contracts.Base.AssemblyInfo.cs
-C:\Users\kalle\RiderProjects\Project\HomeProject\Contracts.Base\obj\Debug\netstandard2.0\Contracts.Base.dll
-C:\Users\kalle\RiderProjects\Project\HomeProject\Contracts.Base\obj\Debug\netstandard2.0\Contracts.Base.pdb

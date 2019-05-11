@@ -15,6 +15,68 @@
           "lib/netstandard2.0/AutoMapper.dll": {}
         }
       },
+      "ee.itcollege.iiounm.BLL.Base/1.0.2": {
+        "type": "package",
+        "dependencies": {
+          "AutoMapper": "8.1.0",
+          "ee.itcollege.iiounm.Contracts.BLL.Base": "1.0.2",
+          "ee.itcollege.iiounm.DAL.Base.EF": "1.0.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/ee.itcollege.iiounm.BLL.Base.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/ee.itcollege.iiounm.BLL.Base.dll": {}
+        }
+      },
+      "ee.itcollege.iiounm.Contracts.Base/1.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/ee.itcollege.iiounm.Contracts.Base.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/ee.itcollege.iiounm.Contracts.Base.dll": {}
+        }
+      },
+      "ee.itcollege.iiounm.Contracts.BLL.Base/1.0.2": {
+        "type": "package",
+        "dependencies": {
+          "ee.itcollege.iiounm.Contracts.Base": "1.0.2",
+          "ee.itcollege.iiounm.Contracts.DAL.Base": "1.0.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/ee.itcollege.iiounm.Contracts.BLL.Base.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/ee.itcollege.iiounm.Contracts.BLL.Base.dll": {}
+        }
+      },
+      "ee.itcollege.iiounm.Contracts.DAL.Base/1.0.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "2.2.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/ee.itcollege.iiounm.Contracts.DAL.Base.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/ee.itcollege.iiounm.Contracts.DAL.Base.dll": {}
+        }
+      },
+      "ee.itcollege.iiounm.DAL.Base.EF/1.0.2": {
+        "type": "package",
+        "dependencies": {
+          "AutoMapper": "8.1.0",
+          "Microsoft.EntityFrameworkCore": "2.2.2",
+          "ee.itcollege.iiounm.Contracts.DAL.Base": "1.0.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/ee.itcollege.iiounm.DAL.Base.EF.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/ee.itcollege.iiounm.DAL.Base.EF.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Authentication/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -1144,8 +1206,8 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "BLL.App.DTO": "1.0.0",
-          "BLL.Base": "1.0.0",
-          "Contracts.BLL.App": "1.0.0"
+          "Contracts.BLL.App": "1.0.0",
+          "ee.itcollege.iiounm.BLL.Base": "1.0.2"
         },
         "compile": {
           "bin/placeholder/BLL.App.dll": {}
@@ -1168,86 +1230,34 @@
           "bin/placeholder/BLL.App.DTO.dll": {}
         }
       },
-      "BLL.Base/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "AutoMapper": "8.1.0",
-          "Contracts.BLL.Base": "1.0.0",
-          "DAL.Base.EF": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/BLL.Base.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/BLL.Base.dll": {}
-        }
-      },
-      "Contracts.Base/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "compile": {
-          "bin/placeholder/Contracts.Base.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Contracts.Base.dll": {}
-        }
-      },
       "Contracts.BLL.App/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "BLL.App.DTO": "1.0.0",
-          "Contracts.BLL.Base": "1.0.0",
-          "Contracts.DAL.App": "1.0.0"
+          "Contracts.DAL.App": "1.0.0",
+          "ee.itcollege.iiounm.Contracts.BLL.Base": "1.0.2"
         },
         "compile": {
           "bin/placeholder/Contracts.BLL.App.dll": {}
         },
         "runtime": {
           "bin/placeholder/Contracts.BLL.App.dll": {}
-        }
-      },
-      "Contracts.BLL.Base/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "Contracts.Base": "1.0.0",
-          "Contracts.DAL.Base": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/Contracts.BLL.Base.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Contracts.BLL.Base.dll": {}
         }
       },
       "Contracts.DAL.App/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Contracts.DAL.Base": "1.0.0",
           "DAL.App.DTO": "1.0.0",
-          "Domain": "1.0.0"
+          "Domain": "1.0.0",
+          "ee.itcollege.iiounm.Contracts.DAL.Base": "1.0.2"
         },
         "compile": {
           "bin/placeholder/Contracts.DAL.App.dll": {}
         },
         "runtime": {
           "bin/placeholder/Contracts.DAL.App.dll": {}
-        }
-      },
-      "Contracts.DAL.Base/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore": "2.2.2"
-        },
-        "compile": {
-          "bin/placeholder/Contracts.DAL.Base.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Contracts.DAL.Base.dll": {}
         }
       },
       "DAL.App.DTO/1.0.0": {
@@ -1264,28 +1274,14 @@
           "bin/placeholder/DAL.App.DTO.dll": {}
         }
       },
-      "DAL.Base.EF/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "AutoMapper": "8.1.0",
-          "Contracts.DAL.Base": "1.0.0",
-          "Microsoft.EntityFrameworkCore": "2.2.2"
-        },
-        "compile": {
-          "bin/placeholder/DAL.Base.EF.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/DAL.Base.EF.dll": {}
-        }
-      },
       "Domain/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Contracts.DAL.Base": "1.0.0",
           "Microsoft.Extensions.Identity.Stores": "2.2.0",
-          "System.ComponentModel.Annotations": "4.5.0"
+          "System.ComponentModel.Annotations": "4.5.0",
+          "ee.itcollege.iiounm.Contracts.Base": "1.0.2",
+          "ee.itcollege.iiounm.Contracts.DAL.Base": "1.0.2"
         },
         "compile": {
           "bin/placeholder/Domain.dll": {}
@@ -1322,6 +1318,66 @@
         "lib/netstandard2.0/AutoMapper.dll",
         "lib/netstandard2.0/AutoMapper.pdb",
         "lib/netstandard2.0/AutoMapper.xml"
+      ]
+    },
+    "ee.itcollege.iiounm.BLL.Base/1.0.2": {
+      "sha512": "O4JZPT/XiZeIVgHCoTNqf5ZaKTtGd3z7Abm4TbHi2lGBGeMqhZ4wU0+pbOyCEglV7BUMsOh235a6sFXvhZ8W8Q==",
+      "type": "package",
+      "path": "ee.itcollege.iiounm.bll.base/1.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ee.itcollege.iiounm.bll.base.1.0.2.nupkg.sha512",
+        "ee.itcollege.iiounm.bll.base.nuspec",
+        "lib/netstandard2.0/ee.itcollege.iiounm.BLL.Base.dll"
+      ]
+    },
+    "ee.itcollege.iiounm.Contracts.Base/1.0.2": {
+      "sha512": "jsq8QnGQhvZYnohcrCvmgRiSVeK73TDZ6cUO5STCeMjN5JaxehTV2fmkooLt/mQWwel/dk0hAGQKuC2gVayYSQ==",
+      "type": "package",
+      "path": "ee.itcollege.iiounm.contracts.base/1.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ee.itcollege.iiounm.contracts.base.1.0.2.nupkg.sha512",
+        "ee.itcollege.iiounm.contracts.base.nuspec",
+        "lib/netstandard2.0/ee.itcollege.iiounm.Contracts.Base.dll"
+      ]
+    },
+    "ee.itcollege.iiounm.Contracts.BLL.Base/1.0.2": {
+      "sha512": "KK0A+9K4dtGaGHab4AXnEGtGUtoPesJBnIz/S4Uhq1a8wL5fzDK1PclLjJ14n5jZ9J7+OKGOSsBazmhj0uMVtg==",
+      "type": "package",
+      "path": "ee.itcollege.iiounm.contracts.bll.base/1.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ee.itcollege.iiounm.contracts.bll.base.1.0.2.nupkg.sha512",
+        "ee.itcollege.iiounm.contracts.bll.base.nuspec",
+        "lib/netstandard2.0/ee.itcollege.iiounm.Contracts.BLL.Base.dll"
+      ]
+    },
+    "ee.itcollege.iiounm.Contracts.DAL.Base/1.0.2": {
+      "sha512": "K6UoWJGAMjERx16u/6dQovwmGVA1ASDxC6SVlHS9PYhGyOKyvZ71V8c4yEHy3KNTseh0TX3RvfTHa2LIIetFKQ==",
+      "type": "package",
+      "path": "ee.itcollege.iiounm.contracts.dal.base/1.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ee.itcollege.iiounm.contracts.dal.base.1.0.2.nupkg.sha512",
+        "ee.itcollege.iiounm.contracts.dal.base.nuspec",
+        "lib/netstandard2.0/ee.itcollege.iiounm.Contracts.DAL.Base.dll"
+      ]
+    },
+    "ee.itcollege.iiounm.DAL.Base.EF/1.0.2": {
+      "sha512": "d07M/+uo74o+OrBkTf5zGGWesgi6bPTKamvex/ldhZrJCgs5C8p4iJmwwW9ZWwBSoi2Zu2FCHmItm2ySE2Jo9Q==",
+      "type": "package",
+      "path": "ee.itcollege.iiounm.dal.base.ef/1.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ee.itcollege.iiounm.dal.base.ef.1.0.2.nupkg.sha512",
+        "ee.itcollege.iiounm.dal.base.ef.nuspec",
+        "lib/netstandard2.0/ee.itcollege.iiounm.DAL.Base.EF.dll"
       ]
     },
     "Microsoft.AspNetCore.Authentication/2.2.0": {
@@ -4082,45 +4138,20 @@
       "path": "../BLL.App.DTO/BLL.App.DTO.csproj",
       "msbuildProject": "../BLL.App.DTO/BLL.App.DTO.csproj"
     },
-    "BLL.Base/1.0.0": {
-      "type": "project",
-      "path": "../BLL.Base/BLL.Base.csproj",
-      "msbuildProject": "../BLL.Base/BLL.Base.csproj"
-    },
-    "Contracts.Base/1.0.0": {
-      "type": "project",
-      "path": "../Contracts.Base/Contracts.Base.csproj",
-      "msbuildProject": "../Contracts.Base/Contracts.Base.csproj"
-    },
     "Contracts.BLL.App/1.0.0": {
       "type": "project",
       "path": "../Contracts.BLL.App/Contracts.BLL.App.csproj",
       "msbuildProject": "../Contracts.BLL.App/Contracts.BLL.App.csproj"
-    },
-    "Contracts.BLL.Base/1.0.0": {
-      "type": "project",
-      "path": "../Contracts.BLL.Base/Contracts.BLL.Base.csproj",
-      "msbuildProject": "../Contracts.BLL.Base/Contracts.BLL.Base.csproj"
     },
     "Contracts.DAL.App/1.0.0": {
       "type": "project",
       "path": "../Contracts.DAL.App/Contracts.DAL.App.csproj",
       "msbuildProject": "../Contracts.DAL.App/Contracts.DAL.App.csproj"
     },
-    "Contracts.DAL.Base/1.0.0": {
-      "type": "project",
-      "path": "../Contracts.DAL.Base/Contracts.DAL.Base.csproj",
-      "msbuildProject": "../Contracts.DAL.Base/Contracts.DAL.Base.csproj"
-    },
     "DAL.App.DTO/1.0.0": {
       "type": "project",
       "path": "../DAL.App.DTO/DAL.App.DTO.csproj",
       "msbuildProject": "../DAL.App.DTO/DAL.App.DTO.csproj"
-    },
-    "DAL.Base.EF/1.0.0": {
-      "type": "project",
-      "path": "../DAL.Base.EF/DAL.Base.EF.csproj",
-      "msbuildProject": "../DAL.Base.EF/DAL.Base.EF.csproj"
     },
     "Domain/1.0.0": {
       "type": "project",
@@ -4138,11 +4169,11 @@
       "BLL.App >= 1.0.0",
       "Contracts.DAL.App >= 1.0.0",
       "DAL.App.DTO >= 1.0.0",
-      "DAL.Base.EF >= 1.0.0",
       "Domain >= 1.0.0",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 2.2.0",
       "NETStandard.Library >= 2.0.3",
-      "Pomelo.EntityFrameworkCore.MySql >= 2.2.0"
+      "Pomelo.EntityFrameworkCore.MySql >= 2.2.0",
+      "ee.itcollege.iiounm.DAL.Base.EF >= 1.0.2"
     ]
   },
   "packageFolders": {
@@ -4170,6 +4201,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Users\\kalle\\RiderProjects\\nuget_repo": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -4183,9 +4215,6 @@
             },
             "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\DAL.App.DTO\\DAL.App.DTO.csproj": {
               "projectPath": "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\DAL.App.DTO\\DAL.App.DTO.csproj"
-            },
-            "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\DAL.Base.EF\\DAL.Base.EF.csproj": {
-              "projectPath": "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\DAL.Base.EF\\DAL.Base.EF.csproj"
             },
             "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\Domain\\Domain.csproj": {
               "projectPath": "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\Domain\\Domain.csproj"
@@ -4215,6 +4244,10 @@
           "Pomelo.EntityFrameworkCore.MySql": {
             "target": "Package",
             "version": "[2.2.0, )"
+          },
+          "ee.itcollege.iiounm.DAL.Base.EF": {
+            "target": "Package",
+            "version": "[1.0.2, )"
           }
         },
         "imports": [

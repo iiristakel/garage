@@ -18,17 +18,8 @@
           "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\BLL.App\\BLL.App.csproj": {
             "projectPath": "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\BLL.App\\BLL.App.csproj"
           },
-          "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\BLL.Base\\BLL.Base.csproj": {
-            "projectPath": "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\BLL.Base\\BLL.Base.csproj"
-          },
-          "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\Contracts.BLL.Base\\Contracts.BLL.Base.csproj": {
-            "projectPath": "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\Contracts.BLL.Base\\Contracts.BLL.Base.csproj"
-          },
           "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\DAL.App.EF\\DAL.App.EF.csproj": {
             "projectPath": "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\DAL.App.EF\\DAL.App.EF.csproj"
-          },
-          "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\Identity\\Identity.csproj": {
-            "projectPath": "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\Identity\\Identity.csproj"
           },
           "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\PublicApi.v1\\PublicApi.v1.csproj": {
             "projectPath": "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\PublicApi.v1\\PublicApi.v1.csproj"
@@ -84,6 +75,18 @@
         "Swashbuckle.AspNetCore": {
           "target": "Package",
           "version": "[4.0.1, )"
+        },
+        "ee.itcollege.iiounm.BLL.Base": {
+          "target": "Package",
+          "version": "[1.0.2, )"
+        },
+        "ee.itcollege.iiounm.Contracts.BLL.Base": {
+          "target": "Package",
+          "version": "[1.0.2, )"
+        },
+        "ee.itcollege.iiounm.Identity": {
+          "target": "Package",
+          "version": "[1.0.2, )"
         }
       },
       "imports": [

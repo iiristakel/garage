@@ -24,9 +24,6 @@
           "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\DAL.App.DTO\\DAL.App.DTO.csproj": {
             "projectPath": "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\DAL.App.DTO\\DAL.App.DTO.csproj"
           },
-          "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\DAL.Base.EF\\DAL.Base.EF.csproj": {
-            "projectPath": "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\DAL.Base.EF\\DAL.Base.EF.csproj"
-          },
           "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\Domain\\Domain.csproj": {
             "projectPath": "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\Domain\\Domain.csproj"
           }
@@ -55,6 +52,10 @@
         "Pomelo.EntityFrameworkCore.MySql": {
           "target": "Package",
           "version": "[2.2.0, )"
+        },
+        "ee.itcollege.iiounm.DAL.Base.EF": {
+          "target": "Package",
+          "version": "[1.0.2, )"
         }
       },
       "imports": [

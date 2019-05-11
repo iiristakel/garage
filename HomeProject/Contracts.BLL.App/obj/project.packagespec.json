@@ -18,9 +18,6 @@
           "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\BLL.App.DTO\\BLL.App.DTO.csproj": {
             "projectPath": "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\BLL.App.DTO\\BLL.App.DTO.csproj"
           },
-          "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\Contracts.BLL.Base\\Contracts.BLL.Base.csproj": {
-            "projectPath": "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\Contracts.BLL.Base\\Contracts.BLL.Base.csproj"
-          },
           "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\Contracts.DAL.App\\Contracts.DAL.App.csproj": {
             "projectPath": "C:\\Users\\kalle\\RiderProjects\\Project\\HomeProject\\Contracts.DAL.App\\Contracts.DAL.App.csproj"
           }
@@ -41,6 +38,10 @@
           "target": "Package",
           "version": "[2.0.3, )",
           "autoReferenced": true
+        },
+        "ee.itcollege.iiounm.Contracts.BLL.Base": {
+          "target": "Package",
+          "version": "[1.0.2, )"
         }
       },
       "imports": [

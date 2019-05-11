@@ -7,6 +7,9 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="ee.itcollege.iiounm.Identity" Version="1.0.2" />
+        <PackageReference Include="ee.itcollege.iiounm.BLL.Base" Version="1.0.2" />
+        <PackageReference Include="ee.itcollege.iiounm.Contracts.BLL.Base" Version="1.0.2" />
         <PackageReference Include="Microsoft.AspNetCore.App" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="3.1.2" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="3.2.0" />
@@ -19,10 +22,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\BLL.App\BLL.App.csproj" />
-      <ProjectReference Include="..\BLL.Base\BLL.Base.csproj" />
-      <ProjectReference Include="..\Contracts.BLL.Base\Contracts.BLL.Base.csproj" />
       <ProjectReference Include="..\DAL.App.EF\DAL.App.EF.csproj" />
-      <ProjectReference Include="..\Identity\Identity.csproj" />
       <ProjectReference Include="..\PublicApi.v1\PublicApi.v1.csproj" />
       <ProjectReference Include="..\Resources\Resources.csproj" />
     </ItemGroup>
