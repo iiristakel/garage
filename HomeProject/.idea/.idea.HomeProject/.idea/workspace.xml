@@ -2,192 +2,39 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f9de7e5-e99d-4024-a361-cd182a1ba08b" name="Default Changelist" comment="swagger, PublicApi.v1">
-      <change afterPath="$PROJECT_DIR$/ee.itcollege.iiounm.BLL.Base/ee.itcollege.iiounm.BLL.Base.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.BLL.Base/Mappers/IBaseBLLMapper.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.BLL.Base/ee.itcollege.iiounm.Contracts.BLL.Base.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.Base/ee.itcollege.iiounm.Contracts.Base.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ee.itcollege.iiounm.Identity/ee.itcollege.iiounm.Identity.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.HomeProject/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HomeProject/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.HomeProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HomeProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BLL.App.DTO/obj/BLL.App.DTO.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/BLL.App.DTO/obj/BLL.App.DTO.csproj.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BLL.App.DTO/obj/Debug/netstandard2.0/BLL.App.DTO.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/BLL.App.DTO/obj/Debug/netstandard2.0/BLL.App.DTO.csprojAssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BLL.App.DTO/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/BLL.App.DTO/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BLL.App/AppBLL.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BLL.App/AppBLL.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BLL.App/BLL.App.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/BLL.App/BLL.App.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BLL.Base/BLL.Base.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BLL.Base/BaseBLL.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ee.itcollege.iiounm.BLL.Base/BaseBLL.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BLL.Base/Helpers/BaseServiceFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ee.itcollege.iiounm.BLL.Base/Helpers/BaseServiceFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BLL.Base/Helpers/BaseServiceProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ee.itcollege.iiounm.BLL.Base/Helpers/BaseServiceProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BLL.Base/Mappers/BaseBLLMapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ee.itcollege.iiounm.BLL.Base/Mappers/BaseBLLMapper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BLL.Base/Services/BaseEntityService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ee.itcollege.iiounm.BLL.Base/Services/BaseEntityService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BLL.Base/Services/BaseService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ee.itcollege.iiounm.BLL.Base/Services/BaseService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BLL.Base/bin/Debug/netstandard2.0/BLL.Base.deps.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BLL.Base/bin/Debug/netstandard2.0/BLL.Base.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BLL.Base/bin/Debug/netstandard2.0/Contracts.DAL.Base.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BLL.Base/obj/BLL.Base.csproj.nuget.g.targets" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BLL.Base/obj/Debug/netstandard2.0/BLL.Base.csproj.CopyComplete" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.BLL.App/Contracts.BLL.App.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.BLL.App/Contracts.BLL.App.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.BLL.App/obj/Contracts.BLL.App.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.BLL.App/obj/Contracts.BLL.App.csproj.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.BLL.App/obj/Debug/netstandard2.0/Contracts.BLL.App.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.BLL.App/obj/Debug/netstandard2.0/Contracts.BLL.App.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.BLL.App/obj/Debug/netstandard2.0/Contracts.BLL.App.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.BLL.App/obj/Debug/netstandard2.0/Contracts.BLL.App.csprojAssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.BLL.App/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.BLL.App/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.BLL.App/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.BLL.App/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.BLL.Base/Contracts.BLL.Base.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.BLL.Base/Helpers/IBaseServiceFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.BLL.Base/Helpers/IBaseServiceFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.BLL.Base/Helpers/IBaseServiceProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.BLL.Base/Helpers/IBaseServiceProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.BLL.Base/IBaseBLL.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.BLL.Base/IBaseBLL.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.BLL.Base/Mappers/IBaseBLLMapper.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.BLL.Base/Services/IBaseService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.BLL.Base/Services/IBaseService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.BLL.Base/bin/Debug/netstandard2.0/Contracts.BLL.Base.deps.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.BLL.Base/bin/Debug/netstandard2.0/Contracts.BLL.Base.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.BLL.Base/bin/Debug/netstandard2.0/Contracts.BLL.Base.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.BLL.Base/bin/Debug/netstandard2.0/Contracts.Base.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.BLL.Base/bin/Debug/netstandard2.0/Contracts.Base.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.BLL.Base/bin/Debug/netstandard2.0/Contracts.DAL.Base.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.BLL.Base/bin/Debug/netstandard2.0/Contracts.DAL.Base.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.BLL.Base/obj/Contracts.BLL.Base.csproj.nuget.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.BLL.Base/obj/Contracts.BLL.Base.csproj.nuget.g.props" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.BLL.Base/obj/Contracts.BLL.Base.csproj.nuget.g.targets" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.BLL.Base/obj/Debug/netstandard2.0/Contracts.BLL.Base.AssemblyInfo.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.BLL.Base/obj/Debug/netstandard2.0/Contracts.BLL.Base.AssemblyInfoInputs.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.BLL.Base/obj/Debug/netstandard2.0/Contracts.BLL.Base.assets.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.BLL.Base/obj/Debug/netstandard2.0/Contracts.BLL.Base.csproj.CopyComplete" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.BLL.Base/obj/Debug/netstandard2.0/Contracts.BLL.Base.csproj.CoreCompileInputs.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.BLL.Base/obj/Debug/netstandard2.0/Contracts.BLL.Base.csproj.FileListAbsolute.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.BLL.Base/obj/Debug/netstandard2.0/Contracts.BLL.Base.csprojAssemblyReference.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.BLL.Base/obj/Debug/netstandard2.0/Contracts.BLL.Base.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.BLL.Base/obj/Debug/netstandard2.0/Contracts.BLL.Base.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.BLL.Base/obj/project.assets.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.BLL.Base/obj/project.packagespec.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.Base/Contracts.Base.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.Base/ITrackableInstance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.Base/ITrackableInstance.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.Base/bin/Debug/netstandard2.0/Contracts.Base.deps.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.Base/bin/Debug/netstandard2.0/Contracts.Base.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.Base/bin/Debug/netstandard2.0/Contracts.Base.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.Base/obj/Contracts.Base.csproj.nuget.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.Base/obj/Contracts.Base.csproj.nuget.g.props" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.Base/obj/Contracts.Base.csproj.nuget.g.targets" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.Base/obj/Debug/netstandard2.0/Contracts.Base.AssemblyInfo.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.Base/obj/Debug/netstandard2.0/Contracts.Base.AssemblyInfoInputs.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.Base/obj/Debug/netstandard2.0/Contracts.Base.assets.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.Base/obj/Debug/netstandard2.0/Contracts.Base.csproj.CoreCompileInputs.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.Base/obj/Debug/netstandard2.0/Contracts.Base.csproj.FileListAbsolute.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.Base/obj/Debug/netstandard2.0/Contracts.Base.csprojAssemblyReference.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.Base/obj/Debug/netstandard2.0/Contracts.Base.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.Base/obj/Debug/netstandard2.0/Contracts.Base.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.Base/obj/project.assets.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.Base/obj/project.packagespec.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DAL.App/Contracts.DAL.App.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DAL.App/Contracts.DAL.App.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DAL.App/obj/Contracts.DAL.App.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DAL.App/obj/Contracts.DAL.App.csproj.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DAL.App/obj/Debug/netstandard2.0/Contracts.DAL.App.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DAL.App/obj/Debug/netstandard2.0/Contracts.DAL.App.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DAL.App/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DAL.App/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DAL.App/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts.DAL.App/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DAL.Base/Contracts.DAL.Base.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.DAL.Base/ee.itcollege.iiounm.Contracts.DAL.Base.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DAL.Base/Helpers/IBaseRepositoryFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.DAL.Base/Helpers/IBaseRepositoryFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DAL.Base/Helpers/IBaseRepositoryProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.DAL.Base/Helpers/IBaseRepositoryProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DAL.Base/IBaseUnitOfWork.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.DAL.Base/IBaseUnitOfWork.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DAL.Base/IDataContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.DAL.Base/IDataContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DAL.Base/IDomainEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.DAL.Base/IDomainEntity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DAL.Base/Mappers/IBaseDALMapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.DAL.Base/Mappers/IBaseDALMapper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DAL.Base/Repositories/IBaseRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.DAL.Base/Repositories/IBaseRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DAL.Base/bin/Debug/netstandard2.0/Contracts.DAL.Base.deps.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DAL.Base/bin/Debug/netstandard2.0/Contracts.DAL.Base.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DAL.Base/bin/Debug/netstandard2.0/Contracts.DAL.Base.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DAL.Base/obj/Contracts.DAL.Base.csproj.nuget.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DAL.Base/obj/Contracts.DAL.Base.csproj.nuget.g.props" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DAL.Base/obj/Contracts.DAL.Base.csproj.nuget.g.targets" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DAL.Base/obj/Debug/netstandard2.0/Contracts.DAL.Base.AssemblyInfo.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DAL.Base/obj/Debug/netstandard2.0/Contracts.DAL.Base.AssemblyInfoInputs.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DAL.Base/obj/Debug/netstandard2.0/Contracts.DAL.Base.assets.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DAL.Base/obj/Debug/netstandard2.0/Contracts.DAL.Base.csproj.CoreCompileInputs.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DAL.Base/obj/Debug/netstandard2.0/Contracts.DAL.Base.csproj.FileListAbsolute.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DAL.Base/obj/Debug/netstandard2.0/Contracts.DAL.Base.csprojAssemblyReference.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DAL.Base/obj/Debug/netstandard2.0/Contracts.DAL.Base.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DAL.Base/obj/Debug/netstandard2.0/Contracts.DAL.Base.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DAL.Base/obj/project.assets.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts.DAL.Base/obj/project.packagespec.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL.App.DTO/BillWithPaymentsCount.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DAL.App.DTO/BillWithPaymentsCount.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL.App.DTO/DAL.App.DTO.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/DAL.App.DTO/DAL.App.DTO.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL.App.DTO/obj/DAL.App.DTO.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DAL.App.DTO/obj/DAL.App.DTO.csproj.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL.App.DTO/obj/Debug/netstandard2.0/DAL.App.DTO.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DAL.App.DTO/obj/Debug/netstandard2.0/DAL.App.DTO.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL.App.DTO/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/DAL.App.DTO/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL.App.EF/DAL.App.EF.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/DAL.App.EF/DAL.App.EF.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL.App.EF/Repositories/BillRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DAL.App.EF/Repositories/BillRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL.App.EF/obj/DAL.App.EF.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DAL.App.EF/obj/DAL.App.EF.csproj.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL.App.EF/obj/Debug/netstandard2.0/DAL.App.EF.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DAL.App.EF/obj/Debug/netstandard2.0/DAL.App.EF.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL.App.EF/obj/Debug/netstandard2.0/DAL.App.EF.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DAL.App.EF/obj/Debug/netstandard2.0/DAL.App.EF.csprojAssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL.App.EF/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/DAL.App.EF/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL.App.EF/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/DAL.App.EF/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL.Base.EF/BaseUnitOfWork.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ee.itcollege.iiounm.DAL.Base.EF/BaseUnitOfWork.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL.Base.EF/DAL.Base.EF.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ee.itcollege.iiounm.DAL.Base.EF/ee.itcollege.iiounm.DAL.Base.EF.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL.Base.EF/Helpers/BaseRepositoryFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ee.itcollege.iiounm.DAL.Base.EF/Helpers/BaseRepositoryFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL.Base.EF/Helpers/BaseRepositoryProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ee.itcollege.iiounm.DAL.Base.EF/Helpers/BaseRepositoryProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL.Base.EF/Mappers/BaseDALMapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ee.itcollege.iiounm.DAL.Base.EF/Mappers/BaseDALMapper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL.Base.EF/Repositories/BaseRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ee.itcollege.iiounm.DAL.Base.EF/Repositories/BaseRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL.Base.EF/bin/Debug/netstandard2.0/Contracts.DAL.Base.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL.Base.EF/bin/Debug/netstandard2.0/Contracts.DAL.Base.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL.Base.EF/bin/Debug/netstandard2.0/DAL.Base.EF.deps.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL.Base.EF/bin/Debug/netstandard2.0/DAL.Base.EF.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL.Base.EF/bin/Debug/netstandard2.0/DAL.Base.EF.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL.Base.EF/obj/DAL.Base.EF.csproj.nuget.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL.Base.EF/obj/DAL.Base.EF.csproj.nuget.dgspec.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL.Base.EF/obj/DAL.Base.EF.csproj.nuget.g.props" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL.Base.EF/obj/DAL.Base.EF.csproj.nuget.g.targets" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL.Base.EF/obj/Debug/netstandard2.0/DAL.Base.EF.AssemblyInfo.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL.Base.EF/obj/Debug/netstandard2.0/DAL.Base.EF.AssemblyInfoInputs.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL.Base.EF/obj/Debug/netstandard2.0/DAL.Base.EF.assets.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL.Base.EF/obj/Debug/netstandard2.0/DAL.Base.EF.csproj.CopyComplete" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL.Base.EF/obj/Debug/netstandard2.0/DAL.Base.EF.csproj.CoreCompileInputs.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL.Base.EF/obj/Debug/netstandard2.0/DAL.Base.EF.csproj.FileListAbsolute.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL.Base.EF/obj/Debug/netstandard2.0/DAL.Base.EF.csprojAssemblyReference.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL.Base.EF/obj/Debug/netstandard2.0/DAL.Base.EF.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL.Base.EF/obj/Debug/netstandard2.0/DAL.Base.EF.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL.Base.EF/obj/project.assets.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL.Base.EF/obj/project.packagespec.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Domain.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Domain.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/obj/Debug/netstandard2.0/Domain.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obj/Debug/netstandard2.0/Domain.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/obj/Debug/netstandard2.0/Domain.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obj/Debug/netstandard2.0/Domain.csprojAssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/obj/Domain.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obj/Domain.csproj.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HomeProject.sln" beforeDir="false" afterPath="$PROJECT_DIR$/HomeProject.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Identity/Identity.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Identity/IdentityExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ee.itcollege.iiounm.Identity/IdentityExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Identity/JwtHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ee.itcollege.iiounm.Identity/JwtHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Identity/bin/Debug/netstandard2.0/Identity.deps.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Identity/bin/Debug/netstandard2.0/Identity.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Identity/bin/Debug/netstandard2.0/Identity.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Identity/bin/Debug/netstandard2.0/Microsoft.IdentityModel.Tokens.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Identity/bin/Debug/netstandard2.0/Microsoft.IdentityModel.Tokens.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Identity/bin/Debug/netstandard2.0/Microsoft.IdentityModel.Tokens.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Identity/bin/Debug/netstandard2.0/System.IdentityModel.Tokens.Jwt.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Identity/bin/Debug/netstandard2.0/System.IdentityModel.Tokens.Jwt.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Identity/bin/Debug/netstandard2.0/System.IdentityModel.Tokens.Jwt.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Identity/obj/Debug/netstandard2.0/Identity.AssemblyInfo.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Identity/obj/Debug/netstandard2.0/Identity.AssemblyInfoInputs.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Identity/obj/Debug/netstandard2.0/Identity.assets.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Identity/obj/Debug/netstandard2.0/Identity.csproj.CopyComplete" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Identity/obj/Debug/netstandard2.0/Identity.csproj.CoreCompileInputs.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Identity/obj/Debug/netstandard2.0/Identity.csproj.FileListAbsolute.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Identity/obj/Debug/netstandard2.0/Identity.csprojAssemblyReference.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Identity/obj/Debug/netstandard2.0/Identity.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Identity/obj/Debug/netstandard2.0/Identity.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Identity/obj/Identity.csproj.nuget.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Identity/obj/Identity.csproj.nuget.dgspec.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Identity/obj/Identity.csproj.nuget.g.props" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Identity/obj/Identity.csproj.nuget.g.targets" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Identity/obj/project.assets.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Identity/obj/project.packagespec.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/WebApp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/WebApp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/bin/Debug/netcoreapp2.2/WebApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/bin/Debug/netcoreapp2.2/WebApp.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/bin/Debug/netcoreapp2.2/WebApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/bin/Debug/netcoreapp2.2/WebApp.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/obj/Debug/netcoreapp2.2/WebApp.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/obj/Debug/netcoreapp2.2/WebApp.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/obj/Debug/netcoreapp2.2/WebApp.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/obj/Debug/netcoreapp2.2/WebApp.csprojAssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/obj/Debug/netcoreapp2.2/WebApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/obj/Debug/netcoreapp2.2/WebApp.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/obj/Debug/netcoreapp2.2/WebApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/obj/Debug/netcoreapp2.2/WebApp.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/obj/WebApp.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/obj/WebApp.csproj.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ee.itcollege.iiounm.BLL.Base/BaseBLL.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ee.itcollege.iiounm.BLL.Base/Helpers/BaseServiceFactory.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ee.itcollege.iiounm.BLL.Base/Helpers/BaseServiceProvider.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ee.itcollege.iiounm.BLL.Base/Mappers/BaseBLLMapper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ee.itcollege.iiounm.BLL.Base/Services/BaseEntityService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ee.itcollege.iiounm.BLL.Base/Services/BaseService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ee.itcollege.iiounm.BLL.Base/ee.itcollege.iiounm.BLL.Base.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.BLL.Base/Helpers/IBaseServiceFactory.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.BLL.Base/Helpers/IBaseServiceProvider.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.BLL.Base/IBaseBLL.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.BLL.Base/Mappers/IBaseBLLMapper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.BLL.Base/Services/IBaseService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.BLL.Base/ee.itcollege.iiounm.Contracts.BLL.Base.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.Base/ITrackableInstance.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.Base/ee.itcollege.iiounm.Contracts.Base.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.DAL.Base/Helpers/IBaseRepositoryFactory.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.DAL.Base/Helpers/IBaseRepositoryProvider.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.DAL.Base/IBaseUnitOfWork.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.DAL.Base/IDataContext.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.DAL.Base/IDomainEntity.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.DAL.Base/Mappers/IBaseDALMapper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.DAL.Base/Repositories/IBaseRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.DAL.Base/ee.itcollege.iiounm.Contracts.DAL.Base.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ee.itcollege.iiounm.DAL.Base.EF/BaseUnitOfWork.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ee.itcollege.iiounm.DAL.Base.EF/Helpers/BaseRepositoryFactory.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ee.itcollege.iiounm.DAL.Base.EF/Helpers/BaseRepositoryProvider.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ee.itcollege.iiounm.DAL.Base.EF/Mappers/BaseDALMapper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ee.itcollege.iiounm.DAL.Base.EF/Repositories/BaseRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ee.itcollege.iiounm.DAL.Base.EF/ee.itcollege.iiounm.DAL.Base.EF.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ee.itcollege.iiounm.Identity/IdentityExtensions.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ee.itcollege.iiounm.Identity/JwtHelper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ee.itcollege.iiounm.Identity/ee.itcollege.iiounm.Identity.csproj" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -200,10 +47,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebApp/ApiControllers/v1_0/AppUsersController.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="12" column="35" lean-forward="true" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
+            <state relative-caret-position="70">
+              <caret line="12" column="35" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
               <folding>
-                <marker date="1557396790261" expanded="true" signature="6:250" ph="..." />
+                <marker date="1557396790261" expanded="false" signature="6:250" ph="..." />
                 <marker date="1557396790261" expanded="true" signature="288:4467" ph="{...}" />
                 <marker date="1557396790261" expanded="true" signature="295:375" ph="/// Represents a RESTful app users service. ... " />
                 <marker date="1557396790261" expanded="true" signature="608:4465" ph="{...}" />
@@ -232,7 +79,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebApp/WebApp.csproj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
+            <state relative-caret-position="140">
               <caret line="10" column="70" selection-start-line="10" selection-start-column="70" selection-end-line="10" selection-end-column="70" />
             </state>
           </provider>
@@ -241,7 +88,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebApp/ConfigureSwaggerOptions.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="56">
+            <state relative-caret-position="42">
               <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
               <folding>
                 <marker date="1557125497567" expanded="false" signature="6:262" ph="..." />
@@ -258,7 +105,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebApp/ApiControllers/v1_0/AppUsersOnObjectsController.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
+            <state relative-caret-position="1526">
               <caret line="122" column="78" selection-start-line="122" selection-start-column="78" selection-end-line="122" selection-end-column="78" />
               <folding>
                 <marker date="1557396721517" expanded="false" signature="6:250" ph="..." />
@@ -291,7 +138,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebApp/ApiControllers/v1_0/AppUsersInPositionsController.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="875">
+            <state relative-caret-position="1540">
               <caret line="123" column="73" selection-start-line="123" selection-start-column="73" selection-end-line="123" selection-end-column="73" />
               <folding>
                 <marker date="1557395745663" expanded="false" signature="6:250" ph="..." />
@@ -324,7 +171,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebApp/ApiControllers/v1_0/AppUsersPositionsController.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
+            <state relative-caret-position="1456">
               <caret line="114" selection-start-line="114" selection-end-line="114" />
               <folding>
                 <marker date="1557397130152" expanded="false" signature="6:139" ph="..." />
@@ -355,7 +202,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebApp/ApiControllers/v1_0/BillLinesController.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
+            <state relative-caret-position="1596">
               <caret line="127" selection-start-line="127" selection-end-line="127" />
               <folding>
                 <marker date="1557397330664" expanded="false" signature="6:250" ph="..." />
@@ -388,7 +235,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebApp/ApiControllers/v1_0/BillsController.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
+            <state relative-caret-position="1512">
               <caret line="121" column="49" selection-start-line="121" selection-start-column="49" selection-end-line="121" selection-end-column="49" />
               <folding>
                 <marker date="1557399110299" expanded="false" signature="6:250" ph="..." />
@@ -418,10 +265,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebApp/ApiControllers/v1_0/ClientGroupsController.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
+            <state relative-caret-position="1386">
               <caret line="109" selection-start-line="109" selection-end-line="109" />
               <folding>
                 <marker date="1557399337355" expanded="false" signature="6:139" ph="..." />
@@ -449,38 +296,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebApp/Controllers/AppUsersPositionsController.cs">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
-              <folding>
-                <marker date="1557308180473" expanded="false" signature="35:357" ph="..." />
-                <marker date="1557308180473" expanded="true" signature="387:4470" ph="{...}" />
-                <marker date="1557308180473" expanded="true" signature="463:4468" ph="{...}" />
-                <marker date="1557308180473" expanded="true" signature="565:609" ph="{...}" />
-                <marker date="1557308180473" expanded="true" signature="693:850" ph="{...}" />
-                <marker date="1557308180473" expanded="true" signature="953:1417" ph="{...}" />
-                <marker date="1557308180473" expanded="true" signature="991:1054" ph="{...}" />
-                <marker date="1557308180473" expanded="true" signature="1056:1181" ph="/* var appUserPosition = await _context.AppUsersPositions ... */" />
-                <marker date="1557308180473" expanded="true" signature="1301:1364" ph="{...}" />
-                <marker date="1557308180473" expanded="true" signature="1497:1544" ph="{...}" />
-                <marker date="1557308180473" expanded="true" signature="1554:1774" ph="/* POST: AppUsersPositions/Create ... */" />
-                <marker date="1557308180473" expanded="true" signature="1968:2271" ph="{...}" />
-                <marker date="1557308180473" expanded="true" signature="2014:2218" ph="{...}" />
-                <marker date="1557308180473" expanded="true" signature="2368:2705" ph="{...}" />
-                <marker date="1557308180473" expanded="true" signature="2406:2469" ph="{...}" />
-                <marker date="1557308180473" expanded="true" signature="2589:2652" ph="{...}" />
-                <marker date="1557308180473" expanded="true" signature="2715:2935" ph="/* POST: AppUsersPositions/Edit/5 ... */" />
-                <marker date="1557308180473" expanded="true" signature="3135:3536" ph="{...}" />
-                <marker date="1557308180473" expanded="true" signature="3187:3250" ph="{...}" />
-                <marker date="1557308180473" expanded="true" signature="3287:3483" ph="{...}" />
-                <marker date="1557308180473" expanded="true" signature="3637:4113" ph="{...}" />
-                <marker date="1557308180473" expanded="true" signature="3675:3738" ph="{...}" />
-                <marker date="1557308180473" expanded="true" signature="3740:3865" ph="/* var appUserPosition = await _context.AppUsersPositions ... */" />
-                <marker date="1557308180473" expanded="true" signature="3997:4060" ph="{...}" />
-                <marker date="1557308180473" expanded="true" signature="4299:4461" ph="{...}" />
-              </folding>
+            <state relative-caret-position="16">
+              <caret line="34" column="28" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -622,8 +442,6 @@
     <setting file="file://$PROJECT_DIR$/WebApp/Controllers/BillsController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/PublicApi.v1.DTO/ProductForClient.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/PublicApi.v1.DTO/WorkObject.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ee.itcollege.iiounm.DAL.Base.EF/Helpers/BaseRepositoryProvider.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ee.itcollege.iiounm.DAL.Base.EF/Helpers/BaseRepositoryFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DAL.App.EF/Mappers/WorkObjectMapper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DAL.App.EF/Mappers/AppUserInPositionMapper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/DomainEntity.cs" root0="FORCE_HIGHLIGHTING" />
@@ -635,9 +453,6 @@
     <setting file="file://$PROJECT_DIR$/Resources/Default.et.resx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Resources/Default.resx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Resources/Default.Designer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ee.itcollege.iiounm.DAL.Base.EF/BaseUnitOfWork.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.BLL.Base/Helpers/IBaseServiceFactory.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.BLL.Base/Helpers/IBaseServiceProvider.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DAL.App.EF/Mappers/ProductForClientMapper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DAL.App.EF/Mappers/ProductMapper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApp/obj/Debug/netcoreapp2.2/Razor/Views/BillLines/PartialDetailsDelete.g.cshtml.cs" root0="SKIP_HIGHLIGHTING" />
@@ -682,31 +497,24 @@
     <setting file="file://$PROJECT_DIR$/WebApp/Views/Bills/PartialCreateEdit.cshtml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApp/Views/BillLines/PartialDetailsDelete.cshtml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApp/ViewModels/BillCreateEditViewModel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.Base/ITrackableInstance.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApp/Views/PaymentMethods/Delete.cshtml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApp/Views/PaymentMethods/Index.cshtml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApp/Views/PaymentMethods/Details.cshtml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.BLL.Base/Services/IBaseService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8246F26C-6C11-487F-9FE9-3C9A8FB2C1BC/95/f66925bf/PageModel.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/DBC57F52-BDD4-45DA-8B29-C21452AD12F4/55/2b34e891/RazorPage`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BLL.App/Helpers/AppServiceFactory.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.BLL.Base/IBaseBLL.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DAL.App.EF/Helpers/AppRepositoryFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Contracts.BLL.App/IAppBLL.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApp/Views/AppUsersInPositions/Edit.cshtml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.DAL.Base/Helpers/IBaseRepositoryProvider.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApp/Views/AppUsersInPositions/Details.cshtml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.DAL.Base/Helpers/IBaseRepositoryFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApp/Views/AppUsersInPositions/Create.cshtml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApp/Views/AppUsersInPositions/Index.cshtml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApp/Views/AppUsersInPositions/Delete.cshtml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BLL.App/obj/Debug/netstandard2.0/BLL.App.DTO.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.DAL.Base/IDataContext.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApp/Views/AppUsersPositions/Edit.cshtml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApp/Views/AppUsersPositions/Details.cshtml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApp/Views/AppUsersPositions/Create.cshtml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApp/Views/AppUsersPositions/Index.cshtml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.DAL.Base/IDomainEntity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApp/Views/AppUsersPositions/Delete.cshtml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApp/Views/Products/Edit.cshtml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApp/Views/Products/Details.cshtml" root0="FORCE_HIGHLIGHTING" />
@@ -861,7 +669,6 @@
     <setting file="file://$PROJECT_DIR$/Contracts.DAL.App/Repositories/IClientGroupRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/AppUserInPosition.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/35D1D668-9205-4C08-8AC0-8401C2EDB00B/18/f1d5bfdc/SelectList.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ee.itcollege.iiounm.Identity/IdentityExtensions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApp/Areas/Identity/IdentityHostingStartup.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApp/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BLL.App.DTO/obj/Debug/netstandard2.0/BLL.App.DTO.AssemblyInfo.cs" root0="FORCE_HIGHLIGHTING" />
@@ -870,12 +677,9 @@
     <setting file="file://$PROJECT_DIR$/Contracts.DAL.App/Repositories/IBillRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApp/Areas/Identity/Pages/Account/ForgotPasswordConfirmation.cshtml.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApp/Areas/Identity/Pages/Account/ResetPasswordConfirmation.cshtml.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.DAL.Base/Repositories/IBaseRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6DADD22E-0197-42CE-80AA-EFEF99855BE0/df/62e592c8/Decimal.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ee.itcollege.iiounm.DAL.Base.EF/Repositories/BaseRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5BEF0119-3538-44C0-B65A-C60D6E1DCCFE/2c/e1e2ce52/IdentityRole`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Translation.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ee.itcollege.iiounm.Identity/JwtHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/MultiLangString.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApp/ApiControllers/v1_0/Identity/AccountController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApp/Areas/Identity/Pages/Account/Manage/_ViewStart.cshtml" root0="FORCE_HIGHLIGHTING" />
@@ -939,7 +743,6 @@
     <setting file="file://$PROJECT_DIR$/WebApp/Areas/Admin/Views/Shared/_Layout.cshtml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/PublicApi.v1/Mappers/AppUserMapper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApp/Areas/Admin/Views/Home/Index.cshtml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.DAL.Base/IBaseUnitOfWork.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Contracts.DAL.App/IAppUnitOfWork.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApp/Helpers/EmailSender.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Contracts.BLL.App/Services/IBillService.cs" root0="FORCE_HIGHLIGHTING" />
@@ -1009,9 +812,6 @@
     <setting file="file://$PROJECT_DIR$/DAL.App.DTO/AppUserOnObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BLL.App.DTO/Identity/AppRole.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BLL.App.DTO/Identity/AppUser.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ee.itcollege.iiounm.DAL.Base.EF/Mappers/BaseDALMapper.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.DAL.Base/Mappers/IBaseDALMapper.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ee.itcollege.iiounm.Contracts.BLL.Base/Mappers/IBaseBLLMapper.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -1085,13 +885,12 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="SolutionExplorer" proportions="" version="1">
+    <navigator currentView="FileSystemExplorer" proportions="" version="1">
       <autoscrollToSource FileSystemExplorer="false" />
       <autoscrollFromSource FileSystemExplorer="false" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AssemblyExplorer" />
       <pane id="SolutionExplorer">
         <subPane>
           <expand>
@@ -1099,29 +898,12 @@
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
               <item name="HomeProject" type="24d0babc:SolutionExplorerModelNode" />
             </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="HomeProject" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="WebApp" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="HomeProject" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="WebApp" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="ApiControllers" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="HomeProject" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="WebApp" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="ApiControllers" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="v1_0" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
           </expand>
           <select />
         </subPane>
         <option name="show-all-files" value="false" />
       </pane>
+      <pane id="AssemblyExplorer" />
       <pane id="FileSystemExplorer">
         <subPane>
           <expand>
@@ -1240,7 +1022,8 @@
       <workItem from="1557589027119" duration="2341000" />
       <workItem from="1557591800218" duration="929000" />
       <workItem from="1557592770861" duration="4196000" />
-      <workItem from="1557602589562" duration="1714000" />
+      <workItem from="1557602589562" duration="2233000" />
+      <workItem from="1557656163271" duration="247000" />
     </task>
     <task id="LOCAL-00001" summary="Repositories, uow, but webpage throws error">
       <created>1552414453765</created>
@@ -1351,7 +1134,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="513182000" />
+    <option name="totallyTimeSpent" value="513948000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1364,16 +1147,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14901665" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15128593" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3289689" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.049099836" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.512275" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.46153846" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1385,7 +1167,7 @@
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.32890365" />
       <window_info anchor="bottom" id="Unit Tests" order="12" weight="0.32941177" />
       <window_info anchor="bottom" id="REST Client" order="13" weight="0.3289689" />
-      <window_info anchor="bottom" id="Terminal" order="14" weight="0.31423897" />
+      <window_info anchor="bottom" id="Terminal" order="14" weight="0.87234044" />
       <window_info anchor="bottom" id="Event Log" order="15" side_tool="true" weight="0.3289689" />
       <window_info anchor="bottom" id="Build" order="16" weight="0.13747954" />
       <window_info anchor="bottom" id="TypeScript" order="17" />
@@ -1811,13 +1593,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="34" column="28" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Domain/Bill.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
@@ -2154,16 +1929,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/ApiControllers/v1_0/AppUsersController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="12" column="35" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
+          <folding>
+            <marker date="1557396790261" expanded="false" signature="6:250" ph="..." />
+            <marker date="1557396790261" expanded="true" signature="288:4467" ph="{...}" />
+            <marker date="1557396790261" expanded="true" signature="295:375" ph="/// Represents a RESTful app users service. ... " />
+            <marker date="1557396790261" expanded="true" signature="608:4465" ph="{...}" />
+            <marker date="1557396790261" expanded="true" signature="663:772" ph="/// App users controller. ... " />
+            <marker date="1557396790261" expanded="true" signature="819:863" ph="{...}" />
+            <marker date="1557396790261" expanded="true" signature="873:1024" ph="/// Get all app users for logged in user. ... " />
+            <marker date="1557396790261" expanded="true" signature="1144:1384" ph="{...}" />
+            <marker date="1557396790261" expanded="true" signature="1394:1573" ph="/// Get single user. ... " />
+            <marker date="1557396790261" expanded="true" signature="1693:1994" ph="{...}" />
+            <marker date="1557396790261" expanded="true" signature="1892:1955" ph="{...}" />
+            <marker date="1557396790261" expanded="true" signature="2004:2227" ph="/// Update app user. ... " />
+            <marker date="1557396790261" expanded="true" signature="2356:2848" ph="{...}" />
+            <marker date="1557396790261" expanded="true" signature="2400:2465" ph="{...}" />
+            <marker date="1557396790261" expanded="true" signature="2545:2608" ph="{...}" />
+            <marker date="1557396790261" expanded="true" signature="2858:3003" ph="/// Creates new app user. ... " />
+            <marker date="1557396790261" expanded="true" signature="3165:3889" ph="{...}" />
+            <marker date="1557396790261" expanded="true" signature="3746:3868" ph="{...}" />
+            <marker date="1557396790261" expanded="true" signature="3899:4061" ph="/// Deletes app user. ... " />
+            <marker date="1557396790261" expanded="true" signature="4152:4459" ph="{...}" />
+            <marker date="1557396790261" expanded="true" signature="4258:4321" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/WebApp/WebApp.csproj">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
+        <state relative-caret-position="140">
           <caret line="10" column="70" selection-start-line="10" selection-start-column="70" selection-end-line="10" selection-end-column="70" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebApp/ConfigureSwaggerOptions.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
+        <state relative-caret-position="42">
           <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
           <folding>
             <marker date="1557125497567" expanded="false" signature="6:262" ph="..." />
@@ -2178,7 +1983,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WebApp/ApiControllers/v1_0/AppUsersOnObjectsController.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
+        <state relative-caret-position="1526">
           <caret line="122" column="78" selection-start-line="122" selection-start-column="78" selection-end-line="122" selection-end-column="78" />
           <folding>
             <marker date="1557396721517" expanded="false" signature="6:250" ph="..." />
@@ -2207,39 +2012,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/ApiControllers/v1_0/AppUsersController.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="12" column="35" lean-forward="true" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
-          <folding>
-            <marker date="1557396790261" expanded="true" signature="6:250" ph="..." />
-            <marker date="1557396790261" expanded="true" signature="288:4467" ph="{...}" />
-            <marker date="1557396790261" expanded="true" signature="295:375" ph="/// Represents a RESTful app users service. ... " />
-            <marker date="1557396790261" expanded="true" signature="608:4465" ph="{...}" />
-            <marker date="1557396790261" expanded="true" signature="663:772" ph="/// App users controller. ... " />
-            <marker date="1557396790261" expanded="true" signature="819:863" ph="{...}" />
-            <marker date="1557396790261" expanded="true" signature="873:1024" ph="/// Get all app users for logged in user. ... " />
-            <marker date="1557396790261" expanded="true" signature="1144:1384" ph="{...}" />
-            <marker date="1557396790261" expanded="true" signature="1394:1573" ph="/// Get single user. ... " />
-            <marker date="1557396790261" expanded="true" signature="1693:1994" ph="{...}" />
-            <marker date="1557396790261" expanded="true" signature="1892:1955" ph="{...}" />
-            <marker date="1557396790261" expanded="true" signature="2004:2227" ph="/// Update app user. ... " />
-            <marker date="1557396790261" expanded="true" signature="2356:2848" ph="{...}" />
-            <marker date="1557396790261" expanded="true" signature="2400:2465" ph="{...}" />
-            <marker date="1557396790261" expanded="true" signature="2545:2608" ph="{...}" />
-            <marker date="1557396790261" expanded="true" signature="2858:3003" ph="/// Creates new app user. ... " />
-            <marker date="1557396790261" expanded="true" signature="3165:3889" ph="{...}" />
-            <marker date="1557396790261" expanded="true" signature="3746:3868" ph="{...}" />
-            <marker date="1557396790261" expanded="true" signature="3899:4061" ph="/// Deletes app user. ... " />
-            <marker date="1557396790261" expanded="true" signature="4152:4459" ph="{...}" />
-            <marker date="1557396790261" expanded="true" signature="4258:4321" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebApp/ApiControllers/v1_0/AppUsersInPositionsController.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="875">
+        <state relative-caret-position="1540">
           <caret line="123" column="73" selection-start-line="123" selection-start-column="73" selection-end-line="123" selection-end-column="73" />
           <folding>
             <marker date="1557395745663" expanded="false" signature="6:250" ph="..." />
@@ -2270,7 +2045,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WebApp/ApiControllers/v1_0/AppUsersPositionsController.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
+        <state relative-caret-position="1456">
           <caret line="114" selection-start-line="114" selection-end-line="114" />
           <folding>
             <marker date="1557397130152" expanded="false" signature="6:139" ph="..." />
@@ -2299,7 +2074,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WebApp/ApiControllers/v1_0/BillLinesController.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
+        <state relative-caret-position="1596">
           <caret line="127" selection-start-line="127" selection-end-line="127" />
           <folding>
             <marker date="1557397330664" expanded="false" signature="6:250" ph="..." />
@@ -2330,7 +2105,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WebApp/ApiControllers/v1_0/BillsController.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
+        <state relative-caret-position="1512">
           <caret line="121" column="49" selection-start-line="121" selection-start-column="49" selection-end-line="121" selection-end-column="49" />
           <folding>
             <marker date="1557399110299" expanded="false" signature="6:250" ph="..." />
@@ -2361,7 +2136,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WebApp/ApiControllers/v1_0/ClientGroupsController.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
+        <state relative-caret-position="1386">
           <caret line="109" selection-start-line="109" selection-end-line="109" />
           <folding>
             <marker date="1557399337355" expanded="false" signature="6:139" ph="..." />
@@ -2385,6 +2160,13 @@
             <marker date="1557399337355" expanded="true" signature="3884:4192" ph="{...}" />
             <marker date="1557399337355" expanded="true" signature="4000:4063" ph="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16">
+          <caret line="34" column="28" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
         </state>
       </provider>
     </entry>
