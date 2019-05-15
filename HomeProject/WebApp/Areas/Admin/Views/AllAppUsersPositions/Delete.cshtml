@@ -1,0 +1,19 @@
+@model BLL.App.DTO.AppUserPosition
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>@Resources.Views.Common.Delete</h1>
+
+<h3>@Resources.Views.Common.DeleteConfirmation</h3>
+<div>
+    <partial name="PartialDetailsDelete" model="Model"/>
+
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="@Resources.Views.Common.Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">@Resources.Views.Common.BackToList</a>
+    </form>
+</div>

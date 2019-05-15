@@ -13,8 +13,6 @@ namespace Domain
         public int ClientId { get; set; }
         public Client Client { get; set; }
         
-        public ICollection<BillLine> BillLines { get; set; }
-
         public decimal Count { get; set; }
     }
 }

@@ -74,7 +74,20 @@ namespace DAL.App.EF.Repositories
                 .Include(c => c.AppUser)
                 .Include(c => c.Payments)
                 .Where(c => c.AppUser.Id == userId)
-                .Select(e => BillMapper.MapFromDomain(e)).ToListAsync();
+                .Select(c => new Bill()
+                {
+                    Id = c.Id,
+                    Client = ClientMapper.MapFromDomain(c.Client),
+                    ClientId = c.ClientId,
+                    ArrivalFee = c.ArrivalFee,
+                    SumWithoutTaxes = c.SumWithOutTaxes,
+                    TaxPercent = c.TaxPercent,
+                    FinalSum = c.SumWithOutTaxes * (1 + (c.TaxPercent / 100)),
+                    DateTime = c.DateTime,
+                    InvoiceNr = c.InvoiceNr,
+                    Comment = c.Comment
+                })
+                .ToListAsync();
         }
 
         public async Task<Bill> FindForUserAsync(int id, int userId)

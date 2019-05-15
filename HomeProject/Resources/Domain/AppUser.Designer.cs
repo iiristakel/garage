@@ -61,6 +61,15 @@ namespace Resources.Domain {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Worker&apos;s positions.
+        /// </summary>
+        public static string AppUserInPositions {
+            get {
+                return ResourceManager.GetString("AppUserInPositions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Workers.
         /// </summary>
         public static string AppUsersString {

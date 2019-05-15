@@ -45,6 +45,7 @@ namespace DAL.App.EF.Repositories
             return await RepositoryDbSet
                 .Include(c =>c.AppUserOnObjects)
                 .Include(d=> d.AppUserInPositions)
+                    .ThenInclude(f => f.AppUserPosition)
                 .Include(e => e.Bills)
                 .Where(c => c.Id == userId)
                 .Select(e => AppUserMapper.MapFromDomain(e))

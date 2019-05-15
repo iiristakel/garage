@@ -7,6 +7,9 @@ namespace WebApp.ViewModels
     {
         public BLL.App.DTO.WorkObject WorkObject { get; set; }
         public SelectList ClientSelectList { get; set; }
+       
+
+        
 
     }
 }

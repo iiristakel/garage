@@ -141,4 +141,7 @@
   <data name="PhoneNr" xml:space="preserve">
     <value>Telefoninumber</value>
   </data>
+  <data name="AppUserInPositions" xml:space="preserve">
+    <value>Töötaja positsioonid</value>
+  </data>
 </root>

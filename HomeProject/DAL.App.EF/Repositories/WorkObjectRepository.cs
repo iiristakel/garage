@@ -25,14 +25,8 @@ namespace DAL.App.EF.Repositories
             return await RepositoryDbSet
                 .Include(p => p.Client)
                 .Include(p => p.AppUsersOnObject)
-                .Select(c => new WorkObject()
-                {
-                    Id = c.Id,
-                    Client = ClientMapper.MapFromDomain(c.Client),
-                    ClientId = c.ClientId,
-                    From = c.From,
-                    Until = c.Until
-                })
+                .Include(p => p.ProductsForClient)
+                .Select(e => WorkObjectMapper.MapFromDomain(e))
                 .ToListAsync();
         }
 
@@ -44,6 +38,10 @@ namespace DAL.App.EF.Repositories
             {
                 await RepositoryDbContext.Entry(workObject)
                     .Reference(c => c.Client).LoadAsync();
+                await RepositoryDbContext.Entry(workObject)
+                    .Collection(c => c.AppUsersOnObject).LoadAsync();
+                await RepositoryDbContext.Entry(workObject)
+                    .Collection(c => c.ProductsForClient).LoadAsync();
             }
 
             return WorkObjectMapper.MapFromDomain(workObject);
@@ -55,16 +53,19 @@ namespace DAL.App.EF.Repositories
             return await RepositoryDbSet
                 .Include(c => c.Client)
                 .Include(p => p.AppUsersOnObject)
+                .Include(p => p.ProductsForClient)
                 .Where(p => p.AppUsersOnObject.Any(q => q.AppUserId == userId))
                 .Select(e => WorkObjectMapper.MapFromDomain(e))
                 .ToListAsync();
         }
 
+
         public async Task<WorkObject> FindForUserAsync(int id, int userId)
         {
             var contact = await RepositoryDbSet
                 .Include(c => c.Client)
-                .Include(p => p.AppUsersOnObject.Where(q => q.AppUserId == userId))
+                .Include(p => p.AppUsersOnObject)
+                .Include(p => p.ProductsForClient)
                 .FirstOrDefaultAsync(m => m.Id == id && m.AppUsersOnObject.Any(q => q.AppUserId == userId));
 
             return WorkObjectMapper.MapFromDomain(contact);        }

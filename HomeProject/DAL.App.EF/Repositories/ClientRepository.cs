@@ -35,7 +35,7 @@ namespace DAL.App.EF.Repositories
             if (client != null)
             {
                 await RepositoryDbContext.Entry(client).Reference(c => c.ClientGroup).LoadAsync();
-                await RepositoryDbContext.Entry(client).Reference(c => c.ProductsForClient).LoadAsync();
+                await RepositoryDbContext.Entry(client).Collection(c => c.ProductsForClient).LoadAsync();
 
             }
             

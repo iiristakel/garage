@@ -1,0 +1,59 @@
+@model IEnumerable<BLL.App.DTO.Payment>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>@Resources.Domain.Payment.PaymentsString</h1>
+
+<p>
+    <a asp-action="Create">@Resources.Views.Common.CreateNew</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Bill)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaymentMethod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Client)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaymentTime)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bill.InvoiceNr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentMethod.PaymentMethodValue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentTime)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">@Resources.Views.Common.Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">@Resources.Views.Common.Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">@Resources.Views.Common.Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

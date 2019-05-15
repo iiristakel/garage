@@ -1,0 +1,53 @@
+@model WebApp.Areas.Admin.ViewModels.BillCreateEditViewModel
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
+
+<div class="form-group">
+    <label asp-for="Bill.AppUserId" class="control-label">@Resources.Domain.Bill.AppUser</label>
+    <select asp-for="Bill.AppUserId" class="form-control" asp-items="Model.AppUserSelectList"></select>
+    <span asp-validation-for="Bill.AppUserId" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Bill.ClientId" class="control-label">@Resources.Domain.Bill.Client</label>
+    <select asp-for="Bill.ClientId" class="form-control" asp-items="Model.ClientSelectList"></select>
+    <span asp-validation-for="Bill.ClientId" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Bill.ArrivalFee" class="control-label"></label>
+    <input asp-for="Bill.ArrivalFee" class="form-control"/>
+    <span asp-validation-for="Bill.ArrivalFee" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Bill.SumWithoutTaxes" class="control-label"></label>
+    <input asp-for="Bill.SumWithoutTaxes" class="form-control"/>
+    <span asp-validation-for="Bill.SumWithoutTaxes" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Bill.TaxPercent" class="control-label"></label>
+    <input asp-for="Bill.TaxPercent" class="form-control"/>
+    <span asp-validation-for="Bill.TaxPercent" class="text-danger"></span>
+</div>
+@* <div class="form-group"> *@
+@*     <label asp-for="Bill.FinalSum" class="control-label"></label> *@
+@*     <input asp-for="Bill.FinalSum" class="form-control"/> *@
+@*     <span asp-validation-for="Bill.FinalSum" class="text-danger"></span> *@
+@* </div> *@
+<div class="form-group">
+    <label asp-for="Bill.DateTime" class="control-label"></label>
+    <input asp-for="Bill.DateTime" class="form-control"/>
+    <span asp-validation-for="Bill.DateTime" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Bill.InvoiceNr" class="control-label"></label>
+    <input asp-for="Bill.InvoiceNr" class="form-control"/>
+    <span asp-validation-for="Bill.InvoiceNr" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Bill.Comment" class="control-label"></label>
+    <input asp-for="Bill.Comment" class="form-control"/>
+    <span asp-validation-for="Bill.Comment" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <input type="submit" value="@Resources.Views.Common.Save" class="btn btn-primary"/>
+</div>

@@ -1,0 +1,12 @@
+@model BLL.App.DTO.PaymentMethod
+
+<h4>@Resources.Domain.PaymentMethod.PaymentMethodString</h4>
+<hr />
+<dl class="row">
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.PaymentMethodValue)
+    </dt>
+    <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.PaymentMethodValue)
+    </dd>
+</dl>

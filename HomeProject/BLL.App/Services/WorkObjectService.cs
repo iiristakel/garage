@@ -28,10 +28,9 @@ namespace BLL.App.Services
 
         public async Task<List<WorkObject>> AllForUserAsync(int userId)
         {
-            return (await Uow.WorkObjects
-                    .AllForUserAsync(userId))
-                .Select(e => WorkObjectMapper
-                    .MapFromDAL(e)).ToList();
+            return (await Uow.WorkObjects.AllForUserAsync(userId))
+                .Select(e => WorkObjectMapper.MapFromDAL(e))
+                .ToList();
         }
 
         public async Task<WorkObject> FindForUserAsync(int id, int userId)

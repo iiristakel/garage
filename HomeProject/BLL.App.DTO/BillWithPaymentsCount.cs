@@ -1,11 +1,16 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using BLL.App.DTO.Identity;
 
 namespace BLL.App.DTO
 {
     public class BillWithPaymentsCount 
     {
         public int Id { get; set; }
+        
+        public int AppUserId { get; set; }
+        [Display(Name = nameof(AppUser), ResourceType = typeof(Resources.Domain.Bill))]
+        public AppUser AppUser { get; set; }
         
         public int ClientId { get; set; }
         [Display(Name = nameof(Client), ResourceType = typeof(Resources.Domain.Bill))]

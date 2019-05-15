@@ -104,6 +104,7 @@ namespace WebApp.Controllers
         public async Task<IActionResult> Edit(int id, [Bind("FirstName,LastName,HiringDate,LeftJob,PhoneNr,Email,Id")]
             BLL.App.DTO.Identity.AppUser appUser)
         {
+            
             if (id != appUser.Id)
             {
                 return NotFound();

@@ -115,6 +115,7 @@ namespace WebApp.ApiControllers.v1_0.Identity
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
                     */
 
+                    
                     // create claims based user 
                     var claimsPrincipal = await _signInManager.CreateUserPrincipalAsync(appUser);
 

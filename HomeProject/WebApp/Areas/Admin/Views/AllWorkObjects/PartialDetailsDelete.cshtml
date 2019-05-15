@@ -1,0 +1,36 @@
+@model BLL.App.DTO.WorkObject
+
+<h4>@Resources.Domain.WorkObject.WorkObjectString</h4>
+<hr />
+<dl class="row">
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.Client)
+    </dt>
+    <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.Client.CompanyName)
+    </dd >
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.From)
+    </dt>
+    <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.From)
+    </dd>
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.Until)
+    </dt>
+    <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.Until)
+    </dd>
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.AppUsersOnObject)
+    </dt>
+    <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.AppUsersOnObject)
+    </dd>
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.ProductsForClient)
+    </dt>
+    <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.ProductsForClient)
+    </dd>
+</dl>

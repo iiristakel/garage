@@ -76,6 +76,10 @@
           "target": "Package",
           "version": "[4.0.1, )"
         },
+        "System.Globalization": {
+          "target": "Package",
+          "version": "[4.3.0, )"
+        },
         "ee.itcollege.iiounm.BLL.Base": {
           "target": "Package",
           "version": "[1.0.2, )"

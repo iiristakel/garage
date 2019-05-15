@@ -1,0 +1,60 @@
+@model IEnumerable<BLL.App.DTO.WorkObject>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>@Resources.Domain.WorkObject.WorkObjectsString</h1>
+
+<p>
+    <a asp-action="Create">@Resources.Views.Common.CreateNew</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Client)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.From)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Until)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AppUsersOnObject)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductsForClient)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client.CompanyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.From)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Until)
+            </td>
+            <td>
+               
+                @Html.DisplayFor(modelItem => item.ProductsForClient)
+                
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductsForClient)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">@Resources.Views.Common.Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">@Resources.Views.Common.Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">@Resources.Views.Common.Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@using System.Globalization
+@using Domain.Identity
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8"/>
@@ -25,39 +31,45 @@
         <nav class="main-header navbar navbar-expand bg-dark navbar-light border-bottom">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
-                <a class="navbar-brand" asp-area="Admin" asp-controller="Home" asp-action="Index">WebApp</a>
-                
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a class="nav-link" asp-area="Admin" asp-controller="Home" asp-action="Index">Home</a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a class="nav-link" asp-area="" asp-controller="Workers" asp-action="Index">Workers</a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a class="nav-link" asp-area="" asp-controller="Clients" asp-action="Index">Clients</a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a class="nav-link" asp-area="" asp-controller="Bills" asp-action="Index">Bills</a>
-                </li>
-                <li class="nav-item" d-none d-sm-inline-block>
-                    <a class="nav-link" asp-area="" asp-controller="BillLines" asp-action="Index">BillLines</a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a class="nav-link" asp-area="" asp-controller="WorkObjects" asp-action="Index">WorkObjects</a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a class="nav-link" asp-area="" asp-controller="Products" asp-action="Index">Products</a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a class="nav-link" asp-area="" asp-controller="Payments" asp-action="Index">Payments</a>
-                </li>
-                
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <li class="nav-item d-none d-sm-inline-block">
+                        <a class="nav-link" asp-area="admin" asp-controller="Home" asp-action="Index">@Resources.Views.Shared._Layout.NavHome</a>
+                    </li>
+                    <li class="nav-item d-none d-sm-inline-block">
+                        <a class="nav-link" asp-area="admin" asp-controller="AllAppUsers" asp-action="Index">@Resources.Views.Shared._Layout.NavWorkers</a>
+                    </li>
+                    <li class="nav-item d-none d-sm-inline-block">
+                        <a class="nav-link" asp-area="admin" asp-controller="AllClients" asp-action="Index">@Resources.Views.Shared._Layout.NavClients</a>
+                    </li>
+                    <li class="nav-item d-none d-sm-inline-block">
+                        <a class="nav-link" asp-area="admin" asp-controller="AllProducts" asp-action="Index">@Resources.Views.Shared._Layout.NavProducts</a>
+                    </li>
+                    <li class="nav-item d-none d-sm-inline-block">
+                        <a class="nav-link" asp-area="admin" asp-controller="AllBills" asp-action="Index">@Resources.Views.Shared._Layout.NavBills</a>
+                    </li>
+                    <li class="nav-item d-none d-sm-inline-block">
+                        <a class="nav-link" asp-area="admin" asp-controller="AllPaymentMethods" asp-action="Index">@Resources.Views.Shared._Layout.NavPaymentMethods</a>
+                    </li>
+                    <li class="nav-item d-none d-sm-inline-block">
+                        <a class="nav-link" asp-area="admin" asp-controller="AllClientGroups" asp-action="Index">@Resources.Views.Shared._Layout.NavClientGroups</a>
+                    </li>
+                    <li class="nav-item d-none d-sm-inline-block">
+                        <a class="nav-link" asp-area="admin" asp-controller="AllAppUsersPositions" asp-action="Index">@Resources.Views.Shared._Layout.NavAppUsersPositions</a>
+                    </li>
+                    <li class="nav-item d-none d-sm-inline-block">
+                        <a class="nav-link" asp-area="admin" asp-controller="AllPayments" asp-action="Index">@Resources.Views.Shared._Layout.NavPayments</a>
+                    </li>
+                    <li class="nav-item d-none d-sm-inline-block">
+                        <a class="nav-link" asp-area="admin" asp-controller="AllWorkObjects" asp-action="Index">@Resources.Views.Shared._Layout.NavWorkObjects</a>
+                    </li>
+                }
             </ul>
 
-            @* <!-- Right navbar links --> *@
-            @* <ul class="navbar-nav ml-auto"> *@
-            @*     <partial name="_LoginPartial"/> *@
-            @* </ul> *@
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+                <partial name="_LoginPartial"/>
+            </ul>
         </nav>
         <!-- /.navbar -->
 
@@ -73,10 +85,19 @@
 
     <footer class="main-footer">
         <div class="container">
-            &copy; 2019 - WebApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-            <div class="float-right d-none d-sm-inline-block">
-                <b>Iiris Takel</b>
+            <div class="row">
+                <div class="col-md-4">&copy; 2019 - WebApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">@Resources.Views.Shared._Layout.NavPrivacy</a></div>
+                <div class="col-md-4">UICulture: @CultureInfo.CurrentUICulture.Name Culture: @CultureInfo.CurrentUICulture.Name</div>
+                <div class="col-md-4">
+                    <partial name="_LanguageSelectionPartial"/>
+                </div>
             </div>
+
+
+            <div class="float-left d-none d-sm-inline-block">
+                <b>Iiris Takel </b>
+            </div>
+
         </div>
     </footer>
 </div>

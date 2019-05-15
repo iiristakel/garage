@@ -33,7 +33,6 @@ namespace BLL.App.Mappers
                 HiringDate = appUser.HiringDate,
                 LeftJob = appUser.LeftJob,
                 PhoneNr = appUser.PhoneNr
-
             };
 
             return res;

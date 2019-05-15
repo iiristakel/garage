@@ -28,7 +28,6 @@ namespace BLL.App.DTO.Identity
         //TODO: translation
         public ICollection<AppUserInPosition> AppUserInPositions { get; set; }
 
-
         [Display(Name = nameof(HiringDate), ResourceType = typeof(Resources.Domain.AppUser))]
         [DataType(DataType.Date)]
         public DateTime? HiringDate { get; set; }

@@ -12,9 +12,9 @@ namespace BLL.App.DTO
         [Display(Name = nameof(Client), ResourceType = typeof(Resources.Domain.WorkObject))]
         public Client Client { get; set; }
 
-//        public ICollection<AppUserOnObject> AppUsersOnObject { get; set; }
-//
-//        public ICollection<ProductForClient> ProductsForClient { get; set; }
+        public ICollection<AppUserOnObject> AppUsersOnObject { get; set; }
+
+        public ICollection<ProductForClient> ProductsForClient { get; set; }
 
         [Display(Name = nameof(From), ResourceType = typeof(Resources.Domain.WorkObject))]
         [DataType(DataType.Date)]

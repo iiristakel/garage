@@ -1,0 +1,54 @@
+@model BLL.App.DTO.Identity.AppUser
+
+<h4>@Resources.Domain.AppUser.AppUserString</h4>
+<hr />
+<dl class="row">
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.Id)
+    </dt>
+    <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.Id)
+    </dd >
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.FirstName)
+    </dt>
+    <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.FirstName)
+    </dd>
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.LastName)
+    </dt>
+    <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.LastName)
+    </dd>
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.HiringDate)
+    </dt>
+    <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.HiringDate)
+    </dd>
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.LeftJob)
+    </dt>
+    <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.LeftJob)
+    </dd>
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.PhoneNr)
+    </dt>
+    <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.PhoneNr)
+    </dd>
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.Email)
+    </dt>
+    <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.Email)
+    </dd>
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.AppUserInPositions)
+    </dt>
+    <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.AppUserInPositions)
+    </dd>
+</dl>

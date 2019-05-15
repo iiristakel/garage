@@ -1,0 +1,28 @@
+@model WebApp.ViewModels.PaymentCreateEditViewModel
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="form-group">
+    <label asp-for="Payment.BillId" class="control-label">@Resources.Domain.Payment.Bill</label>
+    <select asp-for="Payment.BillId" class="form-control" asp-items="Model.BillSelectList"></select>
+</div>
+<div class="form-group">
+    <label asp-for="Payment.PaymentMethodId" class="control-label">@Resources.Domain.Payment.PaymentMethod</label>
+    <select asp-for="Payment.PaymentMethodId" class="form-control" asp-items="Model.PaymentMethodSelectList"></select>
+</div>
+<div class="form-group">
+    <label asp-for="Payment.ClientId" class="control-label">@Resources.Domain.Payment.Client</label>
+    <select asp-for="Payment.ClientId" class="form-control" asp-items="Model.ClientSelectList"></select>
+</div>
+<div class="form-group">
+    <label asp-for="Payment.Sum" class="control-label"></label>
+    <input asp-for="Payment.Sum" class="form-control"/>
+    <span asp-validation-for="Payment.Sum" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Payment.PaymentTime" class="control-label"></label>
+    <input asp-for="Payment.PaymentTime" class="form-control"/>
+    <span asp-validation-for="Payment.PaymentTime" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <input type="submit" value="@Resources.Views.Common.Save" class="btn btn-primary"/>
+</div>

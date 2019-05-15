@@ -1,0 +1,35 @@
+@model IEnumerable<BLL.App.DTO.PaymentMethod>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>@Resources.Domain.PaymentMethod.PaymentMethodsString</h1>
+
+<p>
+    <a asp-action="Create">@Resources.Views.Common.CreateNew</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PaymentMethodValue)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentMethodValue)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">@Resources.Views.Common.Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">@Resources.Views.Common.Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">@Resources.Views.Common.Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

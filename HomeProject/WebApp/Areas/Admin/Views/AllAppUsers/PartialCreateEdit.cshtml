@@ -1,0 +1,38 @@
+@model WebApp.Areas.Admin.ViewModels.AppUserCreateEditViewModel
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+<div class="form-group">
+    <label asp-for="AppUser.FirstName" class="control-label"></label>
+    <input asp-for="AppUser.FirstName" class="form-control"/>
+    <span asp-validation-for="AppUser.FirstName" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="AppUser.LastName" class="control-label"></label>
+    <input asp-for="AppUser.LastName" class="form-control"/>
+    <span asp-validation-for="AppUser.LastName" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="AppUser.HiringDate" class="control-label"></label>
+    <input asp-for="AppUser.HiringDate" class="form-control"/>
+    <span asp-validation-for="AppUser.HiringDate" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="AppUser.LeftJob" class="control-label"></label>
+    <input asp-for="AppUser.LeftJob" class="form-control"/>
+    <span asp-validation-for="AppUser.LeftJob" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="AppUser.PhoneNr" class="control-label"></label>
+    <input asp-for="AppUser.PhoneNr" class="form-control"/>
+    <span asp-validation-for="AppUser.PhoneNr" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="AppUser.Email" class="control-label"></label>
+    <input asp-for="AppUser.Email" class="form-control"/>
+    <span asp-validation-for="AppUser.Email" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="AppUser.AppUserInPositions" class="control-label"></label>
+    <select asp-for="AppUser.AppUserInPositions" asp-items="Model.AppUserPositionSelectList" class="form-control"></select>
+</div>

@@ -13640,6 +13640,7 @@
       "PublicApi.v1 >= 1.0.0",
       "Resources >= 1.0.0",
       "Swashbuckle.AspNetCore >= 4.0.1",
+      "System.Globalization >= 4.3.0",
       "ee.itcollege.iiounm.BLL.Base >= 1.0.2",
       "ee.itcollege.iiounm.Contracts.BLL.Base >= 1.0.2",
       "ee.itcollege.iiounm.Identity >= 1.0.2"
@@ -13736,6 +13737,10 @@
           "Swashbuckle.AspNetCore": {
             "target": "Package",
             "version": "[4.0.1, )"
+          },
+          "System.Globalization": {
+            "target": "Package",
+            "version": "[4.3.0, )"
           },
           "ee.itcollege.iiounm.BLL.Base": {
             "target": "Package",
