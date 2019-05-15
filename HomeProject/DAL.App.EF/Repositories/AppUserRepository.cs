@@ -29,16 +29,21 @@ namespace DAL.App.EF.Repositories
                 .ToListAsync();
         }
         
-//        public async Task<DAL.App.DTO.Identity.AppUser> FindAsync(int id)
-//        {
-//            var appUser = await base.FindAsync(id);
-//
-//            if (appUser != null)
-//            {
-//            }
-//            
-//            return appUser;
-//        }
+        
+        public async Task<DAL.App.DTO.Identity.AppUser> FindAsync(int id)
+        {
+            
+            var appUser = await RepositoryDbSet.FindAsync(id);
+
+            if (appUser != null)
+            {
+                await RepositoryDbContext.Entry(appUser)
+                    .Reference(c => c.AppUserInPositions)
+                    .LoadAsync();
+            }
+            
+            return AppUserMapper.MapFromDomain(appUser);
+        }
 
         public async Task<List<AppUser>> AllForUserAsync(int userId)
         {

@@ -10,7 +10,7 @@ namespace Domain
         [MaxLength(150)]
         [MinLength(1)]
         [Required]
-        public string ProductName { get; set; }
+        public MultiLangString ProductName { get; set; }
         
         [MaxLength(100)]
         [MinLength(1)]

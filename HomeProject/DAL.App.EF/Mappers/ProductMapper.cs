@@ -29,7 +29,7 @@ namespace DAL.App.EF.Mappers
             var res = product == null ? null : new externalDTO.Product
             {
                 Id = product.Id,
-                ProductName = product.ProductName,
+                ProductName = product.ProductName.Translate(),
                 ProductCode = product.ProductCode,
                 Price = product.Price
 
@@ -43,7 +43,7 @@ namespace DAL.App.EF.Mappers
             var res = product == null ? null : new internalDTO.Product
             {
                 Id = product.Id,
-                ProductName = product.ProductName,
+                ProductName = new internalDTO.MultiLangString(product.ProductName),
                 ProductCode = product.ProductCode,
                 Price = product.Price
             };

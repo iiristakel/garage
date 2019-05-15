@@ -9,7 +9,8 @@ namespace Domain
     {
         private static string _defaultCulture = "en";
 
-        [MaxLength(10240)] public string Value { get; set; } // default value when there are no translations found
+        [MaxLength(10240)] 
+        public string Value { get; set; } // default value when there are no translations found
 
         public ICollection<Translation> Translations { get; set; } = new List<Translation>();
 
@@ -37,12 +38,12 @@ namespace Domain
 
         #endregion
 
-        private void SetTranslation(string value)
+        public void SetTranslation(string value)
         {
             SetTranslation(value, Thread.CurrentThread.CurrentUICulture.Name);
         }
 
-        private void SetTranslation(string value, string culture)
+        public void SetTranslation(string value, string culture)
         {
             // use only neutral part en-US => en
             culture = culture.Substring(0, 2).ToLower();

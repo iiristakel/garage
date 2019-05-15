@@ -11,7 +11,7 @@ namespace Domain
         [Required]
         [MinLength(1)]
         [MaxLength(128)]
-        public string Product { get; set; }
+        public MultiLangString Product { get; set; }
 
         public decimal Sum { get; set; }
         public decimal Amount { get; set; } 

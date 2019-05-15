@@ -10,6 +10,6 @@ namespace Domain
         [MaxLength(64)]
         [MinLength(1)]
         [Required]
-        public string PaymentMethodValue { get; set; }
+        public MultiLangString PaymentMethodValue { get; set; }
     }
 }

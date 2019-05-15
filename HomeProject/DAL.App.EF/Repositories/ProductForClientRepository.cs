@@ -23,6 +23,8 @@ namespace DAL.App.EF.Repositories
             return await RepositoryDbSet
                 .Include(p => p.Client)
                 .Include(p => p.Product)
+                .ThenInclude(p => p.ProductName)
+                .ThenInclude(t => t.Translations)
                 .Include(p => p.WorkObject)
                 .Select(e => ProductForClientMapper.MapFromDomain(e))
                 .ToListAsync();

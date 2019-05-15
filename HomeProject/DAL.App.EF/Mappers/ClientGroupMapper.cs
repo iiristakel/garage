@@ -29,8 +29,8 @@ namespace DAL.App.EF.Mappers
             var res = clientGroup == null ? null : new externalDTO.ClientGroup
             {
                 Id = clientGroup.Id,
-                Name = clientGroup.Name,
-                Description = clientGroup.Description,
+                Name = clientGroup.Name.Translate(),
+                Description = clientGroup.Description.Translate(),
                 DiscountPercent = clientGroup.DiscountPercent
 
             };
@@ -43,8 +43,8 @@ namespace DAL.App.EF.Mappers
             var res = clientGroup == null ? null : new internalDTO.ClientGroup
             {
                 Id = clientGroup.Id,
-                Name = clientGroup.Name,
-                Description = clientGroup.Description,
+                Name = new internalDTO.MultiLangString(clientGroup.Name),
+                Description = new internalDTO.MultiLangString(clientGroup.Description),
                 DiscountPercent = clientGroup.DiscountPercent
             };
             return res;

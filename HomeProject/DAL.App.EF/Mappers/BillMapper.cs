@@ -39,7 +39,7 @@ namespace DAL.App.EF.Mappers
                 FinalSum = bill.FinalSum,
                 DateTime = bill.DateTime,
                 InvoiceNr = bill.InvoiceNr,
-                Comment = bill.Comment
+                Comment = bill.Comment.Translate()
 
             };
 
@@ -61,7 +61,7 @@ namespace DAL.App.EF.Mappers
                 FinalSum = bill.FinalSum,
                 DateTime = bill.DateTime,
                 InvoiceNr = bill.InvoiceNr,
-                Comment = bill.Comment
+                Comment = new internalDTO.MultiLangString(bill.Comment)
             };
             return res;
         }

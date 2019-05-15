@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "5af10997456b7f8b6f23ae667f213dfce8ae732b"
+    "signature": "1a2ef42b62d206eecb4a76ad719e875c1cefec26"
   },
   "compilationOptions": {},
   "targets": {
@@ -9,13 +9,32 @@
     ".NETStandard,Version=v2.0/": {
       "Contracts.DAL.App/1.0.0": {
         "dependencies": {
-          "Contracts.DAL.Base": "1.0.0",
           "DAL.App.DTO": "1.0.0",
           "Domain": "1.0.0",
-          "NETStandard.Library": "2.0.3"
+          "NETStandard.Library": "2.0.3",
+          "ee.itcollege.iiounm.Contracts.DAL.Base": "1.0.2"
         },
         "runtime": {
           "Contracts.DAL.App.dll": {}
+        }
+      },
+      "ee.itcollege.iiounm.Contracts.Base/1.0.2": {
+        "runtime": {
+          "lib/netstandard2.0/ee.itcollege.iiounm.Contracts.Base.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "ee.itcollege.iiounm.Contracts.DAL.Base/1.0.2": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "2.2.2"
+        },
+        "runtime": {
+          "lib/netstandard2.0/ee.itcollege.iiounm.Contracts.DAL.Base.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Microsoft.AspNetCore.Cryptography.Internal/2.2.0": {
@@ -544,14 +563,6 @@
           "System.Runtime": "4.1.0"
         }
       },
-      "Contracts.DAL.Base/1.0.0": {
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore": "2.2.2"
-        },
-        "runtime": {
-          "Contracts.DAL.Base.dll": {}
-        }
-      },
       "DAL.App.DTO/1.0.0": {
         "dependencies": {
           "Domain": "1.0.0",
@@ -563,9 +574,10 @@
       },
       "Domain/1.0.0": {
         "dependencies": {
-          "Contracts.DAL.Base": "1.0.0",
           "Microsoft.Extensions.Identity.Stores": "2.2.0",
-          "System.ComponentModel.Annotations": "4.5.0"
+          "System.ComponentModel.Annotations": "4.5.0",
+          "ee.itcollege.iiounm.Contracts.Base": "1.0.2",
+          "ee.itcollege.iiounm.Contracts.DAL.Base": "1.0.2"
         },
         "runtime": {
           "Domain.dll": {}
@@ -578,6 +590,20 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "ee.itcollege.iiounm.Contracts.Base/1.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jsq8QnGQhvZYnohcrCvmgRiSVeK73TDZ6cUO5STCeMjN5JaxehTV2fmkooLt/mQWwel/dk0hAGQKuC2gVayYSQ==",
+      "path": "ee.itcollege.iiounm.contracts.base/1.0.2",
+      "hashPath": "ee.itcollege.iiounm.contracts.base.1.0.2.nupkg.sha512"
+    },
+    "ee.itcollege.iiounm.Contracts.DAL.Base/1.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-K6UoWJGAMjERx16u/6dQovwmGVA1ASDxC6SVlHS9PYhGyOKyvZ71V8c4yEHy3KNTseh0TX3RvfTHa2LIIetFKQ==",
+      "path": "ee.itcollege.iiounm.contracts.dal.base/1.0.2",
+      "hashPath": "ee.itcollege.iiounm.contracts.dal.base.1.0.2.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Cryptography.Internal/2.2.0": {
       "type": "package",
@@ -935,11 +961,6 @@
       "sha512": "sha512-k1S4Gc6IGwtHGT8188RSeGaX86Qw/wnrgNLshJvsdNUOPP9etMmo8S07c+UlOAx4K/xLuN9ivA1bD0LVurtIxQ==",
       "path": "system.threading.tasks/4.0.11",
       "hashPath": "system.threading.tasks.4.0.11.nupkg.sha512"
-    },
-    "Contracts.DAL.Base/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
     },
     "DAL.App.DTO/1.0.0": {
       "type": "project",

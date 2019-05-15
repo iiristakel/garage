@@ -22,6 +22,7 @@ namespace DAL.App.EF.Repositories
         {
             return await RepositoryDbSet
                 .Include(p => p.WorkObject)
+                .ThenInclude(q => q.Client)
                 .Include(c => c.AppUser)
                 .Select(e => AppUserOnObjectMapper.MapFromDomain(e))
                 .ToListAsync();

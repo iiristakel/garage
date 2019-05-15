@@ -1,6 +1,7 @@
 @model WebApp.Areas.Admin.ViewModels.ClientCreateEditViewModel
 
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
 <div class="form-group">
     <label asp-for="Client.ClientGroupId" class="control-label"></label>
     <select asp-for="Client.ClientGroupId" class ="form-control" asp-items="Model.ClientGroupSelectList"></select>

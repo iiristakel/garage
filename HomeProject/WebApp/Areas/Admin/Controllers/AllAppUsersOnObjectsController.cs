@@ -61,7 +61,7 @@ namespace WebApp.Controllers
             vm.WorkObjectSelectList = new SelectList(
                 await _bll.WorkObjects.AllAsync(),
                 nameof(BLL.App.DTO.WorkObject.Id), 
-                nameof(BLL.App.DTO.WorkObject.Id));
+                nameof(BLL.App.DTO.WorkObject.WorkObjectName));
             
             vm.AppUserSelectList = new SelectList(
                 await _bll.AppUsers.AllAsync(),
@@ -89,7 +89,7 @@ namespace WebApp.Controllers
             vm.WorkObjectSelectList = new SelectList(
                 await _bll.WorkObjects.AllAsync(),
                 nameof(BLL.App.DTO.WorkObject.Id), 
-                nameof(BLL.App.DTO.WorkObject.Id));
+                nameof(BLL.App.DTO.WorkObject.WorkObjectName));
             
             vm.AppUserSelectList = new SelectList(
                 await _bll.AppUsers.AllAsync(),
@@ -119,7 +119,7 @@ namespace WebApp.Controllers
             vm.WorkObjectSelectList = new SelectList(
                 await _bll.WorkObjects.AllAsync(),
                 nameof(BLL.App.DTO.WorkObject.Id), 
-                nameof(BLL.App.DTO.WorkObject.Id));
+                nameof(BLL.App.DTO.WorkObject.WorkObjectName));
             
             vm.AppUserSelectList = new SelectList(
                 await _bll.AppUsers.AllAsync(),
@@ -154,7 +154,7 @@ namespace WebApp.Controllers
             vm.WorkObjectSelectList = new SelectList(
                 await _bll.WorkObjects.AllAsync(),
                 nameof(BLL.App.DTO.WorkObject.Id), 
-                nameof(BLL.App.DTO.WorkObject.Id));
+                nameof(BLL.App.DTO.WorkObject.WorkObjectName ));
             
             vm.AppUserSelectList = new SelectList(
                 await _bll.AppUsers.AllAsync(),

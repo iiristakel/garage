@@ -2,11 +2,11 @@
 
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 <div class="form-group">
-    <label asp-for="AppUserOnObject.AppUserId" class="control-label"></label>
+    <label asp-for="AppUserOnObject.AppUserId" class="control-label">@Resources.Domain.AppUserOnObject.AppUser</label>
     <select asp-for="AppUserOnObject.AppUserId" class="form-control" asp-items="Model.AppUserSelectList"></select>
 </div>
 <div class="form-group">
-    <label asp-for="AppUserOnObject.WorkObjectId" class="control-label"></label>
+    <label asp-for="AppUserOnObject.WorkObjectId" class="control-label">@Resources.Domain.AppUserOnObject.WorkObject</label>
     <select asp-for="AppUserOnObject.WorkObjectId" class="form-control" asp-items="Model.WorkObjectSelectList"></select>
 </div>
 <div class="form-group">

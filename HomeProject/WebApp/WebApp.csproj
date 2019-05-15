@@ -30,18 +30,20 @@
     
 
     <ItemGroup>
-      <_ContentIncludedByDefault Remove="Areas\Admin\Controllers\AppUsersOnObjects\Create.cshtml" />
-      <_ContentIncludedByDefault Remove="Areas\Admin\Controllers\AppUsersOnObjects\Delete.cshtml" />
-      <_ContentIncludedByDefault Remove="Areas\Admin\Controllers\AppUsersOnObjects\Details.cshtml" />
-      <_ContentIncludedByDefault Remove="Areas\Admin\Controllers\AppUsersOnObjects\Edit.cshtml" />
-      <_ContentIncludedByDefault Remove="Areas\Admin\Controllers\AppUsersOnObjects\Index.cshtml" />
-      <_ContentIncludedByDefault Remove="Areas\Admin\Controllers\AppUsersOnObjects\PartialCreateEdit.cshtml" />
-      <_ContentIncludedByDefault Remove="Areas\Admin\Controllers\AppUsersOnObjects\PartialDetailsDelete.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Admin\Views\AppUsersOnObjects\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Admin\Views\AppUsersOnObjects\Delete.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Admin\Views\AppUsersOnObjects\Details.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Admin\Views\AppUsersOnObjects\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Admin\Views\AppUsersOnObjects\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Admin\Views\AppUsersOnObjects\PartialCreateEdit.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Admin\Views\AppUsersOnObjects\PartialDetailsDelete.cshtml" />
     </ItemGroup>
+    
 
     <PropertyGroup>
         <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\WebApp.xml</DocumentationFile>
         <LangVersion>latest</LangVersion>
+        <NoWarn>$(NoWarn);1591</NoWarn>
     </PropertyGroup>
 
 

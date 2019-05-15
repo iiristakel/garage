@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Contracts.DAL.App.Repositories;
 using DAL.App.EF.Mappers;
@@ -21,30 +22,64 @@ namespace DAL.App.EF.Repositories
 
         public override async Task<List<DAL.App.DTO.BillLine>> AllAsync()
         {
-            return await RepositoryDbSet
+            var culture = Thread.CurrentThread.CurrentUICulture.Name.Substring(0, 2).ToLower();
+            
+            var res = await RepositoryDbSet
+                .Include(p => p.Product)
+                .ThenInclude(t => t.Translations)
                 .Include(p => p.Bill)
-                .Select(c => new BillLine()
+                .ThenInclude(p => p.Comment)
+                .ThenInclude(t => t.Translations)
+                
+                .Select(c => new 
                 {
                     Id = c.Id,
                     Bill = BillMapper.MapFromDomain(c.Bill),
                     BillId = c.BillId,
                     Product = c.Product,
+                    Translations = c.Product.Translations,
                     Sum = c.Sum,
                     Amount = c.Amount,
                     DiscountPercent = c.DiscountPercent,
                     SumWithDiscount = c.Sum * (1 - c.DiscountPercent / 100)
                 })
                 .ToListAsync();
+
+            var resultList = res.Select(c => new BillLine()
+            {
+                Id = c.Id,
+                Bill = c.Bill,
+                BillId = c.BillId,
+                Product = c.Product.Translate(),
+                Sum = c.Sum,
+                Amount = c.Amount,
+                DiscountPercent = c.DiscountPercent,
+                SumWithDiscount = c.SumWithDiscount
+            }).ToList();
+
+            return resultList;
         }
 
         public override async Task<DAL.App.DTO.BillLine> FindAsync(params object[] id)
         {
+            var culture = Thread.CurrentThread.CurrentUICulture.Name.Substring(0, 2).ToLower();
+            
             var billLine = await RepositoryDbSet.FindAsync(id);
 
             if (billLine != null)
             {
                 await RepositoryDbContext.Entry(billLine)
-                    .Reference(c => c.Bill).LoadAsync();
+                    .Reference(c => c.Bill)
+                    .LoadAsync();
+                await RepositoryDbContext.Entry(billLine)
+                    .Reference(c => c.Product)
+                    .LoadAsync();
+                await RepositoryDbContext.Entry(billLine.Product)
+                    .Collection(b => b.Translations)
+                    .Query()
+                    .Where(t => t.Culture == culture)
+                    .LoadAsync();
+
             }
 
             return BillLineMapper.MapFromDomain(billLine);
@@ -53,18 +88,54 @@ namespace DAL.App.EF.Repositories
 
         public async Task<List<BillLine>> AllForUserAsync(int userId)
         {
-            return await RepositoryDbSet
-                .Include(c => c.Bill)
+            var culture = Thread.CurrentThread.CurrentUICulture.Name.Substring(0, 2).ToLower();
+            
+            var res = await RepositoryDbSet
+                .Include(p => p.Bill)
+//                .ThenInclude(p => p.Comment)
+//                .ThenInclude(t => t.Translations)
+                .Include(p => p.Product)
+                .ThenInclude(t => t.Translations)
                 .Where(p => p.Bill.AppUserId == userId)
-                .Select(e => BillLineMapper.MapFromDomain(e))
+                .Select(c => new 
+                {
+                    Id = c.Id,
+                    Bill = BillMapper.MapFromDomain(c.Bill),
+                    BillId = c.BillId,
+                    Product = c.Product,
+                    Translations = c.Product.Translations,
+                    Sum = c.Sum,
+                    Amount = c.Amount,
+                    DiscountPercent = c.DiscountPercent,
+                    SumWithDiscount = c.Sum * (1 - c.DiscountPercent / 100)
+                })
                 .ToListAsync();
 
+            var resultList = res.Select(c => new BillLine()
+            {
+                Id = c.Id,
+                Bill = c.Bill,
+                BillId = c.BillId,
+                Product = c.Product.Translate(),
+                Sum = c.Sum,
+                Amount = c.Amount,
+                DiscountPercent = c.DiscountPercent,
+                SumWithDiscount = c.SumWithDiscount
+            }).ToList();
+
+            return resultList;
         }
 
         public async Task<BillLine> FindForUserAsync(int id, int userId)
         {
+            var culture = Thread.CurrentThread.CurrentUICulture.Name.Substring(0, 2).ToLower();
+            
             var contact = await RepositoryDbSet
+                .Include(p => p.Product)
+                .ThenInclude(t => t.Translations)
                 .Include(c => c.Bill)
+//                .ThenInclude(p => p.Comment)
+//                .ThenInclude(t => t.Translations)
                 .FirstOrDefaultAsync(m => m.Id == id && m.Bill.AppUserId == userId);
 
             return BillLineMapper.MapFromDomain(contact);        }

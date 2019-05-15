@@ -56,7 +56,7 @@ namespace WebApp.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                _bll.ClientGroups.Add(clientGroup);
+                await _bll.ClientGroups.AddAsync(clientGroup);
                 await _bll.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }

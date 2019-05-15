@@ -7,10 +7,6 @@ C:\Users\kalle\RiderProjects\Project\HomeProject\DAL.App.DTO\obj\Debug\netstanda
 C:\Users\kalle\RiderProjects\Project\HomeProject\DAL.App.DTO\obj\Debug\netstandard2.0\DAL.App.DTO.AssemblyInfo.cs
 C:\Users\kalle\RiderProjects\Project\HomeProject\DAL.App.DTO\obj\Debug\netstandard2.0\DAL.App.DTO.dll
 C:\Users\kalle\RiderProjects\Project\HomeProject\DAL.App.DTO\obj\Debug\netstandard2.0\DAL.App.DTO.pdb
-C:\Users\kalle\RiderProjects\Project\HomeProject\DAL.App.DTO\bin\Debug\netstandard2.0\Contracts.DAL.Base.dll
 C:\Users\kalle\RiderProjects\Project\HomeProject\DAL.App.DTO\bin\Debug\netstandard2.0\Domain.dll
 C:\Users\kalle\RiderProjects\Project\HomeProject\DAL.App.DTO\bin\Debug\netstandard2.0\Domain.pdb
-C:\Users\kalle\RiderProjects\Project\HomeProject\DAL.App.DTO\bin\Debug\netstandard2.0\Contracts.DAL.Base.pdb
 C:\Users\kalle\RiderProjects\Project\HomeProject\DAL.App.DTO\obj\Debug\netstandard2.0\DAL.App.DTO.csproj.CopyComplete
-C:\Users\kalle\RiderProjects\Project\HomeProject\DAL.App.DTO\bin\Debug\netstandard2.0\Microsoft.AspNetCore.Mvc.ViewFeatures.dll
-C:\Users\kalle\RiderProjects\Project\HomeProject\DAL.App.DTO\bin\Debug\netstandard2.0\Microsoft.AspNetCore.Mvc.ViewFeatures.xml

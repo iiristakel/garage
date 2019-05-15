@@ -30,6 +30,6 @@ namespace Domain
         [Required]
         public string InvoiceNr { get; set; }
 
-        public string Comment { get; set; }
+        public MultiLangString Comment { get; set; }
     }
 }

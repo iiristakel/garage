@@ -98,6 +98,7 @@ namespace WebApp.Areas.Admin.Controllers
             }
 
             var vm = new Areas.Admin.ViewModels.ClientCreateEditViewModel();
+            
             vm.Client = client;
             vm.ClientGroupSelectList = new SelectList(
                 await _bll.ClientGroups.AllAsync(),

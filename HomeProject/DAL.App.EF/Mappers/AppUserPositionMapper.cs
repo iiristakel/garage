@@ -29,7 +29,7 @@ namespace DAL.App.EF.Mappers
             var res = appUserPosition == null ? null : new externalDTO.AppUserPosition
             {
                 Id = appUserPosition.Id,
-                AppUserPositionValue = appUserPosition.AppUserPositionValue
+                AppUserPositionValue = appUserPosition.AppUserPositionValue.Translate()
             };
 
             return res;
@@ -40,7 +40,7 @@ namespace DAL.App.EF.Mappers
             var res = appUserPosition == null ? null : new internalDTO.AppUserPosition
             {
                 Id = appUserPosition.Id,
-                AppUserPositionValue = appUserPosition.AppUserPositionValue
+                AppUserPositionValue = new internalDTO.MultiLangString(appUserPosition.AppUserPositionValue)
             };
             return res;
         }

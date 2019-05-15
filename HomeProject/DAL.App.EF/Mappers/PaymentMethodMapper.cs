@@ -29,7 +29,7 @@ namespace DAL.App.EF.Mappers
             var res = paymentMethod == null ? null : new externalDTO.PaymentMethod
             {
                 Id = paymentMethod.Id,
-                PaymentMethodValue = paymentMethod.PaymentMethodValue
+                PaymentMethodValue = paymentMethod.PaymentMethodValue.Translate()
 
             };
 
@@ -41,7 +41,7 @@ namespace DAL.App.EF.Mappers
             var res = paymentMethod == null ? null : new internalDTO.PaymentMethod
             {
                 Id = paymentMethod.Id,
-                PaymentMethodValue = paymentMethod.PaymentMethodValue
+                PaymentMethodValue = new internalDTO.MultiLangString(paymentMethod.PaymentMethodValue)
             };
             return res;
         }

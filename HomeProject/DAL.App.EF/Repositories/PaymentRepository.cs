@@ -22,8 +22,12 @@ namespace DAL.App.EF.Repositories
         {
             return await RepositoryDbSet
                 .Include(p => p.Bill)
+                .ThenInclude(p => p.Comment)
+                .ThenInclude(t => t.Translations)
                 .Include(p => p.Client)
                 .Include(p => p.PaymentMethod)
+                .ThenInclude(p => p.PaymentMethodValue)
+                .ThenInclude(t => t.Translations)
                 .Select(e => PaymentMapper.MapFromDomain(e))
                 .ToListAsync();
         }
@@ -46,8 +50,12 @@ namespace DAL.App.EF.Repositories
         {
             return await RepositoryDbSet
                 .Include(p => p.Bill)
+                .ThenInclude(p => p.Comment)
+                .ThenInclude(t => t.Translations)
                 .Include(p => p.Client)
                 .Include(p => p.PaymentMethod)
+                .ThenInclude(p => p.PaymentMethodValue)
+                .ThenInclude(t => t.Translations)
                 .Where(c => c.Bill.AppUserId == userId)
                 .Select(e => PaymentMapper.MapFromDomain(e)).ToListAsync();
         }
@@ -56,8 +64,12 @@ namespace DAL.App.EF.Repositories
         {
             var payment = await RepositoryDbSet
                 .Include(p => p.Bill)
+                .ThenInclude(p => p.Comment)
+                .ThenInclude(t => t.Translations)
                 .Include(p => p.Client)
                 .Include(p => p.PaymentMethod)
+                .ThenInclude(p => p.PaymentMethodValue)
+                .ThenInclude(t => t.Translations)
                 .FirstOrDefaultAsync(m => m.Id == id && m.Bill.AppUserId == userId);
 
             return PaymentMapper.MapFromDomain(payment);        }

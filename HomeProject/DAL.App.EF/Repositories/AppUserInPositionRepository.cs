@@ -22,12 +22,15 @@ namespace DAL.App.EF.Repositories
         {
             return await RepositoryDbSet
                 .Include(p => p.AppUserPosition)
+                .ThenInclude(p => p.AppUserPositionValue)
+                .ThenInclude(t => t.Translations)
                 .Select(e => AppUserInPositionMapper.MapFromDomain(e))
                 .ToListAsync();
         }
 
         public override async Task<DAL.App.DTO.AppUserInPosition> FindAsync(params object[] id)
         {
+            
             var workerInPosition = await RepositoryDbSet.FindAsync(id);
 
             if (workerInPosition != null)
@@ -42,6 +45,8 @@ namespace DAL.App.EF.Repositories
         {
             return await RepositoryDbSet
                 .Include(c => c.AppUserPosition)
+                .ThenInclude(p => p.AppUserPositionValue)
+                .ThenInclude(t => t.Translations)
                 .Include(c => c.AppUser)
                 .Where(c => c.AppUser.Id == userId)
                 .Select(e => AppUserInPositionMapper.MapFromDomain(e))
@@ -52,6 +57,8 @@ namespace DAL.App.EF.Repositories
         {
             var appUserInPosition = await RepositoryDbSet
                 .Include(c => c.AppUserPosition)
+                .ThenInclude(p => p.AppUserPositionValue)
+                .ThenInclude(t => t.Translations)
                 .Include(c => c.AppUser)
                 .FirstOrDefaultAsync(m => m.Id == id && m.AppUser.Id == userId);
 
