@@ -22,30 +22,29 @@ namespace DAL.App.EF.Repositories
         {
             return await RepositoryDbSet
                 .Include(p => p.WorkObject)
-                .ThenInclude(q => q.Client)
                 .Include(c => c.AppUser)
                 .Select(e => AppUserOnObjectMapper.MapFromDomain(e))
                 .ToListAsync();
         }
-        
-        public override async Task<DAL.App.DTO.AppUserOnObject> FindAsync(params object[] id)
-        {
-            var appUserOnObject = await RepositoryDbSet.FindAsync(id);
-
-            if (appUserOnObject != null)
-            {
-                await RepositoryDbContext.Entry(appUserOnObject)
-                    .Reference(c => c.WorkObject).LoadAsync();
-
-            }
-            
-            return AppUserOnObjectMapper.MapFromDomain(appUserOnObject);
-        }
+//        
+//        public override async Task<DAL.App.DTO.AppUserOnObject> FindAsync(params object[] id)
+//        {
+//            var appUserOnObject = await RepositoryDbSet.FindAsync(id);
+//
+//            if (appUserOnObject != null)
+//            {
+//                await RepositoryDbContext.Entry(appUserOnObject)
+//                    .Reference(c => c.AppUser).LoadAsync();
+//
+//            }
+//            
+//            return AppUserOnObjectMapper.MapFromDomain(appUserOnObject);
+//        }
 
         public async Task<List<AppUserOnObject>> AllForUserAsync(int userId)
         {
             return await RepositoryDbSet
-                .Include(c => c.WorkObject)
+//                .Include(c => c.WorkObject)
                 .Include(c => c.AppUser)
                 .Where(c => c.AppUser.Id == userId)
                 .Select(e => AppUserOnObjectMapper.MapFromDomain(e))
@@ -55,7 +54,7 @@ namespace DAL.App.EF.Repositories
         public async Task<AppUserOnObject> FindForUserAsync(int id, int userId)
         {
             var appUserOnObject = await RepositoryDbSet
-                .Include(c => c.WorkObject)
+//                .Include(c => c.WorkObject)
                 .Include(c => c.AppUser)
                 .FirstOrDefaultAsync(m => m.Id == id && m.AppUser.Id == userId);
 

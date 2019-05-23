@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 using Domain.Identity;
 
 namespace Domain
@@ -11,7 +12,12 @@ namespace Domain
         public int WorkObjectId { get; set; }
         public WorkObject WorkObject { get; set; }
 
+        [DataType(DataType.Date)]
+
         public DateTime? From { get; set; }
+
+        [DataType(DataType.Date)]
+
         public DateTime? Until { get; set; }
     }
 }

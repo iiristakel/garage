@@ -19,7 +19,7 @@ namespace BLL.App.Services
 
         }
 
-        public async Task<List<DTO.WorkObject>> GetAllAsync()
+        public override async Task<List<DTO.WorkObject>> AllAsync()
         {
             return (await Uow.WorkObjects.AllAsync())
                 .Select(e => WorkObjectMapper.MapFromDAL(e))

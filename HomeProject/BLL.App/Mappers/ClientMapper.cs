@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Contracts.BLL.Base.Mappers;
 
 namespace BLL.App.Mappers
@@ -31,7 +32,11 @@ namespace BLL.App.Mappers
                 CompanyName = client.CompanyName,
                 Address = client.Address,
                 ContactPerson = client.ContactPerson,
-                Phone = client.Phone
+                Phone = client.Phone,
+                Bills = client.Bills.Select(e => BillMapper.MapFromDAL(e)).ToList(),
+                ProductsForClient = client.ProductsForClient.Select(e => ProductForClientMapper.MapFromDAL(e)).ToList()
+
+
 
             };
 
@@ -48,7 +53,11 @@ namespace BLL.App.Mappers
                 CompanyName = client.CompanyName,
                 Address = client.Address,
                 ContactPerson = client.ContactPerson,
-                Phone = client.Phone
+                Phone = client.Phone,
+                Bills = client.Bills.Select(e => BillMapper.MapFromBLL(e)).ToList(),
+                ProductsForClient = client.ProductsForClient.Select(e => ProductForClientMapper.MapFromBLL(e)).ToList()
+
+
             };
             return res;
         }
@@ -64,7 +73,9 @@ namespace BLL.App.Mappers
                 Address = clientWithProductsCount.Address,
                 ContactPerson = clientWithProductsCount.ContactPerson,
                 Phone = clientWithProductsCount.Phone,
-                ProductsCount = clientWithProductsCount.ProductsCount
+                ProductsCount = clientWithProductsCount.ProductsCount,
+                ProductsForClient = clientWithProductsCount.ProductsForClient.Select(e => ProductForClientMapper.MapFromDAL(e)).ToList()
+
 
             };
 

@@ -80,6 +80,9 @@ namespace DAL.App.EF.Repositories
                 .FirstOrDefault(x => x.Id == entity.Id);
             
             entityInDb.ProductName.SetTranslation(entity.ProductName);
+            entityInDb.ProductCode = entity.ProductCode;
+            entityInDb.Price = entity.Price;
+            
 
             return entity;
         }

@@ -28,18 +28,18 @@ namespace DAL.App.EF.Repositories
                 .ToListAsync();
         }
 
-        public override async Task<DAL.App.DTO.AppUserInPosition> FindAsync(params object[] id)
-        {
-            
-            var workerInPosition = await RepositoryDbSet.FindAsync(id);
-
-            if (workerInPosition != null)
-            {
-                await RepositoryDbContext.Entry(workerInPosition).Reference(c => c.AppUserPosition).LoadAsync();
-            }
-
-            return AppUserInPositionMapper.MapFromDomain(workerInPosition);
-        }
+//        public override async Task<DAL.App.DTO.AppUserInPosition> FindAsync(params object[] id)
+//        {
+//            
+//            var workerInPosition = await RepositoryDbSet.FindAsync(id);
+//
+//            if (workerInPosition != null)
+//            {
+//                await RepositoryDbContext.Entry(workerInPosition).Reference(c => c.AppUserPosition).LoadAsync();
+//            }
+//
+//            return AppUserInPositionMapper.MapFromDomain(workerInPosition);
+//        }
 
         public async Task<List<DAL.App.DTO.AppUserInPosition>> AllForUserAsync(int userId)
         {

@@ -21,28 +21,28 @@ namespace DAL.App.EF.Repositories
         public override async Task<List<DAL.App.DTO.ProductForClient>> AllAsync()
         {
             return await RepositoryDbSet
-                .Include(p => p.Client)
+//                .Include(p => p.Client)
                 .Include(p => p.Product)
                 .ThenInclude(p => p.ProductName)
                 .ThenInclude(t => t.Translations)
-                .Include(p => p.WorkObject)
+//                .Include(p => p.WorkObject)
                 .Select(e => ProductForClientMapper.MapFromDomain(e))
                 .ToListAsync();
         }
         
-        public override async Task<DAL.App.DTO.ProductForClient> FindAsync(params object[] id)
-        {
-            var productForClient = await RepositoryDbSet.FindAsync(id);
-
-            if (productForClient != null)
-            {
-                await RepositoryDbContext.Entry(productForClient).Reference(c => c.Client).LoadAsync();
-                await RepositoryDbContext.Entry(productForClient).Reference(c => c.Product).LoadAsync();
-                await RepositoryDbContext.Entry(productForClient).Reference(c => c.WorkObject).LoadAsync();
-
-            }
-            
-            return ProductForClientMapper.MapFromDomain(productForClient);
-        }
+//        public override async Task<DAL.App.DTO.ProductForClient> FindAsync(params object[] id)
+//        {
+//            var productForClient = await RepositoryDbSet.FindAsync(id);
+//
+//            if (productForClient != null)
+//            {
+////                await RepositoryDbContext.Entry(productForClient).Reference(c => c.Client).LoadAsync();
+////                await RepositoryDbContext.Entry(productForClient).Reference(c => c.Product).LoadAsync();
+////                await RepositoryDbContext.Entry(productForClient).Reference(c => c.WorkObject).LoadAsync();
+//
+//            }
+//            
+//            return ProductForClientMapper.MapFromDomain(productForClient);
+//        }
     }
 }

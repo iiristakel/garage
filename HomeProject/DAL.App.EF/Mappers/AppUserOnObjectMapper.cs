@@ -33,8 +33,8 @@ namespace DAL.App.EF.Mappers
                 Id = appUserOnObject.Id,
                 AppUserId = appUserOnObject.AppUserId,
                 AppUser = DAL.App.EF.Mappers.AppUserMapper.MapFromDomain(appUserOnObject.AppUser),
-                WorkObjectId = appUserOnObject.WorkObjectId,
-                WorkObject = WorkObjectMapper.MapFromDomain(appUserOnObject.WorkObject),
+//                WorkObjectId = appUserOnObject.WorkObjectId,
+//                WorkObject = WorkObjectMapper.MapFromDomain(appUserOnObject.WorkObject),
                 From = appUserOnObject.From,
                 Until = appUserOnObject.Until
 
@@ -50,8 +50,8 @@ namespace DAL.App.EF.Mappers
                 Id = appUserOnObject.Id,
                 AppUserId = appUserOnObject.AppUserId,
                 AppUser = DAL.App.EF.Mappers.AppUserMapper.MapFromDAL(appUserOnObject.AppUser),
-                WorkObjectId = appUserOnObject.WorkObjectId,
-                WorkObject = WorkObjectMapper.MapFromDAL(appUserOnObject.WorkObject),
+//                WorkObjectId = appUserOnObject.WorkObjectId,
+//                WorkObject = WorkObjectMapper.MapFromDAL(appUserOnObject.WorkObject),
                 From = appUserOnObject.From,
                 Until = appUserOnObject.Until
             };

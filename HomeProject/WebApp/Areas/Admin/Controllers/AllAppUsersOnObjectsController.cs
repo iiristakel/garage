@@ -56,12 +56,12 @@ namespace WebApp.Controllers
         // GET: AppUsersOnObjects/Create
         public async Task<IActionResult> Create()
         {
-            var vm = new AppUserOnObjectCreateEditViewModel();
+            var vm = new WebApp.Areas.Admin.ViewModels.AppUserOnObjectCreateEditViewModel();
             
             vm.WorkObjectSelectList = new SelectList(
                 await _bll.WorkObjects.AllAsync(),
                 nameof(BLL.App.DTO.WorkObject.Id), 
-                nameof(BLL.App.DTO.WorkObject.WorkObjectName));
+                nameof(BLL.App.DTO.WorkObject.Id));
             
             vm.AppUserSelectList = new SelectList(
                 await _bll.AppUsers.AllAsync(),
@@ -76,7 +76,7 @@ namespace WebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(AppUserOnObjectCreateEditViewModel vm)
+        public async Task<IActionResult> Create(WebApp.Areas.Admin.ViewModels.AppUserOnObjectCreateEditViewModel vm)
         {
             if (ModelState.IsValid)
             {
@@ -89,7 +89,7 @@ namespace WebApp.Controllers
             vm.WorkObjectSelectList = new SelectList(
                 await _bll.WorkObjects.AllAsync(),
                 nameof(BLL.App.DTO.WorkObject.Id), 
-                nameof(BLL.App.DTO.WorkObject.WorkObjectName));
+                nameof(BLL.App.DTO.WorkObject.Id));
             
             vm.AppUserSelectList = new SelectList(
                 await _bll.AppUsers.AllAsync(),
@@ -97,6 +97,24 @@ namespace WebApp.Controllers
                 nameof(BLL.App.DTO.Identity.AppUser.FirstLastName));
             
             return View(vm);
+        }
+        
+        [HttpGet]
+        public async Task<IActionResult> ChooseForWorkObject(int workobjectid)
+        {
+            ViewData["workobject"] = await _bll.WorkObjects.FindAsync(workobjectid);
+
+            var vm = new Areas.Admin.ViewModels.AppUserOnObjectCreateEditViewModel();
+
+//            vm.AppUserOnObject.WorkObject = await _bll.WorkObjects.FindAsync(workobjectid);
+
+            vm.AppUserSelectList = new SelectList(
+                await _bll.AppUsers.AllAsync(),
+                nameof(BLL.App.DTO.Identity.AppUser.Id),
+                nameof(BLL.App.DTO.Identity.AppUser.FirstLastName));
+
+
+            return View();
         }
 
         // GET: AppUsersOnObjects/Edit/5
@@ -113,13 +131,13 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var vm = new AppUserOnObjectCreateEditViewModel();
+            var vm = new WebApp.Areas.Admin.ViewModels.AppUserOnObjectCreateEditViewModel();
             vm.AppUserOnObject = appUserOnObject;
             
             vm.WorkObjectSelectList = new SelectList(
                 await _bll.WorkObjects.AllAsync(),
                 nameof(BLL.App.DTO.WorkObject.Id), 
-                nameof(BLL.App.DTO.WorkObject.WorkObjectName));
+                nameof(BLL.App.DTO.WorkObject.Id));
             
             vm.AppUserSelectList = new SelectList(
                 await _bll.AppUsers.AllAsync(),
@@ -134,7 +152,7 @@ namespace WebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, AppUserOnObjectCreateEditViewModel vm)
+        public async Task<IActionResult> Edit(int id, WebApp.Areas.Admin.ViewModels.AppUserOnObjectCreateEditViewModel vm)
         {
             if (id != vm.AppUserOnObject.Id)
             {
@@ -154,7 +172,7 @@ namespace WebApp.Controllers
             vm.WorkObjectSelectList = new SelectList(
                 await _bll.WorkObjects.AllAsync(),
                 nameof(BLL.App.DTO.WorkObject.Id), 
-                nameof(BLL.App.DTO.WorkObject.WorkObjectName ));
+                nameof(BLL.App.DTO.WorkObject.Id ));
             
             vm.AppUserSelectList = new SelectList(
                 await _bll.AppUsers.AllAsync(),

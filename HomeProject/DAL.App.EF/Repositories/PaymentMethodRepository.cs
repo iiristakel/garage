@@ -25,7 +25,7 @@ namespace DAL.App.EF.Repositories
             var culture = Thread.CurrentThread.CurrentUICulture.Name.Substring(0, 2).ToLower();
             
             var res = await RepositoryDbSet
-                .Include(p => p.Payments)
+//                .Include(p => p.Payments)
                 .Include(p =>p.PaymentMethodValue)
                 .ThenInclude(t => t.Translations)
                 .Select(c => new 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -33,6 +34,9 @@ namespace Domain
         [MaxLength(64)]
         [MinLength(1)]
         public string ContactPerson { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateTime? From { get; set; }
         
     }
 }

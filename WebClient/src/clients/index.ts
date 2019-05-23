@@ -26,11 +26,11 @@ export class Index {
   attached(){
     log.debug('attached');
     
-    this.clientService.fetchAll().then(
-      jsonData => {
-        this.clients = jsonData;
-      }
-    );
+    // this.clientService.fetchAll().then(
+    //   jsonData => {
+    //     this.clients = jsonData;
+    //   }
+    // );
   }
   
   detached(){

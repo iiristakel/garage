@@ -1,0 +1,44 @@
+@model WebApp.Areas.Admin.ViewModels.AppUserOnObjectCreateEditViewModel
+
+@{
+    ViewData["Title"] = "Add worker";
+    Layout = "_Layout";
+}
+<h4>Worker</h4>
+<h6>Work object: Model.WorkObjectId</h6>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="ChooseForWorkObject">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="AppUserOnObject.AppUserId" class="control-label">@Resources.Domain.AppUserOnObject.AppUser</label>
+                <select asp-for="AppUserOnObject.AppUserId" class="form-control" asp-items="Model.AppUserSelectList"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="AppUserOnObject.From" class="control-label"></label>
+                <input asp-for="AppUserOnObject.From" class="form-control"/>
+                <span asp-validation-for="AppUserOnObject.From" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AppUserOnObject.Until" class="control-label"></label>
+                <input asp-for="AppUserOnObject.Until" class="form-control"/>
+                <span asp-validation-for="AppUserOnObject.Until" class="text-danger"></span>
+            </div>
+            
+            <input type="hidden" asp-for="AppUserOnObject.WorkObjectId" value="Model.WorkObjectId"/>
+            
+            <div class="form-group">
+                <input type="submit" value="@Resources.Views.Common.Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

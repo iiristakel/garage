@@ -74,6 +74,8 @@ namespace WebApp.Areas.Admin.Controllers
 //            return View(appUser);
 //        }
 
+        
+
         // GET: AppUsers/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -83,7 +85,7 @@ namespace WebApp.Areas.Admin.Controllers
             }
 
             var appUser = await _bll.AppUsers.FindAsync(id);
-            
+
             if (appUser == null)
             {
                 return NotFound();
@@ -91,11 +93,13 @@ namespace WebApp.Areas.Admin.Controllers
 
             var vm = new Areas.Admin.ViewModels.AppUserCreateEditViewModel();
 
-            vm.AppUserPositionSelectList = new MultiSelectList(
+            vm.AppUser = appUser;
+            
+            vm.AppUserPositionSelectList = new SelectList(
                 await _bll.AppUsersPositions.AllAsync(),
                 nameof(BLL.App.DTO.AppUserPosition.Id),
                 nameof(BLL.App.DTO.AppUserPosition.AppUserPositionValue));
-            
+
 
             return View(vm);
         }
@@ -107,13 +111,11 @@ namespace WebApp.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Areas.Admin.ViewModels.AppUserCreateEditViewModel vm)
         {
-
-            if (id != vm.AppUser.Id) 
+            if (id != vm.AppUser.Id)
             {
                 return NotFound();
             }
-            
-            
+
 
             if (ModelState.IsValid)
             {
@@ -124,12 +126,12 @@ namespace WebApp.Areas.Admin.Controllers
             }
 
             //TODO: not working
-            vm.AppUserPositionSelectList = new MultiSelectList(
+            vm.AppUserPositionSelectList = new SelectList(
                 await _bll.AppUsersPositions.AllAsync(),
                 nameof(BLL.App.DTO.AppUserPosition.Id),
                 nameof(BLL.App.DTO.AppUserPosition.AppUserPositionValue));
-            
-            
+
+
             return View(vm);
         }
 
@@ -142,7 +144,7 @@ namespace WebApp.Areas.Admin.Controllers
             }
 
             var appUser = await _bll.AppUsers.FindAsync(id);
-                
+
             if (appUser == null)
             {
                 return NotFound();
@@ -156,12 +158,9 @@ namespace WebApp.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-           
             _bll.AppUsers.Remove(id);
             await _bll.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
-        
     }
 }

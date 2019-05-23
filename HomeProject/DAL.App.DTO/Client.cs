@@ -10,6 +10,11 @@ namespace DAL.App.DTO
         public int? ClientGroupId { get; set; }
         public ClientGroup ClientGroup { get; set; }
 
+
+        public ICollection<Bill> Bills { get; set; }
+        
+        public ICollection<ProductForClient> ProductsForClient { get; set; }
+
         
         [MaxLength(64)]
         [MinLength(1)]

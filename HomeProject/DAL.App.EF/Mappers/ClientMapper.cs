@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Contracts.DAL.Base.Mappers;
 using internalDTO = Domain;
 using externalDTO = DAL.App.DTO;
@@ -34,7 +35,10 @@ namespace DAL.App.EF.Mappers
                 CompanyName = client.CompanyName,
                 Address = client.Address,
                 ContactPerson = client.ContactPerson,
-                Phone = client.Phone
+                Phone = client.Phone,
+                Bills = client.Bills.Select(e => BillMapper.MapFromDomain(e)).ToList(),
+//                ProductsForClient = client.ProductsForClient.Select(e => ProductForClientMapper.MapFromDomain(e)).ToList()
+
 
             };
 
@@ -51,7 +55,11 @@ namespace DAL.App.EF.Mappers
                 CompanyName = client.CompanyName,
                 Address = client.Address,
                 ContactPerson = client.ContactPerson,
-                Phone = client.Phone
+                Phone = client.Phone,
+                Bills = client.Bills.Select(e => BillMapper.MapFromDAL(e)).ToList(),
+                ProductsForClient = client.ProductsForClient.Select(e => ProductForClientMapper.MapFromDAL(e)).ToList()
+
+
             };
             return res;
         }

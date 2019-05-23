@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Domain
 {
@@ -14,6 +15,9 @@ namespace Domain
         public Client Client { get; set; }
 
         public decimal Sum { get; set; }
+        
+        [DataType(DataType.Date)]
+
         public DateTime PaymentTime { get; set; }
     }
 }

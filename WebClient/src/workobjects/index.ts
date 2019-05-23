@@ -26,11 +26,11 @@ export class Index {
   attached(){
     log.debug('attached');
 
-    this.workobjectService.fetchAll().then(
-      jsonData => {
-        this.workobjects = jsonData;
-      }
-    );
+    // this.workobjectService.fetchAll().then(
+    //   jsonData => {
+    //     this.workobjects = jsonData;
+    //   }
+    // );
   }
 
   detached(){

@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Contracts.DAL.Base.Mappers;
 using internalDTO = Domain;
 using externalDTO = DAL.App.DTO;
@@ -29,10 +30,13 @@ namespace DAL.App.EF.Mappers
             var res = workObject == null ? null : new externalDTO.WorkObject
             {
                 Id = workObject.Id,
-                Client = DAL.App.EF.Mappers.ClientMapper.MapFromDomain(workObject.Client),
+                Client = ClientMapper.MapFromDomain(workObject.Client),
                 ClientId = workObject.ClientId,
                 From = workObject.From,
-                Until = workObject.Until
+                Until = workObject.Until,
+                AppUsersOnObject = workObject.AppUsersOnObject.Select(e => AppUserOnObjectMapper.MapFromDomain(e)).ToList(),
+                ProductsForClient = workObject.ProductsForClient.Select(e => ProductForClientMapper.MapFromDomain(e)).ToList(),
+                
 
             };
 
@@ -47,7 +51,10 @@ namespace DAL.App.EF.Mappers
                 Client = DAL.App.EF.Mappers.ClientMapper.MapFromDAL(workObject.Client),
                 ClientId = workObject.ClientId,
                 From = workObject.From,
-                Until = workObject.Until
+                Until = workObject.Until,
+                AppUsersOnObject = workObject.AppUsersOnObject.Select(e => AppUserOnObjectMapper.MapFromDAL(e)).ToList(),
+                ProductsForClient = workObject.ProductsForClient.Select(e => ProductForClientMapper.MapFromDAL(e)).ToList(),
+                
             };
             return res;
         }

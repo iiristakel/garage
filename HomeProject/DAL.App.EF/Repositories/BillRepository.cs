@@ -23,15 +23,15 @@ namespace DAL.App.EF.Repositories
         }
 
 
-        public override async Task<List<DAL.App.DTO.Bill>> AllAsync()
-        {
-            return await RepositoryDbSet
-                .Include(p => p.Client)
-                .Include(p => p.AppUser)
-                .Include(p => p.Payments)
-                .Select(e => BillMapper.MapFromDomain(e))
-                .ToListAsync();
-        }
+//        public override async Task<List<DAL.App.DTO.Bill>> AllAsync()
+//        {
+//            return await RepositoryDbSet
+//                .Include(p => p.Client)
+//                .Include(p => p.AppUser)
+//                .Include(p => p.Payments)
+//                .Select(e => BillMapper.MapFromDomain(e))
+//                .ToListAsync();
+//        }
         
         public override async Task<DAL.App.DTO.Bill> FindAsync(params object[] id)
         {
@@ -41,12 +41,12 @@ namespace DAL.App.EF.Repositories
 
             if (bill != null)
             {
-                await RepositoryDbContext.Entry(bill)
-                    .Reference(c => c.Client)
-                    .LoadAsync();
-                await RepositoryDbContext.Entry(bill)
-                    .Reference(c => c.AppUser)
-                    .LoadAsync();
+//                await RepositoryDbContext.Entry(bill)
+//                    .Reference(c => c.Client)
+//                    .LoadAsync();
+//                await RepositoryDbContext.Entry(bill)
+//                    .Reference(c => c.AppUser)
+//                    .LoadAsync();
                 await RepositoryDbContext.Entry(bill)
                     .Reference(c => c.Comment)
                     .LoadAsync();

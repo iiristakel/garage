@@ -29,10 +29,9 @@ namespace BLL.App.Mappers
                 Id = appUser.Id,
                 FirstName = appUser.FirstName,
                 LastName = appUser.LastName,
-                Email = appUser.Email,
                 HiringDate = appUser.HiringDate,
                 LeftJob = appUser.LeftJob,
-                PhoneNr = appUser.PhoneNr
+                FirstLastName = appUser.FirstLastName
             };
 
             return res;
@@ -45,10 +44,10 @@ namespace BLL.App.Mappers
                 Id = appUser.Id,
                 FirstName = appUser.FirstName,
                 LastName = appUser.LastName,
-                Email = appUser.Email,
                 HiringDate = appUser.HiringDate,
                 LeftJob = appUser.LeftJob,
-                PhoneNr = appUser.PhoneNr
+                FirstLastName = appUser.FirstLastName
+
             };
             return res;
         }

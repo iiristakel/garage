@@ -154,6 +154,8 @@ namespace DAL.App.EF.Migrations
                     b.Property<string>("ContactPerson")
                         .HasMaxLength(64);
 
+                    b.Property<DateTime?>("From");
+
                     b.Property<string>("Phone")
                         .IsRequired()
                         .HasMaxLength(15);
@@ -246,9 +248,6 @@ namespace DAL.App.EF.Migrations
                         .HasMaxLength(256);
 
                     b.Property<string>("PasswordHash");
-
-                    b.Property<string>("PhoneNr")
-                        .HasMaxLength(15);
 
                     b.Property<string>("PhoneNumber");
 

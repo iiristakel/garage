@@ -47,11 +47,11 @@ export class Create {
   attached() {
     log.debug('attached');
 
-    this.clientService.fetchAll().then(
-      jsonData => {
-        this.clients = jsonData;
-      }
-    );
+    // this.clientService.fetchAll().then(
+    //   jsonData => {
+    //     this.clients = jsonData;
+    //   }
+    // );
   }
 
   detached() {

@@ -24,8 +24,9 @@ namespace DAL.App.DTO.Identity
         [Required]
         public string LastName { get; set; }
 
+
+        public string FirstLastName { get; set; }
         
-        public string FirstLastName => FirstName + " " + LastName;
         public ICollection<AppUserInPosition> AppUserInPositions { get; set; }
 
         

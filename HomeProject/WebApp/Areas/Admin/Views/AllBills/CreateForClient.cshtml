@@ -1,0 +1,78 @@
+@model WebApp.Areas.Admin.ViewModels.BillCreateEditViewModel
+
+@{
+    ViewBag.Title = "Bill";
+    Layout = "_Layout";
+}
+
+<h1>@Resources.Views.Common.CreateNew</h1>
+<h6>Client: </h6>
+<h4>@Resources.Domain.Bill.BillString</h4>
+
+<hr/>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="Bill.ClientId" value="@ViewBag.Client.Id"/>
+
+            
+            <div class="form-group">
+                <label asp-for="Bill.AppUserId" class="control-label">@Resources.Domain.Bill.AppUser</label>
+                <select asp-for="Bill.AppUserId" class="form-control" asp-items="Model.AppUserSelectList"></select>
+                <span asp-validation-for="Bill.AppUserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Bill.ArrivalFee" class="control-label"></label>
+                <input asp-for="Bill.ArrivalFee" class="form-control"/>
+                <span asp-validation-for="Bill.ArrivalFee" class="text-danger"></span>
+            </div>
+            @* <div class="form-group"> *@
+            @*     <label asp-for="Bill.SumWithoutTaxes" class="control-label"></label> *@
+            @*     <input asp-for="Bill.SumWithoutTaxes" class="form-control"/> *@
+            @*     <span asp-validation-for="Bill.SumWithoutTaxes" class="text-danger"></span> *@
+            @* </div> *@
+            <div class="form-group">
+                <label asp-for="Bill.TaxPercent" class="control-label"></label>
+                <input asp-for="Bill.TaxPercent" class="form-control"/>
+                <span asp-validation-for="Bill.TaxPercent" class="text-danger"></span>
+            </div>
+            @* <div class="form-group"> *@
+            @*     <label asp-for="Bill.FinalSum" class="control-label"></label> *@
+            @*     <input asp-for="Bill.FinalSum" class="form-control"/> *@
+            @*     <span asp-validation-for="Bill.FinalSum" class="text-danger"></span> *@
+            @* </div> *@
+            <div class="form-group">
+                <label asp-for="Bill.DateTime" class="control-label"></label>
+                <input asp-for="Bill.DateTime" class="form-control"/>
+                <span asp-validation-for="Bill.DateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Bill.InvoiceNr" class="control-label"></label>
+                <input asp-for="Bill.InvoiceNr" class="form-control"/>
+                <span asp-validation-for="Bill.InvoiceNr" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Bill.Comment" class="control-label"></label>
+                <input asp-for="Bill.Comment" class="form-control"/>
+                <span asp-validation-for="Bill.Comment" class="text-danger"></span>
+            </div>
+            
+            
+            <div class="form-group">
+                <input type="submit" value="@Resources.Views.Common.Save" class="btn btn-primary"/>
+            </div>
+            
+            
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">@Resources.Views.Common.BackToList</a>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

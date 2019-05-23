@@ -12,7 +12,7 @@
     <title>@ViewData["Title"] - WebApp</title>
 
     <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css"/>
+        @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css"/> *@
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
@@ -20,7 +20,9 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
               crossorigin="anonymous"
               integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE="/>
+              
     </environment>
+    <link rel="stylesheet" href="~/lib/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="~/AdminLTE/dist/css/adminlte.min.css"/>
     @* <link rel="stylesheet" href="~/css/site.css" /> *@
 </head>
@@ -44,37 +46,10 @@
                         <a class="nav-link" asp-area="" asp-controller="Clients" asp-action="Index">@Resources.Views.Shared._Layout.NavClients</a>
                     </li>
                     <li class="nav-item d-none d-sm-inline-block">
-                        <a class="nav-link" asp-area="" asp-controller="Bills" asp-action="Index">@Resources.Views.Shared._Layout.NavBills</a>
-                    </li>
-                    <li class="nav-item" d-none d-sm-inline-block>
-                        <a class="nav-link" asp-area="" asp-controller="BillLines" asp-action="Index">@Resources.Views.Shared._Layout.NavBillLines</a>
-                    </li>
-                    <li class="nav-item d-none d-sm-inline-block">
                         <a class="nav-link" asp-area="" asp-controller="WorkObjects" asp-action="Index">@Resources.Views.Shared._Layout.NavWorkObjects</a>
                     </li>
                     <li class="nav-item d-none d-sm-inline-block">
                         <a class="nav-link" asp-area="" asp-controller="Products" asp-action="Index">@Resources.Views.Shared._Layout.NavProducts</a>
-                    </li>
-                    <li class="nav-item d-none d-sm-inline-block">
-                        <a class="nav-link" asp-area="" asp-controller="AppUsersInPositions" asp-action="Index">@Resources.Views.Shared._Layout.NavAppUsersInPositions</a>
-                    </li>
-                    <li class="nav-item d-none d-sm-inline-block">
-                        <a class="nav-link" asp-area="" asp-controller="AppUsersOnObjects" asp-action="Index">@Resources.Views.Shared._Layout.NavAppUsersOnObjects</a>
-                    </li>
-                    <li class="nav-item d-none d-sm-inline-block">
-                        <a class="nav-link" asp-area="" asp-controller="AppUsersPositions" asp-action="Index">@Resources.Views.Shared._Layout.NavAppUsersPositions</a>
-                    </li>
-                    <li class="nav-item d-none d-sm-inline-block">
-                        <a class="nav-link" asp-area="" asp-controller="ClientGroups" asp-action="Index">@Resources.Views.Shared._Layout.NavClientGroups</a>
-                    </li>
-                    <li class="nav-item d-none d-sm-inline-block">
-                        <a class="nav-link" asp-area="" asp-controller="Payments" asp-action="Index">@Resources.Views.Shared._Layout.NavPayments</a>
-                    </li>
-                    <li class="nav-item d-none d-sm-inline-block">
-                        <a class="nav-link" asp-area="" asp-controller="PaymentMethods" asp-action="Index">@Resources.Views.Shared._Layout.NavPaymentMethods</a>
-                    </li>
-                    <li class="nav-item d-none d-sm-inline-block">
-                        <a class="nav-link" asp-area="" asp-controller="ProductsForClients" asp-action="Index">@Resources.Views.Shared._Layout.NavProductsForClients</a>
                     </li>
                 }
             </ul>
@@ -132,8 +107,10 @@
             integrity="sha256-E/V4cWE4qvAeO5MOhjtGtqDzPndRO1LBk8lJ/PR7CA4=">
     </script>
 </environment>
+<script src="~/lib/flatpickr/dist/flatpickr.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
 
-@RenderSection("Scripts", required: false)
+@RenderSection(name: "Scripts", required: false)
+
 </body>
 </html>

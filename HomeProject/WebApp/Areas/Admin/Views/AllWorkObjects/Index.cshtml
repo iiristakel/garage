@@ -11,29 +11,39 @@
 </p>
 <table class="table">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Client)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.From)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Until)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AppUsersOnObject)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductsForClient)
-            </th>
-        </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Client)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Client.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.From)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Until)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AppUsersOnObject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductsForClient)
+        </th>
+    </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Client.CompanyName)
+                <a asp-action="Details"
+                   asp-controller="AllClients" asp-route-id="@item.Client.Id">
+                    @Html.DisplayFor(modelItem => item.Client.CompanyName)
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client.Address)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.From)
@@ -42,12 +52,22 @@
                 @Html.DisplayFor(modelItem => item.Until)
             </td>
             <td>
-               
-                @Html.DisplayFor(modelItem => item.ProductsForClient)
-                
+                <ul>
+
+                    @foreach (var appUserOnObject in item.AppUsersOnObject)
+                    {
+                        <li>@appUserOnObject.AppUser.FirstLastName</li>
+                    }
+                </ul>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ProductsForClient)
+                <ul>
+
+                    @foreach (var productForClient in item.ProductsForClient)
+                    {
+                        <li>@productForClient.Product.ProductName</li>
+                    }
+                </ul>
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">@Resources.Views.Common.Edit</a> |
@@ -55,6 +75,6 @@
                 <a asp-action="Delete" asp-route-id="@item.Id">@Resources.Views.Common.Delete</a>
             </td>
         </tr>
-}
+    }
     </tbody>
 </table>

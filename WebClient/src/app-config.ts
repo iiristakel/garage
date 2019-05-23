@@ -6,7 +6,7 @@ export var log = LogManager.getLogger('AppConfig');
 @autoinject
 export class AppConfig {
 
-  public apiUrl = 'https://localhost:5001/api/';
+  public apiUrl = 'https://localhost:5001/api/v1/';
   public jwt: string | null = null;
 
   constructor() {

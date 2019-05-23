@@ -6,7 +6,7 @@ namespace WebApp.Areas.Admin.ViewModels
     {
         public BLL.App.DTO.ProductForClient ProductForClient { get; set; }
         public SelectList ClientSelectList { get; set; }
-        public SelectList ProductSelectList { get; set; }
+        public MultiSelectList ProductSelectList { get; set; }
         public SelectList WorkObjectSelectList { get; set; }
     }
 }

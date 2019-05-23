@@ -31,8 +31,8 @@ namespace BLL.App.Mappers
                     ClientId = productForClient.ClientId,
                     Product = ProductMapper.MapFromDAL(productForClient.Product),
                     ProductId = productForClient.ProductId,
-                    WorkObject = WorkObjectMapper.MapFromDAL(productForClient.WorkObject),
-                    WorkObjectId = productForClient.WorkObjectId,
+//                    WorkObject = WorkObjectMapper.MapFromDAL(productForClient.WorkObject),
+//                    WorkObjectId = productForClient.WorkObjectId,
                     Count = productForClient.Count
                 };
 
@@ -48,8 +48,8 @@ namespace BLL.App.Mappers
                     ClientId = productForClient.ClientId,
                     Product = ProductMapper.MapFromBLL(productForClient.Product),
                     ProductId = productForClient.ProductId,
-                    WorkObject = WorkObjectMapper.MapFromBLL(productForClient.WorkObject),
-                    WorkObjectId = productForClient.WorkObjectId,
+//                    WorkObject = WorkObjectMapper.MapFromBLL(productForClient.WorkObject),
+//                    WorkObjectId = productForClient.WorkObjectId,
                     Count = productForClient.Count
                 };
             return res;

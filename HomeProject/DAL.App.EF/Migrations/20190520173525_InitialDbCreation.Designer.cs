@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.App.EF.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20190515091600_InitialDbCreation")]
+    [Migration("20190520173525_InitialDbCreation")]
     partial class InitialDbCreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -156,6 +156,8 @@ namespace DAL.App.EF.Migrations
                     b.Property<string>("ContactPerson")
                         .HasMaxLength(64);
 
+                    b.Property<DateTime?>("From");
+
                     b.Property<string>("Phone")
                         .IsRequired()
                         .HasMaxLength(15);
@@ -248,9 +250,6 @@ namespace DAL.App.EF.Migrations
                         .HasMaxLength(256);
 
                     b.Property<string>("PasswordHash");
-
-                    b.Property<string>("PhoneNr")
-                        .HasMaxLength(15);
 
                     b.Property<string>("PhoneNumber");
 

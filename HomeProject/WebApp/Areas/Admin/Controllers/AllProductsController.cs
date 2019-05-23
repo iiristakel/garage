@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Contracts.BLL.App;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace WebApp.Areas.Admin.Controllers
 {
@@ -66,6 +67,8 @@ namespace WebApp.Areas.Admin.Controllers
 
             return View(product);
         }
+        
+       
 
         // GET: Products/Edit/5
         public async Task<IActionResult> Edit(int? id)

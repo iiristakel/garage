@@ -34,6 +34,7 @@ obj/
 .vs/
 # Uncomment if you have tasks that create the project's static files in wwwroot
 HomeProject/WebApp/wwwroot/AdminLTE/
+HomeProject/WebApp/wwwroot/lib/flatpickr
 
 # Visual Studio 2017 auto generated files
 Generated\ Files/

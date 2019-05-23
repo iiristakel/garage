@@ -19,11 +19,10 @@ namespace BLL.App.DTO.Identity
         [MinLength(1, ErrorMessageResourceName = "ErrorMessageMinLength", ErrorMessageResourceType = typeof(Resources.Domain.Common))]
         [Required(ErrorMessageResourceName = "ErrorMessageRequired", ErrorMessageResourceType = typeof(Resources.Domain.Common))]
         [Display(Name = nameof(LastName), ResourceType = typeof(Resources.Domain.AppUser))]
-
         public string LastName { get; set; }
 
-        
-        public string FirstLastName => FirstName + " " + LastName;
+
+        public string FirstLastName { get; set; }
         
         //TODO: translation
         public ICollection<AppUserInPosition> AppUserInPositions { get; set; }

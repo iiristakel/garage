@@ -34,7 +34,7 @@ export class MainRouter {
         { route: 'workobjects/details/:id',             name: 'workobjects' + 'Details', moduleId: PLATFORM.moduleName('workobjects/details'), nav: false, title: 'workobjects - Details' },
 
 
-        { route: ['bills', 'bills/index'], name: 'bills' + 'Index',  moduleId: PLATFORM.moduleName('bills/index'), nav: true, title: 'Bills' },
+        { route: ['bills', 'bills/index'], name: 'bills' + 'Index',  moduleId: PLATFORM.moduleName('bills/index'), nav: false, title: 'Bills' },
         { route: 'bills/create',           name: 'bills' + 'Create', moduleId: PLATFORM.moduleName('bills/create'), nav: false, title: 'bills - Create' },
         { route: 'bills/edit/:id',             name: 'bills' + 'Edit',   moduleId: PLATFORM.moduleName('bills/edit'), nav: false, title: 'bills - Edit' },
         { route: 'bills/delete/:id',           name: 'bills' + 'Delete', moduleId: PLATFORM.moduleName('bills/delete'), nav: false, title: 'bills - Delete' },

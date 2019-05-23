@@ -36,9 +36,7 @@ namespace Domain.Identity
         [DataType(DataType.Date)]
         public DateTime? LeftJob { get; set; }
 
-        [MaxLength(15)]
-        [MinLength(1)]
-        public string PhoneNr { get; set; }
+        
         
     }
 }

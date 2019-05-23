@@ -24,36 +24,47 @@ namespace DAL.App.EF.Repositories
         {
             return await RepositoryDbSet
                 .Include(p => p.Client)
+                .ThenInclude(q => q.Bills)
                 .Include(p => p.AppUsersOnObject)
+                .ThenInclude(p => p.AppUser)
                 .Include(p => p.ProductsForClient)
+                .ThenInclude(p => p.Product)
+                .Include(p => p.ProductsForClient)
+                .ThenInclude(p => p.Client)
                 .Select(e => WorkObjectMapper.MapFromDomain(e))
                 .ToListAsync();
+            
         }
 
         public override async Task<DAL.App.DTO.WorkObject> FindAsync(params object[] id)
         {
-            var workObject = await RepositoryDbSet.FindAsync(id);
+            
+            var workObject = await RepositoryDbSet
+                .Include(c => c.Client)
+                .ThenInclude(q => q.Bills)
+                .Include(p => p.AppUsersOnObject)
+                .ThenInclude(p => p.AppUser)
+                .Include(p => p.ProductsForClient)
+                .ThenInclude(p  => p.Product)
+                .Include(p => p.ProductsForClient)
+                .ThenInclude(p => p.Client)
+                .FirstOrDefaultAsync(m => m.Id == (int) id[0]);
 
-            if (workObject != null)
-            {
-                await RepositoryDbContext.Entry(workObject)
-                    .Reference(c => c.Client).LoadAsync();
-                await RepositoryDbContext.Entry(workObject)
-                    .Collection(c => c.AppUsersOnObject).LoadAsync();
-                await RepositoryDbContext.Entry(workObject)
-                    .Collection(c => c.ProductsForClient).LoadAsync();
-            }
 
             return WorkObjectMapper.MapFromDomain(workObject);
         }
-
 
         public async Task<List<DAL.App.DTO.WorkObject>> AllForUserAsync(int userId)
         {
             return await RepositoryDbSet
                 .Include(c => c.Client)
+                .ThenInclude(q => q.Bills)
                 .Include(p => p.AppUsersOnObject)
+                .ThenInclude(p => p.AppUser)
                 .Include(p => p.ProductsForClient)
+                .ThenInclude(p => p.Product)
+                .Include(p => p.ProductsForClient)
+                .ThenInclude(p => p.Client)
                 .Where(p => p.AppUsersOnObject.Any(q => q.AppUserId == userId))
                 .Select(e => WorkObjectMapper.MapFromDomain(e))
                 .ToListAsync();
@@ -62,13 +73,18 @@ namespace DAL.App.EF.Repositories
 
         public async Task<WorkObject> FindForUserAsync(int id, int userId)
         {
-            var contact = await RepositoryDbSet
+            var workObject = await RepositoryDbSet
                 .Include(c => c.Client)
+                .ThenInclude(q => q.Bills)
                 .Include(p => p.AppUsersOnObject)
+                .ThenInclude(p => p.AppUser)
                 .Include(p => p.ProductsForClient)
+                .ThenInclude(p  => p.Product)
+                .Include(p => p.ProductsForClient)
+                .ThenInclude(p => p.Client)
                 .FirstOrDefaultAsync(m => m.Id == id && m.AppUsersOnObject.Any(q => q.AppUserId == userId));
 
-            return WorkObjectMapper.MapFromDomain(contact);        }
+            return WorkObjectMapper.MapFromDomain(workObject);        }
 
         public async Task<bool> BelongsToUserAsync(int id, int userId)
         {

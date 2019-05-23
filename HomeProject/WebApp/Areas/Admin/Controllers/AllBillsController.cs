@@ -1,5 +1,6 @@
 #pragma warning disable 1591
 using System.Threading.Tasks;
+using BLL.App.DTO;
 using Contracts.BLL.App;
 using Domain.Identity;
 using Identity;
@@ -90,6 +91,25 @@ namespace WebApp.Areas.Admin.Controllers
                 nameof(BLL.App.DTO.Identity.AppUser.FirstLastName));
 
             return View(vm);
+        }
+        
+        public async Task<IActionResult> CreateForClient(int clientId)
+        {
+            var vm = new WebApp.Areas.Admin.ViewModels.BillCreateEditViewModel();
+
+            ViewData["client"] = await _bll.Clients.FindAsync(clientId);
+//            vm.ClientSelectList = new SelectList(
+//                await _bll.Clients.AllAsync(), 
+//                nameof(BLL.App.DTO.Client.Id), 
+//                nameof(BLL.App.DTO.Client.CompanyName));
+
+            vm.AppUserSelectList = new SelectList(
+                await _bll.AppUsers.AllAsync(), 
+                nameof(BLL.App.DTO.Identity.AppUser.Id), 
+                nameof(BLL.App.DTO.Identity.AppUser.FirstLastName));
+            
+            return View(vm);
+            
         }
 
         // GET: Bills/Edit/5
@@ -183,5 +203,6 @@ namespace WebApp.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+       
     }
 }

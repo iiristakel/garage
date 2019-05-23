@@ -32,19 +32,19 @@ namespace DAL.App.EF.Repositories
                 .ToListAsync();
         }
         
-        public override async Task<DAL.App.DTO.Payment> FindAsync(params object[] id)
-        {
-            var payment = await RepositoryDbSet.FindAsync(id);
-
-            if (payment != null)
-            {
-                await RepositoryDbContext.Entry(payment).Reference(c => c.Bill).LoadAsync();
-                await RepositoryDbContext.Entry(payment).Reference(c => c.Client).LoadAsync();
-                await RepositoryDbContext.Entry(payment).Reference(c => c.PaymentMethod).LoadAsync();
-          }
-            
-            return PaymentMapper.MapFromDomain(payment);
-        }
+//        public override async Task<DAL.App.DTO.Payment> FindAsync(params object[] id)
+//        {
+//            var payment = await RepositoryDbSet.FindAsync(id);
+//
+//            if (payment != null)
+//            {
+//                await RepositoryDbContext.Entry(payment).Reference(c => c.Bill).LoadAsync();
+//                await RepositoryDbContext.Entry(payment).Reference(c => c.Client).LoadAsync();
+//                await RepositoryDbContext.Entry(payment).Reference(c => c.PaymentMethod).LoadAsync();
+//          }
+//            
+//            return PaymentMapper.MapFromDomain(payment);
+//        }
 
         public async Task<List<Payment>> AllForUserAsync(int userId)
         {

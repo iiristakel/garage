@@ -46,8 +46,7 @@ namespace DAL.App.EF.Migrations
                     FirstName = table.Column<string>(maxLength: 64, nullable: false),
                     LastName = table.Column<string>(maxLength: 64, nullable: false),
                     HiringDate = table.Column<DateTime>(nullable: true),
-                    LeftJob = table.Column<DateTime>(nullable: true),
-                    PhoneNr = table.Column<string>(maxLength: 15, nullable: true)
+                    LeftJob = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -318,7 +317,8 @@ namespace DAL.App.EF.Migrations
                     CompanyName = table.Column<string>(maxLength: 64, nullable: true),
                     Address = table.Column<string>(maxLength: 120, nullable: false),
                     Phone = table.Column<string>(maxLength: 15, nullable: false),
-                    ContactPerson = table.Column<string>(maxLength: 64, nullable: true)
+                    ContactPerson = table.Column<string>(maxLength: 64, nullable: true),
+                    From = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {

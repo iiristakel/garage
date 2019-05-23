@@ -1,10 +1,11 @@
 using System;
+using System.Linq;
 using Contracts.BLL.Base.Mappers;
 
 namespace BLL.App.Mappers
 {
-    public class WorkObjectMapper: IBaseBLLMapper
-    
+    public class WorkObjectMapper : IBaseBLLMapper
+
     {
         public TOutObject Map<TOutObject>(object inObject)
             where TOutObject : class
@@ -18,36 +19,58 @@ namespace BLL.App.Mappers
             {
                 return MapFromBLL((BLL.App.DTO.WorkObject) inObject) as TOutObject;
             }
-            throw new InvalidCastException($"No conversion from {inObject.GetType().FullName} to {typeof(TOutObject).FullName}");
+
+            throw new InvalidCastException(
+                $"No conversion from {inObject.GetType().FullName} to {typeof(TOutObject).FullName}");
         }
 
         public static BLL.App.DTO.WorkObject MapFromDAL(DAL.App.DTO.WorkObject workObject)
         {
             var res = workObject == null ? null : new BLL.App.DTO.WorkObject
-            {
-                Id = workObject.Id,
-                Client = ClientMapper.MapFromDAL(workObject.Client),
-                ClientId = workObject.ClientId,
-                From = workObject.From,
-                Until = workObject.Until
+                {
+                    Id = workObject.Id,
+                    Client = ClientMapper.MapFromDAL(workObject.Client),
+                    ClientId = workObject.ClientId,
+                    From = workObject.From,
+                    Until = workObject.Until,
+                    AppUsersOnObject = workObject.AppUsersOnObject.Select(e => AppUserOnObjectMapper.MapFromDAL(e)).ToList(),
+                    ProductsForClient = workObject.ProductsForClient.Select(e => ProductForClientMapper.MapFromDAL(e)).ToList(),
 
-            };
+                };
+//
+//            if (workObject.AppUsersOnObject != null)
+//            {
+//                foreach (var appuserOnObject in workObject.AppUsersOnObject)
+//                {
+//                    res.AppUsersOnObject.Add(AppUserOnObjectMapper.MapFromDAL(appuserOnObject));
+//                }
+//            }
+//
+//            if (workObject.ProductsForClient != null)
+//            {
+//                foreach (var productForClient in workObject.ProductsForClient)
+//                {
+//                    res.ProductsForClient.Add(ProductForClientMapper.MapFromDAL(productForClient));
+//                }
+//            }
+        
+        return res;
+    }
 
-            return res;
-        }
-
-        public static DAL.App.DTO.WorkObject MapFromBLL(BLL.App.DTO.WorkObject workObject)
-        {
+    public static DAL.App.DTO.WorkObject MapFromBLL(BLL.App.DTO.WorkObject workObject)
+    {
             var res = workObject == null ? null : new DAL.App.DTO.WorkObject
             {
                 Id = workObject.Id,
                 Client = ClientMapper.MapFromBLL(workObject.Client),
                 ClientId = workObject.ClientId,
                 From = workObject.From,
-                Until = workObject.Until
+                Until = workObject.Until,
+                AppUsersOnObject = workObject.AppUsersOnObject.Select(e => AppUserOnObjectMapper.MapFromBLL(e)).ToList(),
+                ProductsForClient = workObject.ProductsForClient.Select(e => ProductForClientMapper.MapFromBLL(e)).ToList(),
             };
-            return res;
-        }
-        
+        return res;
     }
+}
+
 }
