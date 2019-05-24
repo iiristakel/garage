@@ -27,10 +27,6 @@ namespace DAL.App.EF.Repositories
             var res = await RepositoryDbSet
                 .Include(p => p.Product)
                 .ThenInclude(t => t.Translations)
-                .Include(p => p.Bill)
-                .ThenInclude(p => p.Comment)
-                .ThenInclude(t => t.Translations)
-                
                 .Select(c => new 
                 {
                     Id = c.Id,
@@ -40,8 +36,7 @@ namespace DAL.App.EF.Repositories
                     Translations = c.Product.Translations,
                     Sum = c.Sum,
                     Amount = c.Amount,
-                    DiscountPercent = c.DiscountPercent,
-                    SumWithDiscount = c.Sum * (1 - c.DiscountPercent / 100)
+                    DiscountPercent = c.DiscountPercent
                 })
                 .ToListAsync();
 
@@ -53,8 +48,7 @@ namespace DAL.App.EF.Repositories
                 Product = c.Product.Translate(),
                 Sum = c.Sum,
                 Amount = c.Amount,
-                DiscountPercent = c.DiscountPercent,
-                SumWithDiscount = c.SumWithDiscount
+                DiscountPercent = c.DiscountPercent
             }).ToList();
 
             return resultList;
@@ -92,11 +86,9 @@ namespace DAL.App.EF.Repositories
             
             var res = await RepositoryDbSet
                 .Include(p => p.Bill)
-//                .ThenInclude(p => p.Comment)
-//                .ThenInclude(t => t.Translations)
                 .Include(p => p.Product)
                 .ThenInclude(t => t.Translations)
-                .Where(p => p.Bill.AppUserId == userId)
+                .Where(p => p.Bill.WorkObject.AppUsersOnObject.Any(q => q.AppUserId == userId))
                 .Select(c => new 
                 {
                     Id = c.Id,
@@ -107,7 +99,6 @@ namespace DAL.App.EF.Repositories
                     Sum = c.Sum,
                     Amount = c.Amount,
                     DiscountPercent = c.DiscountPercent,
-                    SumWithDiscount = c.Sum * (1 - c.DiscountPercent / 100)
                 })
                 .ToListAsync();
 
@@ -119,8 +110,8 @@ namespace DAL.App.EF.Repositories
                 Product = c.Product.Translate(),
                 Sum = c.Sum,
                 Amount = c.Amount,
-                DiscountPercent = c.DiscountPercent,
-                SumWithDiscount = c.SumWithDiscount
+                DiscountPercent = c.DiscountPercent
+                
             }).ToList();
 
             return resultList;
@@ -133,17 +124,15 @@ namespace DAL.App.EF.Repositories
             var contact = await RepositoryDbSet
                 .Include(p => p.Product)
                 .ThenInclude(t => t.Translations)
-                .Include(c => c.Bill)
-//                .ThenInclude(p => p.Comment)
-//                .ThenInclude(t => t.Translations)
-                .FirstOrDefaultAsync(m => m.Id == id && m.Bill.AppUserId == userId);
+                .Include(c => c.Bill)  //need to include more?
+                .FirstOrDefaultAsync(m => m.Id == id && m.Bill.WorkObject.AppUsersOnObject.Any(p => p.AppUserId == userId));
 
             return BillLineMapper.MapFromDomain(contact);        }
 
         public async Task<bool> BelongsToUserAsync(int id, int userId)
         {
             return await RepositoryDbSet
-                .AnyAsync(c => c.Id == id && c.Bill.AppUserId == userId);
+                .AnyAsync(c => c.Id == id && c.Bill.WorkObject.AppUsersOnObject.Any(p => p.AppUserId == userId));
         }
     }
 }

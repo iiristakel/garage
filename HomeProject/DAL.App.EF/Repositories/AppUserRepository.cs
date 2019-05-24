@@ -19,60 +19,54 @@ namespace DAL.App.EF.Repositories
         {
         }
 
-//        public override async Task<List<DAL.App.DTO.Identity.AppUser>> AllAsync()
+        public override async Task<List<DAL.App.DTO.Identity.AppUser>> AllAsync()
+        {
+            return await RepositoryDbSet
+//                .Include(c =>c.AppUserOnObjects)
+                .Include(d=> d.AppUserInPositions)
+                .ThenInclude(d => d.AppUserPosition)
+                .Select(e => AppUserMapper.MapFromDomain(e))
+                .ToListAsync();
+        }
+        
+        
+        public override async Task<DAL.App.DTO.Identity.AppUser> FindAsync(params object[] id)
+        {   
+            return AppUserMapper.MapFromDomain(
+                await RepositoryDbSet
+                    .Include(d=> d.AppUserInPositions)
+                    .ThenInclude(d => d.AppUserPosition)
+                .FirstOrDefaultAsync(p => p.Id == (int) id[0]));
+        }
+        
+
+//        public async Task<List<AppUser>> AllForUserAsync(int userId)
 //        {
 //            return await RepositoryDbSet
 //                .Include(c =>c.AppUserOnObjects)
 //                .Include(d=> d.AppUserInPositions)
+////                    .ThenInclude(f => f.AppUserPosition)
 //                .Include(e => e.Bills)
+//                .Where(c => c.Id == userId)
 //                .Select(e => AppUserMapper.MapFromDomain(e))
-//                .ToListAsync();
+//                .ToListAsync();        
 //        }
-        
-        
-//        public override async Task<DAL.App.DTO.Identity.AppUser> FindAsync(params object[] id)
-//        {
-//            
-//            var appUser = await RepositoryDbSet.FindAsync(id);
 //
-//            if (appUser != null)
-//            {
-//                await RepositoryDbContext.Entry(appUser)
-//                    .Collection(c => c.AppUserInPositions)
-//                    .LoadAsync();
-//            }
-//            
-//            return AppUserMapper.MapFromDomain(appUser);
+//        public async Task<AppUser> FindForUserAsync(int id, int userId)
+//        {
+//            return AppUserMapper.MapFromDomain(
+//                await RepositoryDbSet
+//                    .Include(c =>c.AppUserOnObjects)
+//                    .Include(d=> d.AppUserInPositions)
+//                    .Include(e => e.Bills)
+//                .FirstOrDefaultAsync(p => p.Id == id && p.Id == userId));
 //        }
-        
 
-        public async Task<List<AppUser>> AllForUserAsync(int userId)
-        {
-            return await RepositoryDbSet
-                .Include(c =>c.AppUserOnObjects)
-                .Include(d=> d.AppUserInPositions)
-//                    .ThenInclude(f => f.AppUserPosition)
-                .Include(e => e.Bills)
-                .Where(c => c.Id == userId)
-                .Select(e => AppUserMapper.MapFromDomain(e))
-                .ToListAsync();        
-        }
-
-        public async Task<AppUser> FindForUserAsync(int id, int userId)
-        {
-            return AppUserMapper.MapFromDomain(
-                await RepositoryDbSet
-                    .Include(c =>c.AppUserOnObjects)
-                    .Include(d=> d.AppUserInPositions)
-                    .Include(e => e.Bills)
-                .FirstOrDefaultAsync(p => p.Id == id && p.Id == userId));
-        }
-
-        public async Task<bool> BelongsToUserAsync(int id, int userId)
-        {
-            return await RepositoryDbSet.AnyAsync(p => p.Id == id && p.Id == userId);
-        }
-        
+//        public async Task<bool> BelongsToUserAsync(int id, int userId)
+//        {
+//            return await RepositoryDbSet.AnyAsync(p => p.Id == id && p.Id == userId);
+//        }
+//        
         
     }
 }

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Contracts.BLL.App;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApp.ApiControllers.v1_0
@@ -11,6 +12,7 @@ namespace WebApp.ApiControllers.v1_0
     /// </summary>
     [ApiVersion( "1.0" )]
     [Route("api/v{version:apiVersion}/[controller]")]
+    [Authorize(Roles = "Admin")]
     [ApiController]
     public class PaymentMethodsController : ControllerBase
     {
@@ -28,12 +30,12 @@ namespace WebApp.ApiControllers.v1_0
         /// <summary>
         /// Get all payment methods.
         /// </summary>
-        /// <returns>All payment methods with payments count.</returns>
+        /// <returns>All payment methods.</returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<
-            PublicApi.v1.DTO.PaymentMethodWithPaymentsCount>>> GetPaymentMethods()
+            PublicApi.v1.DTO.PaymentMethod>>> GetPaymentMethods()
         {
-            return (await _bll.PaymentMethods.GetAllWithPaymentsCountAsync())
+            return (await _bll.PaymentMethods.AllAsync())
                 .Select(e =>
                     PublicApi.v1.Mappers.PaymentMethodMapper.MapFromInternal(e))
                 .ToList();

@@ -32,8 +32,6 @@ namespace PublicApi.v1.Mappers
                     ClientId = productForClient.ClientId,
                     Product = ProductMapper.MapFromInternal(productForClient.Product),
                     ProductId = productForClient.ProductId,
-                    WorkObject = WorkObjectMapper.MapFromInternal(productForClient.WorkObject),
-                    WorkObjectId = productForClient.WorkObjectId,
                     Count = productForClient.Count
                 };
 
@@ -49,8 +47,6 @@ namespace PublicApi.v1.Mappers
                     ClientId = productForClient.ClientId,
                     Product = ProductMapper.MapFromExternal(productForClient.Product),
                     ProductId = productForClient.ProductId,
-                    WorkObject = WorkObjectMapper.MapFromExternal(productForClient.WorkObject),
-                    WorkObjectId = productForClient.WorkObjectId,
                     Count = productForClient.Count
                 };
             return res;

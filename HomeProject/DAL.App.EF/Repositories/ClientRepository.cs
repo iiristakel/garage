@@ -30,9 +30,6 @@ namespace DAL.App.EF.Repositories
                 .Include(p => p.ClientGroup)
                 .ThenInclude(p => p.Description)
                 .ThenInclude(t => t.Translations)
-                .Include(p => p.ProductsForClient)
-                .ThenInclude(p=> p.Product)
-                .Include(c => c.Bills)
                 .Select(e => ClientMapper.MapFromDomain(e))
                 .ToListAsync();
         }
@@ -70,6 +67,7 @@ namespace DAL.App.EF.Repositories
                 await RepositoryDbContext.Entry(client)
                     .Collection(c => c.ProductsForClient)
                     .LoadAsync();
+                // TODO: include products?
                 
                 await RepositoryDbContext.Entry(client)
                     .Collection(c => c.Bills)
@@ -88,9 +86,6 @@ namespace DAL.App.EF.Repositories
                 .Include(p => p.ClientGroup)
                 .ThenInclude(p => p.Description)
                 .ThenInclude(t => t.Translations)
-                .Include(p => p.ProductsForClient)
-                .ThenInclude(p=> p.Product)
-                .Include(p => p.Bills)
 
                 .Select(c => new ClientWithProductsCount()
                 {

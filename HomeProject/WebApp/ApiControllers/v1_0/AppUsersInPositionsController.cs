@@ -95,7 +95,7 @@ namespace WebApp.ApiControllers.v1_0
         public async Task<ActionResult<PublicApi.v1.DTO.AppUserInPosition>> PostAppUserInPosition(
             PublicApi.v1.DTO.AppUserInPosition appUserInPosition)
         {
-            if (!await _bll.AppUsers.BelongsToUserAsync(appUserInPosition.AppUserId, User.GetUserId()))
+            if (!await _bll.AppUsersInPositions.BelongsToUserAsync(appUserInPosition.Id, User.GetUserId()))
             {
                 return NotFound();
             }

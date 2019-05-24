@@ -28,6 +28,8 @@ namespace BLL.App.Helpers
             AddToCreationMethods<IAppUserPositionService>(uow => new AppUserPositionService(uow));
             AddToCreationMethods<IAppUserService>(uow => new AppUserService(uow));
             AddToCreationMethods<IWorkObjectService>(uow => new WorkObjectService(uow));
+            AddToCreationMethods<IProductServiceService>(uow => new ProductServiceService(uow));
+
 
         }
 

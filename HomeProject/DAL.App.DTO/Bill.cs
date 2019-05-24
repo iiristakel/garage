@@ -13,14 +13,18 @@ namespace DAL.App.DTO
         
         public int ClientId { get; set; }
         public Client Client { get; set; }
+        
+        public int WorkObjectId { get; set; }
 
-        public int AppUserId { get; set; }
-        public AppUser AppUser { get; set; }
+        public WorkObject WorkObject { get; set; }
         
         public ICollection<BillLine> BillLines { get; set; }
 
+        public ICollection<Payment> Payments { get; set; }
+        
+
         public decimal ArrivalFee { get; set; }
-        public decimal SumWithoutTaxes { get; set; }
+        public decimal? SumWithoutTaxes { get; set; }
         public decimal? TaxPercent { get; set; }
         public decimal? FinalSum { get; set; }
         

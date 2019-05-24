@@ -44,18 +44,7 @@ namespace PublicApi.v1.Mappers
             return res;
         }
         
-        public static externalDTO.PaymentMethodWithPaymentsCount MapFromInternal(internalDTO.PaymentMethodWithPaymentsCount paymentMethodWithPaymentsCount)
-        {
-            var res = paymentMethodWithPaymentsCount == null ? null : new externalDTO.PaymentMethodWithPaymentsCount()
-            {
-                Id = paymentMethodWithPaymentsCount.Id,
-                PaymentMethodValue = paymentMethodWithPaymentsCount.PaymentMethodValue,
-                PaymentsCount = paymentMethodWithPaymentsCount.PaymentsCount
-
-            };
-
-            return res;
-        }
+       
         
     }
 }

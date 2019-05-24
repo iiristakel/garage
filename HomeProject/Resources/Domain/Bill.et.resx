@@ -132,6 +132,9 @@
   <data name="Client" xml:space="preserve">
     <value>Klient</value>
   </data>
+  <data name="WorkObject" xml:space="preserve">
+    <value>Töö objekt</value>
+  </data>
   <data name="Comment" xml:space="preserve">
     <value>Kommentaar</value>
   </data>

@@ -18,22 +18,22 @@ namespace BLL.App.Services
             ServiceRepository = Uow.AppUsers;
         }
 
-        public async Task<List<AppUser>> AllForUserAsync(int userId)
-        {
-            return (await Uow.AppUsers
-                    .AllForUserAsync(userId))
-                .Select(e => AppUserMapper
-                    .MapFromDAL(e)).ToList();
-        }
-
-        public async Task<AppUser> FindForUserAsync(int id, int userId)
-        {
-            return AppUserMapper.MapFromDAL( await Uow.AppUsers.FindForUserAsync(id, userId));
-        }
-
-        public async Task<bool> BelongsToUserAsync(int id, int userId)
-        {
-            return await Uow.AppUsers.BelongsToUserAsync(id, userId);
-        }
+//        public async Task<List<AppUser>> AllForUserAsync(int userId)
+//        {
+//            return (await Uow.AppUsers
+//                    .AllForUserAsync(userId))
+//                .Select(e => AppUserMapper
+//                    .MapFromDAL(e)).ToList();
+//        }
+//
+//        public async Task<AppUser> FindForUserAsync(int id, int userId)
+//        {
+//            return AppUserMapper.MapFromDAL( await Uow.AppUsers.FindForUserAsync(id, userId));
+//        }
+//
+//        public async Task<bool> BelongsToUserAsync(int id, int userId)
+//        {
+//            return await Uow.AppUsers.BelongsToUserAsync(id, userId);
+//        }
     }
 }

@@ -6,7 +6,7 @@ namespace PublicApi.v1.DTO
     {
         public int Id { get; set; }
         
-        public int? BillId { get; set; }
+        public int BillId { get; set; }
         public Bill Bill { get; set; }
 
         public string Product { get; set; }

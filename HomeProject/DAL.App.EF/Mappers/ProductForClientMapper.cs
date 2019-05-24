@@ -34,8 +34,6 @@ namespace DAL.App.EF.Mappers
                     ClientId = productForClient.ClientId,
                     Product = ProductMapper.MapFromDomain(productForClient.Product),
                     ProductId = productForClient.ProductId,
-//                    WorkObject = WorkObjectMapper.MapFromDomain(productForClient.WorkObject),
-//                    WorkObjectId = productForClient.WorkObjectId,
                     Count = productForClient.Count
                 };
 
@@ -51,8 +49,6 @@ namespace DAL.App.EF.Mappers
                     ClientId = productForClient.ClientId,
                     Product = ProductMapper.MapFromDAL(productForClient.Product),
                     ProductId = productForClient.ProductId,
-//                    WorkObject = WorkObjectMapper.MapFromDAL(productForClient.WorkObject),
-//                    WorkObjectId = productForClient.WorkObjectId,
                     Count = productForClient.Count
                 };
             return res;

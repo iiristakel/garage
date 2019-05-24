@@ -41,12 +41,15 @@ namespace DAL.App.EF.Repositories
 
             if (bill != null)
             {
-//                await RepositoryDbContext.Entry(bill)
-//                    .Reference(c => c.Client)
-//                    .LoadAsync();
-//                await RepositoryDbContext.Entry(bill)
-//                    .Reference(c => c.AppUser)
-//                    .LoadAsync();
+                await RepositoryDbContext.Entry(bill)
+                    .Reference(c => c.WorkObject)
+                    .LoadAsync();
+                await RepositoryDbContext.Entry(bill)
+                    .Collection(c => c.Payments)  // include paymentmethod?
+                    .LoadAsync();
+                await RepositoryDbContext.Entry(bill)
+                    .Collection(c => c.BillLines)
+                    .LoadAsync();
                 await RepositoryDbContext.Entry(bill)
                     .Reference(c => c.Comment)
                     .LoadAsync();
@@ -60,59 +63,19 @@ namespace DAL.App.EF.Repositories
             return BillMapper.MapFromDomain(bill);
         }
 
-        public virtual async Task<List<BillWithPaymentsCount>> GetAllWithPaymentsCountAsync()
-        {
-            var culture = Thread.CurrentThread.CurrentUICulture.Name.Substring(0, 2).ToLower();
-            
-            var res = await RepositoryDbSet
-                .Include(c => c.Comment)
-                .ThenInclude(t => t.Translations)
-                .Select(c => new 
-                {
-                    Id = c.Id,
-                    Client = ClientMapper.MapFromDomain(c.Client),
-                    ClientId = c.ClientId,
-                    PaymentsCount = c.Payments.Count,
-                    ArrivalFee = c.ArrivalFee,
-                    SumWithoutTaxes = c.SumWithOutTaxes,
-                    TaxPercent = c.TaxPercent,
-                    FinalSum = c.SumWithOutTaxes * (1 + (c.TaxPercent / 100)),
-                    DateTime = c.DateTime,
-                    InvoiceNr = c.InvoiceNr,
-                    Comment = c.Comment,
-                    Translations = c.Comment.Translations
-                })
-                .ToListAsync();
-            
-            var resultList = res.Select(c => new BillWithPaymentsCount()
-            {
-                Id = c.Id,
-                Client = c.Client,
-                ClientId = c.ClientId,
-                PaymentsCount = c.PaymentsCount,
-                ArrivalFee = c.ArrivalFee,
-                SumWithoutTaxes = c.SumWithoutTaxes,
-                TaxPercent = c.TaxPercent,
-                FinalSum = c.FinalSum,
-                DateTime = c.DateTime,
-                InvoiceNr = c.InvoiceNr,
-                Comment = c.Comment.Translate()
-                     
-            }).ToList();
-            return resultList;
-
-        }
 
         public async Task<List<Bill>> AllForUserAsync(int userId)
         {
             var culture = Thread.CurrentThread.CurrentUICulture.Name.Substring(0, 2).ToLower();
+            
             var res = await RepositoryDbSet
-                .Include(c => c.Client)
-                .Include(c => c.AppUser)
+                .Include(c => c.WorkObject)
                 .Include(c => c.Payments)
-                .Where(c => c.AppUser.Id == userId)
+                .Include(c => c.BillLines)
                 .Include(c => c.Comment)
                 .ThenInclude(t => t.Translations)
+                .Where(p => p.WorkObject.AppUsersOnObject.Any(q => q.AppUserId == userId))
+                
                 .Select(c => new
                 {
                     Id = c.Id,
@@ -121,7 +84,6 @@ namespace DAL.App.EF.Repositories
                     ArrivalFee = c.ArrivalFee,
                     SumWithoutTaxes = c.SumWithOutTaxes,
                     TaxPercent = c.TaxPercent,
-                    FinalSum = c.SumWithOutTaxes * (1 + (c.TaxPercent / 100)),
                     DateTime = c.DateTime,
                     InvoiceNr = c.InvoiceNr,
                     Comment = c.Comment,
@@ -137,7 +99,6 @@ namespace DAL.App.EF.Repositories
                 ArrivalFee = c.ArrivalFee,
                 SumWithoutTaxes = c.SumWithoutTaxes,
                 TaxPercent = c.TaxPercent,
-                FinalSum = c.FinalSum,
                 DateTime = c.DateTime,
                 InvoiceNr = c.InvoiceNr,
                 Comment = c.Comment.Translate()
@@ -152,23 +113,27 @@ namespace DAL.App.EF.Repositories
             var culture = Thread.CurrentThread.CurrentUICulture.Name.Substring(0, 2).ToLower();
             return BillMapper.MapFromDomain(
                 await RepositoryDbSet
-                    .Include(p => p.Client)
-                    .Include(p => p.AppUser)
+                    .Include(p=> p.WorkObject) //need to include more?
+                    .Include(p => p.BillLines)
                     .Include(c => c.Payments)
                     .Include(c => c.Comment)
+                    
                     .ThenInclude(t => t.Translations).AsQueryable()
                    
-                .FirstOrDefaultAsync(p => p.Id == id && p.AppUserId == userId));
+                .FirstOrDefaultAsync(p => p.Id == id && p.WorkObject.AppUsersOnObject.Any(q => q.AppUserId == userId)));
         }
 
         public async Task<bool> BelongsToUserAsync(int id, int userId)
         {
-            return await RepositoryDbSet.AnyAsync(p => p.Id == id && p.AppUserId == userId);
+            return await RepositoryDbSet.AnyAsync(p => p.Id == id && p.WorkObject.AppUsersOnObject
+                                                           .Any(q => q.AppUserId == userId));
         }
         
         public override Bill Update(Bill entity)
         {
             var entityInDb = RepositoryDbSet
+                .Include(c => c.Payments)
+                .Include(c => c.WorkObject)
                 .Include(m => m.Comment)
                 .ThenInclude(t => t.Translations)
                 .FirstOrDefault(x => x.Id == entity.Id);

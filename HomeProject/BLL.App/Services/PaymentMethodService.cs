@@ -5,7 +5,6 @@ using BLL.App.Mappers;
 using BLL.Base.Services;
 using Contracts.BLL.App.Services;
 using Contracts.DAL.App;
-using PaymentMethodWithPaymentsCount = BLL.App.DTO.PaymentMethodWithPaymentsCount;
 
 namespace BLL.App.Services
 {
@@ -18,12 +17,6 @@ namespace BLL.App.Services
             ServiceRepository = Uow.PaymentMethods;
         }
 
-        public async Task<List<PaymentMethodWithPaymentsCount>> GetAllWithPaymentsCountAsync()
-        {
-            return (await Uow.PaymentMethods.GetAllWithPaymentsCountAsync())
-                .Select(e => PaymentMethodMapper.MapFromDAL(e))
-                .ToList();
-
-        }
+        
     }
 }

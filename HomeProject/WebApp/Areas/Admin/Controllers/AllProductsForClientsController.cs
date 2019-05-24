@@ -115,8 +115,6 @@ namespace WebApp.Areas.Admin.Controllers
 
             var vm = new Areas.Admin.ViewModels.ProductsForClientsCreateEditViewModel();
 
-            vm.ProductForClient.WorkObjectId = workobjectid;
-            vm.ProductForClient.WorkObject = await _bll.WorkObjects.FindAsync(workobjectid);
             
             vm.ProductSelectList = new MultiSelectList(
                 await _bll.Products.AllAsync(),

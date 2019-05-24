@@ -14,3 +14,4 @@ dotnet aspnet-codegenerator controller -name WorkersController -actions -m Worke
 dotnet aspnet-codegenerator controller -name WorkersOnObjectsController -actions -m WorkerOnObject -dc AppDbContext -outDir ApiControllers -api  --useAsyncActions  -f
 dotnet aspnet-codegenerator controller -name WorkersPositionsController -actions -m WorkerPosition -dc AppDbContext -outDir ApiControllers  -api --useAsyncActions  -f
 dotnet aspnet-codegenerator controller -name WorkObjectsController -actions -m WorkObject -dc AppDbContext -outDir ApiControllers  -api --useAsyncActions  -f
+dotnet aspnet-codegenerator controller -name ProductsServicesController -actions -m ProductService -dc AppDbContext -outDir ApiControllers  -api --useAsyncActions  -f

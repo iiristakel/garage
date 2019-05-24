@@ -18,15 +18,15 @@ namespace DAL.App.EF.Repositories
         {
         }
 
-        public override async Task<List<DAL.App.DTO.AppUserInPosition>> AllAsync()
-        {
-            return await RepositoryDbSet
-                .Include(p => p.AppUserPosition)
-                .ThenInclude(p => p.AppUserPositionValue)
-                .ThenInclude(t => t.Translations)
-                .Select(e => AppUserInPositionMapper.MapFromDomain(e))
-                .ToListAsync();
-        }
+//        public override async Task<List<DAL.App.DTO.AppUserInPosition>> AllAsync()
+//        {
+//            return await RepositoryDbSet
+//                .Include(p => p.AppUserPosition)
+//                .ThenInclude(p => p.AppUserPositionValue)
+//                .ThenInclude(t => t.Translations)
+//                .Select(e => AppUserInPositionMapper.MapFromDomain(e))
+//                .ToListAsync();
+//        }
 
 //        public override async Task<DAL.App.DTO.AppUserInPosition> FindAsync(params object[] id)
 //        {

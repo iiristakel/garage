@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace DAL.App.DTO
 {
     public class ProductForClient
@@ -6,9 +8,9 @@ namespace DAL.App.DTO
 
         public int ProductId { get; set; }
         public Product Product { get; set; }
+        
+        public ICollection<ProductService> ProductServices { get; set; }
 
-        public int? WorkObjectId { get; set; }
-        public WorkObject WorkObject { get; set; }
 
         public int ClientId { get; set; }
         public Client Client { get; set; }

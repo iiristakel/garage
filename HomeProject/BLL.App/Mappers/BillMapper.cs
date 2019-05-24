@@ -34,7 +34,9 @@ namespace BLL.App.Mappers
                 FinalSum = bill.FinalSum,
                 DateTime = bill.DateTime,
                 InvoiceNr = bill.InvoiceNr,
-                Comment = bill.Comment
+                Comment = bill.Comment,
+                WorkObjectId = bill.WorkObjectId,
+                WorkObject = WorkObjectMapper.MapFromDAL(bill.WorkObject)
 
             };
 
@@ -54,30 +56,13 @@ namespace BLL.App.Mappers
                 FinalSum = bill.FinalSum,
                 DateTime = bill.DateTime,
                 InvoiceNr = bill.InvoiceNr,
-                Comment = bill.Comment
+                Comment = bill.Comment,
+                WorkObjectId = bill.WorkObjectId,
+                WorkObject = WorkObjectMapper.MapFromBLL(bill.WorkObject)
             };
             return res;
         }
 
-        public static BLL.App.DTO.BillWithPaymentsCount MapFromDAL(DAL.App.DTO.BillWithPaymentsCount billWithPaymentsCount)
-        {
-            var res = billWithPaymentsCount == null ? null : new BLL.App.DTO.BillWithPaymentsCount()
-            {
-                Id = billWithPaymentsCount.Id,
-                ClientId = billWithPaymentsCount.ClientId,
-                Client = ClientMapper.MapFromDAL(billWithPaymentsCount.Client),
-                ArrivalFee = billWithPaymentsCount.ArrivalFee,
-                SumWithoutTaxes = billWithPaymentsCount.SumWithoutTaxes,
-                TaxPercent = billWithPaymentsCount.TaxPercent,
-                FinalSum = billWithPaymentsCount.FinalSum,
-                DateTime = billWithPaymentsCount.DateTime,
-                InvoiceNr = billWithPaymentsCount.InvoiceNr,
-                PaymentsCount = billWithPaymentsCount.PaymentsCount,
-                Comment = billWithPaymentsCount.Comment
-
-            };
-
-            return res;
-        }
+        
     }
 }

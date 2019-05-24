@@ -5,7 +5,7 @@ namespace Domain
 {
     public class AppUserPosition : DomainEntity
     {
-        public ICollection<AppUserInPosition> AppUsers { get; set; }
+        public ICollection<AppUserInPosition> AppUsersInPosition { get; set; }
 
         [MaxLength(64)]
         [MinLength(1)]

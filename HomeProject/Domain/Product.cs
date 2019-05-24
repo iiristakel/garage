@@ -5,17 +5,17 @@ namespace Domain
 {
     public class Product : DomainEntity
     {
-        public ICollection<ProductForClient> ProductsForClients { get; set; }
+        public ICollection<ProductForClient> ProductForClients { get; set; }
 
-        [MaxLength(150)]
+        [MaxLength(256)]
         [MinLength(1)]
         [Required]
         public MultiLangString ProductName { get; set; }
         
-        [MaxLength(100)]
+        [MaxLength(128)]
         [MinLength(1)]
         public string ProductCode {get;set;}
         
-        public decimal Price { get; set; }
+        public decimal? Price { get; set; }
     }
 }

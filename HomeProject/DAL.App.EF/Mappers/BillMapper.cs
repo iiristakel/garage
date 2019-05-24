@@ -31,15 +31,15 @@ namespace DAL.App.EF.Mappers
                 Id = bill.Id,
                 ClientId = bill.ClientId,
                 Client = ClientMapper.MapFromDomain(bill.Client),
-                AppUserId = bill.AppUserId,
-                AppUser = AppUserMapper.MapFromDomain(bill.AppUser),
                 ArrivalFee = bill.ArrivalFee,
                 SumWithoutTaxes = bill.SumWithOutTaxes,
                 TaxPercent = bill.TaxPercent,
                 FinalSum = bill.FinalSum,
                 DateTime = bill.DateTime,
                 InvoiceNr = bill.InvoiceNr,
-                Comment = bill.Comment.Translate()
+                Comment = bill.Comment.Translate(),
+                WorkObjectId = bill.WorkObjectId,
+                WorkObject = WorkObjectMapper.MapFromDomain(bill.WorkObject)
 
             };
 
@@ -53,8 +53,6 @@ namespace DAL.App.EF.Mappers
                 Id = bill.Id,
                 ClientId = bill.ClientId,
                 Client = ClientMapper.MapFromDAL(bill.Client),
-                AppUserId = bill.AppUserId,
-                AppUser = AppUserMapper.MapFromDAL(bill.AppUser),
                 ArrivalFee = bill.ArrivalFee,
                 SumWithOutTaxes = bill.SumWithoutTaxes,
                 TaxPercent = bill.TaxPercent,

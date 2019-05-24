@@ -7,7 +7,6 @@ namespace Contracts.DAL.App.Repositories
 {
     public interface IBillRepository : IBillRepository<DALAppDTO.Bill>
     {
-        Task<List<DALAppDTO.BillWithPaymentsCount>> GetAllWithPaymentsCountAsync();
     }
 
     

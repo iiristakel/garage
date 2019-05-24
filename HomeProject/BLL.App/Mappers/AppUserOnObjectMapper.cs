@@ -29,8 +29,8 @@ namespace BLL.App.Mappers
                 Id = appUserOnObject.Id,
                 AppUserId = appUserOnObject.AppUserId,
                 AppUser = AppUserMapper.MapFromDAL(appUserOnObject.AppUser),
-//                WorkObjectId = appUserOnObject.WorkObjectId,
-//                WorkObject = WorkObjectMapper.MapFromDAL(appUserOnObject.WorkObject),
+                WorkObjectId = appUserOnObject.WorkObjectId,
+                WorkObject = WorkObjectMapper.MapFromDAL(appUserOnObject.WorkObject),
                 From = appUserOnObject.From,
                 Until = appUserOnObject.Until
 
@@ -46,8 +46,8 @@ namespace BLL.App.Mappers
                 Id = appUserOnObject.Id,
                 AppUserId = appUserOnObject.AppUserId,
                 AppUser = AppUserMapper.MapFromBLL(appUserOnObject.AppUser),
-//                WorkObjectId = appUserOnObject.WorkObjectId,
-//                WorkObject = WorkObjectMapper.MapFromBLL(appUserOnObject.WorkObject),
+                WorkObjectId = appUserOnObject.WorkObjectId,
+                WorkObject = WorkObjectMapper.MapFromBLL(appUserOnObject.WorkObject),
                 From = appUserOnObject.From,
                 Until = appUserOnObject.Until
             };

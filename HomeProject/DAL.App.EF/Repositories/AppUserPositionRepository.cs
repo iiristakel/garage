@@ -55,7 +55,7 @@ namespace DAL.App.EF.Repositories
                     Id = c.Id,
                     AppUserPositionValue = c.AppUserPositionValue,
                     Translations = c.AppUserPositionValue.Translations,
-                    AppUsersCount = c.AppUsers.Count
+                    AppUsersCount = c.AppUsersInPosition.Count
                 })
                 .ToListAsync();
             

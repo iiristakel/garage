@@ -7,8 +7,7 @@ namespace Domain
         public int ProductId { get; set; }
         public Product Product { get; set; }
 
-        public int? WorkObjectId { get; set; }
-        public WorkObject WorkObject { get; set; }
+        public ICollection<ProductService> ProductServices { get; set; }
 
         public int ClientId { get; set; }
         public Client Client { get; set; }

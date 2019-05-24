@@ -55,6 +55,9 @@ namespace DAL.App.EF.Helpers
             
             AddToCreationMethods<IWorkObjectRepository>( 
                 dataContext => new WorkObjectRepository(dataContext));
+            
+            AddToCreationMethods<IProductServiceRepository>( 
+                dataContext => new ProductServiceRepository(dataContext));
         }
     }
 }

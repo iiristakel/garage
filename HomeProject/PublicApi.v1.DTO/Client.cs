@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace PublicApi.v1.DTO
@@ -9,6 +10,8 @@ namespace PublicApi.v1.DTO
         public int? ClientGroupId { get; set; }
         public ClientGroup ClientGroup { get; set; }
 
+//        public ICollection<Bill> Bills { get; set; }
+//        public ICollection<ProductForClient> ProductsForClient { get; set; }
 
         [MaxLength(64)]
         [MinLength(1)]
@@ -25,6 +28,11 @@ namespace PublicApi.v1.DTO
         [Required]
         public string Phone { get; set; }
 
-        [MaxLength(64)] [MinLength(1)] public string ContactPerson { get; set; }
+        [MaxLength(64)] 
+        [MinLength(1)] 
+        public string ContactPerson { get; set; }
+        
+        [DataType(DataType.Date)]
+        public DateTime? From { get; set; }
     }
 }

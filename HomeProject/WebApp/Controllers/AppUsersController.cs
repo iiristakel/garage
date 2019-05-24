@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace WebApp.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class AppUsersController : Controller
     {
         private readonly IAppBLL _bll;
@@ -28,7 +28,7 @@ namespace WebApp.Controllers
         // GET: AppUsers
         public async Task<IActionResult> Index()
         {
-            var appUsers = await _bll.AppUsers.AllForUserAsync(User.GetUserId());
+            var appUsers = await _bll.AppUsers.AllAsync();
 
             return View(appUsers);
         }
@@ -41,7 +41,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var appUser = await _bll.AppUsers.FindForUserAsync(id.Value, User.GetUserId());
+            var appUser = await _bll.AppUsers.FindAsync(id.Value);
 
             if (appUser == null)
             {
@@ -87,7 +87,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var appUser = await _bll.AppUsers.FindForUserAsync(id.Value, User.GetUserId());
+            var appUser = await _bll.AppUsers.FindAsync(id.Value);
             if (appUser == null)
             {
                 return NotFound();
@@ -110,10 +110,10 @@ namespace WebApp.Controllers
                 return NotFound();
             }
             
-            if (!await _bll.AppUsers.BelongsToUserAsync(id, User.GetUserId()))
-            {
-                return NotFound();
-            }
+//            if (!await _bll.AppUsers.BelongsToUserAsync(id, User.GetUserId()))
+//            {
+//                return NotFound();
+//            }
 
             if (ModelState.IsValid)
             {
@@ -134,7 +134,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            var appUser = await _bll.AppUsers.FindForUserAsync(id.Value, User.GetUserId());
+            var appUser = await _bll.AppUsers.FindAsync(id.Value);
                 
             if (appUser == null)
             {
@@ -149,10 +149,10 @@ namespace WebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (!await _bll.AppUsers.BelongsToUserAsync(id, User.GetUserId()))
-            {
-                return NotFound();
-            }
+//            if (!await _bll.AppUsers.BelongsToUserAsync(id, User.GetUserId()))
+//            {
+//                return NotFound();
+//            }
             
             _bll.AppUsers.Remove(id);
             await _bll.SaveChangesAsync();

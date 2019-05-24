@@ -18,11 +18,11 @@
             <input type="hidden" asp-for="Bill.ClientId" value="@ViewBag.Client.Id"/>
 
             
-            <div class="form-group">
-                <label asp-for="Bill.AppUserId" class="control-label">@Resources.Domain.Bill.AppUser</label>
-                <select asp-for="Bill.AppUserId" class="form-control" asp-items="Model.AppUserSelectList"></select>
-                <span asp-validation-for="Bill.AppUserId" class="text-danger"></span>
-            </div>
+            @* <div class="form-group"> *@
+            @*     <label asp-for="Bill.WorkObjectId" class="control-label">@Resources.Domain.Bill.AppUser</label> *@
+            @*     <select asp-for="Bill.WorkObjectId" class="form-control" asp-items="Model.AppUserSelectList"></select> *@
+            @*     <span asp-validation-for="Bill.WorkObjectId" class="text-danger"></span> *@
+            @* </div> *@
             <div class="form-group">
                 <label asp-for="Bill.ArrivalFee" class="control-label"></label>
                 <input asp-for="Bill.ArrivalFee" class="form-control"/>

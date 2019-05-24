@@ -33,26 +33,9 @@ namespace BLL.App.Mappers
                     ClientId = workObject.ClientId,
                     From = workObject.From,
                     Until = workObject.Until,
-                    AppUsersOnObject = workObject.AppUsersOnObject.Select(e => AppUserOnObjectMapper.MapFromDAL(e)).ToList(),
-                    ProductsForClient = workObject.ProductsForClient.Select(e => ProductForClientMapper.MapFromDAL(e)).ToList(),
+//                    AppUsersOnObject = workObject.AppUsersOnObject.Select(e => AppUserOnObjectMapper.MapFromDAL(e)).ToList(),
 
                 };
-//
-//            if (workObject.AppUsersOnObject != null)
-//            {
-//                foreach (var appuserOnObject in workObject.AppUsersOnObject)
-//                {
-//                    res.AppUsersOnObject.Add(AppUserOnObjectMapper.MapFromDAL(appuserOnObject));
-//                }
-//            }
-//
-//            if (workObject.ProductsForClient != null)
-//            {
-//                foreach (var productForClient in workObject.ProductsForClient)
-//                {
-//                    res.ProductsForClient.Add(ProductForClientMapper.MapFromDAL(productForClient));
-//                }
-//            }
         
         return res;
     }
@@ -66,8 +49,7 @@ namespace BLL.App.Mappers
                 ClientId = workObject.ClientId,
                 From = workObject.From,
                 Until = workObject.Until,
-                AppUsersOnObject = workObject.AppUsersOnObject.Select(e => AppUserOnObjectMapper.MapFromBLL(e)).ToList(),
-                ProductsForClient = workObject.ProductsForClient.Select(e => ProductForClientMapper.MapFromBLL(e)).ToList(),
+//                AppUsersOnObject = workObject.AppUsersOnObject.Select(e => AppUserOnObjectMapper.MapFromBLL(e)).ToList(),
             };
         return res;
     }

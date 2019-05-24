@@ -21,22 +21,22 @@ namespace BLL.App.Services
 
         }
 
-        public async Task<List<AppUserOnObject>> AllForUserAsync(int userId)
-        {
-            return (await Uow.AppUsersOnObjects
-                    .AllForUserAsync(userId))
-                .Select(e => AppUserOnObjectMapper
-                    .MapFromDAL(e)).ToList();
-        }
-
-        public async Task<AppUserOnObject> FindForUserAsync(int id, int userId)
-        {
-            return AppUserOnObjectMapper.MapFromDAL( await Uow.AppUsersOnObjects.FindForUserAsync(id, userId));
-        }
-
-        public async Task<bool> BelongsToUserAsync(int id, int userId)
-        {
-            return await Uow.AppUsersOnObjects.BelongsToUserAsync(id, userId);
-        }
+//        public async Task<List<AppUserOnObject>> AllForUserAsync(int userId)
+//        {
+//            return (await Uow.AppUsersOnObjects
+//                    .AllForUserAsync(userId))
+//                .Select(e => AppUserOnObjectMapper
+//                    .MapFromDAL(e)).ToList();
+//        }
+//
+//        public async Task<AppUserOnObject> FindForUserAsync(int id, int userId)
+//        {
+//            return AppUserOnObjectMapper.MapFromDAL( await Uow.AppUsersOnObjects.FindForUserAsync(id, userId));
+//        }
+//
+//        public async Task<bool> BelongsToUserAsync(int id, int userId)
+//        {
+//            return await Uow.AppUsersOnObjects.BelongsToUserAsync(id, userId);
+//        }
     }
 }

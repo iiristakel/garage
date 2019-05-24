@@ -15,14 +15,11 @@ namespace BLL.App.DTO
         [Display(Name = nameof(PaymentMethod), ResourceType = typeof(Resources.Domain.Payment))]
         public PaymentMethod PaymentMethod { get; set; }
 
-        public int ClientId { get; set; }
-        [Display(Name = nameof(Client), ResourceType = typeof(Resources.Domain.Payment))]
-        public Client Client { get; set; }
-
         [Display(Name = nameof(Sum), ResourceType = typeof(Resources.Domain.Payment))]
         public decimal Sum { get; set; }
 
         [Display(Name = nameof(PaymentTime), ResourceType = typeof(Resources.Domain.Payment))]
+        [DataType(DataType.Date)]
         public DateTime PaymentTime { get; set; }
     }
 }

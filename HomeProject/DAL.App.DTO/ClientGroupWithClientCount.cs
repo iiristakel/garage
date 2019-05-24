@@ -1,11 +1,17 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace DAL.App.DTO
 {
     public class ClientGroupWithClientCount
     {
         public int Id { get; set; }
+        
+        [MaxLength(128)]
+        [MinLength(1)]
+        [Required]
         public string Name { get; set; }
         public string Description { get; set; }
-        public decimal DiscountPercent { get; set; }
+        public decimal? DiscountPercent { get; set; }
         public int ClientCount { get; set; }
     }
 }

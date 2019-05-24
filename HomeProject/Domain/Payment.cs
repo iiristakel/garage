@@ -11,13 +11,10 @@ namespace Domain
         public int PaymentMethodId { get; set; }
         public PaymentMethod PaymentMethod { get; set; }
 
-        public int ClientId { get; set; }
-        public Client Client { get; set; }
 
         public decimal Sum { get; set; }
         
         [DataType(DataType.Date)]
-
         public DateTime PaymentTime { get; set; }
     }
 }

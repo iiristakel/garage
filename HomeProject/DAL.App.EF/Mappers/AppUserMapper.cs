@@ -35,9 +35,10 @@ namespace DAL.App.EF.Mappers
                 LastName = appUser.LastName,
                 HiringDate = appUser.HiringDate,
                 LeftJob = appUser.LeftJob,
-                PhoneNr = appUser.PhoneNumber,
+                FirstLastName = appUser.FirstLastName,
                 Email = appUser.Email,
-                FirstLastName = appUser.FirstLastName
+                PhoneNr = appUser.PhoneNumber
+                
 
             };
 
@@ -53,8 +54,8 @@ namespace DAL.App.EF.Mappers
                 LastName = appUser.LastName,
                 HiringDate = appUser.HiringDate,
                 LeftJob = appUser.LeftJob,
-                PhoneNumber = appUser.PhoneNr,
-                Email = appUser.Email
+                Email = appUser.Email,
+                PhoneNumber = appUser.PhoneNr
 
             };
             return res;

@@ -6,13 +6,13 @@ namespace PublicApi.v1.DTO
     {
         public int Id { get; set; }
 
-        [MaxLength(100)]
+        [MaxLength(128)]
         [MinLength(1)]
         [Required]
         public string Name { get; set; }
 
         public string Description { get; set; }
 
-        public decimal DiscountPercent { get; set; }
+        public decimal? DiscountPercent { get; set; }
     }
 }

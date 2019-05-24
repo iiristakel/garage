@@ -13,11 +13,9 @@ namespace Domain
         public WorkObject WorkObject { get; set; }
 
         [DataType(DataType.Date)]
-
         public DateTime? From { get; set; }
 
         [DataType(DataType.Date)]
-
         public DateTime? Until { get; set; }
     }
 }

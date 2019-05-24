@@ -15,9 +15,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Product)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.WorkObject)
-            </th>
+            
             <th>
                 @Html.DisplayNameFor(model => model.Client)
             </th>
@@ -32,9 +30,6 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Product.ProductName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.WorkObject.Id)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Client.CompanyName)

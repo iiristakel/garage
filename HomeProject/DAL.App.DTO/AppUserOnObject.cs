@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 using DAL.App.DTO.Identity;
 
 namespace DAL.App.DTO
@@ -13,7 +14,11 @@ namespace DAL.App.DTO
         public int WorkObjectId { get; set; }
         public WorkObject WorkObject { get; set; }
 
+        [DataType(DataType.Date)]
+
         public DateTime? From { get; set; }
+        
+        [DataType(DataType.Date)]
         public DateTime? Until { get; set; }
     }
 }

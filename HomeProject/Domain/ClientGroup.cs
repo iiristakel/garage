@@ -7,14 +7,14 @@ namespace Domain
     {
         public ICollection<Client> Clients { get; set; }
 
-        [MaxLength(100)]
+        [MaxLength(128)]
         [MinLength(1)]
         [Required]
         public MultiLangString Name { get; set; }
         
         public MultiLangString Description { get; set; }
         
-        public decimal DiscountPercent { get; set; }
+        public decimal? DiscountPercent { get; set; }
 
         
     }

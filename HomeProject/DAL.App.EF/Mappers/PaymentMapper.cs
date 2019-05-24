@@ -32,10 +32,9 @@ namespace DAL.App.EF.Mappers
                 Bill = DAL.App.EF.Mappers.BillMapper.MapFromDomain(payment.Bill),
                 PaymentMethodId = payment.PaymentMethodId,
                 PaymentMethod = PaymentMethodMapper.MapFromDomain(payment.PaymentMethod),
-                ClientId = payment.ClientId,
-                Client = DAL.App.EF.Mappers.ClientMapper.MapFromDomain(payment.Client),
                 Sum = payment.Sum,
-                PaymentTime = payment.PaymentTime
+                PaymentTime = payment.PaymentTime,
+                
 
             };
 
@@ -51,8 +50,6 @@ namespace DAL.App.EF.Mappers
                 Bill = DAL.App.EF.Mappers.BillMapper.MapFromDAL(payment.Bill),
                 PaymentMethodId = payment.PaymentMethodId,
                 PaymentMethod = PaymentMethodMapper.MapFromDAL(payment.PaymentMethod),
-                ClientId = payment.ClientId,
-                Client = DAL.App.EF.Mappers.ClientMapper.MapFromDAL(payment.Client),
                 Sum = payment.Sum,
                 PaymentTime = payment.PaymentTime
             };

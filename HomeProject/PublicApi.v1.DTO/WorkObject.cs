@@ -14,6 +14,8 @@ namespace PublicApi.v1.DTO
 
         //        public ICollection<ProductForClient> ProductsForClient { get; set; }
 
+        //        public ICollection<Bill> Bills { get; set; }
+
         [DataType(DataType.Date)]
         public DateTime? From { get; set; }
 

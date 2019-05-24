@@ -13,18 +13,19 @@ namespace BLL.App.DTO
         [Display(Name = nameof(Client), ResourceType = typeof(Resources.Domain.Bill))]
         public Client Client { get; set; }
         
-        public int AppUserId { get; set; }
-        [Display(Name = nameof(AppUser), ResourceType = typeof(Resources.Domain.Bill))]
-        public AppUser AppUser { get; set; }
+        public int WorkObjectId { get; set; }
+        [Display(Name = nameof(WorkObject), ResourceType = typeof(Resources.Domain.Bill))]
+        public WorkObject WorkObject { get; set; }
         
 //        public ICollection<BillLine> BillLines { get; set; }
-        
+//        
+//        public ICollection<Payment> Payments { get; set; }
 
         [Display(Name = nameof(ArrivalFee), ResourceType = typeof(Resources.Domain.Bill))]
         public decimal ArrivalFee { get; set; }
 
         [Display(Name = nameof(SumWithoutTaxes), ResourceType = typeof(Resources.Domain.Bill))]
-        public decimal SumWithoutTaxes { get; set; }
+        public decimal? SumWithoutTaxes { get; set; }
 
         [Display(Name = nameof(TaxPercent), ResourceType = typeof(Resources.Domain.Bill))]
         public decimal? TaxPercent { get; set; }

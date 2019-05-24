@@ -32,7 +32,6 @@ namespace DAL.App.EF.Mappers
                 ProductName = product.ProductName.Translate(),
                 ProductCode = product.ProductCode,
                 Price = product.Price
-
             };
 
             return res;

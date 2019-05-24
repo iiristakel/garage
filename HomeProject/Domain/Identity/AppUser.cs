@@ -14,8 +14,6 @@ namespace Domain.Identity
 
         public ICollection<AppUserOnObject> AppUserOnObjects { get; set; }
         
-        public ICollection<Bill> Bills { get; set; }
-
         
         [MaxLength(64)]
         [MinLength(1)]

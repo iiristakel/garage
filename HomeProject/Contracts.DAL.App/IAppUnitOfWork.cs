@@ -19,5 +19,8 @@ namespace Contracts.DAL.App
         IAppUserPositionRepository AppUsersPositions{ get; }
         IAppUserOnObjectRepository AppUsersOnObjects { get; }
         IAppUserInPositionRepository AppUsersInPositions { get; }
+        
+        IProductServiceRepository ProductsServices { get; }
+
     }
 }

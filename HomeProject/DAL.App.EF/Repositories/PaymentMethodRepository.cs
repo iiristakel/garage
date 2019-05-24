@@ -25,7 +25,6 @@ namespace DAL.App.EF.Repositories
             var culture = Thread.CurrentThread.CurrentUICulture.Name.Substring(0, 2).ToLower();
             
             var res = await RepositoryDbSet
-//                .Include(p => p.Payments)
                 .Include(p =>p.PaymentMethodValue)
                 .ThenInclude(t => t.Translations)
                 .Select(c => new 
@@ -45,33 +44,7 @@ namespace DAL.App.EF.Repositories
             return resultList;
         }
 
-        public virtual async Task<List<PaymentMethodWithPaymentsCount>> GetAllWithPaymentsCountAsync()
-        {           
-            var culture = Thread.CurrentThread.CurrentUICulture.Name.Substring(0, 2).ToLower();
-            
-            var res = await RepositoryDbSet
-                .Include(p => p.Payments)
-                .Include(p =>p.PaymentMethodValue)
-                .ThenInclude(t => t.Translations)
-                .Select(c => new 
-                {
-                    Id = c.Id,
-                    PaymentMethodValue = c.PaymentMethodValue,
-                    Translations = c.PaymentMethodValue.Translations,
-                    PaymentsCount = c.Payments.Count
-                })
-                .ToListAsync();
-            
-            var resultList = res.Select(c => new PaymentMethodWithPaymentsCount()
-            {
-                Id = c.Id,
-                PaymentMethodValue = c.PaymentMethodValue.Translate(),
-                PaymentsCount = c.PaymentsCount
-                     
-            }).ToList();
-            return resultList;
-
-        }
+        
         
         public override async Task<DAL.App.DTO.PaymentMethod> FindAsync(params object[] id)
         {

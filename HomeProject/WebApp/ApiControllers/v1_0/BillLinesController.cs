@@ -30,7 +30,7 @@ namespace WebApp.ApiControllers.v1_0
         }
 
         /// <summary>
-        /// Get all bill lines for logged in user.
+        /// Get all bill lines.
         /// </summary>
         /// <returns>All bill lines for user.</returns>
         [HttpGet]
@@ -98,7 +98,7 @@ namespace WebApp.ApiControllers.v1_0
         public async Task<ActionResult<PublicApi.v1.DTO.BillLine>> PostBillLine(
             PublicApi.v1.DTO.BillLine billLine)
         {
-            if (!await _bll.AppUsers.BelongsToUserAsync(billLine.Bill.AppUserId, User.GetUserId()))
+            if (!await _bll.BillLines.BelongsToUserAsync(billLine.Id, User.GetUserId()))
             {
                 return NotFound();
             }

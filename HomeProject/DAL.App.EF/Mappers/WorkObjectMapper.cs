@@ -34,8 +34,7 @@ namespace DAL.App.EF.Mappers
                 ClientId = workObject.ClientId,
                 From = workObject.From,
                 Until = workObject.Until,
-                AppUsersOnObject = workObject.AppUsersOnObject.Select(e => AppUserOnObjectMapper.MapFromDomain(e)).ToList(),
-                ProductsForClient = workObject.ProductsForClient.Select(e => ProductForClientMapper.MapFromDomain(e)).ToList(),
+//                AppUsersOnObject = workObject.AppUsersOnObject.Select(e => AppUserOnObjectMapper.MapFromDomain(e)).ToList(),
                 
 
             };
@@ -52,8 +51,7 @@ namespace DAL.App.EF.Mappers
                 ClientId = workObject.ClientId,
                 From = workObject.From,
                 Until = workObject.Until,
-                AppUsersOnObject = workObject.AppUsersOnObject.Select(e => AppUserOnObjectMapper.MapFromDAL(e)).ToList(),
-                ProductsForClient = workObject.ProductsForClient.Select(e => ProductForClientMapper.MapFromDAL(e)).ToList(),
+//                AppUsersOnObject = workObject.AppUsersOnObject.Select(e => AppUserOnObjectMapper.MapFromDAL(e)).ToList(),
                 
             };
             return res;

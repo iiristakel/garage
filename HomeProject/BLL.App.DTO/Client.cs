@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -11,9 +12,8 @@ namespace BLL.App.DTO
         [Display(Name = nameof(ClientGroup), ResourceType = typeof(Resources.Domain.Client))]
         public ClientGroup ClientGroup { get; set; }
 
-        public ICollection<Bill> Bills { get; set; }
-        
-        public ICollection<ProductForClient> ProductsForClient { get; set; }
+//        public ICollection<Bill> Bills { get; set; }
+//        public ICollection<ProductForClient> ProductsForClient { get; set; }
 
 
         [MaxLength(64, ErrorMessageResourceName = "ErrorMessageMaxLength", ErrorMessageResourceType = typeof(Resources.Domain.Common))]
@@ -37,5 +37,9 @@ namespace BLL.App.DTO
         [MinLength(1, ErrorMessageResourceName = "ErrorMessageMinLength", ErrorMessageResourceType = typeof(Resources.Domain.Common))]
         [Display(Name = nameof(ContactPerson), ResourceType = typeof(Resources.Domain.Client))]
         public string ContactPerson { get; set; }
+        
+        //TODO: [Display(Name = nameof(From), ResourceType = typeof(Resources.Domain.Client))]
+        [DataType(DataType.Date)]
+        public DateTime? From { get; set; }
     }
 }

@@ -30,10 +30,8 @@ namespace BLL.App.Mappers
                 Bill = BillMapper.MapFromDAL(payment.Bill),
                 PaymentMethodId = payment.PaymentMethodId,
                 PaymentMethod = PaymentMethodMapper.MapFromDAL(payment.PaymentMethod),
-                ClientId = payment.ClientId,
-                Client = ClientMapper.MapFromDAL(payment.Client),
                 Sum = payment.Sum,
-                PaymentTime = payment.PaymentTime
+                PaymentTime = payment.PaymentTime 
 
             };
 
@@ -49,8 +47,6 @@ namespace BLL.App.Mappers
                 Bill = BillMapper.MapFromBLL(payment.Bill),
                 PaymentMethodId = payment.PaymentMethodId,
                 PaymentMethod = PaymentMethodMapper.MapFromBLL(payment.PaymentMethod),
-                ClientId = payment.ClientId,
-                Client = ClientMapper.MapFromBLL(payment.Client),
                 Sum = payment.Sum,
                 PaymentTime = payment.PaymentTime
             };

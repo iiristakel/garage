@@ -22,57 +22,57 @@
         @Html.DisplayFor(model => model.Until)
     </dd>
 
-    <dt class="col-sm-3">
-        @Html.DisplayNameFor(model => model.AppUsersOnObject) (
-        <a asp-action="ChooseForWorkObject"
-           asp-controller="AllAppUsersOnObjects" asp-route-workobjectid="@Model.Id">
-            Add
-        </a>)
-    </dt>
-    <dd class="col-sm-10">
-        <ul>
-
-            @foreach (var appUserOnObject in Model.AppUsersOnObject)
-            {
-                <li>
-                    @appUserOnObject.AppUser.FirstLastName
-                    <a asp-action="Edit"
-                       asp-controller="AllAppUsersOnObjects" asp-route-id="@Model.Id">
-                        Edit
-                    </a>
-                    <a asp-action="Delete"
-                       asp-controller="AllAppUsersOnObjects" asp-route-id="@Model.Id">
-                        Delete
-                    </a>
-                </li>
-            }
-        </ul>
-    </dd>
-
-    <dt class="col-sm-3">
-        @Html.DisplayNameFor(model => model.ProductsForClient) (
-        <a asp-action="ChooseForWorkObject"
-           asp-controller="AllProductsForClients" asp-route-workobjectid="@Model.Id">
-            Add
-        </a>)
-    </dt>
-    <dd class="col-sm-10">
-        <ul>
-
-            @foreach (var productForClient in Model.ProductsForClient)
-            {
-                <li>@productForClient.Product.ProductName
-                    <a asp-action="Edit"
-                       asp-controller="AllProductsForClients" asp-route-id="@Model.Id">
-                        Edit
-                    </a>
-                    <a asp-action="Delete"
-                       asp-controller="AllProductsForClients" asp-route-id="@Model.Id">
-                        Delete
-                    </a></li>
-            }
-        </ul>
-    </dd>
+@*     <dt class="col-sm-3"> *@
+@*         @Html.DisplayNameFor(model => model.AppUsersOnObject) ( *@
+@*         <a asp-action="ChooseForWorkObject" *@
+@*            asp-controller="AllAppUsersOnObjects" asp-route-workobjectid="@Model.Id"> *@
+@*             Add *@
+@*         </a>) *@
+@*     </dt> *@
+@*     <dd class="col-sm-10"> *@
+@*         <ul> *@
+@* *@
+@*             @foreach (var appUserOnObject in Model.AppUsersOnObject) *@
+@*             { *@
+@*                 <li> *@
+@*                     @appUserOnObject.AppUser.FirstLastName *@
+@*                     <a asp-action="Edit" *@
+@*                        asp-controller="AllAppUsersOnObjects" asp-route-id="@Model.Id"> *@
+@*                         Edit *@
+@*                     </a> *@
+@*                     <a asp-action="Delete" *@
+@*                        asp-controller="AllAppUsersOnObjects" asp-route-id="@Model.Id"> *@
+@*                         Delete *@
+@*                     </a> *@
+@*                 </li> *@
+@*             } *@
+@*         </ul> *@
+@*     </dd> *@
+@* *@
+@*     <dt class="col-sm-3"> *@
+@*         @Html.DisplayNameFor(model => model.ProductsForClient) ( *@
+@*         <a asp-action="ChooseForWorkObject" *@
+@*            asp-controller="AllProductsForClients" asp-route-workobjectid="@Model.Id"> *@
+@*             Add *@
+@*         </a>) *@
+@*     </dt> *@
+@*     <dd class="col-sm-10"> *@
+@*         <ul> *@
+@* *@
+@*             @foreach (var productForClient in Model.ProductsForClient) *@
+@*             { *@
+@*                 <li>@productForClient.Product.ProductName *@
+@*                     <a asp-action="Edit" *@
+@*                        asp-controller="AllProductsForClients" asp-route-id="@Model.Id"> *@
+@*                         Edit *@
+@*                     </a> *@
+@*                     <a asp-action="Delete" *@
+@*                        asp-controller="AllProductsForClients" asp-route-id="@Model.Id"> *@
+@*                         Delete *@
+@*                     </a></li> *@
+@*             } *@
+@*         </ul> *@
+@*     </dd> *@
 
    
 </dl>

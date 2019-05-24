@@ -11,7 +11,9 @@ namespace Domain
 
         public ICollection<AppUserOnObject> AppUsersOnObject { get; set; }
 
-        public ICollection<ProductForClient> ProductsForClient { get; set; }
+        public ICollection<ProductService> ProductsServices { get; set; }
+        
+        public ICollection<Bill> Bills { get; set; }
 
         [DataType(DataType.Date)]
         public DateTime? From { get; set; }

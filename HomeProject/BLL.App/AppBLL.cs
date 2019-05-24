@@ -29,5 +29,6 @@ namespace BLL.App
         public IAppUserPositionService AppUsersPositions => ServiceProvider.GetService<IAppUserPositionService>();
         public IAppUserOnObjectService AppUsersOnObjects => ServiceProvider.GetService<IAppUserOnObjectService>();
         public IAppUserInPositionService AppUsersInPositions => ServiceProvider.GetService<IAppUserInPositionService>();
+        public IProductServiceService ProductsServices => ServiceProvider.GetService<IProductServiceService>();
     }
 }

@@ -10,9 +10,6 @@ namespace DAL.App.DTO.Identity
         public int Id { get; set; }
         
 
-//        public ICollection<AppUserInPosition> Positions { get; set; }
-//
-//        public ICollection<AppUserOnObject> Objects { get; set; }
         
         [MaxLength(64)]
         [MinLength(1)]
@@ -35,14 +32,11 @@ namespace DAL.App.DTO.Identity
         
         [DataType(DataType.Date)]
         public DateTime? LeftJob { get; set; }
-
-        [MaxLength(15)]
-        [MinLength(1)]
-        public string PhoneNr { get; set; }
         
-        [MaxLength(64)]
-        [MinLength(1)]
+        public string PhoneNr { get; set; }
+
         public string Email { get; set; }
+
 
     }
 }

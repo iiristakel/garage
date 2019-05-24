@@ -21,11 +21,9 @@ namespace DAL.App.EF.Repositories
         public override async Task<List<DAL.App.DTO.ProductForClient>> AllAsync()
         {
             return await RepositoryDbSet
-//                .Include(p => p.Client)
                 .Include(p => p.Product)
                 .ThenInclude(p => p.ProductName)
                 .ThenInclude(t => t.Translations)
-//                .Include(p => p.WorkObject)
                 .Select(e => ProductForClientMapper.MapFromDomain(e))
                 .ToListAsync();
         }

@@ -18,12 +18,7 @@ namespace BLL.App.Services
             ServiceRepository = Uow.Bills;
         }
 
-        public async Task<List<BLL.App.DTO.BillWithPaymentsCount>> GetAllWithPaymentsCountAsync()
-        {
-            return (await Uow.Bills.GetAllWithPaymentsCountAsync())
-                .Select(e => BillMapper.MapFromDAL(e))
-                .ToList();
-        }
+       
 
         public async Task<List<Bill>> AllForUserAsync(int userId)
         {
@@ -42,5 +37,7 @@ namespace BLL.App.Services
         {
             return await Uow.Bills.BelongsToUserAsync(id, userId);
         }
+
+        
     }
 }

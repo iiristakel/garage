@@ -46,7 +46,6 @@ namespace DAL.App.EF
         
         public IAppUserInPositionRepository AppUsersInPositions =>_repositoryProvider.GetRepository<IAppUserInPositionRepository>();
         
-
-       
+        public IProductServiceRepository ProductsServices =>_repositoryProvider.GetRepository<IProductServiceRepository>();
     }
 }

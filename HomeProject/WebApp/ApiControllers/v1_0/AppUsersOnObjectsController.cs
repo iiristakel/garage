@@ -15,6 +15,7 @@ namespace WebApp.ApiControllers.v1_0
     [ApiVersion( "1.0" )]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin")]
 //    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class AppUsersOnObjectsController : ControllerBase
     {
@@ -30,13 +31,13 @@ namespace WebApp.ApiControllers.v1_0
         }
 
         /// <summary>
-        /// Get all workers on work objects for logged in app user.
+        /// Get all workers on work objects.
         /// </summary>
-        /// <returns>All workers on objects for logged in app user.</returns>
+        /// <returns>All workers on objects.</returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PublicApi.v1.DTO.AppUserOnObject>>> GetAppUsersOnObjects()
         {
-            return (await _bll.AppUsersOnObjects.AllForUserAsync(User.GetUserId()))
+            return (await _bll.AppUsersOnObjects.AllAsync())
                 .Select(e =>
                     PublicApi.v1.Mappers.AppUserOnObjectMapper.MapFromInternal(e))
                 .ToList();        
@@ -51,7 +52,7 @@ namespace WebApp.ApiControllers.v1_0
         public async Task<ActionResult<PublicApi.v1.DTO.AppUserOnObject>> GetAppUserOnObject(int id)
         {
             var appUserOnObject = PublicApi.v1.Mappers.AppUserOnObjectMapper.MapFromInternal(
-                await _bll.AppUsersOnObjects.FindForUserAsync(id, User.GetUserId()));
+                await _bll.AppUsersOnObjects.FindAsync(id, User.GetUserId()));
 
             if (appUserOnObject == null)
             {
@@ -75,10 +76,10 @@ namespace WebApp.ApiControllers.v1_0
                 return BadRequest();
             }
 
-            if (!await _bll.AppUsersOnObjects.BelongsToUserAsync(id, User.GetUserId()))
-            {
-                return NotFound();
-            }
+//            if (!await _bll.AppUsersOnObjects.BelongsToUserAsync(id, User.GetUserId()))
+//            {
+//                return NotFound();
+//            }
             _bll.AppUsersOnObjects.Update(PublicApi.v1.Mappers.AppUserOnObjectMapper.MapFromExternal(appUserOnObject));
             
             await _bll.SaveChangesAsync();
@@ -96,10 +97,10 @@ namespace WebApp.ApiControllers.v1_0
             PublicApi.v1.DTO.AppUserOnObject appUserOnObject)
         {
             
-            if (!await _bll.AppUsers.BelongsToUserAsync(appUserOnObject.AppUserId, User.GetUserId()))
-            {
-                return NotFound();
-            }
+//            if (!await _bll.AppUsers.BelongsToUserAsync(appUserOnObject.AppUserId, User.GetUserId()))
+//            {
+//                return NotFound();
+//            }
             appUserOnObject = PublicApi.v1.Mappers.AppUserOnObjectMapper.MapFromInternal(
                 _bll.AppUsersOnObjects.Add(PublicApi.v1.Mappers.AppUserOnObjectMapper.MapFromExternal(appUserOnObject)));
 
@@ -125,10 +126,10 @@ namespace WebApp.ApiControllers.v1_0
         [HttpDelete("{id}")]
         public async Task<ActionResult<PublicApi.v1.DTO.AppUserOnObject>> DeleteAppUserOnObject(int id)
         {
-            if (!await _bll.AppUsersOnObjects.BelongsToUserAsync(id, User.GetUserId()))
-            {
-                return NotFound();
-            }
+//            if (!await _bll.AppUsersOnObjects.BelongsToUserAsync(id, User.GetUserId()))
+//            {
+//                return NotFound();
+//            }
 
             _bll.AppUsersOnObjects.Remove(id);
             await _bll.SaveChangesAsync();

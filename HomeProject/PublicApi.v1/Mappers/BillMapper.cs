@@ -35,7 +35,9 @@ namespace PublicApi.v1.Mappers
                 FinalSum = bill.FinalSum,
                 DateTime = bill.DateTime,
                 InvoiceNr = bill.InvoiceNr,
-                Comment = bill.Comment
+                Comment = bill.Comment,
+                WorkObjectId = bill.WorkObjectId,
+                WorkObject = WorkObjectMapper.MapFromInternal(bill.WorkObject)
 
             };
 
@@ -55,30 +57,13 @@ namespace PublicApi.v1.Mappers
                 FinalSum = bill.FinalSum,
                 DateTime = bill.DateTime,
                 InvoiceNr = bill.InvoiceNr,
-                Comment = bill.Comment
+                Comment = bill.Comment,
+                WorkObjectId = bill.WorkObjectId,
+                WorkObject = WorkObjectMapper.MapFromExternal(bill.WorkObject)
             };
             return res;
         }
 
-        public static externalDTO.BillWithPaymentsCount MapFromInternal(internalDTO.BillWithPaymentsCount billWithPaymentsCount)
-        {
-            var res = billWithPaymentsCount == null ? null : new externalDTO.BillWithPaymentsCount()
-            {
-                Id = billWithPaymentsCount.Id,
-                ClientId = billWithPaymentsCount.ClientId,
-                Client = ClientMapper.MapFromInternal(billWithPaymentsCount.Client),
-                ArrivalFee = billWithPaymentsCount.ArrivalFee,
-                SumWithoutTaxes = billWithPaymentsCount.SumWithoutTaxes,
-                TaxPercent = billWithPaymentsCount.TaxPercent,
-                FinalSum = billWithPaymentsCount.FinalSum,
-                DateTime = billWithPaymentsCount.DateTime,
-                InvoiceNr = billWithPaymentsCount.InvoiceNr,
-                PaymentsCount = billWithPaymentsCount.PaymentsCount,
-                Comment = billWithPaymentsCount.Comment
-
-            };
-
-            return res;
-        }
+        
     }
 }

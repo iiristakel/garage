@@ -51,12 +51,13 @@ namespace WebApp.Controllers
         }
 
         // GET: AppUsersInPositions/Create
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create()
         {
             var vm = new AppUserInPositionCreateEditViewModel();
             
             vm.AppUserSelectList = new SelectList(
-                await _bll.AppUsers.AllForUserAsync(User.GetUserId()), 
+                await _bll.AppUsers.AllAsync(), 
                 nameof(BLL.App.DTO.Identity.AppUser.Id), 
                 nameof(BLL.App.DTO.Identity.AppUser.FirstLastName));
             
@@ -73,6 +74,7 @@ namespace WebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create(AppUserInPositionCreateEditViewModel vm)
         {
             if (ModelState.IsValid)
@@ -84,7 +86,7 @@ namespace WebApp.Controllers
             }
             
             vm.AppUserSelectList = new SelectList(
-                await _bll.AppUsers.AllForUserAsync(User.GetUserId()), 
+                await _bll.AppUsers.AllAsync(), 
                 nameof(BLL.App.DTO.Identity.AppUser.Id), 
                 nameof(BLL.App.DTO.Identity.AppUser.FirstLastName));
             
@@ -97,6 +99,7 @@ namespace WebApp.Controllers
         }
 
         // GET: AppUsersInPositions/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -114,7 +117,7 @@ namespace WebApp.Controllers
             vm.AppUserInPosition = appUserInPosition;
             
             vm.AppUserSelectList = new SelectList(
-                await _bll.AppUsers.AllForUserAsync(User.GetUserId()), 
+                await _bll.AppUsers.AllAsync(), 
                 nameof(BLL.App.DTO.Identity.AppUser.Id), 
                 nameof(BLL.App.DTO.Identity.AppUser.FirstLastName));
             
@@ -131,6 +134,7 @@ namespace WebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, AppUserInPositionCreateEditViewModel vm)
         {
             if (id != vm.AppUserInPosition.Id)
@@ -154,7 +158,7 @@ namespace WebApp.Controllers
             }
             
             vm.AppUserSelectList = new SelectList(
-                await _bll.AppUsers.AllForUserAsync(User.GetUserId()), 
+                await _bll.AppUsers.AllAsync(), 
                 nameof(BLL.App.DTO.Identity.AppUser.Id), 
                 nameof(BLL.App.DTO.Identity.AppUser.FirstLastName));
             

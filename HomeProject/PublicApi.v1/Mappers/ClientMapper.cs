@@ -32,7 +32,8 @@ namespace PublicApi.v1.Mappers
                 CompanyName = client.CompanyName,
                 Address = client.Address,
                 ContactPerson = client.ContactPerson,
-                Phone = client.Phone
+                Phone = client.Phone,
+                From = client.From
 
             };
 
@@ -49,7 +50,8 @@ namespace PublicApi.v1.Mappers
                 CompanyName = client.CompanyName,
                 Address = client.Address,
                 ContactPerson = client.ContactPerson,
-                Phone = client.Phone
+                Phone = client.Phone,
+                From = client.From
             };
             return res;
         }
@@ -65,7 +67,8 @@ namespace PublicApi.v1.Mappers
                 Address = clientWithProductsCount.Address,
                 ContactPerson = clientWithProductsCount.ContactPerson,
                 Phone = clientWithProductsCount.Phone,
-                ProductsCount = clientWithProductsCount.ProductsCount
+                ProductsCount = clientWithProductsCount.ProductsCount,
+                From = clientWithProductsCount.From
 
             };
 

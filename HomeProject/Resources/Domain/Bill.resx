@@ -132,6 +132,9 @@
   <data name="Client" xml:space="preserve">
     <value>Client</value>
   </data>
+  <data name="WorkObject" xml:space="preserve">
+    <value>Wor object</value>
+  </data>
   <data name="Comment" xml:space="preserve">
     <value>Comment</value>
   </data>

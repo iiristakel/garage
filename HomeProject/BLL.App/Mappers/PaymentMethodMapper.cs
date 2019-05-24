@@ -43,18 +43,7 @@ namespace BLL.App.Mappers
             return res;
         }
         
-        public static BLL.App.DTO.PaymentMethodWithPaymentsCount MapFromDAL(DAL.App.DTO.PaymentMethodWithPaymentsCount paymentMethodWithPaymentsCount)
-        {
-            var res = paymentMethodWithPaymentsCount == null ? null : new BLL.App.DTO.PaymentMethodWithPaymentsCount()
-            {
-                Id = paymentMethodWithPaymentsCount.Id,
-                PaymentMethodValue = paymentMethodWithPaymentsCount.PaymentMethodValue,
-                PaymentsCount = paymentMethodWithPaymentsCount.PaymentsCount
-
-            };
-
-            return res;
-        }
+       
         
     }
 }

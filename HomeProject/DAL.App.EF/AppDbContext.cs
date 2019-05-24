@@ -22,6 +22,8 @@ namespace DAL.App.EF
         public DbSet<AppUserOnObject> AppUsersOnObjects { get; set; }
         public DbSet<WorkObject> WorkObjects { get; set; }
         public DbSet<AppUserInPosition> AppUsersInPositions { get; set; }
+        public DbSet<ProductService> ProductsServices { get; set; }
+
         
         public DbSet<MultiLangString> MultiLangStrings { get; set; }
         public DbSet<Translation> Translations { get; set; }

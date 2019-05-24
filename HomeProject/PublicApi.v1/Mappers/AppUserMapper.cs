@@ -29,9 +29,10 @@ namespace PublicApi.v1.Mappers
                 Id = appUser.Id,
                 FirstName = appUser.FirstName,
                 LastName = appUser.LastName,
-                Email = appUser.Email,
                 HiringDate = appUser.HiringDate,
                 LeftJob = appUser.LeftJob,
+                FirstLastName = appUser.FirstLastName,
+                Email = appUser.Email,
                 PhoneNr = appUser.PhoneNr
 
             };
@@ -46,9 +47,9 @@ namespace PublicApi.v1.Mappers
                 Id = appUser.Id,
                 FirstName = appUser.FirstName,
                 LastName = appUser.LastName,
-                Email = appUser.Email,
                 HiringDate = appUser.HiringDate,
                 LeftJob = appUser.LeftJob,
+                Email = appUser.Email,
                 PhoneNr = appUser.PhoneNr
             };
             return res;

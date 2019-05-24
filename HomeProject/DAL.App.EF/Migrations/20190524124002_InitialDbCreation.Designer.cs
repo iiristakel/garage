@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.App.EF.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20190520173525_InitialDbCreation")]
+    [Migration("20190524124002_InitialDbCreation")]
     partial class InitialDbCreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -82,8 +82,6 @@ namespace DAL.App.EF.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("AppUserId");
-
                     b.Property<decimal>("ArrivalFee");
 
                     b.Property<int>("ClientId");
@@ -98,17 +96,19 @@ namespace DAL.App.EF.Migrations
                         .IsRequired()
                         .HasMaxLength(64);
 
-                    b.Property<decimal>("SumWithOutTaxes");
+                    b.Property<decimal?>("SumWithOutTaxes");
 
                     b.Property<decimal?>("TaxPercent");
 
-                    b.HasKey("Id");
+                    b.Property<int>("WorkObjectId");
 
-                    b.HasIndex("AppUserId");
+                    b.HasKey("Id");
 
                     b.HasIndex("ClientId");
 
                     b.HasIndex("CommentId");
+
+                    b.HasIndex("WorkObjectId");
 
                     b.ToTable("Bills");
                 });
@@ -120,7 +120,7 @@ namespace DAL.App.EF.Migrations
 
                     b.Property<decimal>("Amount");
 
-                    b.Property<int?>("BillId");
+                    b.Property<int>("BillId");
 
                     b.Property<decimal?>("DiscountPercent");
 
@@ -146,12 +146,12 @@ namespace DAL.App.EF.Migrations
 
                     b.Property<string>("Address")
                         .IsRequired()
-                        .HasMaxLength(120);
+                        .HasMaxLength(256);
 
                     b.Property<int?>("ClientGroupId");
 
                     b.Property<string>("CompanyName")
-                        .HasMaxLength(64);
+                        .HasMaxLength(128);
 
                     b.Property<string>("ContactPerson")
                         .HasMaxLength(64);
@@ -176,7 +176,7 @@ namespace DAL.App.EF.Migrations
 
                     b.Property<int?>("DescriptionId");
 
-                    b.Property<decimal>("DiscountPercent");
+                    b.Property<decimal?>("DiscountPercent");
 
                     b.Property<int>("NameId");
 
@@ -294,8 +294,6 @@ namespace DAL.App.EF.Migrations
 
                     b.Property<int>("BillId");
 
-                    b.Property<int>("ClientId");
-
                     b.Property<int>("PaymentMethodId");
 
                     b.Property<DateTime>("PaymentTime");
@@ -305,8 +303,6 @@ namespace DAL.App.EF.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("BillId");
-
-                    b.HasIndex("ClientId");
 
                     b.HasIndex("PaymentMethodId");
 
@@ -332,10 +328,10 @@ namespace DAL.App.EF.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<decimal>("Price");
+                    b.Property<decimal?>("Price");
 
                     b.Property<string>("ProductCode")
-                        .HasMaxLength(100);
+                        .HasMaxLength(128);
 
                     b.Property<int>("ProductNameId");
 
@@ -357,17 +353,35 @@ namespace DAL.App.EF.Migrations
 
                     b.Property<int>("ProductId");
 
-                    b.Property<int?>("WorkObjectId");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ClientId");
 
                     b.HasIndex("ProductId");
 
+                    b.ToTable("ProductsForClients");
+                });
+
+            modelBuilder.Entity("Domain.ProductService", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("DescriptionId");
+
+                    b.Property<int>("ProductForClientId");
+
+                    b.Property<int>("WorkObjectId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DescriptionId");
+
+                    b.HasIndex("ProductForClientId");
+
                     b.HasIndex("WorkObjectId");
 
-                    b.ToTable("ProductsForClients");
+                    b.ToTable("ProductsServices");
                 });
 
             modelBuilder.Entity("Domain.Translation", b =>
@@ -497,7 +511,7 @@ namespace DAL.App.EF.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Domain.AppUserPosition", "AppUserPosition")
-                        .WithMany("AppUsers")
+                        .WithMany("AppUsersInPosition")
                         .HasForeignKey("AppUserPositionId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
@@ -525,11 +539,6 @@ namespace DAL.App.EF.Migrations
 
             modelBuilder.Entity("Domain.Bill", b =>
                 {
-                    b.HasOne("Domain.Identity.AppUser", "AppUser")
-                        .WithMany("Bills")
-                        .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
                     b.HasOne("Domain.Client", "Client")
                         .WithMany("Bills")
                         .HasForeignKey("ClientId")
@@ -538,6 +547,11 @@ namespace DAL.App.EF.Migrations
                     b.HasOne("Domain.MultiLangString", "Comment")
                         .WithMany()
                         .HasForeignKey("CommentId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("Domain.WorkObject", "WorkObject")
+                        .WithMany("Bills")
+                        .HasForeignKey("WorkObjectId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
@@ -582,11 +596,6 @@ namespace DAL.App.EF.Migrations
                         .HasForeignKey("BillId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Domain.Client", "Client")
-                        .WithMany("Payments")
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
                     b.HasOne("Domain.PaymentMethod", "PaymentMethod")
                         .WithMany("Payments")
                         .HasForeignKey("PaymentMethodId")
@@ -617,12 +626,25 @@ namespace DAL.App.EF.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Domain.Product", "Product")
-                        .WithMany("ProductsForClients")
+                        .WithMany("ProductForClients")
                         .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("Domain.ProductService", b =>
+                {
+                    b.HasOne("Domain.MultiLangString", "Description")
+                        .WithMany()
+                        .HasForeignKey("DescriptionId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("Domain.ProductForClient", "ProductForClient")
+                        .WithMany("ProductServices")
+                        .HasForeignKey("ProductForClientId")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Domain.WorkObject", "WorkObject")
-                        .WithMany("ProductsForClient")
+                        .WithMany("ProductsServices")
                         .HasForeignKey("WorkObjectId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });

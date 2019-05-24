@@ -10,7 +10,6 @@ namespace Contracts.BLL.App.Services
         : IBaseEntityService<BLLAppDTO.Bill>, 
             IBillRepository<BLLAppDTO.Bill>
     {
-        Task<List<BLLAppDTO.BillWithPaymentsCount>> GetAllWithPaymentsCountAsync();
 
     }
 }

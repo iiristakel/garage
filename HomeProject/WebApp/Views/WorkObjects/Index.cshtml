@@ -21,12 +21,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.Until)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AppUsersOnObject)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductsForClient)
-            </th>
+            @* <th> *@
+            @*     @Html.DisplayNameFor(model => model.AppUsersOnObject) *@
+            @* </th> *@
+            @* <th> *@
+            @*     @Html.DisplayNameFor(model => model.ProductsForClient) *@
+            @* </th> *@
         </tr>
     </thead>
     <tbody>
@@ -41,24 +41,24 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Until)
             </td>
-            <td>
-                <ul>
-
-                    @foreach (var appUserOnObject in item.AppUsersOnObject)
-                    {
-                        <li>@appUserOnObject.AppUser.FirstLastName</li>
-                    }
-                </ul>
-            </td> 
-            <td>
-                <ul>
-
-                    @foreach (var productForClient in item.ProductsForClient)
-                    {
-                        <li>@productForClient.Product.ProductName</li>
-                    }
-                </ul>
-            </td>
+@*             <td> *@
+@*                 <ul> *@
+@* *@
+@*                     @foreach (var appUserOnObject in item.AppUsersOnObject) *@
+@*                     { *@
+@*                         <li>@appUserOnObject.AppUser.FirstLastName</li> *@
+@*                     } *@
+@*                 </ul> *@
+@*             </td>  *@
+@*             <td> *@
+@*                 <ul> *@
+@* *@
+@*                     @foreach (var productForClient in item.ProductsForClient) *@
+@*                     { *@
+@*                         <li>@productForClient.Product.ProductName</li> *@
+@*                     } *@
+@*                 </ul> *@
+@*             </td> *@
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">@Resources.Views.Common.Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">@Resources.Views.Common.Details</a> |

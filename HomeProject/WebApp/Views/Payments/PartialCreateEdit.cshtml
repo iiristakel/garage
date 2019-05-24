@@ -10,10 +10,6 @@
     <select asp-for="Payment.PaymentMethodId" class="form-control" asp-items="Model.PaymentMethodSelectList"></select>
 </div>
 <div class="form-group">
-    <label asp-for="Payment.ClientId" class="control-label"></label>
-    <select asp-for="Payment.ClientId" class="form-control" asp-items="Model.ClientSelectList"></select>
-</div>
-<div class="form-group">
     <label asp-for="Payment.Sum" class="control-label"></label>
     <input asp-for="Payment.Sum" class="form-control"/>
     <span asp-validation-for="Payment.Sum" class="text-danger"></span>

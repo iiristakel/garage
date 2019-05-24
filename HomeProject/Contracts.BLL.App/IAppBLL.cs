@@ -23,6 +23,8 @@ namespace Contracts.BLL.App
         IAppUserPositionService AppUsersPositions{ get; }
         IAppUserOnObjectService AppUsersOnObjects { get; }
         IAppUserInPositionService AppUsersInPositions { get; }
+        IProductServiceService ProductsServices { get; }
+
 
         // TODO: Public facing services
     }

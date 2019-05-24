@@ -31,8 +31,6 @@ namespace PublicApi.v1.Mappers
                 Bill = BillMapper.MapFromInternal((payment.Bill)),
                 PaymentMethodId = payment.PaymentMethodId,
                 PaymentMethod = PaymentMethodMapper.MapFromInternal(payment.PaymentMethod),
-                ClientId = payment.ClientId,
-                Client = ClientMapper.MapFromInternal(payment.Client),
                 Sum = payment.Sum,
                 PaymentTime = payment.PaymentTime
 
@@ -50,8 +48,6 @@ namespace PublicApi.v1.Mappers
                 Bill = BillMapper.MapFromExternal(payment.Bill),
                 PaymentMethodId = payment.PaymentMethodId,
                 PaymentMethod = PaymentMethodMapper.MapFromExternal(payment.PaymentMethod),
-                ClientId = payment.ClientId,
-                Client = ClientMapper.MapFromExternal(payment.Client),
                 Sum = payment.Sum,
                 PaymentTime = payment.PaymentTime
             };

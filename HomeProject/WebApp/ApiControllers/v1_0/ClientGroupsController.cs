@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Contracts.BLL.App;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApp.ApiControllers.v1_0
@@ -11,6 +12,7 @@ namespace WebApp.ApiControllers.v1_0
     /// </summary>
     [ApiVersion( "1.0" )]
     [Route("api/v{version:apiVersion}/[controller]")]
+    [Authorize(Roles = "Admin")]
     [ApiController]
     public class ClientGroupsController : ControllerBase
     {

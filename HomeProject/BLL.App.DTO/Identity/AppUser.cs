@@ -24,7 +24,6 @@ namespace BLL.App.DTO.Identity
 
         public string FirstLastName { get; set; }
         
-        //TODO: translation
         public ICollection<AppUserInPosition> AppUserInPositions { get; set; }
 
         [Display(Name = nameof(HiringDate), ResourceType = typeof(Resources.Domain.AppUser))]
@@ -34,16 +33,12 @@ namespace BLL.App.DTO.Identity
         [Display(Name = nameof(LeftJob), ResourceType = typeof(Resources.Domain.AppUser))]
         [DataType(DataType.Date)]
         public DateTime? LeftJob { get; set; }
-
-        [MaxLength(15, ErrorMessageResourceName = "ErrorMessageMaxLength", ErrorMessageResourceType = typeof(Resources.Domain.Common))]
-        [MinLength(1, ErrorMessageResourceName = "ErrorMessageMinLength", ErrorMessageResourceType = typeof(Resources.Domain.Common))]
+        
         [Display(Name = nameof(PhoneNr), ResourceType = typeof(Resources.Domain.AppUser))]
         public string PhoneNr { get; set; }
 
-        [MaxLength(64, ErrorMessageResourceName = "ErrorMessageMaxLength", ErrorMessageResourceType = typeof(Resources.Domain.Common))]
-        [MinLength(1, ErrorMessageResourceName = "ErrorMessageMinLength", ErrorMessageResourceType = typeof(Resources.Domain.Common))]
         [Display(Name = nameof(Email), ResourceType = typeof(Resources.Domain.AppUser))]
-
         public string Email { get; set; }
+
     }
 }

@@ -95,7 +95,7 @@ namespace WebApp.ApiControllers.v1_0
         [HttpPost]
         public async Task<ActionResult<PublicApi.v1.DTO.Payment>> PostPayment(PublicApi.v1.DTO.Payment payment)
         {
-            if (!await _bll.Payments.BelongsToUserAsync(payment.Bill.AppUserId, User.GetUserId()))
+            if (!await _bll.Payments.BelongsToUserAsync(payment.Id, User.GetUserId()))
             {
                 return NotFound();
             }

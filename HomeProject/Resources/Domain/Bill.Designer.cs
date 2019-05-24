@@ -106,6 +106,15 @@ namespace Resources.Domain {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to WorkObject.
+        /// </summary>
+        public static string WorkObject {
+            get {
+                return ResourceManager.GetString("WorkObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Comment.
         /// </summary>
         public static string Comment {

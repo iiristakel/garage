@@ -36,7 +36,8 @@ namespace DAL.App.EF.Mappers
                 Address = client.Address,
                 ContactPerson = client.ContactPerson,
                 Phone = client.Phone,
-                Bills = client.Bills.Select(e => BillMapper.MapFromDomain(e)).ToList(),
+                From = client.From,
+//                Bills = client.Bills.Select(e => BillMapper.MapFromDomain(e)).ToList(),
 //                ProductsForClient = client.ProductsForClient.Select(e => ProductForClientMapper.MapFromDomain(e)).ToList()
 
 
@@ -56,8 +57,9 @@ namespace DAL.App.EF.Mappers
                 Address = client.Address,
                 ContactPerson = client.ContactPerson,
                 Phone = client.Phone,
-                Bills = client.Bills.Select(e => BillMapper.MapFromDAL(e)).ToList(),
-                ProductsForClient = client.ProductsForClient.Select(e => ProductForClientMapper.MapFromDAL(e)).ToList()
+                From = client.From,
+//                Bills = client.Bills.Select(e => BillMapper.MapFromDAL(e)).ToList(),
+//                ProductsForClient = client.ProductsForClient.Select(e => ProductForClientMapper.MapFromDAL(e)).ToList()
 
 
             };
