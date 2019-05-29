@@ -44,8 +44,8 @@ namespace WebApp.Areas.Admin.Controllers
             }
 
             vm.Client = client;
-            vm.Bills = await _bll.Bills.AllForClientAsync(id);
-            vm.ProductsForClient = await _bll.ProductsForClients.AllForClientAsync(id);
+            vm.Client.Bills = await _bll.Bills.AllForClientAsync(id);
+            vm.Client.ProductsForClient = await _bll.ProductsForClients.AllForClientAsync(id);
             
             return View(vm);
         }

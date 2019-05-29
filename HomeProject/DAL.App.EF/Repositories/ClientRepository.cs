@@ -30,6 +30,17 @@ namespace DAL.App.EF.Repositories
                 .Include(p => p.ClientGroup)
                 .ThenInclude(p => p.Description)
                 .ThenInclude(t => t.Translations)
+                .Include(p => p.ProductsForClient) 
+                .ThenInclude(p => p.Product)
+                .ThenInclude(p => p.ProductName)
+                .ThenInclude(p => p.Translations)
+                .Include(p => p.ProductsForClient) 
+                .ThenInclude(p => p.ProductServices)
+                .ThenInclude(p => p.Description)
+                .ThenInclude(p => p.Translations)    
+                .Include(p => p.Bills)
+                .ThenInclude(p => p.Comment)
+                .ThenInclude(p => p.Translations)
                 .Select(e => ClientMapper.MapFromDomain(e))
                 .ToListAsync();
         }
@@ -62,7 +73,6 @@ namespace DAL.App.EF.Repositories
                 await RepositoryDbContext.Entry(client.ClientGroup)
                     .Reference(c => c.Description)
                     .LoadAsync();
-
                 await RepositoryDbContext.Entry(client.ClientGroup.Name)
                     .Collection(b => b.Translations)
                     .Query()
@@ -74,20 +84,46 @@ namespace DAL.App.EF.Repositories
                     .Where(t => t.Culture == culture)
                     .LoadAsync();
 
-
                 await RepositoryDbContext.Entry(client)
                     .Collection(c => c.ProductsForClient)
                     .LoadAsync();
                 
+                foreach (var productForClient in client.ProductsForClient)
+                {
+                    await RepositoryDbContext.Entry(productForClient)
+                        .Reference(b => b.Product)
+                        .LoadAsync();
+                    await RepositoryDbContext.Entry(productForClient.Product)
+                        .Reference(b => b.ProductName)
+                        .LoadAsync();
+                    await RepositoryDbContext.Entry(productForClient.Product.ProductName)
+                        .Collection(b => b.Translations)
+                        .Query()
+                        .Where(t => t.Culture == culture)
+                        .LoadAsync();
+                }
+                
                 await RepositoryDbContext.Entry(client)
                     .Collection(c => c.Bills)
                     .LoadAsync();
+                
+                foreach (var bill in client.Bills)
+                {
+                    await RepositoryDbContext.Entry(bill)
+                        .Reference(b => b.Comment)
+                        .LoadAsync();
+                    await RepositoryDbContext.Entry(bill.Comment)
+                        .Collection(b => b.Translations)
+                        .Query()
+                        .Where(t => t.Culture == culture)
+                        .LoadAsync();
+                }
             }
 
             return ClientMapper.MapFromDomain(client);
         }
 
-        public virtual async Task<List<ClientWithProductsCount>> GetAllWithProductsCountAsync()
+        public async Task<List<ClientWithProductsCount>> GetAllWithProductsCountAsync()
         {
             return await RepositoryDbSet
                 .Include(p => p.ClientGroup)

@@ -24,7 +24,7 @@
         ContactPerson
       </th>
       <th>
-        ProductsCount
+        From
       </th>
     </tr>
     </thead>
@@ -32,7 +32,7 @@
     <tbody>
     <tr repeat.for="client of clients">
       <td>
-        ${client.clientGroup}
+        ${client.clientGroup.name}
       </td>
       <td>
         ${client.companyName}
@@ -47,7 +47,7 @@
         ${client.contactPerson}
       </td>
       <td>
-        ${client.productsCount}
+        ${client.from}
       </td>
       <td>
         <a route-href="route: clientsEdit; params.bind: {id: client.id}">Edit</a> |

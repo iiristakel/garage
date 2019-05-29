@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Contracts.BLL.Base.Mappers;
 
 namespace BLL.App.Mappers
@@ -36,6 +37,8 @@ namespace BLL.App.Mappers
                 InvoiceNr = bill.InvoiceNr,
                 Comment = bill.Comment,
                 WorkObjectId = bill.WorkObjectId,
+//                BillLines = bill.BillLines.Select(e => BillLineMapper.MapFromDAL(e)).ToList(),
+//                Payments = bill.Payments.Select(e => PaymentMapper.MapFromDAL(e)).ToList(),
                 WorkObject = WorkObjectMapper.MapFromDAL(bill.WorkObject)
 
             };
@@ -49,7 +52,7 @@ namespace BLL.App.Mappers
             {
                 Id = bill.Id,
                 ClientId = bill.ClientId,
-                Client = ClientMapper.MapFromBLL(bill.Client),
+//                Client = ClientMapper.MapFromBLL(bill.Client),
                 ArrivalFee = bill.ArrivalFee,
                 SumWithoutTaxes = bill.SumWithoutTaxes,
                 TaxPercent = bill.TaxPercent,
@@ -58,7 +61,9 @@ namespace BLL.App.Mappers
                 InvoiceNr = bill.InvoiceNr,
                 Comment = bill.Comment,
                 WorkObjectId = bill.WorkObjectId,
-                WorkObject = WorkObjectMapper.MapFromBLL(bill.WorkObject)
+                BillLines = bill.BillLines.Select(e => BillLineMapper.MapFromBLL(e)).ToList(),
+                Payments = bill.Payments.Select(e => PaymentMapper.MapFromBLL(e)).ToList(),
+//                WorkObject = WorkObjectMapper.MapFromBLL(bill.WorkObject)
             };
             return res;
         }

@@ -1,0 +1,37 @@
+<template>
+
+  <h1>Create new</h1>
+
+  <h4>Product for client</h4>
+  <hr/>
+  <div class="row">
+    <div class="col-md-4">
+      <form submit.delegate="submit()" method="post">
+
+        <input type="hidden" id="ProductForClient_ClientId" name="ProductForClient.ClientId" value.bind="clientId"/>
+
+          <div class="form-group">
+          <!--<label class="control-label" for="ProductForClient_ProductId">ProductId</label>-->
+          <!--<select class="form-control" id="ProductForClient_ProductId" name="ProductForClient.ProductId"></select>-->
+
+            <label class="control-label" for="ProductForClient_ProductId">ProductId</label>
+            <select id="ProductForClient_ProductId" value.bind="products">
+              <option repeat.for="product of products" value.bind="product.id">${product.productName}</option>
+            </select>
+            
+            
+          <div class="form-group">
+
+            <input type="submit" value="Create" class="btn btn-primary"/>
+          </div>
+          </div>
+      </form>
+    </div>
+  </div>
+
+  <div>
+    <a route-href="route: clientsDetails; params.bind: {id: 1}">Back to client details</a>
+  </div>
+
+
+</template>

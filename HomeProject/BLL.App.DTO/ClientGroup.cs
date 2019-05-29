@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace BLL.App.DTO
@@ -17,5 +18,7 @@ namespace BLL.App.DTO
 
         [Display(Name = nameof(DiscountPercent), ResourceType = typeof(Resources.Domain.ClientGroup))]
         public decimal? DiscountPercent { get; set; }
+
+        public ICollection<Client> Clients { get; set; }
     }
 }

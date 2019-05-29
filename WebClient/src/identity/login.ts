@@ -11,8 +11,8 @@ export var log = LogManager.getLogger('Identity.Login');
 export class Login {
   
   //TODO: remove
-  private email: string = "b@b.ee";
-  private password: string = "bbbbbb";
+  private email: string = "a@a.ee";
+  private password: string = "aaaaaa";
 
   constructor(
     private identityService: IdentityService,

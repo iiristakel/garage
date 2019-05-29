@@ -12,9 +12,9 @@ namespace BLL.App.DTO
         [Display(Name = nameof(ClientGroup), ResourceType = typeof(Resources.Domain.Client))]
         public ClientGroup ClientGroup { get; set; }
         
-//        public ICollection<Bill> Bills { get; set; }
+        public ICollection<Bill> Bills { get; set; }
 //        
-//        public ICollection<ProductForClient> ProductsForClient { get; set; }
+        public ICollection<ProductForClient> ProductsForClient { get; set; }
 
         [MaxLength(64, ErrorMessageResourceName = "ErrorMessageMaxLength", ErrorMessageResourceType = typeof(Resources.Domain.Common))]
         [MinLength(1, ErrorMessageResourceName = "ErrorMessageMinLength", ErrorMessageResourceType = typeof(Resources.Domain.Common))]

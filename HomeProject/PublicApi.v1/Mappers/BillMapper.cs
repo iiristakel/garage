@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using externalDTO = PublicApi.v1.DTO;
 using internalDTO = BLL.App.DTO;
 
@@ -37,7 +38,9 @@ namespace PublicApi.v1.Mappers
                 InvoiceNr = bill.InvoiceNr,
                 Comment = bill.Comment,
                 WorkObjectId = bill.WorkObjectId,
-                WorkObject = WorkObjectMapper.MapFromInternal(bill.WorkObject)
+                WorkObject = WorkObjectMapper.MapFromInternal(bill.WorkObject),
+//                BillLines = bill.BillLines.Select(e => BillLineMapper.MapFromInternal(e)).ToList(),                
+
 
             };
 
@@ -59,7 +62,9 @@ namespace PublicApi.v1.Mappers
                 InvoiceNr = bill.InvoiceNr,
                 Comment = bill.Comment,
                 WorkObjectId = bill.WorkObjectId,
-                WorkObject = WorkObjectMapper.MapFromExternal(bill.WorkObject)
+                WorkObject = WorkObjectMapper.MapFromExternal(bill.WorkObject),
+//                BillLines = bill.BillLines.Select(e => BillLineMapper.MapFromExternal(e)).ToList(),                
+
             };
             return res;
         }

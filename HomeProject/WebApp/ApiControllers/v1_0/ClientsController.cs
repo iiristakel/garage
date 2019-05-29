@@ -32,6 +32,7 @@ namespace WebApp.ApiControllers.v1_0
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PublicApi.v1.DTO.Client>>> GetClients()
         {
+            
             return (await _bll.Clients.AllAsync())
                 .Select(e =>
                     PublicApi.v1.Mappers.ClientMapper.MapFromInternal(e))
@@ -53,6 +54,13 @@ namespace WebApp.ApiControllers.v1_0
             {
                 return NotFound();
             }
+
+            client.ProductsForClient = (await _bll.ProductsForClients.AllForClientAsync(id)).Select(e => 
+                PublicApi.v1.Mappers.ProductForClientMapper.MapFromInternal(e)).ToList(); 
+            
+            client.Bills = (await _bll.Bills.AllForClientAsync(id)).Select(e => 
+                PublicApi.v1.Mappers.BillMapper.MapFromInternal(e)).ToList(); 
+            
 
             return client;
         }

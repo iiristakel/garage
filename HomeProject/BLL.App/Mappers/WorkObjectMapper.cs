@@ -34,6 +34,9 @@ namespace BLL.App.Mappers
                     From = workObject.From,
                     Until = workObject.Until,
 //                    AppUsersOnObject = workObject.AppUsersOnObject.Select(e => AppUserOnObjectMapper.MapFromDAL(e)).ToList(),
+//                    ProductsServices = workObject.ProductsServices.Select(e => ProductServiceMapper.MapFromDAL(e)).ToList(),
+//                    Bills = workObject.Bills.Select(e => BillMapper.MapFromDAL(e)).ToList(),
+
 
                 };
         
@@ -50,6 +53,8 @@ namespace BLL.App.Mappers
                 From = workObject.From,
                 Until = workObject.Until,
 //                AppUsersOnObject = workObject.AppUsersOnObject.Select(e => AppUserOnObjectMapper.MapFromBLL(e)).ToList(),
+//                ProductsServices = workObject.ProductsServices.Select(e => ProductServiceMapper.MapFromBLL(e)).ToList(),
+//                Bills = workObject.Bills.Select(e => BillMapper.MapFromBLL(e)).ToList(),
             };
         return res;
     }

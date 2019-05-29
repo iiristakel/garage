@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace DAL.App.DTO
@@ -14,5 +15,7 @@ namespace DAL.App.DTO
         public string Description { get; set; }
         
         public decimal? DiscountPercent { get; set; }
+
+        public ICollection<Client> Clients { get; set; }
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace PublicApi.v1.DTO
@@ -9,7 +10,7 @@ namespace PublicApi.v1.DTO
         public int ProductId { get; set; }
         public Product Product { get; set; }
 
-        //        public ICollection<ProductService> ProductServices { get; set; }
+        public ICollection<ProductService> ProductServices { get; set; }
 
 
         public int ClientId { get; set; }

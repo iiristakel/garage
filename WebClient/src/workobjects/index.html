@@ -1,10 +1,9 @@
 <template>
 
-
-  <h1>Index</h1>
+  <h1>Work objects</h1>
 
   <p>
-    <a href="/WorkObjects/Create">Create New</a>
+    <a route-href="route: workobjectsCreate">Create New</a>
   </p>
   <table class="table">
     <thead>
@@ -13,32 +12,64 @@
         Client
       </th>
       <th>
+        Address
+      </th>
+      <th>
         From
       </th>
       <th>
         Until
       </th>
-      <th></th>
+      <th>
+        AppUsersOnObject
+      </th>
+      <th>
+        ProductsServices
+      </th>
     </tr>
     </thead>
     <tbody>
     <tr>
       <td>
-        aaaa
+    <tr repeat.for="workObject of workObjects">
+      <td>
+        <a>
+          ${workObject.client.companyName}
+        </a>
       </td>
       <td>
-        06/04/2019
+        ${workObject.client.address}
       </td>
       <td>
-        03/04/2019
+        ${workObject.from}
       </td>
       <td>
-        <a href="/WorkObjects/Edit/2">Edit</a> |
-        <a href="/WorkObjects/Details/2">Details</a> |
-        <a href="/WorkObjects/Delete/2">Delete</a>
+        ${workObject.until}
+      </td>
+      <td>
+        <ul>
+          <li repeat.for="appUser of workObject.appUsersOnObject">
+            ${appUser.firstLastName}
+          </li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li repeat.for="productService of workObject.productsServices">
+            ${productService.productForClient.product.productName}:
+            ${productService.description}
+          </li>
+        </ul>
+      </td>
+      <td>
+        <a route-href="route: workobjectsEdit; params.bind: {id: workObject.id}">Edit</a> |
+        <a route-href="route: workobjectsDetails; params.bind: {id: workObject.id}">Details</a> |
+        <a route-href="route: workobjectsDelete; params.bind: {id: workObject.id}">Delete</a>
+
       </td>
     </tr>
     </tbody>
   </table>
+
 
 </template>

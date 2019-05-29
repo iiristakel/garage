@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BLL.App.DTO;
 using BLL.App.Mappers;
 using BLL.Base.Services;
 using Contracts.BLL.App.Services;
@@ -18,8 +19,22 @@ namespace BLL.App.Services
             ServiceRepository = Uow.Clients;
         }
 
+
+//        public override async Task<Client> FindAsync(params object[] id)
+//        {
+//            var client = ClientMapper.MapFromDAL( await Uow.Clients.FindAsync(id));
+//
+//            client.ProductsForClient = (await Uow.ProductsForClients.AllForClientAsync((int?) id[0]))
+//                .Select(e => ProductForClientMapper.MapFromDAL(e))
+//                .ToList();
+//            
+//            return client;
+//
+//        }
+
         public async Task<List<BLL.App.DTO.ClientWithProductsCount>> GetAllWithProductsCountAsync()
         {
+            
             return (await Uow.Clients.GetAllWithProductsCountAsync())
                 .Select(e => ClientMapper.MapFromDAL(e))
                 .ToList();

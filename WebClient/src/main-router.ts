@@ -49,7 +49,20 @@ export class MainRouter {
 
         { route: 'billlines/create',           name: 'billlines' + 'Create', moduleId: PLATFORM.moduleName('billlines/create'), nav: false, title: 'billlines - Create' },
 
+        { route: 'productsforclients/create',             name: 'productsforclients' + 'Create', moduleId: PLATFORM.moduleName('productsforclients/create'), nav: false, title: 'productsforclients - Create' },
+        { route: 'productsforclients/edit/:id',               name: 'productsforclients' + 'Edit',   moduleId: PLATFORM.moduleName('productsforclients/edit'), nav: false, title: 'productsforclients - Edit' },
+        { route: 'productsforclients/delete/:id',             name: 'productsforclients' + 'Delete', moduleId: PLATFORM.moduleName('productsforclients/delete'), nav: false, title: 'productsforclients - Delete' },
+        { route: 'productsforclients/details/:id',             name: 'productsforclients' + 'Details', moduleId: PLATFORM.moduleName('productsforclients/details'), nav: false, title: 'productsforclients - Details' },
 
+        { route: 'appUsersOnObjects/create',             name: 'appUsersOnObjects' + 'Create', moduleId: PLATFORM.moduleName('appUsersOnObjects/create'), nav: false, title: 'appUsersOnObjects - Create' },
+        { route: 'appUsersOnObjects/edit/:id',               name: 'appUsersOnObjects' + 'Edit',   moduleId: PLATFORM.moduleName('appUsersOnObjects/edit'), nav: false, title: 'appUsersOnObjects - Edit' },
+        { route: 'appUsersOnObjects/delete/:id',             name: 'appUsersOnObjects' + 'Delete', moduleId: PLATFORM.moduleName('appUsersOnObjects/delete'), nav: false, title: 'appUsersOnObjects - Delete' },
+        { route: 'appUsersOnObjects/details/:id',             name: 'appUsersOnObjects' + 'Details', moduleId: PLATFORM.moduleName('appUsersOnObjects/details'), nav: false, title: 'appUsersOnObjects - Details' },
+
+        { route: 'productsServices/create',             name: 'productsServices' + 'Create', moduleId: PLATFORM.moduleName('productsServices/create'), nav: false, title: 'productsServices - Create' },
+        { route: 'productsServices/edit/:id',               name: 'productsServices' + 'Edit',   moduleId: PLATFORM.moduleName('productsServices/edit'), nav: false, title: 'productsServices - Edit' },
+        { route: 'productsServices/delete/:id',             name: 'productsServices' + 'Delete', moduleId: PLATFORM.moduleName('productsServices/delete'), nav: false, title: 'productsServices - Delete' },
+        { route: 'productsServices/details/:id',             name: 'productsServices' + 'Details', moduleId: PLATFORM.moduleName('productsServices/details'), nav: false, title: 'productsServices - Details' },
 
 
       ]);

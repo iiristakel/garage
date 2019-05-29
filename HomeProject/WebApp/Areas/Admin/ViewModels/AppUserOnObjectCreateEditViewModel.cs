@@ -7,6 +7,7 @@ namespace WebApp.Areas.Admin.ViewModels
         public BLL.App.DTO.AppUserOnObject AppUserOnObject { get; set; }
         public SelectList WorkObjectSelectList { get; set; }
         public SelectList AppUserSelectList { get; set; }
+        public int WorkObjectId { get; set; }
         
     }
 }

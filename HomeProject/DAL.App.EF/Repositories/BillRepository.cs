@@ -29,16 +29,26 @@ namespace DAL.App.EF.Repositories
                 .Include(p => p.WorkObject)
                 .Include(p => p.Comment)
                 .ThenInclude(p => p.Translations)
+                .Include(p => p.BillLines)
+                .ThenInclude(p => p.Product)
+                .ThenInclude(p => p.Translations)
+                .Include(p => p.Payments)
+                .ThenInclude(p => p.PaymentMethod)
+                .ThenInclude(p => p.PaymentMethodValue)
+                .ThenInclude(p=> p.Translations)
                 .Select(e => BillMapper.MapFromDomain(e))
                 .ToListAsync();
         }
 
-        public virtual async Task<List<DAL.App.DTO.Bill>> AllForClientAsync(int? clientId)
+        public async Task<List<DAL.App.DTO.Bill>> AllForClientAsync(int? clientId)
         {
             return await RepositoryDbSet
                 .Include(p => p.Client)
                 .Include(p => p.WorkObject)
                 .Include(p => p.Comment)
+                .ThenInclude(p => p.Translations)
+                .Include(p => p.BillLines)
+                .ThenInclude(p => p.Product)
                 .ThenInclude(p => p.Translations)
                 .Where(p => p.ClientId == clientId)
                 .Select(e => BillMapper.MapFromDomain(e))
@@ -52,9 +62,14 @@ namespace DAL.App.EF.Repositories
                 .Include(p => p.WorkObject)
                 .Include(p => p.Comment)
                 .ThenInclude(p => p.Translations)
+                .Include(p => p.BillLines)
+                .ThenInclude(p => p.Product)
+                .ThenInclude(p => p.Translations)
                 .Where(p => p.WorkObjectId == workObjectId)
                 .Select(e => BillMapper.MapFromDomain(e))
-                .ToListAsync();        }
+                .ToListAsync();
+            
+        }
 
         public override async Task<DAL.App.DTO.Bill> FindAsync(params object[] id)
         {
@@ -70,12 +85,24 @@ namespace DAL.App.EF.Repositories
                 await RepositoryDbContext.Entry(bill)
                     .Reference(c => c.WorkObject)
                     .LoadAsync();
-//                await RepositoryDbContext.Entry(bill)
-//                    .Collection(c => c.Payments)  // include paymentmethod?
-//                    .LoadAsync();
-//                await RepositoryDbContext.Entry(bill)
-//                    .Collection(c => c.BillLines)
-//                    .LoadAsync();
+                await RepositoryDbContext.Entry(bill)
+                    .Collection(c => c.Payments)  // include paymentmethod?
+                    .LoadAsync();
+                await RepositoryDbContext.Entry(bill)
+                    .Collection(c => c.BillLines)
+                    .LoadAsync();
+                
+                foreach (var billLine in bill.BillLines)
+                {
+                    await RepositoryDbContext.Entry(billLine)
+                        .Reference(b => b.Product)
+                        .LoadAsync();
+                    await RepositoryDbContext.Entry(billLine.Product)
+                        .Collection(b => b.Translations)
+                        .Query()
+                        .Where(t => t.Culture == culture)
+                        .LoadAsync();
+                }
                 await RepositoryDbContext.Entry(bill)
                     .Reference(c => c.Comment)
                     .LoadAsync();
@@ -105,7 +132,7 @@ namespace DAL.App.EF.Repositories
                 .Select(c => new
                 {
                     Id = c.Id,
-                    Client = ClientMapper.MapFromDomain(c.Client),
+//                    Client = ClientMapper.MapFromDomain(c.Client),
                     ClientId = c.ClientId,
                     ArrivalFee = c.ArrivalFee,
                     SumWithoutTaxes = c.SumWithOutTaxes,
@@ -120,7 +147,7 @@ namespace DAL.App.EF.Repositories
             var resultList = res.Select(c => new Bill()
             {
                 Id = c.Id,
-                Client = c.Client,
+//                Client = c.Client,
                 ClientId = c.ClientId,
                 ArrivalFee = c.ArrivalFee,
                 SumWithoutTaxes = c.SumWithoutTaxes,

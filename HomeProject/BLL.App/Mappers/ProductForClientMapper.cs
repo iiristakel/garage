@@ -33,7 +33,7 @@ namespace BLL.App.Mappers
                     Product = ProductMapper.MapFromDAL(productForClient.Product),
                     ProductId = productForClient.ProductId,
                     Count = productForClient.Count,
-//                    LastService = ProductServiceMapper.MapFromDAL(productForClient.ProductServices.OrderBy(e => e.WorkObject.From).FirstOrDefault())
+//                    ProductServices = productForClient.ProductServices.Select(e => ProductServiceMapper.MapFromDAL(e)).ToList(),
                         
                 };
 
@@ -49,7 +49,9 @@ namespace BLL.App.Mappers
                     ClientId = productForClient.ClientId,
                     Product = ProductMapper.MapFromBLL(productForClient.Product),
                     ProductId = productForClient.ProductId,
-                    Count = 1
+                    Count = 1,
+//                    ProductServices = productForClient.ProductServices.Select(e => ProductServiceMapper.MapFromBLL(e)).ToList(),
+
                 };
             return res;
         }

@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Contracts.BLL.Base.Mappers;
 
 namespace BLL.App.Mappers
@@ -28,7 +29,8 @@ namespace BLL.App.Mappers
                 Id = clientGroup.Id,
                 Name = clientGroup.Name,
                 Description = clientGroup.Description,
-                DiscountPercent = clientGroup.DiscountPercent
+                DiscountPercent = clientGroup.DiscountPercent,
+
 
             };
 
@@ -42,7 +44,8 @@ namespace BLL.App.Mappers
                 Id = clientGroup.Id,
                 Name = clientGroup.Name,
                 Description = clientGroup.Description,
-                DiscountPercent = clientGroup.DiscountPercent
+                DiscountPercent = clientGroup.DiscountPercent,
+
             };
             return res;
         }

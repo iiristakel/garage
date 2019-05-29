@@ -9,6 +9,6 @@ namespace WebApp.Areas.Admin.ViewModels
         public BLL.App.DTO.ProductForClient ProductForClient { get; set; }
         public SelectList ClientSelectList { get; set; }
         public SelectList ProductSelectList { get; set; }
-        public ICollection<ProductService> ProductServices { get; set; }
+//        public ICollection<ProductService> ProductServices { get; set; }
     }
 }

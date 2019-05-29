@@ -1,6 +1,5 @@
 <template>
 
-
   <h1>Details</h1>
 
   <div>
@@ -9,78 +8,80 @@
     <hr/>
     <dl class="row">
       <dt class="col-sm-2">
-        ClientGroup
+        Client group
       </dt>
       <dd class="col-sm-10">
-        ${client.clientGroup}
+        ${client.clientGroup.name}
       </dd>
       <dt class="col-sm-2">
-        CompanyName
+        Company name
       </dt>
       <dd class="col-sm-10">
         ${client.companyName}
-
       </dd>
       <dt class="col-sm-2">
         Address
       </dt>
       <dd class="col-sm-10">
         ${client.address}
-
       </dd>
       <dt class="col-sm-2">
         Phone
       </dt>
       <dd class="col-sm-10">
         ${client.phone}
-
       </dd>
       <dt class="col-sm-2">
-        ContactPerson
+        Contact person
       </dt>
       <dd class="col-sm-10">
         ${client.contactPerson}
       </dd>
+      <dt class="col-sm-2">
+        From
+      </dt>
+      <dd class="col-sm-10">
+        ${client.from}
+      </dd>
+
+      <dt class="col-sm-2">
+        Bills
+      </dt>
+      <dd class="col-sm-10">
+        <ul>
+          <li repeat.for="bill of client.bills">
+            <a route-href="route: billsDetails; params.bind: {id: bill.id}">${bill.invoiceNr}</a>
+          </li>
+        </ul>
+      </dd>
+
+      <dt class="col-sm-2">
+        Products
+        (<a route-href="route: productsforclientsCreate; params.bind: {clientId: client.id}">Add</a>)
+      </dt>
+      <dd class="col-sm-10">
+        <ul>
+          <li repeat.for="productForClient of client.productsForClient">
+            <a route-href="route: productsforclientsDetails; params.bind: {id: productForClient.id}">
+              ${productForClient.product.productName} ${productForClient.product.productCode}
+            </a>
+            |
+            <a route-href="route: productsforclientsEdit; params.bind: {id: productForClient.id}">
+              Edit
+            </a>
+            |
+            <a route-href="route: productsforclientsDelete; params.bind: {id: productForClient.id}">
+              Delete
+            </a>
+          </li>
+        </ul>
+      </dd>
     </dl>
-
-    <div if.bind="client.productsForClient.length != null">
-      <table class="table">
-        <thead>
-        <tr>
-          <th>
-            Product
-          </th>
-          <th>
-            Product code
-          </th>
-          <th>
-            Last service
-          </th>
-        </tr>
-        </thead>
-
-        <tbody>
-        <tr repeat.for="product of client.productsForClient"> 
-          <!--TODO: product is null at the moment-->
-          <td>
-            ${product.productName}
-          </td>
-          <td>
-            ${product.productCode}
-          </td>
-          <td>
-            ${product.workobject.From}
-          </td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
 
   </div>
   <div>
-    <a route-href="route: clientsEdit">Edit</a> |
-    <a route-href="route: clientsIndex">Back to List</a>
-
+    <a route-href="route: clientsEdit; params.bind: {id: client.id}">Edit</a> |
+    <a route-href="route: clientsIndex">Back to list</a>
   </div>
 
 

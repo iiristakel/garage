@@ -52,7 +52,7 @@ namespace WebApp.Areas.Admin.Controllers
             
             var vm = new WebApp.Areas.Admin.ViewModels.ProductsForClientsCreateEditViewModel();
             vm.ProductForClient = productForClient;
-            vm.ProductServices = await _bll.ProductsServices.AllForClientProductAsync(id);
+            vm.ProductForClient.ProductServices = await _bll.ProductsServices.AllForClientProductAsync(id);
 
             return View(vm);
         }
@@ -188,7 +188,7 @@ namespace WebApp.Areas.Admin.Controllers
             }
             var vm = new WebApp.Areas.Admin.ViewModels.ProductsForClientsCreateEditViewModel();
             vm.ProductForClient = productForClient;
-            vm.ProductServices = await _bll.ProductsServices.AllForClientProductAsync(id);
+            vm.ProductForClient.ProductServices = await _bll.ProductsServices.AllForClientProductAsync(id);
 
             return View(vm);
         }

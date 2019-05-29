@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Contracts.DAL.Base.Mappers;
 using internalDTO = Domain;
 using externalDTO = DAL.App.DTO;
@@ -39,7 +40,9 @@ namespace DAL.App.EF.Mappers
                 InvoiceNr = bill.InvoiceNr,
                 Comment = bill.Comment.Translate(),
                 WorkObjectId = bill.WorkObjectId,
-                WorkObject = WorkObjectMapper.MapFromDomain(bill.WorkObject)
+                WorkObject = WorkObjectMapper.MapFromDomain(bill.WorkObject),
+//                BillLines = bill.BillLines.Select(e => BillLineMapper.MapFromDomain(e)).ToList(),
+//                Payments = bill.Payments.Select(e => PaymentMapper.MapFromDomain(e)).ToList(),
 
             };
 
@@ -61,7 +64,9 @@ namespace DAL.App.EF.Mappers
                 FinalSum = bill.FinalSum,
                 DateTime = bill.DateTime,
                 InvoiceNr = bill.InvoiceNr,
-                Comment = new internalDTO.MultiLangString(bill.Comment)
+                Comment = new internalDTO.MultiLangString(bill.Comment),
+//                BillLines = bill.BillLines.Select(e => BillLineMapper.MapFromDAL(e)).ToList(),
+//                Payments = bill.Payments.Select(e => PaymentMapper.MapFromDAL(e)).ToList(),
             };
             return res;
         }

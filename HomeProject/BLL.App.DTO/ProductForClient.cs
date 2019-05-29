@@ -12,7 +12,7 @@ namespace BLL.App.DTO
         [Display(Name = nameof(Product), ResourceType = typeof(Resources.Domain.ProductForClient))]
         public Product Product { get; set; }
 
-//        public ICollection<ProductService> ProductServices { get; set; }
+        public ICollection<ProductService> ProductServices { get; set; }
 
         public int ClientId { get; set; }
         [Display(Name = nameof(Client), ResourceType = typeof(Resources.Domain.ProductForClient))]
@@ -21,6 +21,5 @@ namespace BLL.App.DTO
         [Display(Name = nameof(Count), ResourceType = typeof(Resources.Domain.ProductForClient))]
         public decimal Count { get; set; }
 
-//        public ProductService LastService { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace WebApp.ApiControllers.v1_0
     [ApiVersion( "1.0" )]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
-//    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class WorkObjectsController : ControllerBase
     {
         private readonly IAppBLL _bll;
@@ -36,10 +36,25 @@ namespace WebApp.ApiControllers.v1_0
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PublicApi.v1.DTO.WorkObject>>> GetWorkObjects()
         {
-            return (await _bll.WorkObjects.AllForUserAsync(User.GetUserId()))
+            if (User.IsInRole("Admin"))
+            {
+               
+            }
+            var workObjects = (await _bll.WorkObjects.AllAsync()) //TODO: AllForUserAsync here!!
                 .Select(e => PublicApi.v1.Mappers.WorkObjectMapper.MapFromInternal(e))
                 .ToList();
-            
+
+            foreach (var workObject in workObjects)
+            {
+                workObject.AppUsersOnObject = (await _bll.AppUsersOnObjects.AllForWorkObjectAsync(workObject.Id))
+                    .Select(e => PublicApi.v1.Mappers.AppUserOnObjectMapper.MapFromInternal(e))
+                    .ToList();
+                workObject.ProductsServices = (await _bll.ProductsServices.AllForWorkObjectAsync(workObject.Id))
+                    .Select(e => PublicApi.v1.Mappers.ProductServiceMapper.MapFromInternal(e))
+                    .ToList();;
+            }
+
+            return workObjects;
         }
 
         /// <summary>

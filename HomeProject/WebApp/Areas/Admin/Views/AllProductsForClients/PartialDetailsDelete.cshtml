@@ -24,11 +24,11 @@
     @* </dd> *@
 
     <dt class="col-sm-2">
-        @Html.DisplayNameFor(model => model.ProductServices)
+        @Html.DisplayNameFor(model => model.ProductForClient.ProductServices)
     </dt>
     <dd class="col-sm-10">
         <ul>
-            @foreach (var productService in Model.ProductServices)
+            @foreach (var productService in Model.ProductForClient.ProductServices)
             {
                 <li>
                     <a asp-action="Details"

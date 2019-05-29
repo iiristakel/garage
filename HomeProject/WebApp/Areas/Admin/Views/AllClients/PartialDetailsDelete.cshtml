@@ -42,11 +42,11 @@
     
     <dt class="col-sm-2">
         @Resources.Domain.Bill.BillsString
-        @* @Html.DisplayNameFor(model => model.Bills) *@
+        @* @Html.DisplayNameFor(model => model.Client.Bills) *@
     </dt>
     <dd class="col-sm-10">
          <ul> 
-             @foreach (var bill in Model.Bills) 
+             @foreach (var bill in Model.Client.Bills) 
              {
                  <li>
                      <a asp-action="Details"
@@ -68,7 +68,7 @@
     </dt>
      <dd class="col-sm-10">
          <ul>
-             @foreach (var productForClient in Model.ProductsForClient)
+             @foreach (var productForClient in Model.Client.ProductsForClient)
              {
                  <li>
                      <a asp-action="Details"

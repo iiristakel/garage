@@ -17,9 +17,9 @@ namespace BLL.App.DTO
         [Display(Name = nameof(WorkObject), ResourceType = typeof(Resources.Domain.Bill))]
         public WorkObject WorkObject { get; set; }
         
-//        public ICollection<BillLine> BillLines { get; set; }
-//        
-//        public ICollection<Payment> Payments { get; set; }
+        public ICollection<BillLine> BillLines { get; set; }
+        
+        public ICollection<Payment> Payments { get; set; }
 
         [Display(Name = nameof(ArrivalFee), ResourceType = typeof(Resources.Domain.Bill))]
         public decimal ArrivalFee { get; set; }

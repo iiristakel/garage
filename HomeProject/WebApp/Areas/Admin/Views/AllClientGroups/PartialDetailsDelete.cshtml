@@ -22,11 +22,11 @@
         @Html.DisplayFor(model => model.ClientGroup.DiscountPercent)
     </dd>
     <dt class="col-sm-2">
-        @Html.DisplayNameFor(model => model.Clients)
+        @Html.DisplayNameFor(model => model.ClientGroup.Clients)
     </dt>
     <dd class="col-sm-10">
         <ul>
-            @foreach (var client in Model.Clients)
+            @foreach (var client in Model.ClientGroup.Clients)
             {
                 <li>
                     @client.CompanyAndAddress

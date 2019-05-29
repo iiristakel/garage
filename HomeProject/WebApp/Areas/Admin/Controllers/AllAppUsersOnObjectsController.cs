@@ -1,20 +1,11 @@
 #pragma warning disable 1591
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Contracts.BLL.App;
-using Contracts.DAL.App;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using DAL;
-using DAL.App.EF;
-using Identity;
-using Microsoft.AspNetCore.Authorization;
-using WebApp.ViewModels;
 
-namespace WebApp.Controllers
+namespace WebApp.Areas.Admin.Controllers
 {
     [Authorize(Roles = "Admin")]
     [Area("Admin")]
@@ -99,23 +90,48 @@ namespace WebApp.Controllers
             return View(vm);
         }
         
-        [HttpGet]
-        public async Task<IActionResult> ChooseForWorkObject(int workobjectid)
-        {
-            ViewData["workobject"] = await _bll.WorkObjects.FindAsync(workobjectid);
-
-            var vm = new Areas.Admin.ViewModels.AppUserOnObjectCreateEditViewModel();
-
-//            vm.AppUserOnObject.WorkObject = await _bll.WorkObjects.FindAsync(workobjectid);
-
-            vm.AppUserSelectList = new SelectList(
-                await _bll.AppUsers.AllAsync(),
-                nameof(BLL.App.DTO.Identity.AppUser.Id),
-                nameof(BLL.App.DTO.Identity.AppUser.FirstLastName));
-
-
-            return View();
-        }
+//        public async Task<IActionResult> ChooseForWorkObject(int workobjectid)
+//        {
+//
+//            var vm = new Areas.Admin.ViewModels.AppUserOnObjectCreateEditViewModel();
+//
+//            vm.WorkObjectId = workobjectid;
+//
+//            vm.AppUserSelectList = new SelectList(
+//                await _bll.AppUsers.AllAsync(),
+//                nameof(BLL.App.DTO.Identity.AppUser.Id),
+//                nameof(BLL.App.DTO.Identity.AppUser.FirstLastName));
+//
+//
+//            return View(vm);
+//        }
+//        
+//        [HttpPost]
+//        public async Task<IActionResult> ChooseForWorkObject(int workobjectid, 
+//            WebApp.Areas.Admin.ViewModels.AppUserOnObjectCreateEditViewModel vm)
+//        {
+//            if (workobjectid != vm.WorkObjectId)
+//            {
+//                return NotFound();
+//            }
+//            
+//            if (ModelState.IsValid)
+//            {
+//                _bll.AppUsersOnObjects.Add(vm.AppUserOnObject);
+//                await _bll.SaveChangesAsync();
+//
+//                return RedirectToAction(nameof(Index));
+//            }
+//
+//            vm.WorkObjectId = workobjectid;
+//            
+//            vm.AppUserSelectList = new SelectList(
+//                await _bll.AppUsers.AllAsync(),
+//                nameof(BLL.App.DTO.Identity.AppUser.Id), 
+//                nameof(BLL.App.DTO.Identity.AppUser.FirstLastName));
+//            
+//            return View(vm);
+//        }
 
         // GET: AppUsersOnObjects/Edit/5
         public async Task<IActionResult> Edit(int? id)

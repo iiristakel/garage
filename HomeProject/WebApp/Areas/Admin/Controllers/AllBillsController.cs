@@ -47,7 +47,8 @@ namespace WebApp.Areas.Admin.Controllers
             
             var vm = new WebApp.Areas.Admin.ViewModels.BillCreateEditViewModel();
             vm.Bill = bill;
-            vm.BillLines = await _bll.BillLines.AllForBillAsync(id);
+            vm.Bill.BillLines = await _bll.BillLines.AllForBillAsync(id);
+//            vm.BillLines = await _bll.BillLines.AllForBillAsync(id);
 //            vm.Bill.SumWithoutTaxes = 0;
 //            foreach (var billLine in vm.BillLines)
 //            {
@@ -202,7 +203,7 @@ namespace WebApp.Areas.Admin.Controllers
             }
             var vm = new WebApp.Areas.Admin.ViewModels.BillCreateEditViewModel();
             vm.Bill = bill;
-            vm.BillLines = await _bll.BillLines.AllForBillAsync(id);
+            vm.Bill.BillLines = await _bll.BillLines.AllForBillAsync(id);
 
             return View(vm);
         }

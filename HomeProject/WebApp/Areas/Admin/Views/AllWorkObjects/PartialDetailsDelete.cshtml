@@ -23,15 +23,16 @@
     </dd>
 
      <dt class="col-sm-3">
-         @Html.DisplayNameFor(model => model.AppUsersOnObject) (
-         <a asp-action="ChooseForWorkObject"
-            asp-controller="AllAppUsersOnObjects" asp-route-workobjectid="@Model.WorkObject.Id">
+         @Html.DisplayNameFor(model => model.WorkObject.AppUsersOnObject) (
+         <a asp-action="Create"
+            asp-controller="AllAppUsersOnObjects" >
+            @* asp-controller="AllAppUsersOnObjects" asp-route-workobjectid="@Model.WorkObject.Id"> *@
              Add
          </a>)
      </dt>
      <dd class="col-sm-10">
          <ul>
-             @foreach (var appUserOnObject in Model.AppUsersOnObject)
+             @foreach (var appUserOnObject in Model.WorkObject.AppUsersOnObject)
              {
                  <li>
                      @appUserOnObject.AppUser.FirstLastName
@@ -48,7 +49,7 @@
          </ul>
      </dd>
      <dt class="col-sm-3">
-         @Html.DisplayNameFor(model => model.ProductsServices) (
+         @Html.DisplayNameFor(model => model.WorkObject.ProductsServices) (
          <a asp-action="Create"
             asp-controller="AllProductsServices" asp-route-workobjectid="@Model.WorkObject.Id">
              Add
@@ -56,7 +57,7 @@
      </dt>
      <dd class="col-sm-10">
          <ul>
-             @foreach (var productService in Model.ProductsServices)
+             @foreach (var productService in Model.WorkObject.ProductsServices)
              {
                  <li>@productService.ProductForClient.Product.ProductName:
                      @productService.Description

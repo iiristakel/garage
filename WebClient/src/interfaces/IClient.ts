@@ -1,11 +1,16 @@
 import {IBaseEntity} from "./IBaseEntity";
+import {IClientGroup} from "./IClientGroup";
+import {IBill} from "./IBill";
+import {IWorkObject} from "./IWorkObject";
+import {IProductForClient} from "./IProductForClient";
+
 
 export interface IClient extends IBaseEntity{
   "clientGroupId": number,
-  "clientGroup": number,
-  "bills": [],
-  "workObjects": [],
-  "productsForClient": [],
+  "clientGroup": IClientGroup,
+  "bills": IBill[],
+  "workObjects": IWorkObject[],
+  "productsForClient": IProductForClient[],
   "companyName": string,
   "address": string,
   "phone": string,

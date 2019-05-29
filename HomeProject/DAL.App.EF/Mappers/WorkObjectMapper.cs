@@ -35,7 +35,9 @@ namespace DAL.App.EF.Mappers
                 From = workObject.From,
                 Until = workObject.Until,
 //                AppUsersOnObject = workObject.AppUsersOnObject.Select(e => AppUserOnObjectMapper.MapFromDomain(e)).ToList(),
-                
+//                ProductsServices = workObject.ProductsServices.Select(e => ProductServiceMapper.MapFromDomain(e)).ToList(),
+//                Bills = workObject.Bills.Select(e => BillMapper.MapFromDomain(e)).ToList(),
+
 
             };
 
@@ -52,7 +54,8 @@ namespace DAL.App.EF.Mappers
                 From = workObject.From,
                 Until = workObject.Until,
 //                AppUsersOnObject = workObject.AppUsersOnObject.Select(e => AppUserOnObjectMapper.MapFromDAL(e)).ToList(),
-                
+//                ProductsServices = workObject.ProductsServices.Select(e => ProductServiceMapper.MapFromDAL(e)).ToList(),
+//                Bills = workObject.Bills.Select(e => BillMapper.MapFromDAL(e)).ToList(),                
             };
             return res;
         }

@@ -2,6 +2,7 @@ import {LogManager, View, autoinject} from "aurelia-framework";
 import {RouteConfig, NavigationInstruction, Router} from "aurelia-router";
 import {IClient} from "../interfaces/IClient";
 import {ClientService} from "../services/client-service";
+import {IBill} from "../interfaces/IBill";
 
 export var log = LogManager.getLogger('Clients.Details');
 
@@ -28,6 +29,7 @@ export class Details {
 
   attached() {
     log.debug('attached');
+    
   }
 
   detached() {
@@ -53,6 +55,7 @@ export class Details {
     );
 
   }
+  
 
   canDeactivate() {
     log.debug('canDeactivate');

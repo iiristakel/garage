@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Contracts.DAL.Base.Mappers;
 using internalDTO = Domain;
 using externalDTO = DAL.App.DTO;
@@ -34,7 +35,9 @@ namespace DAL.App.EF.Mappers
                     ClientId = productForClient.ClientId,
                     Product = ProductMapper.MapFromDomain(productForClient.Product),
                     ProductId = productForClient.ProductId,
-                    Count = productForClient.Count
+                    Count = productForClient.Count,
+//                    ProductServices = productForClient.ProductServices.Select(e => ProductServiceMapper.MapFromDomain(e)).ToList(),
+
                 };
 
             return res;
@@ -49,7 +52,9 @@ namespace DAL.App.EF.Mappers
                     ClientId = productForClient.ClientId,
                     Product = ProductMapper.MapFromDAL(productForClient.Product),
                     ProductId = productForClient.ProductId,
-                    Count = productForClient.Count
+                    Count = productForClient.Count,
+//                    ProductServices = productForClient.ProductServices.Select(e => ProductServiceMapper.MapFromDAL(e)).ToList(),
+
                 };
             return res;
         }

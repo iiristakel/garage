@@ -2,18 +2,18 @@ import {LogManager, autoinject} from "aurelia-framework";
 import {HttpClient} from "aurelia-fetch-client";
 import {BaseService} from "./base-service";
 import {AppConfig} from "../app-config";
-import {IWorkobject} from "../interfaces/IWorkobject";
+import {IAppUserOnObject} from "../interfaces/IAppUserOnObject";
 
-export var log = LogManager.getLogger('WorkobjectService');
+export var log = LogManager.getLogger('AppUserOnObjectService');
 
 @autoinject
-export class WorkobjectService extends BaseService<IWorkobject> {
+export class AppUserOnObjectService extends BaseService<IAppUserOnObject> {
 
   constructor(
     private httpClient: HttpClient,
     private appConfig: AppConfig
   ){
-    super(httpClient, appConfig, 'Workobjects')
+    super(httpClient, appConfig, 'AppUserOnObjects')
   }
 
 }

@@ -12,7 +12,7 @@ namespace WebApp.Areas.Admin.ViewModels
 
         public SelectList WorkObjectSelectList { get; set; }
 
-        public ICollection<BillLine> BillLines { get; set; }
+//        public ICollection<BillLine> BillLines { get; set; }
 
     }
 }

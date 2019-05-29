@@ -16,9 +16,9 @@ namespace PublicApi.v1.DTO
 
         public WorkObject WorkObject { get; set; }
         
-//        public ICollection<BillLine> BillLines { get; set; }
+        public ICollection<BillLine> BillLines { get; set; }
 //
-//        public ICollection<Payment> Payments { get; set; }
+        public ICollection<Payment> Payments { get; set; }
         
 
         public decimal ArrivalFee { get; set; }

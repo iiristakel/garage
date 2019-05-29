@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using externalDTO = PublicApi.v1.DTO;
 using internalDTO = BLL.App.DTO;
 
@@ -32,7 +33,9 @@ namespace PublicApi.v1.Mappers
                     ClientId = productForClient.ClientId,
                     Product = ProductMapper.MapFromInternal(productForClient.Product),
                     ProductId = productForClient.ProductId,
-                    Count = productForClient.Count
+                    Count = productForClient.Count,
+//                    ProductServices = productForClient.ProductServices.Select(e => ProductServiceMapper.MapFromInternal(e)).ToList(),                
+
                 };
 
             return res;
@@ -47,7 +50,9 @@ namespace PublicApi.v1.Mappers
                     ClientId = productForClient.ClientId,
                     Product = ProductMapper.MapFromExternal(productForClient.Product),
                     ProductId = productForClient.ProductId,
-                    Count = productForClient.Count
+                    Count = productForClient.Count,
+//                    ProductServices = productForClient.ProductServices.Select(e => ProductServiceMapper.MapFromExternal(e)).ToList(),                
+
                 };
             return res;
         }

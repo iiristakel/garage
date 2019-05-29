@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace PublicApi.v1.DTO
@@ -14,5 +15,6 @@ namespace PublicApi.v1.DTO
         public string Description { get; set; }
 
         public decimal? DiscountPercent { get; set; }
+        public ICollection<Client> Clients { get; set; }
     }
 }

@@ -26,6 +26,9 @@ namespace DAL.App.EF.Repositories
                 .ThenInclude(p => p.ProductName)
                 .ThenInclude(t => t.Translations)
                 .Include(p => p.Client)
+                .Include(p => p.ProductServices)
+                .ThenInclude(p=> p.Description)
+                .ThenInclude(p => p.Translations)
                 .Select(e => ProductForClientMapper.MapFromDomain(e))
                 .ToListAsync();
         }
@@ -36,8 +39,9 @@ namespace DAL.App.EF.Repositories
                 .Include(p => p.Product)
                 .ThenInclude(p => p.ProductName)
                 .ThenInclude(t => t.Translations)
-//                .Include(p => p.ProductServices)
-//                .ThenInclude(p => p.WorkObject)
+                .Include(p => p.ProductServices)
+                .ThenInclude(p=> p.Description)
+                .ThenInclude(p => p.Translations)
                 .Include(p => p.Client)
                 .Where(p => p.ClientId == clientId)
                 .Select(e => ProductForClientMapper.MapFromDomain(e))
@@ -55,6 +59,7 @@ namespace DAL.App.EF.Repositories
                 await RepositoryDbContext.Entry(productForClient)
                     .Reference(c => c.Client)
                     .LoadAsync();
+                
                 await RepositoryDbContext.Entry(productForClient)
                     .Reference(c => c.Product)
                     .LoadAsync();

@@ -57,9 +57,9 @@ namespace WebApp.Areas.Admin.Controllers
             }
             var vm = new WebApp.Areas.Admin.ViewModels.WorkObjectCreateEditViewModel();
             vm.WorkObject = workObject;
-            vm.AppUsersOnObject = await _bll.AppUsersOnObjects.AllForWorkObjectAsync(workObject.Id);
-            vm.ProductsServices = await _bll.ProductsServices.AllForWorkObjectAsync(workObject.Id);
-            vm.Bills = await _bll.Bills.AllForWorkObjectAsync(workObject.Id);
+            vm.WorkObject.AppUsersOnObject = await _bll.AppUsersOnObjects.AllForWorkObjectAsync(workObject.Id);
+            vm.WorkObject.ProductsServices = await _bll.ProductsServices.AllForWorkObjectAsync(workObject.Id);
+            vm.WorkObject.Bills = await _bll.Bills.AllForWorkObjectAsync(workObject.Id);
 
             return View(vm);
         }
@@ -177,9 +177,9 @@ namespace WebApp.Areas.Admin.Controllers
             }
             var vm = new WebApp.Areas.Admin.ViewModels.WorkObjectCreateEditViewModel();
             vm.WorkObject = workObject;
-            vm.AppUsersOnObject = await _bll.AppUsersOnObjects.AllForWorkObjectAsync(workObject.Id);
-            vm.ProductsServices = await _bll.ProductsServices.AllForWorkObjectAsync(workObject.Id);
-            vm.Bills = await _bll.Bills.AllForWorkObjectAsync(workObject.Id);
+            vm.WorkObject.AppUsersOnObject = await _bll.AppUsersOnObjects.AllForWorkObjectAsync(workObject.Id);
+            vm.WorkObject.ProductsServices = await _bll.ProductsServices.AllForWorkObjectAsync(workObject.Id);
+            vm.WorkObject.Bills = await _bll.Bills.AllForWorkObjectAsync(workObject.Id);
 
             return View(vm);
         }

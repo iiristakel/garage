@@ -14,7 +14,7 @@ namespace DAL.App.DTO
 
         public ICollection<AppUserOnObject> AppUsersOnObject { get; set; }
 
-        public ICollection<Domain.ProductService> ProductsServices { get; set; }
+        public ICollection<ProductService> ProductsServices { get; set; }
         
         public ICollection<Bill> Bills { get; set; }
         

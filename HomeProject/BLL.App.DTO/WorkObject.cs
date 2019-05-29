@@ -16,7 +16,7 @@ namespace BLL.App.DTO
 
         public ICollection<ProductService> ProductsServices { get; set; }
         
-//        public ICollection<Bill> Bills { get; set; }
+        public ICollection<Bill> Bills { get; set; }
 
         [Display(Name = nameof(From), ResourceType = typeof(Resources.Domain.WorkObject))]
         [DataType(DataType.Date)]

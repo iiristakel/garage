@@ -49,7 +49,7 @@ namespace BLL.App.Services
                 {
                     Id = c.Id,
                     ClientId = c.ClientId,
-                    Client = ClientMapper.MapFromDAL(c.Client),
+//                    Client = ClientMapper.MapFromDAL(c.Client),
                     ArrivalFee = c.ArrivalFee,
                     SumWithoutTaxes = c.SumWithoutTaxes,
                     TaxPercent = c.TaxPercent,
@@ -58,7 +58,7 @@ namespace BLL.App.Services
                     InvoiceNr = c.InvoiceNr,
                     Comment = c.Comment,
                     WorkObjectId = c.WorkObjectId,
-                    WorkObject = WorkObjectMapper.MapFromDAL(c.WorkObject)
+//                    WorkObject = WorkObjectMapper.MapFromDAL(c.WorkObject)
                     
                 }).ToList();
             
@@ -88,7 +88,7 @@ namespace BLL.App.Services
                 {
                     Id = c.Id,
                     ClientId = c.ClientId,
-                    Client = ClientMapper.MapFromDAL(c.Client),
+//                    Client = ClientMapper.MapFromDAL(c.Client),
                     ArrivalFee = c.ArrivalFee,
                     SumWithoutTaxes = c.SumWithoutTaxes,
                     TaxPercent = c.TaxPercent,
@@ -97,7 +97,7 @@ namespace BLL.App.Services
                     InvoiceNr = c.InvoiceNr,
                     Comment = c.Comment,
                     WorkObjectId = c.WorkObjectId,
-                    WorkObject = WorkObjectMapper.MapFromDAL(c.WorkObject)
+//                    WorkObject = WorkObjectMapper.MapFromDAL(c.WorkObject)
                     
                 }).ToList();
             
@@ -128,7 +128,7 @@ namespace BLL.App.Services
                 {
                     Id = c.Id,
                     ClientId = c.ClientId,
-                    Client = ClientMapper.MapFromDAL(c.Client),
+//                    Client = ClientMapper.MapFromDAL(c.Client),
                     ArrivalFee = c.ArrivalFee,
                     SumWithoutTaxes = c.SumWithoutTaxes,
                     TaxPercent = c.TaxPercent,
@@ -137,7 +137,7 @@ namespace BLL.App.Services
                     InvoiceNr = c.InvoiceNr,
                     Comment = c.Comment,
                     WorkObjectId = c.WorkObjectId,
-                    WorkObject = WorkObjectMapper.MapFromDAL(c.WorkObject)
+//                    WorkObject = WorkObjectMapper.MapFromDAL(c.WorkObject)
                     
                 }).ToList();
             

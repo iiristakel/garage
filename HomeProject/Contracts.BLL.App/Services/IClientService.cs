@@ -10,6 +10,8 @@ namespace Contracts.BLL.App.Services
         : IBaseEntityService<BLLAppDTO.Client>, 
             IClientRepository<BLLAppDTO.Client>
     {
+//        Task<BLLAppDTO.Client> FindAsync(params object[] id);
+
         Task<List<BLLAppDTO.ClientWithProductsCount>> GetAllWithProductsCountAsync();
         Task<List<BLLAppDTO.Client>> AllForClientGroupAsync(int? clientGroupId);
 

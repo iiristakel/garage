@@ -34,7 +34,7 @@
         @Html.DisplayFor(model => model.Bill.ArrivalFee)
     </dd>
     <dt class="col-sm-2">
-        @Html.DisplayNameFor(model => model.BillLines)
+        @Html.DisplayNameFor(model => model.Bill.BillLines)
         (
         <a asp-action="Create"
            asp-controller="AllBillLines" asp-route-billId="@Model.Bill.Id">
@@ -44,7 +44,7 @@
     <table class="table">
     <dd class="col-sm-10">
         <ul>
-            @if (Model.BillLines.Count > 0)
+            @if (Model.Bill.BillLines.Count > 0)
             {
                 <dt>
                     <th>
@@ -65,7 +65,7 @@
                     <th></th>
                 </dt>
             }
-            @foreach (var billLine in Model.BillLines)
+            @foreach (var billLine in Model.Bill.BillLines)
             {
                 <tr>
                     <td>

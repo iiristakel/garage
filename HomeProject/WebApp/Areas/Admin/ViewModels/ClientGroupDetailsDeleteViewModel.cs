@@ -7,6 +7,6 @@ namespace WebApp.Areas.Admin.ViewModels
     {
         public ClientGroup ClientGroup { get; set; }
 
-        public ICollection<Client> Clients { get; set; }
+//        public ICollection<Client> Clients { get; set; }
     }
 }

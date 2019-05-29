@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using externalDTO = PublicApi.v1.DTO;
 using internalDTO = BLL.App.DTO;
 
@@ -34,7 +35,10 @@ namespace PublicApi.v1.Mappers
                 ContactPerson = client.ContactPerson,
                 Phone = client.Phone,
                 From = client.From,
-                CompanyAndAddress = client.CompanyAndAddress
+                CompanyAndAddress = client.CompanyAndAddress,
+//                ProductsForClient = client.ProductsForClient.Select(e => ProductForClientMapper.MapFromInternal(e)).ToList(),
+//                Bills = client.Bills.Select(e => BillMapper.MapFromInternal(e)).ToList()
+                
 
             };
 
@@ -52,7 +56,10 @@ namespace PublicApi.v1.Mappers
                 Address = client.Address,
                 ContactPerson = client.ContactPerson,
                 Phone = client.Phone,
-                From = client.From
+                From = client.From,
+//                ProductsForClient = client.ProductsForClient.Select(e => ProductForClientMapper.MapFromExternal(e)).ToList(),
+//                Bills = client.Bills.Select(e => BillMapper.MapFromExternal(e)).ToList()
+
             };
             return res;
         }
@@ -69,7 +76,10 @@ namespace PublicApi.v1.Mappers
                 ContactPerson = clientWithProductsCount.ContactPerson,
                 Phone = clientWithProductsCount.Phone,
                 ProductsCount = clientWithProductsCount.ProductsCount,
-                From = clientWithProductsCount.From
+                From = clientWithProductsCount.From,
+//                ProductsForClient = clientWithProductsCount.ProductsForClient.Select(e => ProductForClientMapper.MapFromInternal(e)).ToList(),
+//                Bills = clientWithProductsCount.Bills.Select(e => BillMapper.MapFromInternal(e)).ToList()
+
 
             };
 

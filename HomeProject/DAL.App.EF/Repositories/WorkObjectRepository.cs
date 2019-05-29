@@ -31,6 +31,9 @@ namespace DAL.App.EF.Repositories
                 .Include(p => p.ProductsServices)
                 .ThenInclude(p => p.Description)
                 .ThenInclude(p => p.Translations)
+                .Include(p => p.Bills)
+                .ThenInclude(p=> p.Comment)
+                .ThenInclude(p => p.Translations)
                 .Select(e => WorkObjectMapper.MapFromDomain(e))
                 .ToListAsync();
         }
@@ -49,10 +52,31 @@ namespace DAL.App.EF.Repositories
                 await RepositoryDbContext.Entry(workObject.Client)
                     .Collection(c => c.Bills)
                     .LoadAsync();
+                
+                foreach (var bill in workObject.Bills)
+                {
+                    await RepositoryDbContext.Entry(bill)
+                        .Reference(b => b.Comment)
+                        .LoadAsync();
+
+                    await RepositoryDbContext.Entry(bill.Comment)
+                        .Collection(b => b.Translations)
+                        .Query()
+                        .Where(t => t.Culture == culture)
+                        .LoadAsync();
+                }
 
                 await RepositoryDbContext.Entry(workObject)
                     .Collection(c => c.AppUsersOnObject)
                     .LoadAsync();
+                
+                foreach (var appUserOnObject in workObject.AppUsersOnObject)
+                {
+                    await RepositoryDbContext.Entry(appUserOnObject)
+                        .Reference(b => b.AppUser)
+                        .LoadAsync();
+
+                }
 
                 await RepositoryDbContext.Entry(workObject)
                     .Collection(c => c.ProductsServices)
@@ -86,6 +110,9 @@ namespace DAL.App.EF.Repositories
                     .Include(p => p.ProductsServices)
                     .ThenInclude(p => p.Description)
                     .ThenInclude(p => p.Translations)
+                    .Include(p => p.Bills)
+                    .ThenInclude(p=> p.Comment)
+                    .ThenInclude(p => p.Translations)
                     .Where(q => q.AppUsersOnObject.Any(p => p.AppUserId == userId))
                     .Select(e => WorkObjectMapper.MapFromDomain(e))
                     .ToListAsync();
@@ -96,7 +123,7 @@ namespace DAL.App.EF.Repositories
             {
                 var workObject = await RepositoryDbSet
                     .Include(c => c.Client)
-                    .ThenInclude(q => q.Bills.Where(p => p.WorkObject.Id == id))
+                    .Include(q => q.Bills)
                     
                     .Include(p => p.AppUsersOnObject)
                     .ThenInclude(p => p.AppUser)

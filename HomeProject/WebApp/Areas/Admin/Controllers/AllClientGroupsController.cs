@@ -38,7 +38,7 @@ namespace WebApp.Areas.Admin.Controllers
             }
             var vm = new WebApp.Areas.Admin.ViewModels.ClientGroupDetailsDeleteViewModel();
             vm.ClientGroup = clientGroup;
-            vm.Clients = await _bll.Clients.AllForClientGroupAsync(id);
+            vm.ClientGroup.Clients = await _bll.Clients.AllForClientGroupAsync(id);
 
             return View(vm);
         }
@@ -122,7 +122,7 @@ namespace WebApp.Areas.Admin.Controllers
             
             var vm = new WebApp.Areas.Admin.ViewModels.ClientGroupDetailsDeleteViewModel();
             vm.ClientGroup = clientGroup;
-            vm.Clients = await _bll.Clients.AllForClientGroupAsync(id);
+            vm.ClientGroup.Clients = await _bll.Clients.AllForClientGroupAsync(id);
 
             return View(vm);
         }

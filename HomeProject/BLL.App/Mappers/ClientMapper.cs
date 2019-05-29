@@ -26,9 +26,7 @@ namespace BLL.App.Mappers
 
         public static BLL.App.DTO.Client MapFromDAL(DAL.App.DTO.Client client)
         {
-            var res = client == null
-                ? null
-                : new BLL.App.DTO.Client
+            var res = client == null ? null : new BLL.App.DTO.Client
                 {
                     Id = client.Id,
                     ClientGroupId = client.ClientGroupId,
@@ -39,8 +37,9 @@ namespace BLL.App.Mappers
                     Phone = client.Phone,
                     From = client.From,
                     CompanyAndAddress = client.CompanyAndAddress,
-//                Bills = client.Bills.Select(e => BillMapper.MapFromDAL(e)).ToList(),
-//                ProductsForClient = client.ProductsForClient.Select(e => ProductForClientMapper.MapFromDAL(e)).ToList()
+//                    Bills = client.Bills.Select(e => BillMapper.MapFromDAL(e)).ToList(),
+//                    ProductsForClient = client.ProductsForClient.Select(e => ProductForClientMapper.MapFromDAL(e))
+//                        .ToList()
                 };
 
             return res;
@@ -61,7 +60,8 @@ namespace BLL.App.Mappers
                     Phone = client.Phone,
                     From = client.From,
 //                Bills = client.Bills.Select(e => BillMapper.MapFromBLL(e)).ToList(),
-//                ProductsForClient = client.ProductsForClient.Select(e => ProductForClientMapper.MapFromBLL(e)).ToList()
+//                    ProductsForClient = client.ProductsForClient.Select(e => ProductForClientMapper.MapFromBLL(e))
+//                        .ToList()
                 };
             return res;
         }
@@ -82,8 +82,9 @@ namespace BLL.App.Mappers
                     Phone = clientWithProductsCount.Phone,
                     ProductsCount = clientWithProductsCount.ProductsCount,
                     From = clientWithProductsCount.From,
-//                Bills = client.Bills.Select(e => BillMapper.MapFromBLL(e)).ToList(),
-//                ProductsForClient = clientWithProductsCount.ProductsForClient.Select(e => ProductForClientMapper.MapFromDAL(e)).ToList()
+//                    Bills = clientWithProductsCount.Bills.Select(e => BillMapper.MapFromDAL(e)).ToList(),
+//                    ProductsForClient = clientWithProductsCount.ProductsForClient
+//                        .Select(e => ProductForClientMapper.MapFromDAL(e)).ToList()
                 };
 
             return res;

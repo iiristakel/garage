@@ -1,0 +1,88 @@
+<template>
+
+  <h1>Details</h1>
+
+  <div>
+
+    <h4>Client</h4>
+    <hr/>
+    <dl class="row">
+      <dt class="col-sm-2">
+        Client group
+      </dt>
+      <dd class="col-sm-10">
+        ${client.clientGroup.name}
+      </dd>
+      <dt class="col-sm-2">
+        Company name
+      </dt>
+      <dd class="col-sm-10">
+        ${client.companyName}
+      </dd>
+      <dt class="col-sm-2">
+        Address
+      </dt>
+      <dd class="col-sm-10">
+        ${client.address}
+      </dd>
+      <dt class="col-sm-2">
+        Phone
+      </dt>
+      <dd class="col-sm-10">
+        ${client.phone}
+      </dd>
+      <dt class="col-sm-2">
+        Contact person
+      </dt>
+      <dd class="col-sm-10">
+        ${client.contactPerson}
+      </dd>
+      <dt class="col-sm-2">
+        From
+      </dt>
+      <dd class="col-sm-10">
+        ${client.from}
+      </dd>
+
+      <dt class="col-sm-2">
+        Bills
+      </dt>
+      <dd class="col-sm-10">
+        <ul>
+          <li repeat.for="bill of client.bills">
+            <a route-href="route: billsDetails; params.bind: {id: bill.id}">${bill.invoiceNr}</a>
+          </li>
+        </ul>
+      </dd>
+
+      <dt class="col-sm-2">
+        Products
+        (<a route-href="route: productsforclientsCreate; params.bind: {clientid: client.id}">Add</a>)
+      </dt>
+      <dd class="col-sm-10">
+        <ul>
+          <li repeat.for="productForClient of client.productsForClient">
+            <a route-href="route: productsforclientsDetails; params.bind: {id: productForClient.id}">
+              ${productForClient.product.productName} ${productForClient.product.productCode}
+            </a>
+            |
+            <a route-href="route: productsforclientsEdit; params.bind: {id: productForClient.id}">
+              Edit
+            </a>
+            |
+            <a route-href="route: productsforclientsDelete; params.bind: {id: productForClient.id}">
+              Delete
+            </a>
+          </li>
+        </ul>
+      </dd>
+    </dl>
+
+  </div>
+  <div>
+    <a route-href="route: clientsEdit; params.bind: {id: client.id}">Edit</a> |
+    <a route-href="route: clientsIndex">Back to list</a>
+  </div>
+
+
+</template>

@@ -96,32 +96,10 @@ namespace DAL.App.EF.Repositories
                 .Include(p => p.Product)
                 .ThenInclude(t => t.Translations)
                 .Where(p => p.Bill.WorkObject.AppUsersOnObject.Any(q => q.AppUserId == userId))
-                .Select(c => new 
-                {
-                    Id = c.Id,
-                    Bill = BillMapper.MapFromDomain(c.Bill),
-                    BillId = c.BillId,
-                    Product = c.Product,
-                    Translations = c.Product.Translations,
-                    Sum = c.Sum,
-                    Amount = c.Amount,
-                    DiscountPercent = c.DiscountPercent,
-                })
+                .Select(e => BillLineMapper.MapFromDomain(e))
                 .ToListAsync();
 
-            var resultList = res.Select(c => new BillLine()
-            {
-                Id = c.Id,
-                Bill = c.Bill,
-                BillId = c.BillId,
-                Product = c.Product.Translate(),
-                Sum = c.Sum,
-                Amount = c.Amount,
-                DiscountPercent = c.DiscountPercent
-                
-            }).ToList();
-
-            return resultList;
+            return res;
         }
 
         public async Task<BillLine> FindForUserAsync(int id, int userId)
