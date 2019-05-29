@@ -6,10 +6,11 @@ using BLLAppDTO = BLL.App.DTO;
 
 namespace Contracts.BLL.App.Services
 {
-    public interface IBillService 
-        : IBaseEntityService<BLLAppDTO.Bill>, 
+    public interface IBillService
+        : IBaseEntityService<BLLAppDTO.Bill>,
             IBillRepository<BLLAppDTO.Bill>
     {
+        Task<List<BLLAppDTO.Bill>> AllForWorkObjectAsync(int workObjectId);
 
     }
 }

@@ -1,0 +1,15 @@
+@model BLL.App.DTO.BillLine
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>@Resources.Views.Common.Details</h1>
+
+<div>
+    <partial name="PartialDetailsDelete" model="Model"/>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">@Resources.Views.Common.Edit</a> |
+    <a asp-action="Index">@Resources.Views.Common.BackToList</a>
+</div>

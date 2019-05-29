@@ -1,27 +1,31 @@
+#pragma warning disable 1591
 using System.Linq;
 using System.Threading.Tasks;
+using Contracts.BLL.App;
 using DAL.App.EF;
-using Domain;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace WebApp.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
+    [Area("Admin")]
     public class AllProductsServicesController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly IAppBLL _bll;
 
-        public AllProductsServicesController(AppDbContext context)
+        public AllProductsServicesController(IAppBLL bll)
         {
-            _context = context;
+            _bll = bll;
         }
 
         // GET: ProductsServices
         public async Task<IActionResult> Index()
         {
-            var appDbContext = _context.ProductsServices.Include(p => p.ProductForClient).Include(p => p.WorkObject);
-            return View(await appDbContext.ToListAsync());
+            var productServices = await _bll.ProductsServices.AllAsync();
+            return View(productServices);
         }
 
         // GET: ProductsServices/Details/5
@@ -32,10 +36,7 @@ namespace WebApp.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var productService = await _context.ProductsServices
-                .Include(p => p.ProductForClient)
-                .Include(p => p.WorkObject)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var productService = await _bll.ProductsServices.FindAsync(id);
             if (productService == null)
             {
                 return NotFound();
@@ -45,11 +46,20 @@ namespace WebApp.Areas.Admin.Controllers
         }
 
         // GET: ProductsServices/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            ViewData["ProductForClientId"] = new SelectList(_context.ProductsForClients, "Id", "Id");
-            ViewData["WorkObjectId"] = new SelectList(_context.WorkObjects, "Id", "Id");
-            return View();
+            var vm = new WebApp.Areas.Admin.ViewModels.ProductServiceCreateEditViewModel();
+            
+            vm.ProductForClientSelectList = new SelectList(
+                await _bll.ProductsForClients.AllAsync(),
+                nameof(BLL.App.DTO.ProductForClient.Id),
+                nameof(BLL.App.DTO.ProductForClient.Id));
+            
+            vm.WorkObjectSelectList = new SelectList(
+                await _bll.WorkObjects.AllAsync(),
+                nameof(BLL.App.DTO.WorkObject.Id),
+                nameof(BLL.App.DTO.WorkObject.Id));
+            return View(vm);
         }
 
         // POST: ProductsServices/Create
@@ -57,17 +67,25 @@ namespace WebApp.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProductForClientId,WorkObjectId,Id")] ProductService productService)
+        public async Task<IActionResult> Create(WebApp.Areas.Admin.ViewModels.ProductServiceCreateEditViewModel vm)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(productService);
-                await _context.SaveChangesAsync();
+                _bll.ProductsServices.Add(vm.ProductService);
+                await _bll.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProductForClientId"] = new SelectList(_context.ProductsForClients, "Id", "Id", productService.ProductForClientId);
-            ViewData["WorkObjectId"] = new SelectList(_context.WorkObjects, "Id", "Id", productService.WorkObjectId);
-            return View(productService);
+            vm.ProductForClientSelectList = new SelectList(
+                await _bll.ProductsForClients.AllAsync(),
+                nameof(BLL.App.DTO.ProductForClient.Id),
+                nameof(BLL.App.DTO.ProductForClient.Product.ProductName));
+            
+            vm.WorkObjectSelectList = new SelectList(
+                await _bll.WorkObjects.AllAsync(),
+                nameof(BLL.App.DTO.WorkObject.Id),
+                nameof(BLL.App.DTO.WorkObject.Client.CompanyAndAddress));
+            
+            return View(vm);
         }
 
         // GET: ProductsServices/Edit/5
@@ -78,14 +96,26 @@ namespace WebApp.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var productService = await _context.ProductsServices.FindAsync(id);
+            var productService = await _bll.ProductsServices.FindAsync(id);
             if (productService == null)
             {
                 return NotFound();
             }
-            ViewData["ProductForClientId"] = new SelectList(_context.ProductsForClients, "Id", "Id", productService.ProductForClientId);
-            ViewData["WorkObjectId"] = new SelectList(_context.WorkObjects, "Id", "Id", productService.WorkObjectId);
-            return View(productService);
+            
+            var vm = new WebApp.Areas.Admin.ViewModels.ProductServiceCreateEditViewModel();
+
+            vm.ProductService = productService;
+            vm.ProductForClientSelectList = new SelectList(
+                await _bll.ProductsForClients.AllAsync(),
+                nameof(BLL.App.DTO.ProductForClient.Id),
+                nameof(BLL.App.DTO.ProductForClient.Product.ProductName));
+            
+            vm.WorkObjectSelectList = new SelectList(
+                await _bll.WorkObjects.AllAsync(),
+                nameof(BLL.App.DTO.WorkObject.Id),
+                nameof(BLL.App.DTO.WorkObject.Client.CompanyAndAddress));
+            
+            return View(vm);
         }
 
         // POST: ProductsServices/Edit/5
@@ -93,36 +123,31 @@ namespace WebApp.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProductForClientId,WorkObjectId,Id")] ProductService productService)
+        public async Task<IActionResult> Edit(int id, WebApp.Areas.Admin.ViewModels.ProductServiceCreateEditViewModel vm)
         {
-            if (id != productService.Id)
+            if (id != vm.ProductService.Id)
             {
                 return NotFound();
             }
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(productService);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ProductServiceExists(productService.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                    _bll.ProductsServices.Update(vm.ProductService);
+                    await _bll.SaveChangesAsync();
+                
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProductForClientId"] = new SelectList(_context.ProductsForClients, "Id", "Id", productService.ProductForClientId);
-            ViewData["WorkObjectId"] = new SelectList(_context.WorkObjects, "Id", "Id", productService.WorkObjectId);
-            return View(productService);
+            vm.ProductForClientSelectList = new SelectList(
+                await _bll.ProductsForClients.AllAsync(),
+                nameof(BLL.App.DTO.ProductForClient.Id),
+                nameof(BLL.App.DTO.ProductForClient.Product.ProductName));
+            
+            vm.WorkObjectSelectList = new SelectList(
+                await _bll.WorkObjects.AllAsync(),
+                nameof(BLL.App.DTO.WorkObject.Id),
+                nameof(BLL.App.DTO.WorkObject.Client.CompanyAndAddress));
+            
+            return View(vm);
         }
 
         // GET: ProductsServices/Delete/5
@@ -133,10 +158,8 @@ namespace WebApp.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var productService = await _context.ProductsServices
-                .Include(p => p.ProductForClient)
-                .Include(p => p.WorkObject)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var productService = await _bll.ProductsServices.FindAsync(id);
+            
             if (productService == null)
             {
                 return NotFound();
@@ -150,15 +173,11 @@ namespace WebApp.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var productService = await _context.ProductsServices.FindAsync(id);
-            _context.ProductsServices.Remove(productService);
-            await _context.SaveChangesAsync();
+            _bll.ProductsServices.Remove(id);
+            
+            await _bll.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ProductServiceExists(int id)
-        {
-            return _context.ProductsServices.Any(e => e.Id == id);
-        }
     }
 }

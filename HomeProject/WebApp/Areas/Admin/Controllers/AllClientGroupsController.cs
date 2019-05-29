@@ -36,8 +36,11 @@ namespace WebApp.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+            var vm = new WebApp.Areas.Admin.ViewModels.ClientGroupDetailsDeleteViewModel();
+            vm.ClientGroup = clientGroup;
+            vm.Clients = await _bll.Clients.AllForClientGroupAsync(id);
 
-            return View(clientGroup);
+            return View(vm);
         }
 
         // GET: ClientGroups/Create
@@ -116,8 +119,12 @@ namespace WebApp.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+            
+            var vm = new WebApp.Areas.Admin.ViewModels.ClientGroupDetailsDeleteViewModel();
+            vm.ClientGroup = clientGroup;
+            vm.Clients = await _bll.Clients.AllForClientGroupAsync(id);
 
-            return View(clientGroup);
+            return View(vm);
         }
 
         // POST: ClientGroups/Delete/5

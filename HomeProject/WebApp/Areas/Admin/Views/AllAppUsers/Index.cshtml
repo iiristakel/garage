@@ -11,45 +11,44 @@
 @* </p> *@
 <table class="table">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HiringDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LeftJob)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PhoneNr)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AppUserInPositions)
-            </th>
-            <th></th>
-        </tr>
+    <tr>
+        <th>
+            @Resources.Domain.AppUser.FirstLastName
+            @* @Html.DisplayNameFor(model => model.FirstLastName) *@
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HiringDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LeftJob)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @* @Html.DisplayNameFor(model => model.AppUserInPositions) *@
+            @Resources.Domain.AppUser.AppUserInPositions
+
+            @* (<a asp-action="Create"  *@
+            @*    asp-controller="AllAppUsersInPositions" asp-route-Id="Id"> *@
+            @*     Add *@
+            @* </a>) *@
+        </th>
+        <th></th>
+    </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
+                <a asp-action="Details"
+                   asp-controller="AllAppUsers" asp-route-id="@item.Id">
+                    @Html.DisplayFor(modelItem => item.FirstLastName)
+                </a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.HiringDate)
@@ -64,14 +63,24 @@
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.AppUserInPositions)
+                <ul>
+
+                    @foreach (var position in item.AppUserInPositions)
+                    {
+                        if ((position.Until >= DateTime.Now) || (position.Until == null))
+                        {
+                            <li>@position.AppUserPosition.AppUserPositionValue</li>
+                            
+                        }
+                    }
+                </ul>
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">@Resources.Views.Common.Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">@Resources.Views.Common.Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">@Resources.Views.Common.Delete</a>
+                @* <a asp-action="Edit" asp-route-id="@item.Id">@Resources.Views.Common.Edit</a> | *@
+                @* <a asp-action="Details" asp-route-id="@item.Id">@Resources.Views.Common.Details</a>  *@
+                @* <a asp-action="Delete" asp-route-id="@item.Id">@Resources.Views.Common.Delete</a> *@
             </td>
         </tr>
-}
+    }
     </tbody>
 </table>

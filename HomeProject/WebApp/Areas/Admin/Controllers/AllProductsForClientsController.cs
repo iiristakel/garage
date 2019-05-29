@@ -49,8 +49,12 @@ namespace WebApp.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+            
+            var vm = new WebApp.Areas.Admin.ViewModels.ProductsForClientsCreateEditViewModel();
+            vm.ProductForClient = productForClient;
+            vm.ProductServices = await _bll.ProductsServices.AllForClientProductAsync(id);
 
-            return View(productForClient);
+            return View(vm);
         }
 
         // GET: ProductsForClients/Create
@@ -68,10 +72,6 @@ namespace WebApp.Areas.Admin.Controllers
                 nameof(BLL.App.DTO.Product.Id), 
                 nameof(BLL.App.DTO.Product.ProductName));
             
-            vm.WorkObjectSelectList = new SelectList(
-                await _bll.WorkObjects.AllForUserAsync(User.GetUserId()),
-                nameof(BLL.App.DTO.WorkObject.Id), 
-                nameof(BLL.App.DTO.WorkObject.Id));
 
             return View(vm);
         }
@@ -101,28 +101,11 @@ namespace WebApp.Areas.Admin.Controllers
                 nameof(BLL.App.DTO.Product.Id), 
                 nameof(BLL.App.DTO.Product.ProductName));
             
-            vm.WorkObjectSelectList = new SelectList(
-                await _bll.WorkObjects.AllForUserAsync(User.GetUserId()),
-                nameof(BLL.App.DTO.WorkObject.Id), 
-                nameof(BLL.App.DTO.WorkObject.Id));
 
             return View(vm);
         }
         
-        public async Task<IActionResult> ChooseForWorkObject(int workobjectid)
-        {
-//            ViewData["workobject"] = await _bll.WorkObjects.FindAsync(workobjectid); 
-
-            var vm = new Areas.Admin.ViewModels.ProductsForClientsCreateEditViewModel();
-
-            
-            vm.ProductSelectList = new MultiSelectList(
-                await _bll.Products.AllAsync(),
-                nameof(BLL.App.DTO.Product.Id),
-                nameof(BLL.App.DTO.Product.ProductName));
-            
-            return View();
-        }
+        
 
         // GET: ProductsForClients/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -151,10 +134,6 @@ namespace WebApp.Areas.Admin.Controllers
                 nameof(BLL.App.DTO.Product.Id), 
                 nameof(BLL.App.DTO.Product.ProductName));
             
-            vm.WorkObjectSelectList = new SelectList(
-                await _bll.WorkObjects.AllForUserAsync(User.GetUserId()),
-                nameof(BLL.App.DTO.WorkObject.Id), 
-                nameof(BLL.App.DTO.WorkObject.Id));
 
             return View(vm);
         }
@@ -189,10 +168,6 @@ namespace WebApp.Areas.Admin.Controllers
                 nameof(BLL.App.DTO.Product.Id), 
                 nameof(BLL.App.DTO.Product.ProductName));
             
-            vm.WorkObjectSelectList = new SelectList(
-                await _bll.WorkObjects.AllForUserAsync(User.GetUserId()),
-                nameof(BLL.App.DTO.WorkObject.Id), 
-                nameof(BLL.App.DTO.WorkObject.Id));
 
             return View(vm);
         }
@@ -211,8 +186,11 @@ namespace WebApp.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+            var vm = new WebApp.Areas.Admin.ViewModels.ProductsForClientsCreateEditViewModel();
+            vm.ProductForClient = productForClient;
+            vm.ProductServices = await _bll.ProductsServices.AllForClientProductAsync(id);
 
-            return View(productForClient);
+            return View(vm);
         }
 
         // POST: ProductsForClients/Delete/5

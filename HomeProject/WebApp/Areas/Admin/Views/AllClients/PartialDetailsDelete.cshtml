@@ -1,86 +1,92 @@
-@model BLL.App.DTO.Client
+@model WebApp.Areas.Admin.ViewModels.ClientCreateEditViewModel
 
 <h4>@Resources.Domain.Client.ClientString</h4>
 <hr />
 <dl class="row">
     <dt class = "col-sm-2">
-        @Html.DisplayNameFor(model => model.ClientGroup)
+        @Html.DisplayNameFor(model => model.Client.ClientGroup)
     </dt>
     <dd class = "col-sm-10">
-        @Html.DisplayFor(model => model.ClientGroup.Name)
+        @Html.DisplayFor(model => model.Client.ClientGroup.Name)
     </dd>
     <dt class = "col-sm-2">
-        @Html.DisplayNameFor(model => model.CompanyName)
+        @Html.DisplayNameFor(model => model.Client.CompanyName)
     </dt>
     <dd class = "col-sm-10">
-        @Html.DisplayFor(model => model.CompanyName)
+        @Html.DisplayFor(model => model.Client.CompanyName)
     </dd>
     <dt class = "col-sm-2">
-        @Html.DisplayNameFor(model => model.Address)
+        @Html.DisplayNameFor(model => model.Client.Address)
     </dt>
     <dd class = "col-sm-10">
-        @Html.DisplayFor(model => model.Address)
+        @Html.DisplayFor(model => model.Client.Address)
     </dd>
     <dt class = "col-sm-2">
-        @Html.DisplayNameFor(model => model.Phone)
+        @Html.DisplayNameFor(model => model.Client.Phone)
     </dt>
     <dd class = "col-sm-10">
-        @Html.DisplayFor(model => model.Phone)
+        @Html.DisplayFor(model => model.Client.Phone)
     </dd>
     <dt class = "col-sm-2">
-        @Html.DisplayNameFor(model => model.ContactPerson)
+        @Html.DisplayNameFor(model => model.Client.ContactPerson)
     </dt>
     <dd class = "col-sm-10">
-        @Html.DisplayFor(model => model.ContactPerson)
+        @Html.DisplayFor(model => model.Client.ContactPerson)
+    </dd>
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.Client.From)
+    </dt>
+    <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.Client.From)
     </dd>
     
-    @* <dt class="col-sm-3"> *@
-    @*     @Html.DisplayNameFor(model => model.Bills) ( *@
-    @*     <a asp-action="CreateForClient" *@
-    @*        asp-controller="AllBills" asp-route-clientId="@Model.Id"> *@
-    @*         Add *@
-    @*     </a>) *@
-    @* </dt> *@
-@*     <dd class="col-sm-10"> *@
-@*         <ul> *@
-@* *@
-@*             @foreach (var bill in Model.Bills) *@
-@*             { *@
-@*                 <li> *@
-@*                     <a asp-action="Details" *@
-@*                        asp-controller="AllBills" asp-route-id="@Model.Id"> *@
-@*                         View details *@
-@*                     </a> *@
-@*                 </li> *@
-@*             } *@
-@*         </ul> *@
-@*     </dd> *@
-@*      *@
-@*     <dt class="col-sm-3"> *@
-@*         @Html.DisplayNameFor(model => model.ProductsForClient) ( *@
-@*         <a asp-action="Create" *@
-@*            asp-controller="AllProductsForClients" asp-route-clientId="@Model.Id"> *@
-@*             Add *@
-@*         </a>) *@
-@*     </dt> *@
-@*     <dd class="col-sm-10"> *@
-@*         <ul> *@
-@* *@
-@*             @foreach (var productForClient in Model.ProductsForClient) *@
-@*             { *@
-@*                 <li>@productForClient.Product.ProductName *@
-@*                     <a asp-action="Edit" *@
-@*                        asp-controller="AllProductsForClients" asp-route-id="@Model.Id"> *@
-@*                         Edit *@
-@*                     </a> *@
-@*                     <a asp-action="Delete" *@
-@*                        asp-controller="AllProductsForClients" asp-route-id="@Model.Id"> *@
-@*                         Delete *@
-@*                     </a> *@
-@*                     Last service:  *@
-@*                     @productForClient.WorkObject.From *@
-@*                     </li> *@
-@*             } *@
-@*         </ul> *@
-@*     </dd> *@
+    <dt class="col-sm-2">
+        @Resources.Domain.Bill.BillsString
+        @* @Html.DisplayNameFor(model => model.Bills) *@
+    </dt>
+    <dd class="col-sm-10">
+         <ul> 
+             @foreach (var bill in Model.Bills) 
+             {
+                 <li>
+                     <a asp-action="Details"
+                        asp-controller="AllBills" asp-route-id="@bill.Id">
+                         @bill.InvoiceNr
+                     </a>
+                 </li>
+             }
+         </ul>
+     </dd>
+
+    <dt class="col-sm-2">
+        @Resources.Domain.Product.ProductsString
+        @* @Html.DisplayNameFor(model => model.ProductsForClient) *@
+        (<a asp-action="Create"
+           asp-controller="AllProductsForClients" asp-route-clientId="@Model.Client.Id">
+            Add
+        </a>)
+    </dt>
+     <dd class="col-sm-10">
+         <ul>
+             @foreach (var productForClient in Model.ProductsForClient)
+             {
+                 <li>
+                     <a asp-action="Details"
+                        asp-controller="AllProductsForClients" asp-route-id="@productForClient.Id">
+                         @productForClient.Product.ProductName (Product code: @productForClient.Product.ProductCode))
+                     </a>
+                      |
+                      <a asp-action="Edit"
+                         asp-controller="AllProductsForClients" asp-route-id="@productForClient.Id">
+                          Edit
+                      </a>
+                      |
+                     <a asp-action="Delete"
+                        asp-controller="AllProductsForClients" asp-route-id="@productForClient.Id">
+                         Delete
+                     </a>
+                 </li>
+             }
+         </ul>
+     </dd>
 </dl>

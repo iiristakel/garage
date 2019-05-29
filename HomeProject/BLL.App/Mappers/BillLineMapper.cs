@@ -50,6 +50,7 @@ namespace BLL.App.Mappers
                 Amount = billLine.Amount,
                 Sum = billLine.Sum,
                 DiscountPercent = billLine.DiscountPercent,
+//                SumWithDiscount = billLine.Sum * billLine.Amount * (1 - billLine.DiscountPercent / 100)
                 SumWithDiscount = billLine.SumWithDiscount
             };
             return res;

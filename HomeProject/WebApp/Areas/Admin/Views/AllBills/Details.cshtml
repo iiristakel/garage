@@ -1,17 +1,17 @@
-@model BLL.App.DTO.Bill
+@model WebApp.Areas.Admin.ViewModels.BillCreateEditViewModel
 
 @{
     ViewData["Title"] = "Details";
 }
 
 <h1>@Resources.Views.Common.Details</h1>
-
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Bill.Id">@Resources.Views.Common.Edit</a> |
+    <a asp-action="Index">@Resources.Views.Common.BackToList</a>
+</div>
 <div>
     
     <partial name="PartialDetailsDelete" model="Model"/>
 
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">@Resources.Views.Common.Edit</a> |
-    <a asp-action="Index">@Resources.Views.Common.BackToList</a>
-</div>
+

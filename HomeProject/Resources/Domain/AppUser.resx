@@ -129,6 +129,9 @@
   <data name="FirstName" xml:space="preserve">
     <value>First name</value>
   </data>
+  <data name="FirstLastName" xml:space="preserve">
+    <value>Name</value>
+  </data>
   <data name="HiringDate" xml:space="preserve">
     <value>Hiring date</value>
   </data>

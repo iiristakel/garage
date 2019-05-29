@@ -37,9 +37,10 @@ namespace WebApp.ApiControllers.v1_0
         public async Task<ActionResult<IEnumerable<PublicApi.v1.DTO.WorkObject>>> GetWorkObjects()
         {
             return (await _bll.WorkObjects.AllForUserAsync(User.GetUserId()))
-                .Select(e =>
-                    PublicApi.v1.Mappers.WorkObjectMapper.MapFromInternal(e))
-                .ToList();        }
+                .Select(e => PublicApi.v1.Mappers.WorkObjectMapper.MapFromInternal(e))
+                .ToList();
+            
+        }
 
         /// <summary>
         /// Get single work object.

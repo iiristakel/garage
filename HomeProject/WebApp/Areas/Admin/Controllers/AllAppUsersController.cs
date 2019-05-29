@@ -25,6 +25,10 @@ namespace WebApp.Areas.Admin.Controllers
         {
             var appUsers = await _bll.AppUsers.AllAsync();
 
+            foreach (var appUser in appUsers)
+            {
+                appUser.AppUserInPositions = await _bll.AppUsersInPositions.AllForUserAsync(appUser.Id);
+            }
             return View(appUsers);
         }
 
@@ -42,6 +46,7 @@ namespace WebApp.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+            appUser.AppUserInPositions = await _bll.AppUsersInPositions.AllForUserAsync(appUser.Id);
 
             return View(appUser);
         }
@@ -95,10 +100,10 @@ namespace WebApp.Areas.Admin.Controllers
 
             vm.AppUser = appUser;
             
-            vm.AppUserPositionSelectList = new SelectList(
-                await _bll.AppUsersPositions.AllAsync(),
-                nameof(BLL.App.DTO.AppUserPosition.Id),
-                nameof(BLL.App.DTO.AppUserPosition.AppUserPositionValue));
+//            vm.AppUserPositionSelectList = new SelectList(
+//                await _bll.AppUsersPositions.AllAsync(),
+//                nameof(BLL.App.DTO.AppUserPosition.Id),
+//                nameof(BLL.App.DTO.AppUserPosition.AppUserPositionValue));
 
 
             return View(vm);
@@ -125,11 +130,11 @@ namespace WebApp.Areas.Admin.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            //TODO: not working
-            vm.AppUserPositionSelectList = new SelectList(
-                await _bll.AppUsersPositions.AllAsync(),
-                nameof(BLL.App.DTO.AppUserPosition.Id),
-                nameof(BLL.App.DTO.AppUserPosition.AppUserPositionValue));
+//            //TODO: not working
+//            vm.AppUserPositionSelectList = new SelectList(
+//                await _bll.AppUsersPositions.AllAsync(),
+//                nameof(BLL.App.DTO.AppUserPosition.Id),
+//                nameof(BLL.App.DTO.AppUserPosition.AppUserPositionValue));
 
 
             return View(vm);

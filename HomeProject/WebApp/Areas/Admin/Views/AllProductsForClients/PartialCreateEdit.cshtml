@@ -16,11 +16,11 @@
     <select asp-for="ProductForClient.ClientId" class="form-control" asp-items="Model.ClientSelectList"></select>
     <span asp-validation-for="ProductForClient.ClientId" class="text-danger"></span>
 </div>
-<div class="form-group">
-    <label asp-for="ProductForClient.Count" class="control-label"></label>
-    <input asp-for="ProductForClient.Count" class="form-control"/>
-    <span asp-validation-for="ProductForClient.Count" class="text-danger"></span>
-</div>
+@* <div class="form-group"> *@
+@*     <label asp-for="ProductForClient.Count" class="control-label"></label> *@
+@*     <input asp-for="ProductForClient.Count" class="form-control"/> *@
+@*     <span asp-validation-for="ProductForClient.Count" class="text-danger"></span> *@
+@* </div> *@
 <div class="form-group">
     <input type="submit" value="@Resources.Views.Common.Save" class="btn btn-primary"/>
 </div>

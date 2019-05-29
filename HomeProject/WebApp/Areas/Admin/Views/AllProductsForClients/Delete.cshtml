@@ -1,4 +1,4 @@
-@model BLL.App.DTO.ProductForClient
+@model WebApp.Areas.Admin.ViewModels.ProductsForClientsCreateEditViewModel
 
 @{
     ViewData["Title"] = "Delete";
@@ -12,7 +12,7 @@
 
     
     <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="ProductForClient.Id" />
         <input type="submit" value="@Resources.Views.Common.Delete" class="btn btn-danger" /> |
         <a asp-action="Index">@Resources.Views.Common.BackToList</a>
     </form>

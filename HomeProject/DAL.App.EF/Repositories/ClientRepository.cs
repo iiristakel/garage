@@ -33,6 +33,17 @@ namespace DAL.App.EF.Repositories
                 .Select(e => ClientMapper.MapFromDomain(e))
                 .ToListAsync();
         }
+        
+        public async Task<List<DAL.App.DTO.Client>> AllForClientGroupAsync(int? clientGroupId)
+        {
+            return await RepositoryDbSet
+                .Include(p => p.ClientGroup)
+                .Where(p => p.ClientGroupId == clientGroupId)
+                .Select(e => ClientMapper.MapFromDomain(e))
+                .ToListAsync();
+        }
+        
+        
 
         public override async Task<DAL.App.DTO.Client> FindAsync(params object[] id)
         {
@@ -67,7 +78,6 @@ namespace DAL.App.EF.Repositories
                 await RepositoryDbContext.Entry(client)
                     .Collection(c => c.ProductsForClient)
                     .LoadAsync();
-                // TODO: include products?
                 
                 await RepositoryDbContext.Entry(client)
                     .Collection(c => c.Bills)

@@ -23,25 +23,51 @@ namespace DAL.App.EF.Repositories
         {
             var culture = Thread.CurrentThread.CurrentUICulture.Name.Substring(0, 2).ToLower();
 
-            var res = await RepositoryDbSet
+            return await RepositoryDbSet
+                .Include(p => p.WorkObject)
+                .Include(p => p.ProductForClient)
                 .Include(t => t.Description)
                 .ThenInclude(t => t.Translations)
-                .Select(c => new
-                {
-                    Id = c.Id,
-                    Description = c.Description,
-                    Translations = c.Description.Translations
-                })
+                .Select(c => ProductServiceMapper.MapFromDomain(c))
                 .ToListAsync();
 
-            var resultList = res.Select(c => new ProductService()
-            {
-                Id = c.Id,
-                Description = c.Description.Translate()
-            }).ToList();
-
-            return resultList;
         }
+        
+        public async Task<List<ProductService>> AllForClientProductAsync(int? productForClientId)
+        {
+            var culture = Thread.CurrentThread.CurrentUICulture.Name.Substring(0, 2).ToLower();
+
+            var res = await RepositoryDbSet
+                .Include(p => p.ProductForClient)
+                .Include(p => p.WorkObject)
+                .Include(t => t.Description)
+                .ThenInclude(t => t.Translations)
+                .Where(p => p.ProductForClientId == productForClientId)
+                .Select(e => ProductServiceMapper.MapFromDomain(e))
+                .ToListAsync();
+
+            return res;
+        }
+
+        public async Task<List<ProductService>> AllForWorkObjectAsync(int workObjectId)
+        {
+
+            var culture = Thread.CurrentThread.CurrentUICulture.Name.Substring(0, 2).ToLower();
+
+            return await RepositoryDbSet
+                .Include(p => p.WorkObject)
+                .Include(p => p.ProductForClient)
+                .ThenInclude(p=> p.Product)
+                .ThenInclude(p=> p.ProductName)
+                .ThenInclude(p=> p.Translations)
+                .Include(t => t.Description)
+                .ThenInclude(t => t.Translations)
+                .Where(p=> p.WorkObjectId == workObjectId)
+                .Select(c => ProductServiceMapper.MapFromDomain(c))
+                .ToListAsync();
+            
+        }
+
 
         public override async Task<DAL.App.DTO.ProductService> FindAsync(params object[] id)
         {
@@ -51,6 +77,12 @@ namespace DAL.App.EF.Repositories
 
             if (productService != null)
             {
+                await RepositoryDbContext.Entry(productService)
+                    .Reference(c => c.ProductForClient)
+                    .LoadAsync();
+                await RepositoryDbContext.Entry(productService)
+                    .Reference(c => c.WorkObject)
+                    .LoadAsync();
                 await RepositoryDbContext.Entry(productService)
                     .Reference(c => c.Description)
                     .LoadAsync();
@@ -67,6 +99,8 @@ namespace DAL.App.EF.Repositories
         public override ProductService Update(ProductService entity)
         {
             var entityInDb = RepositoryDbSet
+                .Include(p => p.ProductForClient)
+                .Include(p => p.WorkObject)
                 .Include(m => m.Description)
                 .ThenInclude(t => t.Translations)
                 .FirstOrDefault(x => x.Id == entity.Id);

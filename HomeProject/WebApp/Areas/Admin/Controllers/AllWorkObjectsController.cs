@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BLL.App.DTO;
 using Contracts.BLL.App;
 using DAL.App.EF.Repositories;
 using DAL.Base.EF.Repositories;
@@ -31,6 +32,12 @@ namespace WebApp.Areas.Admin.Controllers
         {
             var workObjects = await _bll.WorkObjects.AllAsync();
 
+            foreach (var workObject in workObjects)
+            {
+                workObject.AppUsersOnObject = await _bll.AppUsersOnObjects.AllForWorkObjectAsync(workObject.Id);
+                workObject.ProductsServices = await _bll.ProductsServices.AllForWorkObjectAsync(workObject.Id);
+            }
+
             return View(workObjects);
         }
 
@@ -48,8 +55,13 @@ namespace WebApp.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+            var vm = new WebApp.Areas.Admin.ViewModels.WorkObjectCreateEditViewModel();
+            vm.WorkObject = workObject;
+            vm.AppUsersOnObject = await _bll.AppUsersOnObjects.AllForWorkObjectAsync(workObject.Id);
+            vm.ProductsServices = await _bll.ProductsServices.AllForWorkObjectAsync(workObject.Id);
+            vm.Bills = await _bll.Bills.AllForWorkObjectAsync(workObject.Id);
 
-            return View(workObject);
+            return View(vm);
         }
 
         // GET: WorkObjects/Create
@@ -163,8 +175,13 @@ namespace WebApp.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+            var vm = new WebApp.Areas.Admin.ViewModels.WorkObjectCreateEditViewModel();
+            vm.WorkObject = workObject;
+            vm.AppUsersOnObject = await _bll.AppUsersOnObjects.AllForWorkObjectAsync(workObject.Id);
+            vm.ProductsServices = await _bll.ProductsServices.AllForWorkObjectAsync(workObject.Id);
+            vm.Bills = await _bll.Bills.AllForWorkObjectAsync(workObject.Id);
 
-            return View(workObject);
+            return View(vm);
         }
 
         // POST: WorkObjects/Delete/5

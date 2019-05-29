@@ -36,5 +36,7 @@ namespace DAL.App.DTO
         
         [DataType(DataType.Date)]
         public DateTime? From { get; set; }
+
+        public string CompanyAndAddress { get; set; }
     }
 }

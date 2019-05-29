@@ -27,31 +27,30 @@ namespace DAL.App.EF.Repositories
             var res = await RepositoryDbSet
                 .Include(p => p.Product)
                 .ThenInclude(t => t.Translations)
-                .Select(c => new 
-                {
-                    Id = c.Id,
-                    Bill = BillMapper.MapFromDomain(c.Bill),
-                    BillId = c.BillId,
-                    Product = c.Product,
-                    Translations = c.Product.Translations,
-                    Sum = c.Sum,
-                    Amount = c.Amount,
-                    DiscountPercent = c.DiscountPercent
-                })
+                .Include(p => p.Bill)
+                .ThenInclude(p => p.Comment)
+                .ThenInclude(p => p.Translations)
+                .Select(e => BillLineMapper.MapFromDomain(e))
                 .ToListAsync();
 
-            var resultList = res.Select(c => new BillLine()
-            {
-                Id = c.Id,
-                Bill = c.Bill,
-                BillId = c.BillId,
-                Product = c.Product.Translate(),
-                Sum = c.Sum,
-                Amount = c.Amount,
-                DiscountPercent = c.DiscountPercent
-            }).ToList();
+            return res;
+        }
+        
+        public async Task<List<DAL.App.DTO.BillLine>> AllForBillAsync(int? billId)
+        {
+            var culture = Thread.CurrentThread.CurrentUICulture.Name.Substring(0, 2).ToLower();
+            
+            var res = await RepositoryDbSet
+                .Include(p => p.Product)
+                .ThenInclude(t => t.Translations)
+                .Include(p => p.Bill)
+                .ThenInclude(p => p.Comment)
+                .ThenInclude(p => p.Translations)
+                .Where(p => p.BillId == billId)
+                .Select(e => BillLineMapper.MapFromDomain(e))
+                .ToListAsync();
 
-            return resultList;
+            return res;
         }
 
         public override async Task<DAL.App.DTO.BillLine> FindAsync(params object[] id)
@@ -64,6 +63,14 @@ namespace DAL.App.EF.Repositories
             {
                 await RepositoryDbContext.Entry(billLine)
                     .Reference(c => c.Bill)
+                    .LoadAsync();
+                await RepositoryDbContext.Entry(billLine.Bill)
+                    .Reference(c => c.Comment)
+                    .LoadAsync();
+                await RepositoryDbContext.Entry(billLine.Bill.Comment)
+                    .Collection(b => b.Translations)
+                    .Query()
+                    .Where(t => t.Culture == culture)
                     .LoadAsync();
                 await RepositoryDbContext.Entry(billLine)
                     .Reference(c => c.Product)

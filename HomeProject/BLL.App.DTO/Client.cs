@@ -41,5 +41,8 @@ namespace BLL.App.DTO
         //TODO: [Display(Name = nameof(From), ResourceType = typeof(Resources.Domain.Client))]
         [DataType(DataType.Date)]
         public DateTime? From { get; set; }
+        
+        public string CompanyAndAddress { get; set; }
+
     }
 }

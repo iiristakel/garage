@@ -55,7 +55,7 @@ namespace DAL.App.EF.Repositories
                     .LoadAsync();
 
                 await RepositoryDbContext.Entry(workObject)
-                    .Reference(c => c.ProductsServices)
+                    .Collection(c => c.ProductsServices)
                     .LoadAsync();
 
 

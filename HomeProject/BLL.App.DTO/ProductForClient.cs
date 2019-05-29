@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -19,5 +20,7 @@ namespace BLL.App.DTO
 
         [Display(Name = nameof(Count), ResourceType = typeof(Resources.Domain.ProductForClient))]
         public decimal Count { get; set; }
+
+//        public ProductService LastService { get; set; }
     }
 }

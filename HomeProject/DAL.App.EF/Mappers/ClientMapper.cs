@@ -37,6 +37,7 @@ namespace DAL.App.EF.Mappers
                 ContactPerson = client.ContactPerson,
                 Phone = client.Phone,
                 From = client.From,
+                CompanyAndAddress = client.CompanyAndAddress,
 //                Bills = client.Bills.Select(e => BillMapper.MapFromDomain(e)).ToList(),
 //                ProductsForClient = client.ProductsForClient.Select(e => ProductForClientMapper.MapFromDomain(e)).ToList()
 

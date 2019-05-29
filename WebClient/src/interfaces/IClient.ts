@@ -6,11 +6,11 @@ export interface IClient extends IBaseEntity{
   "bills": [],
   "workObjects": [],
   "productsForClient": [],
-  "payments": [],
   "companyName": string,
   "address": string,
   "phone": string,
   "contactPerson": string,
-  "productsCount": number
+  "from": Date,
+  "companyAndAddress": string
 
 }

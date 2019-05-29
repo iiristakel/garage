@@ -53,6 +53,8 @@ namespace DAL.App.EF.Mappers
                 Id = bill.Id,
                 ClientId = bill.ClientId,
                 Client = ClientMapper.MapFromDAL(bill.Client),
+                WorkObjectId = bill.WorkObjectId,
+                WorkObject = WorkObjectMapper.MapFromDAL(bill.WorkObject),
                 ArrivalFee = bill.ArrivalFee,
                 SumWithOutTaxes = bill.SumWithoutTaxes,
                 TaxPercent = bill.TaxPercent,

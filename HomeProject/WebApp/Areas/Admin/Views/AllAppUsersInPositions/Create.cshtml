@@ -1,0 +1,28 @@
+@model WebApp.Areas.Admin.ViewModels.AppUserInPositionCreateEditViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>@Resources.Views.Common.CreateNew</h1>
+
+<h4>@Resources.Domain.AppUserInPosition.AppUserInPositionString</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            
+            <partial name="PartialCreateEdit" model="Model"/>
+
+            
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">@Resources.Views.Common.BackToList</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

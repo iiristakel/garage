@@ -15,6 +15,7 @@ namespace Domain
 
         public ICollection<ProductForClient> ProductsForClient { get; set; }
 
+        public string CompanyAndAddress => CompanyName + "(" + Address + ")";
         
         [MaxLength(128)]
         [MinLength(1)]

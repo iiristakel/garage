@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Contracts.BLL.Base.Mappers;
 
 namespace BLL.App.Mappers
@@ -31,8 +32,9 @@ namespace BLL.App.Mappers
                     ClientId = productForClient.ClientId,
                     Product = ProductMapper.MapFromDAL(productForClient.Product),
                     ProductId = productForClient.ProductId,
-                    Count = productForClient.Count
-                    
+                    Count = productForClient.Count,
+//                    LastService = ProductServiceMapper.MapFromDAL(productForClient.ProductServices.OrderBy(e => e.WorkObject.From).FirstOrDefault())
+                        
                 };
 
             return res;
@@ -47,7 +49,7 @@ namespace BLL.App.Mappers
                     ClientId = productForClient.ClientId,
                     Product = ProductMapper.MapFromBLL(productForClient.Product),
                     ProductId = productForClient.ProductId,
-                    Count = productForClient.Count
+                    Count = 1
                 };
             return res;
         }

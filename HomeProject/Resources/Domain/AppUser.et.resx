@@ -129,6 +129,9 @@
   <data name="FirstName" xml:space="preserve">
     <value>Eesnimi</value>
   </data>
+  <data name="FirstLastName" xml:space="preserve">
+    <value>Nimi</value>
+  </data>
   <data name="HiringDate" xml:space="preserve">
     <value>Töölepingu alguskuupäev</value>
   </data>
@@ -142,6 +145,6 @@
     <value>Telefoninumber</value>
   </data>
   <data name="AppUserInPositions" xml:space="preserve">
-    <value>Töötaja positsioonid</value>
+    <value>Ametikohad</value>
   </data>
 </root>

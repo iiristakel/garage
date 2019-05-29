@@ -11,7 +11,8 @@ export class Index {
   
   private clients: IClient[] = [];
 
-  constructor(private clientService: ClientService) {
+  constructor(
+    private clientService: ClientService) {
     log.debug('constructor');
   }
   
@@ -26,11 +27,11 @@ export class Index {
   attached(){
     log.debug('attached');
     
-    // this.clientService.fetchAll().then(
-    //   jsonData => {
-    //     this.clients = jsonData;
-    //   }
-    // );
+     this.clientService.fetchAll(" ").then(
+      jsonData => {
+        this.clients = jsonData;
+      }
+    );
   }
   
   detached(){

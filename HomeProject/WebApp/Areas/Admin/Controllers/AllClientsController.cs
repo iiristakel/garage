@@ -30,6 +30,7 @@ namespace WebApp.Areas.Admin.Controllers
         // GET: Clients/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            var vm = new Areas.Admin.ViewModels.ClientCreateEditViewModel();
             if (id == null)
             {
                 return NotFound();
@@ -42,19 +43,22 @@ namespace WebApp.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            return View(client);
+            vm.Client = client;
+            vm.Bills = await _bll.Bills.AllForClientAsync(id);
+            vm.ProductsForClient = await _bll.ProductsForClients.AllForClientAsync(id);
+            
+            return View(vm);
         }
 
         // GET: Clients/Create
         public async Task<IActionResult> Create()
         {
-            var vm = new Areas.Admin.ViewModels.ClientCreateEditViewModel
-            {
-                ClientGroupSelectList = new SelectList(
-                    await _bll.ClientGroups.AllAsync(),
-                    nameof(BLL.App.DTO.ClientGroup.Id),
-                    nameof(BLL.App.DTO.ClientGroup.Name))
-            };
+            var vm = new Areas.Admin.ViewModels.ClientCreateEditViewModel();
+
+            vm.ClientGroupSelectList = new SelectList(
+                await _bll.ClientGroups.AllAsync(),
+                nameof(BLL.App.DTO.ClientGroup.Id),
+                nameof(BLL.App.DTO.ClientGroup.Name));
 
 
             return View(vm);
@@ -150,8 +154,13 @@ namespace WebApp.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+            
+            var vm = new Areas.Admin.ViewModels.ClientCreateEditViewModel();
 
-            return View(client);
+            vm.Client = client;
+
+
+            return View(vm);
         }
 
         // POST: Clients/Delete/5

@@ -1,4 +1,4 @@
-@model BLL.App.DTO.ProductService
+@model WebApp.ViewModels.ProductServiceCreateEditViewModel
 
 @{
     ViewData["Title"] = "Create";
@@ -13,12 +13,12 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="ProductForClientId" class="control-label"></label>
-                <select asp-for="ProductForClientId" class ="form-control" asp-items="ViewBag.ProductForClientId"></select>
+                <label asp-for="ProductService.ProductForClientId" class="control-label"></label>
+                <select asp-for="ProductService.ProductForClientId" class ="form-control" asp-items="Model.ProductForClientSelectList"></select>
             </div>
             <div class="form-group">
-                <label asp-for="WorkObjectId" class="control-label"></label>
-                <select asp-for="WorkObjectId" class ="form-control" asp-items="ViewBag.WorkObjectId"></select>
+                <label asp-for="ProductService.WorkObjectId" class="control-label"></label>
+                <select asp-for="ProductService.WorkObjectId" class ="form-control" asp-items="Model.WorkObjectSelectList"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

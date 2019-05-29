@@ -117,8 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AppUser" xml:space="preserve">
-    <value>Worker</value>
+  <data name="WorkObject" xml:space="preserve">
+    <value>Work object</value>
   </data>
   <data name="ArrivalFee" xml:space="preserve">
     <value>Arrival fee</value>
@@ -131,9 +131,6 @@
   </data>
   <data name="Client" xml:space="preserve">
     <value>Client</value>
-  </data>
-  <data name="WorkObject" xml:space="preserve">
-    <value>Wor object</value>
   </data>
   <data name="Comment" xml:space="preserve">
     <value>Comment</value>

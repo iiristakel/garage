@@ -22,36 +22,36 @@ namespace DAL.App.EF.Repositories
         {
         }
         
-//        public override async Task<List<DAL.App.DTO.ClientGroup>> AllAsync()
-//        {
-//            var culture = Thread.CurrentThread.CurrentUICulture.Name.Substring(0, 2).ToLower();
-//
-//            var res = await RepositoryDbSet
-//                .Include(c => c.Name)
-//                .ThenInclude(t => t.Translations)
-//                .Include(c => c.Description)
-//                .ThenInclude(t => t.Translations)
-//                .Select(c => new 
-//                {
-//                    Id = c.Id,
-//                    Name = c.Name,
-//                    Translations = c.Name.Translations,
-//                    Description = c.Description,
-////                    Translations = c.Description.Translations,
-//                    DiscountPercent = c.DiscountPercent
-//                })
-//                .ToListAsync();
-//            
-//            var resultList = res.Select(c => new ClientGroup()
-//            {
-//                Id = c.Id,
-//                Name = c.Name.Translate(),
-//                Description = c.Description.Translate(),
-//                DiscountPercent = c.DiscountPercent
-//                     
-//            }).ToList();
-//            return resultList;
-//        }
+        public override async Task<List<DAL.App.DTO.ClientGroup>> AllAsync()
+        {
+            var culture = Thread.CurrentThread.CurrentUICulture.Name.Substring(0, 2).ToLower();
+
+            var res = await RepositoryDbSet
+                .Include(c => c.Name)
+                .ThenInclude(t => t.Translations)
+                .Include(c => c.Description)
+                .ThenInclude(t => t.Translations)
+                .Select(c => new 
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                    Translations = c.Name.Translations,
+                    Description = c.Description,
+                    DescriptionTranslations = c.Description.Translations,
+                    DiscountPercent = c.DiscountPercent
+                })
+                .ToListAsync();
+            
+            var resultList = res.Select(c => new ClientGroup()
+            {
+                Id = c.Id,
+                Name = c.Name.Translate(),
+                Description = c.Description.Translate(),
+                DiscountPercent = c.DiscountPercent
+                     
+            }).ToList();
+            return resultList;
+        }
 
         public override async Task<DAL.App.DTO.ClientGroup> FindAsync(params object[] id)
         {

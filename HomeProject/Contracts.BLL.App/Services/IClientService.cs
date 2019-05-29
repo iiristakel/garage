@@ -11,6 +11,7 @@ namespace Contracts.BLL.App.Services
             IClientRepository<BLLAppDTO.Client>
     {
         Task<List<BLLAppDTO.ClientWithProductsCount>> GetAllWithProductsCountAsync();
+        Task<List<BLLAppDTO.Client>> AllForClientGroupAsync(int? clientGroupId);
 
     }
 }

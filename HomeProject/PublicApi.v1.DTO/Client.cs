@@ -34,5 +34,8 @@ namespace PublicApi.v1.DTO
         
         [DataType(DataType.Date)]
         public DateTime? From { get; set; }
+        
+        public string CompanyAndAddress { get; set; }
+
     }
 }

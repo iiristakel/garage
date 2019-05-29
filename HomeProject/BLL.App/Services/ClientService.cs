@@ -25,5 +25,12 @@ namespace BLL.App.Services
                 .ToList();
 
         }
+        
+        public async Task<List<Client>> AllForClientGroupAsync(int? clientGroupId)
+        {
+            return (await Uow.Clients.AllForClientGroupAsync(clientGroupId))
+                .Select(e => ClientMapper.MapFromDAL(e))
+                .ToList();        
+        }
     }
 }

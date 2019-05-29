@@ -19,7 +19,7 @@ namespace Resources.Domain {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Bill {
@@ -61,15 +61,6 @@ namespace Resources.Domain {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Worker.
-        /// </summary>
-        public static string AppUser {
-            get {
-                return ResourceManager.GetString("AppUser", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Arrival fee.
         /// </summary>
         public static string ArrivalFee {
@@ -102,15 +93,6 @@ namespace Resources.Domain {
         public static string Client {
             get {
                 return ResourceManager.GetString("Client", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to WorkObject.
-        /// </summary>
-        public static string WorkObject {
-            get {
-                return ResourceManager.GetString("WorkObject", resourceCulture);
             }
         }
         
@@ -174,6 +156,15 @@ namespace Resources.Domain {
         public static string TaxPercent {
             get {
                 return ResourceManager.GetString("TaxPercent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Work object.
+        /// </summary>
+        public static string WorkObject {
+            get {
+                return ResourceManager.GetString("WorkObject", resourceCulture);
             }
         }
     }

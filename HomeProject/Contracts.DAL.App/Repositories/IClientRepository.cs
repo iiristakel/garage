@@ -8,6 +8,8 @@ namespace Contracts.DAL.App.Repositories
     public interface IClientRepository : IClientRepository<DALAppDTO.Client>
     {
         Task<List<DALAppDTO.ClientWithProductsCount>> GetAllWithProductsCountAsync();
+        Task<List<DALAppDTO.Client>> AllForClientGroupAsync(int? clientGroupId);
+
     }
 
     public interface IClientRepository<TDALEntity> : IBaseRepository<TDALEntity>

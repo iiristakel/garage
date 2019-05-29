@@ -38,5 +38,13 @@ namespace BLL.App.Services
 //        {
 //            return await Uow.AppUsersOnObjects.BelongsToUserAsync(id, userId);
 //        }
+        public async Task<List<AppUserOnObject>> AllForWorkObjectAsync(int workObjectId)
+        {
+            return (await Uow.AppUsersOnObjects
+                    .AllForWorkObjectAsync(workObjectId))
+                .Select(e => AppUserOnObjectMapper
+                    .MapFromDAL(e)).ToList();
+            
+        }
     }
 }

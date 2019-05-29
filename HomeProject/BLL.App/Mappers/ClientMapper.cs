@@ -38,6 +38,7 @@ namespace BLL.App.Mappers
                     ContactPerson = client.ContactPerson,
                     Phone = client.Phone,
                     From = client.From,
+                    CompanyAndAddress = client.CompanyAndAddress,
 //                Bills = client.Bills.Select(e => BillMapper.MapFromDAL(e)).ToList(),
 //                ProductsForClient = client.ProductsForClient.Select(e => ProductForClientMapper.MapFromDAL(e)).ToList()
                 };

@@ -22,17 +22,40 @@ namespace DAL.App.EF.Repositories
         {
         }
 
+        public override async Task<List<DAL.App.DTO.Bill>> AllAsync()
+        {
+            return await RepositoryDbSet
+                .Include(p => p.Client)
+                .Include(p => p.WorkObject)
+                .Include(p => p.Comment)
+                .ThenInclude(p => p.Translations)
+                .Select(e => BillMapper.MapFromDomain(e))
+                .ToListAsync();
+        }
 
-//        public override async Task<List<DAL.App.DTO.Bill>> AllAsync()
-//        {
-//            return await RepositoryDbSet
-//                .Include(p => p.Client)
-//                .Include(p => p.AppUser)
-//                .Include(p => p.Payments)
-//                .Select(e => BillMapper.MapFromDomain(e))
-//                .ToListAsync();
-//        }
-        
+        public virtual async Task<List<DAL.App.DTO.Bill>> AllForClientAsync(int? clientId)
+        {
+            return await RepositoryDbSet
+                .Include(p => p.Client)
+                .Include(p => p.WorkObject)
+                .Include(p => p.Comment)
+                .ThenInclude(p => p.Translations)
+                .Where(p => p.ClientId == clientId)
+                .Select(e => BillMapper.MapFromDomain(e))
+                .ToListAsync();
+        }
+
+        public async Task<List<Bill>> AllForWorkObjectAsync(int workObjectId)
+        {
+            return await RepositoryDbSet
+                .Include(p => p.Client)
+                .Include(p => p.WorkObject)
+                .Include(p => p.Comment)
+                .ThenInclude(p => p.Translations)
+                .Where(p => p.WorkObjectId == workObjectId)
+                .Select(e => BillMapper.MapFromDomain(e))
+                .ToListAsync();        }
+
         public override async Task<DAL.App.DTO.Bill> FindAsync(params object[] id)
         {
             var culture = Thread.CurrentThread.CurrentUICulture.Name.Substring(0, 2).ToLower();
@@ -42,14 +65,17 @@ namespace DAL.App.EF.Repositories
             if (bill != null)
             {
                 await RepositoryDbContext.Entry(bill)
+                    .Reference(c => c.Client)
+                    .LoadAsync();
+                await RepositoryDbContext.Entry(bill)
                     .Reference(c => c.WorkObject)
                     .LoadAsync();
-                await RepositoryDbContext.Entry(bill)
-                    .Collection(c => c.Payments)  // include paymentmethod?
-                    .LoadAsync();
-                await RepositoryDbContext.Entry(bill)
-                    .Collection(c => c.BillLines)
-                    .LoadAsync();
+//                await RepositoryDbContext.Entry(bill)
+//                    .Collection(c => c.Payments)  // include paymentmethod?
+//                    .LoadAsync();
+//                await RepositoryDbContext.Entry(bill)
+//                    .Collection(c => c.BillLines)
+//                    .LoadAsync();
                 await RepositoryDbContext.Entry(bill)
                     .Reference(c => c.Comment)
                     .LoadAsync();
@@ -69,9 +95,9 @@ namespace DAL.App.EF.Repositories
             var culture = Thread.CurrentThread.CurrentUICulture.Name.Substring(0, 2).ToLower();
             
             var res = await RepositoryDbSet
+                .Include(c => c.Client)                    
                 .Include(c => c.WorkObject)
-                .Include(c => c.Payments)
-                .Include(c => c.BillLines)
+//                .Include(c => c.BillLines)
                 .Include(c => c.Comment)
                 .ThenInclude(t => t.Translations)
                 .Where(p => p.WorkObject.AppUsersOnObject.Any(q => q.AppUserId == userId))
@@ -113,6 +139,7 @@ namespace DAL.App.EF.Repositories
             var culture = Thread.CurrentThread.CurrentUICulture.Name.Substring(0, 2).ToLower();
             return BillMapper.MapFromDomain(
                 await RepositoryDbSet
+                    .Include(p => p.Client)
                     .Include(p=> p.WorkObject) //need to include more?
                     .Include(p => p.BillLines)
                     .Include(c => c.Payments)

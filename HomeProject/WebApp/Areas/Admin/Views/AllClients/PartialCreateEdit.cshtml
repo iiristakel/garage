@@ -27,5 +27,10 @@
     <span asp-validation-for="Client.ContactPerson" class="text-danger"></span>
 </div>
 <div class="form-group">
+    <label asp-for="Client.From" class="control-label"></label>
+    <input asp-for="Client.From" class="form-control" />
+    <span asp-validation-for="Client.From" class="text-danger"></span>
+</div>
+<div class="form-group">
     <input type="submit" value="@Resources.Views.Common.Save" class="btn btn-primary"/>
 </div>

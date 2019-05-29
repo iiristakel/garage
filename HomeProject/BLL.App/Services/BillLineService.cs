@@ -18,11 +18,24 @@ namespace BLL.App.Services
             ServiceRepository = Uow.BillLines;
         }
 
-        public async Task<List<DTO.BillLine>> GetAllAsync()
+
+        public async Task<List<BillLine>> AllForBillAsync(int? billId)
         {
-            return (await Uow.BillLines.AllAsync())
-                .Select(e => BillLineMapper.MapFromDAL(e))
-                .ToList();
+            return (await Uow.BillLines
+                    .AllForBillAsync(billId))
+                .Select(c => new BillLine()
+                {
+                    Id = c.Id,
+                    BillId = c.BillId,
+                    Bill = BillMapper.MapFromDAL(c.Bill),
+                    Product = c.Product,
+                    Amount = c.Amount,
+                    Sum = c.Sum,
+                    DiscountPercent = c.DiscountPercent,
+                    SumWithDiscount = c.Sum * c.Amount * (1 - c.DiscountPercent / 100)
+                    
+                })
+                .ToList();       
         }
 
         public async Task<List<BillLine>> AllForUserAsync(int userId)

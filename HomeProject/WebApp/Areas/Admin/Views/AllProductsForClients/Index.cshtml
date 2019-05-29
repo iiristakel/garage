@@ -21,9 +21,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Client)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Count)
-            </th>
+            @* <th> *@
+            @*     @Html.DisplayNameFor(model => model.Count) *@
+            @* </th> *@
             <th></th>
         </tr>
     </thead>
@@ -39,9 +39,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Client.CompanyName)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Count)
-            </td>
+            @* <td> *@
+            @*     @Html.DisplayFor(modelItem => item.Count) *@
+            @* </td> *@
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">@Resources.Views.Common.Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">@Resources.Views.Common.Details</a> |

@@ -9,7 +9,9 @@ namespace WebApp.Areas.Admin.ViewModels
     {
         
             public BLL.App.DTO.Identity.AppUser AppUser { get; set; }
-            public SelectList AppUserPositionSelectList { get; set; }
+//            public SelectList AppUserPositionSelectList { get; set; }
+            
+
           
     }
 }

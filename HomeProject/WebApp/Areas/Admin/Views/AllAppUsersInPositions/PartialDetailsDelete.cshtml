@@ -1,0 +1,30 @@
+@model BLL.App.DTO.AppUserInPosition
+
+<h4>@Resources.Domain.AppUserInPosition.AppUserInPositionString</h4>
+<hr />
+<dl class="row">
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.AppUser)
+    </dt>
+    <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.AppUser.FirstLastName)
+    </dd >
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.AppUserPosition)
+    </dt>
+    <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.AppUserPosition.AppUserPositionValue)
+    </dd >
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.From)
+    </dt>
+    <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.From)
+    </dd>
+    <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.Until)
+    </dt>
+    <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.Until)
+    </dd>
+</dl>

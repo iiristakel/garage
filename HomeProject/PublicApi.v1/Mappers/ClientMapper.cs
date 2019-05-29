@@ -33,7 +33,8 @@ namespace PublicApi.v1.Mappers
                 Address = client.Address,
                 ContactPerson = client.ContactPerson,
                 Phone = client.Phone,
-                From = client.From
+                From = client.From,
+                CompanyAndAddress = client.CompanyAndAddress
 
             };
 

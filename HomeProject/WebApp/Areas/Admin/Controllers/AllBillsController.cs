@@ -44,8 +44,20 @@ namespace WebApp.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+            
+            var vm = new WebApp.Areas.Admin.ViewModels.BillCreateEditViewModel();
+            vm.Bill = bill;
+            vm.BillLines = await _bll.BillLines.AllForBillAsync(id);
+//            vm.Bill.SumWithoutTaxes = 0;
+//            foreach (var billLine in vm.BillLines)
+//            {
+//                vm.Bill.SumWithoutTaxes += billLine.SumWithDiscount;
+//            }
+//
+//            vm.Bill.SumWithoutTaxes += vm.Bill.ArrivalFee;
+//            vm.Bill.FinalSum = vm.Bill.SumWithoutTaxes * 100 / (100 - vm.Bill.TaxPercent);
 
-            return View(bill);
+            return View(vm);
         }
 
         // GET: Bills/Create
@@ -58,10 +70,10 @@ namespace WebApp.Areas.Admin.Controllers
                 nameof(BLL.App.DTO.Client.Id), 
                 nameof(BLL.App.DTO.Client.CompanyName));
 
-            vm.AppUserSelectList = new SelectList(
-                await _bll.AppUsers.AllAsync(), 
-                nameof(BLL.App.DTO.Identity.AppUser.Id), 
-                nameof(BLL.App.DTO.Identity.AppUser.FirstLastName));
+            vm.WorkObjectSelectList = new SelectList(
+                await _bll.WorkObjects.AllAsync(), 
+                nameof(BLL.App.DTO.WorkObject.Id), 
+                nameof(BLL.App.DTO.WorkObject.Id));
             return View(vm);
         }
 
@@ -74,7 +86,7 @@ namespace WebApp.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                _bll.Bills.Add(vm.Bill);
+                await _bll.Bills.AddAsync(vm.Bill);
                 await _bll.SaveChangesAsync();
                 
                 return RedirectToAction(nameof(Index));
@@ -85,10 +97,10 @@ namespace WebApp.Areas.Admin.Controllers
                 nameof(BLL.App.DTO.Client.Id), 
                 nameof(BLL.App.DTO.Client.CompanyName));
             
-            vm.AppUserSelectList = new SelectList(
-                await _bll.AppUsers.AllAsync(), 
-                nameof(BLL.App.DTO.Identity.AppUser.Id), 
-                nameof(BLL.App.DTO.Identity.AppUser.FirstLastName));
+            vm.WorkObjectSelectList = new SelectList(
+                await _bll.WorkObjects.AllAsync(), 
+                nameof(BLL.App.DTO.WorkObject.Id), 
+                nameof(BLL.App.DTO.WorkObject.Id));
 
             return View(vm);
         }
@@ -103,10 +115,10 @@ namespace WebApp.Areas.Admin.Controllers
 //                nameof(BLL.App.DTO.Client.Id), 
 //                nameof(BLL.App.DTO.Client.CompanyName));
 
-            vm.AppUserSelectList = new SelectList(
-                await _bll.AppUsers.AllAsync(), 
-                nameof(BLL.App.DTO.Identity.AppUser.Id), 
-                nameof(BLL.App.DTO.Identity.AppUser.FirstLastName));
+//            vm.AppUserSelectList = new SelectList(
+//                await _bll.AppUsers.AllAsync(), 
+//                nameof(BLL.App.DTO.Identity.AppUser.Id), 
+//                nameof(BLL.App.DTO.Identity.AppUser.FirstLastName));
             
             return View(vm);
             
@@ -134,10 +146,10 @@ namespace WebApp.Areas.Admin.Controllers
                 nameof(BLL.App.DTO.Client.Id), 
                 nameof(BLL.App.DTO.Client.CompanyName));
             
-            vm.AppUserSelectList = new SelectList(
-                await _bll.AppUsers.AllAsync(), 
-                nameof(BLL.App.DTO.Identity.AppUser.Id), 
-                nameof(BLL.App.DTO.Identity.AppUser.FirstLastName));
+            vm.WorkObjectSelectList = new SelectList(
+                await _bll.WorkObjects.AllAsync(), 
+                nameof(BLL.App.DTO.WorkObject.Id), 
+                nameof(BLL.App.DTO.WorkObject.Id));
             return View(vm);
         }
 
@@ -166,10 +178,10 @@ namespace WebApp.Areas.Admin.Controllers
                 nameof(BLL.App.DTO.Client.Id), 
                 nameof(BLL.App.DTO.Client.CompanyName));
             
-            vm.AppUserSelectList = new SelectList(
-                await _bll.AppUsers.AllAsync(), 
-                nameof(BLL.App.DTO.Identity.AppUser.Id), 
-                nameof(BLL.App.DTO.Identity.AppUser.FirstLastName));
+            vm.WorkObjectSelectList = new SelectList(
+                await _bll.WorkObjects.AllAsync(), 
+                nameof(BLL.App.DTO.WorkObject.Id), 
+                nameof(BLL.App.DTO.WorkObject.Id));
             
             return View(vm);
         }
@@ -188,8 +200,11 @@ namespace WebApp.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+            var vm = new WebApp.Areas.Admin.ViewModels.BillCreateEditViewModel();
+            vm.Bill = bill;
+            vm.BillLines = await _bll.BillLines.AllForBillAsync(id);
 
-            return View(bill);
+            return View(vm);
         }
 
         // POST: Bills/Delete/5

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,7 +19,146 @@ namespace BLL.App.Services
             ServiceRepository = Uow.Bills;
         }
 
-       
+        public override async Task<Bill> FindAsync(params object[] id)
+        {
+            var bill = await Uow.Bills.FindAsync(id);
+
+            if (bill != null)
+            {
+                var billLines = await Uow.BillLines.AllForBillAsync(bill.Id);
+
+                bill.SumWithoutTaxes = bill.ArrivalFee;
+
+                foreach (var billLine in billLines)
+                {
+                    bill.SumWithoutTaxes += billLine.SumWithDiscount;
+                }
+
+                bill.FinalSum = bill.SumWithoutTaxes * 100 / (100 - bill.TaxPercent);
+
+                
+            }
+            return BillMapper.MapFromDAL(bill);
+
+        }
+        
+        public override async Task<List<Bill>> AllAsync()
+        {
+            var res = (await Uow.Bills.AllAsync())
+                .Select(c => new Bill()
+                {
+                    Id = c.Id,
+                    ClientId = c.ClientId,
+                    Client = ClientMapper.MapFromDAL(c.Client),
+                    ArrivalFee = c.ArrivalFee,
+                    SumWithoutTaxes = c.SumWithoutTaxes,
+                    TaxPercent = c.TaxPercent,
+                    FinalSum = c.FinalSum,
+                    DateTime = c.DateTime,
+                    InvoiceNr = c.InvoiceNr,
+                    Comment = c.Comment,
+                    WorkObjectId = c.WorkObjectId,
+                    WorkObject = WorkObjectMapper.MapFromDAL(c.WorkObject)
+                    
+                }).ToList();
+            
+            foreach (var bill in res)
+            {
+                var billLines = await Uow.BillLines.AllForBillAsync(bill.Id);
+                
+                bill.SumWithoutTaxes = bill.ArrivalFee;
+                
+                foreach (var billLine in billLines)
+                {
+                    bill.SumWithoutTaxes += billLine.SumWithDiscount;
+                }
+
+                bill.FinalSum = bill.SumWithoutTaxes * 100 / (100 - bill.TaxPercent);
+            }
+
+            return res;
+        }
+
+        public async Task<List<Bill>> AllForClientAsync(int? clientId)
+        {
+
+            var res = (await Uow.Bills
+                    .AllForClientAsync(clientId))
+                .Select(c => new Bill()
+                {
+                    Id = c.Id,
+                    ClientId = c.ClientId,
+                    Client = ClientMapper.MapFromDAL(c.Client),
+                    ArrivalFee = c.ArrivalFee,
+                    SumWithoutTaxes = c.SumWithoutTaxes,
+                    TaxPercent = c.TaxPercent,
+                    FinalSum = c.FinalSum,
+                    DateTime = c.DateTime,
+                    InvoiceNr = c.InvoiceNr,
+                    Comment = c.Comment,
+                    WorkObjectId = c.WorkObjectId,
+                    WorkObject = WorkObjectMapper.MapFromDAL(c.WorkObject)
+                    
+                }).ToList();
+            
+            foreach (var bill in res)
+            {
+                var billLines = await Uow.BillLines.AllForBillAsync(bill.Id);
+                
+                bill.SumWithoutTaxes = bill.ArrivalFee;
+                
+                foreach (var billLine in billLines)
+                {
+                    bill.SumWithoutTaxes += billLine.SumWithDiscount;
+                }
+
+                bill.FinalSum = bill.SumWithoutTaxes * 100 / (100 - bill.TaxPercent);
+
+            }
+
+            return res;
+        }
+        
+        public async Task<List<Bill>> AllForWorkObjectAsync(int workObjectId)
+        {
+
+            var res = (await Uow.Bills
+                    .AllForWorkObjectAsync(workObjectId))
+                .Select(c => new Bill()
+                {
+                    Id = c.Id,
+                    ClientId = c.ClientId,
+                    Client = ClientMapper.MapFromDAL(c.Client),
+                    ArrivalFee = c.ArrivalFee,
+                    SumWithoutTaxes = c.SumWithoutTaxes,
+                    TaxPercent = c.TaxPercent,
+                    FinalSum = c.FinalSum,
+                    DateTime = c.DateTime,
+                    InvoiceNr = c.InvoiceNr,
+                    Comment = c.Comment,
+                    WorkObjectId = c.WorkObjectId,
+                    WorkObject = WorkObjectMapper.MapFromDAL(c.WorkObject)
+                    
+                }).ToList();
+            
+            foreach (var bill in res)
+            {
+                var billLines = await Uow.BillLines.AllForBillAsync(bill.Id);
+                
+                bill.SumWithoutTaxes = bill.ArrivalFee;
+                
+                foreach (var billLine in billLines)
+                {
+                    bill.SumWithoutTaxes += billLine.SumWithDiscount;
+                }
+
+                bill.FinalSum = bill.SumWithoutTaxes * 100 / (100 - bill.TaxPercent);
+
+            }
+
+            return res;
+        }
+
 
         public async Task<List<Bill>> AllForUserAsync(int userId)
         {

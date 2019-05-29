@@ -1,4 +1,4 @@
-@model BLL.App.DTO.Bill
+@model WebApp.Areas.Admin.ViewModels.BillCreateEditViewModel
 
 @{
     ViewData["Title"] = "Delete";
@@ -12,7 +12,7 @@
     <partial name="PartialDetailsDelete" model="Model"/>
     
     <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="Bill.Id" />
         <input type="submit" value="@Resources.Views.Common.Delete" class="btn btn-danger" /> |
         <a asp-action="Index">@Resources.Views.Common.BackToList</a>
     </form>

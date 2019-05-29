@@ -22,9 +22,22 @@ namespace DAL.App.EF.Repositories
         {
             return await RepositoryDbSet
                 .Include(c => c.AppUser)
+                .Include(c => c.WorkObject)
                 .Select(e => AppUserOnObjectMapper.MapFromDomain(e))
                 .ToListAsync();
         }
+        
+        public async Task<List<DAL.App.DTO.AppUserOnObject>> AllForWorkObjectAsync(int workObjectId)
+        {
+            return await RepositoryDbSet
+                .Include(c => c.AppUser)
+                .Include(c => c.WorkObject)
+                .Where(c => c.WorkObjectId == workObjectId)
+                .Select(e => AppUserOnObjectMapper.MapFromDomain(e))
+                .ToListAsync();
+        }
+        
+        
         
         public override async Task<DAL.App.DTO.AppUserOnObject> FindAsync(params object[] id)
         {
