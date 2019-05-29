@@ -57,13 +57,14 @@ export class MainRouter {
         { route: 'appUsersOnObjects/create',             name: 'appUsersOnObjects' + 'Create', moduleId: PLATFORM.moduleName('appUsersOnObjects/create'), nav: false, title: 'appUsersOnObjects - Create' },
         { route: 'appUsersOnObjects/edit/:id',               name: 'appUsersOnObjects' + 'Edit',   moduleId: PLATFORM.moduleName('appUsersOnObjects/edit'), nav: false, title: 'appUsersOnObjects - Edit' },
         { route: 'appUsersOnObjects/delete/:id',             name: 'appUsersOnObjects' + 'Delete', moduleId: PLATFORM.moduleName('appUsersOnObjects/delete'), nav: false, title: 'appUsersOnObjects - Delete' },
-        { route: 'appUsersOnObjects/details/:id',             name: 'appUsersOnObjects' + 'Details', moduleId: PLATFORM.moduleName('appUsersOnObjects/details'), nav: false, title: 'appUsersOnObjects - Details' },
+        // { route: 'appUsersOnObjects/details/:id',             name: 'appUsersOnObjects' + 'Details', moduleId: PLATFORM.moduleName('appUsersOnObjects/details'), nav: false, title: 'appUsersOnObjects - Details' },
 
         { route: 'productsServices/create',             name: 'productsServices' + 'Create', moduleId: PLATFORM.moduleName('productsServices/create'), nav: false, title: 'productsServices - Create' },
         { route: 'productsServices/edit/:id',               name: 'productsServices' + 'Edit',   moduleId: PLATFORM.moduleName('productsServices/edit'), nav: false, title: 'productsServices - Edit' },
         { route: 'productsServices/delete/:id',             name: 'productsServices' + 'Delete', moduleId: PLATFORM.moduleName('productsServices/delete'), nav: false, title: 'productsServices - Delete' },
         { route: 'productsServices/details/:id',             name: 'productsServices' + 'Details', moduleId: PLATFORM.moduleName('productsServices/details'), nav: false, title: 'productsServices - Details' },
 
+        { route: ['products', 'products/index'], name: 'products' + 'Index',  moduleId: PLATFORM.moduleName('products/index'), nav: true, title: 'Products' },
 
       ]);
   }

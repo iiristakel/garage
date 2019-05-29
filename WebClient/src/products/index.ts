@@ -1,17 +1,17 @@
 import {LogManager, autoinject, View} from "aurelia-framework";
 import {RouteConfig, NavigationInstruction} from "aurelia-router";
-import {WorkObjectService} from "../services/work-object-service";
-import {IWorkObject} from "../interfaces/IWorkObject";
+import {ProductService} from "../services/product-service";
+import {IProduct} from "../interfaces/IProduct";
 import {BaseService} from "../services/base-service";
 
-export var log = LogManager.getLogger('Workobjects.Index');
+export var log = LogManager.getLogger('Products.Index');
 
 @autoinject
 export class Index {
 
-  private workObjects: IWorkObject[] = [];
+  private products: IProduct[];
 
-  constructor(private workObjectService: WorkObjectService) {
+  constructor(private productService: ProductService) {
     log.debug('constructor');
   }
 
@@ -26,9 +26,9 @@ export class Index {
   attached(){
     log.debug('attached');
 
-    this.workObjectService.fetchAll().then(
+    this.productService.fetchAll().then(
       jsonData => {
-        this.workObjects = jsonData;
+        this.products = jsonData;
       }
     );
   }

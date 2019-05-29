@@ -1,0 +1,50 @@
+<template>
+
+  <h1>Edit</h1>
+
+  <h4>Worker on object</h4>
+  <hr />
+  <div class="row">
+    <div class="col-md-4">
+      <form action="/Admin/AllAppUsersOnObjects/Create" method="post">
+
+
+
+        <div class="form-group">
+          <label class="control-label" for="AppUserOnObject_AppUserId">Worker</label>
+          <select class="form-control" data-val="true" data-val-required="The AppUserId field is required." id="AppUserOnObject_AppUserId" name="AppUserOnObject.AppUserId"><option value="1">admin admin</option>
+            <option value="2">mati kuusik</option>
+            <option value="3">j&#xFC;ri kuusk</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="AppUserOnObject_WorkObjectId">Work object</label>
+          <select class="form-control" data-val="true" data-val-required="The WorkObjectId field is required." id="AppUserOnObject_WorkObjectId" name="AppUserOnObject.WorkObjectId"><option value="1">1</option>
+            <option value="2">2</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="AppUserOnObject_From">From</label>
+          <input class="form-control" type="date" id="AppUserOnObject_From" name="AppUserOnObject.From" value="" />
+          <span class="text-danger field-validation-valid" data-valmsg-for="AppUserOnObject.From" data-valmsg-replace="true"></span>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="AppUserOnObject_Until">Until</label>
+          <input class="form-control" type="date" id="AppUserOnObject_Until" name="AppUserOnObject.Until" value="" />
+          <span class="text-danger field-validation-valid" data-valmsg-for="AppUserOnObject.Until" data-valmsg-replace="true"></span>
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Save" class="btn btn-primary"/>
+        </div>
+
+
+        <input name="__RequestVerificationToken" type="hidden" value="CfDJ8FCORxZDEBNMgOJWdEegF2VDA18xcb0AwnAH-Sug8joQX8138YKhHKCDEoVPtTIpzpR3NfEHK4EAkiV3inR_ZQESXMq7RjlbDSOPRfAGN8TGdA2HHiMPC1Xfrpak_xa5_5wsBH846tgmWNuPGq5JpLHpcupwHRDrAhcC5_lDiA6goHANzmaQQowNSgIn0mT4GA" /></form>
+    </div>
+  </div>
+
+  <div>
+    <a href="/Admin/AllAppUsersOnObjects">Back to list</a>
+  </div>
+
+
+</template>

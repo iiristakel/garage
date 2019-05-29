@@ -49,52 +49,52 @@ namespace DAL.App.EF.Repositories
                 await RepositoryDbContext.Entry(workObject)
                     .Reference(c => c.Client)
                     .LoadAsync();
-                await RepositoryDbContext.Entry(workObject.Client)
-                    .Collection(c => c.Bills)
-                    .LoadAsync();
-                
-                foreach (var bill in workObject.Bills)
-                {
-                    await RepositoryDbContext.Entry(bill)
-                        .Reference(b => b.Comment)
-                        .LoadAsync();
-
-                    await RepositoryDbContext.Entry(bill.Comment)
-                        .Collection(b => b.Translations)
-                        .Query()
-                        .Where(t => t.Culture == culture)
-                        .LoadAsync();
-                }
-
-                await RepositoryDbContext.Entry(workObject)
-                    .Collection(c => c.AppUsersOnObject)
-                    .LoadAsync();
-                
-                foreach (var appUserOnObject in workObject.AppUsersOnObject)
-                {
-                    await RepositoryDbContext.Entry(appUserOnObject)
-                        .Reference(b => b.AppUser)
-                        .LoadAsync();
-
-                }
-
-                await RepositoryDbContext.Entry(workObject)
-                    .Collection(c => c.ProductsServices)
-                    .LoadAsync();
-
-
-                foreach (var service in workObject.ProductsServices)
-                {
-                    await RepositoryDbContext.Entry(service)
-                        .Reference(b => b.Description)
-                        .LoadAsync();
-
-                    await RepositoryDbContext.Entry(service.Description)
-                        .Collection(b => b.Translations)
-                        .Query()
-                        .Where(t => t.Culture == culture)
-                        .LoadAsync();
-                }
+//                await RepositoryDbContext.Entry(workObject.Client)
+//                    .Collection(c => c.Bills)
+//                    .LoadAsync();
+//                
+//                foreach (var bill in workObject.Bills)
+//                {
+//                    await RepositoryDbContext.Entry(bill)
+//                        .Reference(b => b.Comment)
+//                        .LoadAsync();
+//
+//                    await RepositoryDbContext.Entry(bill.Comment)
+//                        .Collection(b => b.Translations)
+//                        .Query()
+//                        .Where(t => t.Culture == culture)
+//                        .LoadAsync();
+//                }
+//
+//                await RepositoryDbContext.Entry(workObject)
+//                    .Collection(c => c.AppUsersOnObject)
+//                    .LoadAsync();
+//                
+//                foreach (var appUserOnObject in workObject.AppUsersOnObject)
+//                {
+//                    await RepositoryDbContext.Entry(appUserOnObject)
+//                        .Reference(b => b.AppUser)
+//                        .LoadAsync();
+//
+//                }
+//
+//                await RepositoryDbContext.Entry(workObject)
+//                    .Collection(c => c.ProductsServices)
+//                    .LoadAsync();
+//
+//
+//                foreach (var service in workObject.ProductsServices)
+//                {
+//                    await RepositoryDbContext.Entry(service)
+//                        .Reference(b => b.Description)
+//                        .LoadAsync();
+//
+//                    await RepositoryDbContext.Entry(service.Description)
+//                        .Collection(b => b.Translations)
+//                        .Query()
+//                        .Where(t => t.Culture == culture)
+//                        .LoadAsync();
+//                }
 
             }
                 return WorkObjectMapper.MapFromDomain(workObject);
@@ -124,17 +124,17 @@ namespace DAL.App.EF.Repositories
                 var workObject = await RepositoryDbSet
                     .Include(c => c.Client)
                     .Include(q => q.Bills)
-                    
+
                     .Include(p => p.AppUsersOnObject)
                     .ThenInclude(p => p.AppUser)
-                    
+
                     .Include(p => p.ProductsServices)
                     .ThenInclude(p => p.Description)
                     .ThenInclude(p => p.Translations)
-                    
+
                     .Include(p => p.ProductsServices)
                     .ThenInclude(p => p.ProductForClient)
-                    .ThenInclude(p=> p.Product)
+                    .ThenInclude(p => p.Product)
                     .ThenInclude(p => p.ProductName)
                     .ThenInclude(p => p.Translations)
                     .FirstOrDefaultAsync(m => m.Id == id && m.AppUsersOnObject.Any(q => q.AppUserId == userId));

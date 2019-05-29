@@ -1,29 +1,29 @@
 import {LogManager, View, autoinject} from "aurelia-framework";
 import {RouteConfig, NavigationInstruction, Router} from "aurelia-router";
-import {IWorkObject} from "../interfaces/IWorkObject";
-import {WorkObjectService} from "../services/work-object-service";
+import {IAppUserOnObject} from "../interfaces/IAppUserOnObject";
+import {AppUserOnObjectService} from "../services/app-user-on-object-service";
 
-export var log = LogManager.getLogger('WorkObjects.Edit');
+export var log = LogManager.getLogger('AppUserOnObjects.Edit');
 
 @autoinject
 export class Edit {
 
-  private workObject: IWorkObject;
+  private appUserOnObject: IAppUserOnObject;
 
   constructor(
     private router: Router,
-    private workObjectService: WorkObjectService
+    private appUserOnObjectService: AppUserOnObjectService
   ) {
     log.debug('constructor');
   }
   
   // ============ View methods ==============
   submit():void{
-    log.debug('workObject', this.workObject);
-    this.workObjectService.post(this.workObject).then(
+    log.debug('appUserOnObject', this.appUserOnObject);
+    this.appUserOnObjectService.post(this.appUserOnObject).then(
       response => {
         if (response.status == 201){
-          this.router.navigateToRoute("workObjectsIndex");
+          this.router.navigateToRoute("appUserOnObjectsIndex");
         } else {
           log.error('Error in response!', response);
         }
@@ -60,10 +60,10 @@ export class Edit {
 
   activate(params: any, routerConfig: RouteConfig, navigationInstruction: NavigationInstruction) {
     log.debug('activate', params);
-    this.workObjectService.fetch(params.id).then(
-      workObject => {
-        log.debug('workObject', workObject);
-        this.workObject = workObject;
+    this.appUserOnObjectService.fetch(params.id).then(
+      appUserOnObject => {
+        log.debug('appUserOnObject', appUserOnObject);
+        this.appUserOnObject = appUserOnObject;
       }
     );
 

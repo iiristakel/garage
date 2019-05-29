@@ -1,0 +1,35 @@
+<template>
+<h1>Products</h1>
+
+<p>
+  <!--<a route-href="route: workobjectsCreate">Create New</a>-->
+</p>
+<table class="table">
+  <thead>
+  <tr>
+    <th>
+      ProductName
+    </th>
+    <th>
+      ProductCode
+    </th>
+    <th>
+      Price
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr repeat.for="product of products">
+    <td>
+      ${product.productName}
+    </td>
+    <td>
+      ${product.productCode}
+    </td>
+    <td>
+      ${product.price}
+    </td>
+  </tr>
+  </tbody>
+</table>
+</template>

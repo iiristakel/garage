@@ -1,30 +1,34 @@
 import {LogManager, View, autoinject} from "aurelia-framework";
 import {RouteConfig, NavigationInstruction, Router} from "aurelia-router";
-import {IWorkObject} from "../interfaces/IWorkObject";
-import {WorkObjectService} from "../services/work-object-service";
+import {IAppUserOnObject} from "../interfaces/IAppUserOnObject";
+import {AppUserOnObjectService} from "../services/app-user-on-object-service";
+import {IAppUser} from "../interfaces/IAppUser";
+import {AppUserService} from "../services/app-user-service";
 
-export var log = LogManager.getLogger('Workobjects.Delete');
-
+export var log = LogManager.getLogger('AppUserOnObjects.Create');
 
 @autoinject
-export class Delete {
+export class Create {
 
-  private workObject: IWorkObject;
+  private appUserOnObject: IAppUserOnObject;
+  private appUsers: IAppUser[] = [];
+  private options: "";  
 
   constructor(
+    private appUserService: AppUserService,
     private router: Router,
-    private workObjectService: WorkObjectService
+    private appUserOnObjectService: AppUserOnObjectService
   ) {
     log.debug('constructor');
   }
 
   // ============ View methods ==============
   submit():void{
-    log.debug('workObject', this.workObject);
-    this.workObjectService.post(this.workObject).then(
+    log.debug('appUserOnObject', this.appUserOnObject);
+    this.appUserOnObjectService.post(this.appUserOnObject).then(
       response => {
         if (response.status == 201){
-          this.router.navigateToRoute("workObjectsIndex");
+          this.router.navigateToRoute("appUserOnObjectsIndex");
         } else {
           log.error('Error in response!', response);
         }
@@ -43,7 +47,19 @@ export class Delete {
 
   attached() {
     log.debug('attached');
+    this.appUserService.fetchAll().then(
+      jsonData => {
+        this.appUsers = jsonData;
+      }
+    );
 
+    
+    for(var i = 0 ; i <=this.appUsers.length; i++){
+      this.options += "<option>"+ this.appUsers[i] +"</option>";
+    }
+    log.debug(this.options);
+
+    document.getElementById("AppUserOnObject_AppUserId").innerHTML = this.options;
   }
 
   detached() {
@@ -60,14 +76,7 @@ export class Delete {
   }
 
   activate(params: any, routerConfig: RouteConfig, navigationInstruction: NavigationInstruction) {
-    log.debug('activate', params);
-    this.workObjectService.fetch(params.id).then(
-      workObject => {
-        log.debug('workObject', workObject);
-        this.workObject = workObject;
-      }
-    );
-
+    log.debug('activate');
   }
 
   canDeactivate() {
@@ -77,4 +86,6 @@ export class Delete {
   deactivate() {
     log.debug('deactivate');
   }
+  
 }
+

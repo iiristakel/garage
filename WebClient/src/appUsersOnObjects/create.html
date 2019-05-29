@@ -1,0 +1,44 @@
+<template>
+
+
+  <h1>Create new</h1>
+
+  <h4>Worker on object</h4>
+  <hr />
+  <div class="row">
+    <div class="col-md-4">
+      <form submit.delegate="submit()" method="post">
+
+        <div class="form-group">
+          <label class="control-label" for="AppUserOnObject_AppUserId">Worker</label>
+          <select class="form-control" data-val="true" id="AppUserOnObject_AppUserId" name="AppUserOnObject.AppUserId">
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="AppUserOnObject_WorkObjectId">Work object</label>
+          <select class="form-control" data-val="true" id="AppUserOnObject_WorkObjectId" name="AppUserOnObject.WorkObjectId">
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="AppUserOnObject_From">From</label>
+          <input class="form-control" type="date" id="AppUserOnObject_From" name="AppUserOnObject.From" 
+                 value.bind="appUserOnObject.from" />
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="AppUserOnObject_Until">Until</label>
+          <input class="form-control" type="date" id="AppUserOnObject_Until" name="AppUserOnObject.Until" 
+                 value.bind="appUserOnObject.until" />
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Create" class="btn btn-primary"/>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <div>
+    <a route-href="route: workobjectsIndex">Back to work objects list</a>
+  </div>
+
+</template>
