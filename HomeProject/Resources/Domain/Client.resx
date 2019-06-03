@@ -141,4 +141,7 @@
   <data name="ProductsCount" xml:space="preserve">
     <value>Products count</value>
   </data>
+  <data name="From" xml:space="preserve">
+    <value>Client From</value>
+  </data>
 </root>

@@ -5,14 +5,15 @@ import {AppUserOnObjectService} from "../services/app-user-on-object-service";
 import {IAppUser} from "../interfaces/IAppUser";
 import {AppUserService} from "../services/app-user-service";
 
-export var log = LogManager.getLogger('AppUserOnObjects.Create');
+export var log = LogManager.getLogger('AppUsersOnObjects.Create');
 
 @autoinject
 export class Create {
 
   private appUserOnObject: IAppUserOnObject;
   private appUsers: IAppUser[] = [];
-  private options: "";  
+  // private options: "";
+  
 
   constructor(
     private appUserService: AppUserService,
@@ -47,19 +48,27 @@ export class Create {
 
   attached() {
     log.debug('attached');
-    this.appUserService.fetchAll().then(
-      jsonData => {
-        this.appUsers = jsonData;
-      }
-    );
-
+    this.appUserService.GetAppUsers()
+      .then(jsondata => {
+        log.debug("jsondata", jsondata)
+        this.appUsers = jsondata;
+      }).catch(reason =>{
+      log.debug('catch reason', reason)
+  });
     
-    for(var i = 0 ; i <=this.appUsers.length; i++){
-      this.options += "<option>"+ this.appUsers[i] +"</option>";
-    }
-    log.debug(this.options);
+    // this.appUserService.fetchAll("").then(
+    //   jsonData => {
+    //     this.appUsers = jsonData;
+    //   }
+    // );
 
-    document.getElementById("AppUserOnObject_AppUserId").innerHTML = this.options;
+    //
+    // for(var i = 0 ; i <=this.appUsers.length; i++){
+    //   this.options += "<option>"+ this.appUsers[i] +"</option>";
+    // }
+    // log.debug(this.options);
+    //
+    // document.getElementById("AppUserOnObject_AppUserId").innerHTML = this.options;
   }
 
   detached() {

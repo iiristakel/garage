@@ -132,4 +132,10 @@
   <data name="WorkObjectString" xml:space="preserve">
     <value>Tööobjekt</value>
   </data>
+  <data name="AppUsersOnObject" xml:space="preserve">
+    <value>Töötajad objektil</value>
+  </data>
+  <data name="ProductsServices" xml:space="preserve">
+    <value>Toodete hooldused</value>
+  </data>
 </root>

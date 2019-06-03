@@ -63,7 +63,8 @@
         @* @Html.DisplayNameFor(model => model.ProductsForClient) *@
         (<a asp-action="Create"
            asp-controller="AllProductsForClients" asp-route-clientId="@Model.Client.Id">
-            Add
+            @Resources.Views.Common.Add
+
         </a>)
     </dt>
      <dd class="col-sm-10">
@@ -78,12 +79,12 @@
                       |
                       <a asp-action="Edit"
                          asp-controller="AllProductsForClients" asp-route-id="@productForClient.Id">
-                          Edit
+                          @Resources.Views.Common.Edit
                       </a>
                       |
                      <a asp-action="Delete"
                         asp-controller="AllProductsForClients" asp-route-id="@productForClient.Id">
-                         Delete
+                         @Resources.Views.Common.Delete
                      </a>
                  </li>
              }

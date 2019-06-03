@@ -12,8 +12,26 @@ export class AppUserService extends BaseService<IAppUser> {
   constructor(
     private httpClient: HttpClient,
     private appConfig: AppConfig
-  ){
-    super(httpClient, appConfig, 'AppUsers')
+  ) {
+    super(httpClient, appConfig, 'AppUsers');
+  }
+
+    GetAppUsers(): Promise<IAppUser[]> {
+      let url = this.appConfig.apiUrl + "appUsers";
+
+    return this.httpClient.get(url,
+      {
+        cache: 'no-store'
+      }).then(
+      response => {
+        log.debug('response', response);
+        return response.json();
+      }
+    ).catch(
+      reason => {
+        log.debug('catch reason', reason);
+      }
+    );
   }
 
 }

@@ -167,5 +167,14 @@ namespace Resources.Domain {
                 return ResourceManager.GetString("WorkObject", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Work object.
+        /// </summary>
+        public static string BillLines {
+            get {
+                return ResourceManager.GetString("BillLines", resourceCulture);
+            }
+        }
     }
 }

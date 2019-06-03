@@ -27,14 +27,14 @@
       </dd>
 
       <dt class="col-sm-3">
-        AppUsersOnObject (
+        Workers on object (
         <a route-href="route: appUsersOnObjectsCreate; params.bind: {workObjectId: workObject.id}">
           Add
         </a>)
       </dt>
-      <dd class="col-sm-10">
+      <dd class="col-sm-9">
         <ul>
-          <li repeat.for="appUserOnObject of workObject.AppUsersOnObject">
+          <li repeat.for="appUserOnObject of workObject.appUsersOnObject">
             ${appUserOnObject.appUser.firstLastName}
             <a route-href="route: appUsersOnObjectsEdit; params.bind: {id: appUserOnObject.id}">
               Edit
@@ -46,12 +46,12 @@
         </ul>
       </dd>
       <dt class="col-sm-3">
-        ProductsServices (
+        Products services (
         <a route-href="route: productsServicesCreate; params.bind: {workObjectId: workObject.id}">
           Add
         </a>)
       </dt>
-      <dd class="col-sm-10">
+      <dd class="col-sm-9">
         <ul>
           <li repeat.for="productService of workObject.productsServices">
             ${productService.productForClient.product.productName}:
@@ -62,6 +62,25 @@
           </a>
           <a route-href="route: productsServicesEdit; params.bind: {id: productService.id}">
             Delete
+            </a>
+          </li>
+        </ul>
+      </dd>
+      <dt class="col-sm-3">
+        Bills(
+        <a route-href="route: billsCreate; params.bind: {workObjectId: workObject.id}">
+          Add
+        </a>)
+      </dt>
+      <dd class="col-sm-9">
+        <ul>
+          <li repeat.for="bill of workObject.bills">
+            <a route-href="route: billsDetails; params.bind: {id: bill.id}">${bill.invoiceNr}</a>
+            <a route-href="route: billsEdit; params.bind: {id: bill.id}">
+              Edit
+            </a>
+            <a route-href="route: billsDelete; params.bind: {id: bill.id}">
+              Delete
             </a>
           </li>
         </ul>

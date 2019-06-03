@@ -16,7 +16,7 @@ namespace WebApp.ApiControllers.v1_0
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
     [Authorize(Roles = "Admin")]
-//    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class AppUsersOnObjectsController : ControllerBase
     {
         private readonly IAppBLL _bll;
@@ -71,6 +71,8 @@ namespace WebApp.ApiControllers.v1_0
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAppUserOnObject(int id, PublicApi.v1.DTO.AppUserOnObject appUserOnObject)
         {
+           
+            
             if (id != appUserOnObject.Id)
             {
                 return BadRequest();

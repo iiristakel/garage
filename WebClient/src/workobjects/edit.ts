@@ -2,6 +2,8 @@ import {LogManager, View, autoinject} from "aurelia-framework";
 import {RouteConfig, NavigationInstruction, Router} from "aurelia-router";
 import {IWorkObject} from "../interfaces/IWorkObject";
 import {WorkObjectService} from "../services/work-object-service";
+import {IClient} from "../interfaces/IClient";
+import {ClientService} from "../services/client-service";
 
 export var log = LogManager.getLogger('WorkObjects.Edit');
 
@@ -9,9 +11,12 @@ export var log = LogManager.getLogger('WorkObjects.Edit');
 export class Edit {
 
   private workObject: IWorkObject;
+  private clients: IClient[] = [];
+  private options: "";
 
   constructor(
     private router: Router,
+    private clientService: ClientService,
     private workObjectService: WorkObjectService
   ) {
     log.debug('constructor');
@@ -66,6 +71,19 @@ export class Edit {
         this.workObject = workObject;
       }
     );
+    this.clientService.fetchAll().then(
+      jsonData => {
+        this.clients = jsonData;
+      }
+    );
+
+
+    // for(var i = 0 ; i <= this.clients.length; i++){
+    //   this.options += "<option>"+ this.clients[i].companyAndAddress +"</option>";
+    // }
+    // log.debug(this.options);
+    //
+    // document.getElementById("WorkObject_ClientId").innerHTML = this.options;
 
   }
 

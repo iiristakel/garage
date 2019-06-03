@@ -121,42 +121,45 @@ namespace DAL.App.EF.Repositories
         {
             var culture = Thread.CurrentThread.CurrentUICulture.Name.Substring(0, 2).ToLower();
             
-            var res = await RepositoryDbSet
+            var resultList = await RepositoryDbSet
                 .Include(c => c.Client)                    
                 .Include(c => c.WorkObject)
-//                .Include(c => c.BillLines)
+                .ThenInclude(c => c.AppUsersOnObject)
+                .ThenInclude(c => c.AppUser)
+                .Include(c => c.BillLines)
                 .Include(c => c.Comment)
                 .ThenInclude(t => t.Translations)
                 .Where(p => p.WorkObject.AppUsersOnObject.Any(q => q.AppUserId == userId))
-                
-                .Select(c => new
-                {
-                    Id = c.Id,
-//                    Client = ClientMapper.MapFromDomain(c.Client),
-                    ClientId = c.ClientId,
-                    ArrivalFee = c.ArrivalFee,
-                    SumWithoutTaxes = c.SumWithOutTaxes,
-                    TaxPercent = c.TaxPercent,
-                    DateTime = c.DateTime,
-                    InvoiceNr = c.InvoiceNr,
-                    Comment = c.Comment,
-                    Translations = c.Comment.Translations
-                })
+                .Select(c => BillMapper.MapFromDomain(c))
                 .ToListAsync();
-            
-            var resultList = res.Select(c => new Bill()
-            {
-                Id = c.Id,
-//                Client = c.Client,
-                ClientId = c.ClientId,
-                ArrivalFee = c.ArrivalFee,
-                SumWithoutTaxes = c.SumWithoutTaxes,
-                TaxPercent = c.TaxPercent,
-                DateTime = c.DateTime,
-                InvoiceNr = c.InvoiceNr,
-                Comment = c.Comment.Translate()
-                     
-            }).ToList();
+//                .Select(c => new
+//                {
+//                    Id = c.Id,
+////                    Client = ClientMapper.MapFromDomain(c.Client),
+//                    ClientId = c.ClientId,
+//                    ArrivalFee = c.ArrivalFee,
+//                    SumWithoutTaxes = c.SumWithOutTaxes,
+//                    TaxPercent = c.TaxPercent,
+//                    DateTime = c.DateTime,
+//                    InvoiceNr = c.InvoiceNr,
+//                    Comment = c.Comment,
+//                    Translations = c.Comment.Translations
+//                })
+//                .ToListAsync();
+//            
+//            var resultList = res.Select(c => new Bill()
+//            {
+//                Id = c.Id,
+////                Client = c.Client,
+//                ClientId = c.ClientId,
+//                ArrivalFee = c.ArrivalFee,
+//                SumWithoutTaxes = c.SumWithoutTaxes,
+//                TaxPercent = c.TaxPercent,
+//                DateTime = c.DateTime,
+//                InvoiceNr = c.InvoiceNr,
+//                Comment = c.Comment.Translate()
+//                     
+//            }).ToList();
             return resultList;
 
         }

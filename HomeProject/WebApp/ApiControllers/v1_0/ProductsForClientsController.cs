@@ -3,6 +3,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Contracts.BLL.App;
 using Domain;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApp.ApiControllers.v1_0
@@ -13,6 +15,8 @@ namespace WebApp.ApiControllers.v1_0
     [ApiVersion( "1.0" )]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+
     public class ProductsForClientsController : ControllerBase
     {
         private readonly IAppBLL _bll;
@@ -68,6 +72,7 @@ namespace WebApp.ApiControllers.v1_0
         public async Task<IActionResult> PutProductForClient(int id, 
             PublicApi.v1.DTO.ProductForClient productForClient)
         {
+            
             if (id != productForClient.Id)
             {
                 return BadRequest();
@@ -89,6 +94,7 @@ namespace WebApp.ApiControllers.v1_0
         public async Task<ActionResult<ProductForClient>> PostProductForClient(
             PublicApi.v1.DTO.ProductForClient productForClient)
         {
+           
             productForClient = PublicApi.v1.Mappers.ProductForClientMapper.MapFromInternal(
                 await _bll.ProductsForClients.AddAsync(PublicApi.v1.Mappers.ProductForClientMapper.MapFromExternal(
                     productForClient)));
@@ -114,6 +120,7 @@ namespace WebApp.ApiControllers.v1_0
         [HttpDelete("{id}")]
         public async Task<ActionResult<PublicApi.v1.DTO.ProductForClient>> DeleteProductForClient(int id)
         {
+          
             var productForClient = await _bll.ProductsForClients.FindAsync(id);
             if (productForClient == null)
             {

@@ -24,12 +24,12 @@ export class BaseService<TEntity extends IBaseEntity> {
     this.serviceEndPoint = endPoint;
   }
 
-  fetchAll(): Promise<TEntity[]> {
+  fetchAll(queryParameters: string | undefined): Promise<TEntity[]> {
     // TODO: use config
     let url = this.serviceAppConfig.apiUrl + this.serviceEndPoint;
-    // if (queryParameters !== undefined){
-    //   url = url + '/' + queryParameters;
-    // }
+    if (queryParameters !== undefined){
+      url = url + '/' + queryParameters;
+    }
 
     return this.serviceHttpClient.fetch(url,
       {
@@ -81,7 +81,7 @@ export class BaseService<TEntity extends IBaseEntity> {
       }
     })
       .then(response => {
-        log.debug('resonse', response);
+        log.debug('response', response);
         return response.json();
       })
       .then(jsonData => {

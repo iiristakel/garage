@@ -101,7 +101,7 @@ namespace WebApp.Controllers
                 return NotFound();
             }
             
-            var vm = new BillCreateEditViewModel();
+                var vm = new BillCreateEditViewModel();
             
             vm.Bill = bill;
             vm.ClientSelectList = new SelectList(

@@ -21,10 +21,10 @@
         Until
       </th>
       <th>
-        AppUsersOnObject
+        Workers on object
       </th>
       <th>
-        ProductsServices
+        Products services
       </th>
     </tr>
     </thead>
@@ -48,8 +48,8 @@
       </td>
       <td>
         <ul>
-          <li repeat.for="appUser of workObject.appUsersOnObject">
-            ${appUser.firstLastName}
+          <li repeat.for="appUserOnObject of workObject.appUsersOnObject">
+            ${appUserOnObject.appUser.firstLastName}
           </li>
         </ul>
       </td>

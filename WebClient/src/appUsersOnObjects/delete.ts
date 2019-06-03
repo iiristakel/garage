@@ -3,7 +3,7 @@ import {RouteConfig, NavigationInstruction, Router} from "aurelia-router";
 import {IAppUserOnObject} from "../interfaces/IAppUserOnObject";
 import {AppUserOnObjectService} from "../services/app-user-on-object-service";
 
-export var log = LogManager.getLogger('Workobjects.Delete');
+export var log = LogManager.getLogger('AppUsersOnObjects.Delete');
 
 
 @autoinject

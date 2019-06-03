@@ -34,6 +34,8 @@ namespace DAL.App.EF.Repositories
                 .Include(p => p.Bills)
                 .ThenInclude(p=> p.Comment)
                 .ThenInclude(p => p.Translations)
+                .Include(p => p.Bills)
+                .ThenInclude(p=> p.BillLines)
                 .Select(e => WorkObjectMapper.MapFromDomain(e))
                 .ToListAsync();
         }
@@ -113,6 +115,8 @@ namespace DAL.App.EF.Repositories
                     .Include(p => p.Bills)
                     .ThenInclude(p=> p.Comment)
                     .ThenInclude(p => p.Translations)
+                    .Include(p => p.Bills)
+                    .ThenInclude(p=> p.BillLines)
                     .Where(q => q.AppUsersOnObject.Any(p => p.AppUserId == userId))
                     .Select(e => WorkObjectMapper.MapFromDomain(e))
                     .ToListAsync();

@@ -36,21 +36,21 @@
 
                 @if (SignInManager.IsSignedIn(User))
                 {
-                    <li class="nav-item d-none d-sm-inline-block">
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">@Resources.Views.Shared._Layout.NavHome</a>
-                    </li>
-                @* <li class="nav-item d-none d-sm-inline-block"> *@
-                @*     <a class="nav-link" asp-area="" asp-controller="AppUsers" asp-action="Index">@Resources.Views.Shared._Layout.NavWorkers</a> *@
-                @* </li> *@
-                    <li class="nav-item d-none d-sm-inline-block">
-                        <a class="nav-link" asp-area="" asp-controller="Clients" asp-action="Index">@Resources.Views.Shared._Layout.NavClients</a>
-                    </li>
-                    <li class="nav-item d-none d-sm-inline-block">
-                        <a class="nav-link" asp-area="" asp-controller="WorkObjects" asp-action="Index">@Resources.Views.Shared._Layout.NavWorkObjects</a>
-                    </li>
-                    <li class="nav-item d-none d-sm-inline-block">
-                        <a class="nav-link" asp-area="" asp-controller="Products" asp-action="Index">@Resources.Views.Shared._Layout.NavProducts</a>
-                    </li>
+                    <li class="nav-item d-none d-sm-inline-block"> 
+                        <a class="nav-link" asp-area="Admin" asp-controller="Home" asp-action="Index">Admin page</a> 
+                    </li> 
+@*                     <li class="nav-item d-none d-sm-inline-block"> *@
+@*                         <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">@Resources.Views.Shared._Layout.NavHome</a> *@
+@*                     </li> *@
+@*                     <li class="nav-item d-none d-sm-inline-block"> *@
+@*                         <a class="nav-link" asp-area="" asp-controller="Clients" asp-action="Index">@Resources.Views.Shared._Layout.NavClients</a> *@
+@*                     </li> *@
+@*                     <li class="nav-item d-none d-sm-inline-block"> *@
+@*                         <a class="nav-link" asp-area="" asp-controller="WorkObjects" asp-action="Index">@Resources.Views.Shared._Layout.NavWorkObjects</a> *@
+@*                     </li> *@
+@*                     <li class="nav-item d-none d-sm-inline-block"> *@
+@*                         <a class="nav-link" asp-area="" asp-controller="Products" asp-action="Index">@Resources.Views.Shared._Layout.NavProducts</a> *@
+@*                     </li> *@
                 }
             </ul>
 

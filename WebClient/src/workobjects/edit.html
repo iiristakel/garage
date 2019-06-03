@@ -12,16 +12,16 @@
         <div class="form-group">
           <label class="control-label" for="WorkObject_ClientId">Client</label>
           <select class="form-control" data-val="true" id="WorkObject_ClientId" name="WorkObject.ClientId">
-            <!--<option selected="selected" value.bind="workObject.clientId"></option>-->
+            <option selected="selected" value.bind="workObject.clientId"></option>
           </select>
         </div>
         <div class="form-group">
           <label class="control-label" for="WorkObject_From">From</label>
-          <input class="form-control" type="date" id="WorkObject_From" name="WorkObject.From" value="2019-05-24" />
+          <input class="form-control" type="date" id="WorkObject_From" name="WorkObject.From" value.bind="workObject.from" />
         </div>
         <div class="form-group">
           <label class="control-label" for="WorkObject_Until">Until</label>
-          <input class="form-control" type="date" id="WorkObject_Until" name="WorkObject.Until" value="2019-05-25" />
+          <input class="form-control" type="date" id="WorkObject_Until" name="WorkObject.Until" value.bind="workObject.until" />
         </div>
 
         <div class="form-group">

@@ -156,4 +156,7 @@
   <data name="TaxPercent" xml:space="preserve">
     <value>Käibemaksu %</value>
   </data>
+  <data name="BillLines" xml:space="preserve">
+    <value>Arve read</value>
+  </data>
 </root>

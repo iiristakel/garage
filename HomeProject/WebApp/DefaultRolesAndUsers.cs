@@ -21,6 +21,15 @@ namespace WebApp
                     // ??
                 }
             }
+            
+            if (!roleManager.Roles.Any(r => r.NormalizedName == "WORKER"))
+            {
+                var result = roleManager.CreateAsync(new AppRole() {Name = "Worker"}).Result;
+                if (result == IdentityResult.Success)
+                {
+                    // ??
+                }
+            }
 
             var user = userManager.FindByEmailAsync("admin@admin.com").Result;
             if (user == null)

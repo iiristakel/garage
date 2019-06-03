@@ -153,4 +153,7 @@
   <data name="TaxPercent" xml:space="preserve">
     <value>Tax percent</value>
   </data>
+  <data name="BillLines" xml:space="preserve">
+    <value>Bill lines</value>
+  </data>
 </root>

@@ -3,6 +3,7 @@ import {IClient} from "./IClient";
 import {IAppUserOnObject} from "./IAppUserOnObject";
 import {IProductService} from "./IProductService";
 import {IBill} from "./IBill";
+import DateTimeFormat = Intl.DateTimeFormat;
 
 export interface IWorkObject extends IBaseEntity{
   "clientId": number,

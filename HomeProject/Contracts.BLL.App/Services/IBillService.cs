@@ -11,6 +11,7 @@ namespace Contracts.BLL.App.Services
             IBillRepository<BLLAppDTO.Bill>
     {
         Task<List<BLLAppDTO.Bill>> AllForWorkObjectAsync(int workObjectId);
+        Task<BLLAppDTO.Bill> FindAsync(params object[] id);
 
     }
 }

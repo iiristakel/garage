@@ -9,6 +9,7 @@ ProjectSection(SolutionItems) = preProject
 	regenerateControllers.sh = regenerateControllers.sh
 	regenerateApiControllers.sh = regenerateApiControllers.sh
 	..\.gitignore = ..\.gitignore
+	Dockerfile = Dockerfile
 EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts.DAL.App", "Contracts.DAL.App\Contracts.DAL.App.csproj", "{78F5F61A-CA4D-4865-A571-6C8DA3DFC012}"

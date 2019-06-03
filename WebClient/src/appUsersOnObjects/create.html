@@ -13,6 +13,17 @@
           <label class="control-label" for="AppUserOnObject_AppUserId">Worker</label>
           <select class="form-control" data-val="true" id="AppUserOnObject_AppUserId" name="AppUserOnObject.AppUserId">
           </select>
+
+          <label>
+            Select appUser:<br>
+            <select value.bind="appUserOnObject.appUserId">
+              <option model.bind="null">Choose...</option>
+              <option repeat.for="appUser of appUsers"
+                      model.bind="appUser.id">
+                      ${appUser.firstLastName}
+              </option>
+            </select>
+          </label>
         </div>
         <div class="form-group">
           <label class="control-label" for="AppUserOnObject_WorkObjectId">Work object</label>

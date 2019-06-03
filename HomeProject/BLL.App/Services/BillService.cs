@@ -39,6 +39,8 @@ namespace BLL.App.Services
                 
             }
             return BillMapper.MapFromDAL(bill);
+//            return BillMapper.MapFromDAL(await Uow.Bills.FindAsync(id));
+
 
         }
         
@@ -78,6 +80,8 @@ namespace BLL.App.Services
 
             return res;
         }
+
+      
 
         public async Task<List<Bill>> AllForClientAsync(int? clientId)
         {

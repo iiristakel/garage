@@ -36,11 +36,7 @@ namespace WebApp.ApiControllers.v1_0
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PublicApi.v1.DTO.WorkObject>>> GetWorkObjects()
         {
-            if (User.IsInRole("Admin"))
-            {
-               
-            }
-            var workObjects = (await _bll.WorkObjects.AllAsync()) //TODO: AllForUserAsync here!!
+            var  workObjects = (await _bll.WorkObjects.AllForUserAsync(User.GetUserId())) 
                 .Select(e => PublicApi.v1.Mappers.WorkObjectMapper.MapFromInternal(e))
                 .ToList();
 
@@ -72,6 +68,16 @@ namespace WebApp.ApiControllers.v1_0
             {
                 return NotFound();
             }
+            
+            workObject.AppUsersOnObject = (await _bll.AppUsersOnObjects.AllForWorkObjectAsync(workObject.Id))
+                .Select(e => PublicApi.v1.Mappers.AppUserOnObjectMapper.MapFromInternal(e))
+                .ToList();
+            workObject.ProductsServices = (await _bll.ProductsServices.AllForWorkObjectAsync(workObject.Id))
+                .Select(e => PublicApi.v1.Mappers.ProductServiceMapper.MapFromInternal(e))
+                .ToList();
+            workObject.Bills = (await _bll.Bills.AllForWorkObjectAsync(workObject.Id))
+                .Select(e => PublicApi.v1.Mappers.BillMapper.MapFromInternal(e))
+                .ToList();
 
             return workObject;
         }
@@ -85,10 +91,7 @@ namespace WebApp.ApiControllers.v1_0
         [HttpPut("{id}")]
         public async Task<IActionResult> PutWorkObject(int id, PublicApi.v1.DTO.WorkObject workObject)
         {
-            if (id != workObject.Id)
-            {
-                return BadRequest();
-            }
+           
             
             if (!await _bll.WorkObjects.BelongsToUserAsync(id, User.GetUserId()))
             {
@@ -110,10 +113,10 @@ namespace WebApp.ApiControllers.v1_0
         public async Task<ActionResult<PublicApi.v1.DTO.WorkObject>> PostWorkObject(
             PublicApi.v1.DTO.WorkObject workObject)
         {
-            if (!await _bll.WorkObjects.BelongsToUserAsync(workObject.Id, User.GetUserId()))
-            {
-                return NotFound();
-            }
+//            if (!await _bll.WorkObjects.BelongsToUserAsync(workObject.Id, User.GetUserId()))
+//            {
+//                return NotFound();
+//            }
 
             workObject = PublicApi.v1.Mappers.WorkObjectMapper.MapFromInternal(
                 _bll.WorkObjects.Add(PublicApi.v1.Mappers.WorkObjectMapper.MapFromExternal(workObject)));
@@ -139,6 +142,8 @@ namespace WebApp.ApiControllers.v1_0
         [HttpDelete("{id}")]
         public async Task<ActionResult<PublicApi.v1.DTO.WorkObject>> DeleteWorkObject(int id)
         {
+          
+            
             if (!await _bll.WorkObjects.BelongsToUserAsync(id, User.GetUserId()))
             {
                 return NotFound();

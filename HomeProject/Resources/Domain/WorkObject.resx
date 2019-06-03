@@ -132,4 +132,10 @@
   <data name="WorkObjectString" xml:space="preserve">
     <value>Work object</value>
   </data>
+  <data name="AppUsersOnObject" xml:space="preserve">
+    <value>Workers on object</value>
+  </data>
+  <data name="ProductsServices" xml:space="preserve">
+    <value>Products services</value>
+  </data>
 </root>

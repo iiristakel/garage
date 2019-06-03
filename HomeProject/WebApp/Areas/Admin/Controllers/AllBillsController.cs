@@ -48,15 +48,6 @@ namespace WebApp.Areas.Admin.Controllers
             var vm = new WebApp.Areas.Admin.ViewModels.BillCreateEditViewModel();
             vm.Bill = bill;
             vm.Bill.BillLines = await _bll.BillLines.AllForBillAsync(id);
-//            vm.BillLines = await _bll.BillLines.AllForBillAsync(id);
-//            vm.Bill.SumWithoutTaxes = 0;
-//            foreach (var billLine in vm.BillLines)
-//            {
-//                vm.Bill.SumWithoutTaxes += billLine.SumWithDiscount;
-//            }
-//
-//            vm.Bill.SumWithoutTaxes += vm.Bill.ArrivalFee;
-//            vm.Bill.FinalSum = vm.Bill.SumWithoutTaxes * 100 / (100 - vm.Bill.TaxPercent);
 
             return View(vm);
         }

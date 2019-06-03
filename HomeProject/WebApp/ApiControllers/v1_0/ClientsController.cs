@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Contracts.BLL.App;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApp.ApiControllers.v1_0
@@ -12,6 +14,8 @@ namespace WebApp.ApiControllers.v1_0
     [ApiVersion( "1.0" )]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+
     public class ClientsController : ControllerBase
     {
         private readonly IAppBLL _bll;
@@ -113,6 +117,7 @@ namespace WebApp.ApiControllers.v1_0
         [HttpDelete("{id}")]
         public async Task<ActionResult<PublicApi.v1.DTO.Client>> DeleteClient(int id)
         {
+           
             var client = await _bll.Clients.FindAsync(id);
             if (client == null)
             {

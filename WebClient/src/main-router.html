@@ -9,7 +9,6 @@
         <!-- Left navbar links -->
         
         <ul class="navbar-nav flex-grow-1">
-          <a class="navbar-brand" href="/">WebApp</a>
           <li class="nav-item" show.bind="appConfig.jwt != null" repeat.for="nav of router.navigation">
             <a class="nav-link text-dark" href.bind="nav.href">${nav.title}</a>
           </li>
